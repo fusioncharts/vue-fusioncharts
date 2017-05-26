@@ -1,9 +1,67 @@
+const optionsMap = {
+    type: 'type',
+    id: 'id',
+    width: 'width',
+    height: 'height',
+    dataformat: 'dataFormat',
+    datasource: 'dataSource',
+    events: 'events',
+    link: 'link',
+    showdataloadingmessage: 'showDataLoadingMessage',
+    showchartloadingmessage: 'showChartLoadingMessage',
+    basechartmessagefont: 'baseChartMessageFont',
+    basechartmessagefontsize: 'baseChartMessageFontSize',
+    basechartmessagecolor: 'baseChartMessageColor',
+    dataloadstartmessage: 'dataLoadStartMessage',
+    dataloaderrormessage: 'dataLoadErrorMessage',
+    datainvalidmessage: 'dataInvalidMessage',
+    dataemptymessage: 'dataEmptyMessage',
+    typenotsupportedmessage: 'typeNotSupportedMessage',
+    loadmessage: 'loadMessage',
+    rendererrormessage: 'renderErrorMessage',
+    containerbackgroundcolor: 'containerBackgroundColor',
+    containerbackgroundopacity: 'containerBackgroundOpacity',
+    containerclassname: 'containerClassName',
+    basechartmessageimagehalign: 'baseChartMessageImageHAlign',
+    basechartmessageimagevalign: 'baseChartMessageImageVAlign',
+    basechartmessageimagealpha: 'baseChartMessageImageAlpha',
+    basechartmessageimagescale: 'baseChartMessageImageScale',
+    typenotsupportedmessageimagehalign: 'typeNotSupportedMessageImageHAlign',
+    typenotsupportedmessageimagevalign: 'typeNotSupportedMessageImageVAlign',
+    typenotsupportedmessageimagealpha: 'typeNotSupportedMessageImageAlpha',
+    typenotsupportedmessageimagescale: 'typeNotSupportedMessageImageScale',
+    dataloaderrormessageimagehalign: 'dataLoadErrorMessageImageHAlign',
+    dataloaderrormessageimagevalign: 'dataLoadErrorMessageImageVAlign',
+    dataloaderrormessageimagealpha: 'dataLoadErrorMessageImageAlpha',
+    dataloaderrormessageimagescale: 'dataLoadErrorMessageImageScale',
+    dataloadstartmessageimagehalign: 'dataLoadStartMessageImageHAlign',
+    dataloadstartmessageimagevalign: 'dataLoadStartMessageImageVAlign',
+    dataloadstartmessageimagealpha: 'dataLoadStartMessageImageAlpha',
+    dataloadstartmessageimagescale: 'dataLoadStartMessageImageScale',
+    datainvalidmessageimagehalign: 'dataInvalidMessageImageHAlign',
+    datainvalidmessageimagevalign: 'dataInvalidMessageImageVAlign',
+    datainvalidmessageimagealpha: 'dataInvalidMessageImageAlpha',
+    datainvalidmessageimagescale: 'dataInvalidMessageImageScale',
+    dataemptymessageimagehalign: 'dataEmptyMessageImageHAlign',
+    dataemptymessageimagevalign: 'dataEmptyMessageImageVAlign',
+    dataemptymessageimagealpha: 'dataEmptyMessageImageAlpha',
+    dataemptymessageimagescale: 'dataEmptyMessageImageScale',
+    rendererrormessageimagehalign: 'renderErrorMessageImageHAlign',
+    rendererrormessageimagevalign: 'renderErrorMessageImageVAlign',
+    rendererrormessageimagealpha: 'renderErrorMessageImageAlpha',
+    rendererrormessageimagescale: 'renderErrorMessageImageScale',
+    loadmessageimagehalign: 'loadMessageImageHAlign',
+    loadmessageimagevalign: 'loadMessageImageVAlign',
+    loadmessageimagealpha: 'loadMessageImageAlpha',
+    loadmessageimagescale: 'loadMessageImageScale'
+};
 
 export default (FC) => {
     return {
         name: 'fusioncharts',
         template: '<div></div>',
         props: {
+            options: Object,
             type: String,
             id: String,
             width: '',
@@ -61,68 +119,54 @@ export default (FC) => {
             loadmessageimagescale: Number
         },
         methods: {
+            setLastOptions: function (config) {
+                this._oldOptions = Object.assign({}, config);
+            },
+            getLastOptions: function () {
+                return this._oldOptions;
+            },
+            getOptions: function () {
+                let config = {},
+                    THIS = this;
+                for (let i in optionsMap) {
+                    if (THIS[i] !== undefined && THIS[i] !== null) {
+                        config[optionsMap[i]] = THIS[i];
+                    }
+                }
+
+                let options = Object.assign(Object.assign({}, THIS.options), config);
+
+                return options;
+            },
             renderChart: function () {
-                this.chartObj = new FC({
-                    type: this.type,
-                    id: this.id,
-                    width: this.width,
-                    height: this.height,
-                    dataFormat: this.dataformat,
-                    dataSource: this.datasource,
-                    renderAt: this.$el,
-                    events: this.events,
-                    link: this.link,
-                    showDataLoadingMessage: this.showdataloadingmessage,
-                    showChartLoadingMessage: this.showchartloadingmessage,
-                    baseChartMessageFont: this.basechartmessagefont,
-                    baseChartMessageFontSize: this.basechartmessagefontsize,
-                    baseChartMessageColor: this.basechartmessagecolor,
-                    dataLoadStartMessage: this.dataloadstartmessage,
-                    dataLoadErrorMessage: this.dataloaderrormessage,
-                    dataInvalidMessage: this.datainvalidmessage,
-                    dataEmptyMessage: this.dataemptymessage,
-                    typeNotSupportedMessage: this.typenotsupportedmessage,
-                    loadMessage: this.loadmessage,
-                    renderErrorMessage: this.rendererrormessage,
-                    containerBackgroundColor: this.containerbackgroundcolor,
-                    containerBackgroundOpacity: this.containerbackgroundopacity,
-                    containerClassName: this.containerclassname,
-                    baseChartMessageImageHAlign: this.basechartmessageimagehalign,
-                    baseChartMessageImageVAlign: this.basechartmessageimagevalign,
-                    baseChartMessageImageAlpha: this.basechartmessageimagealpha,
-                    baseChartMessageImageScale: this.basechartmessageimagescale,
-                    typeNotSupportedMessageImageHAlign: this.typenotsupportedmessageimagehalign,
-                    typeNotSupportedMessageImageVAlign: this.typenotsupportedmessageimagevalign,
-                    typeNotSupportedMessageImageAlpha: this.typenotsupportedmessageimagealpha,
-                    typeNotSupportedMessageImageScale: this.typenotsupportedmessageimagescale,
-                    dataLoadErrorMessageImageHAlign: this.dataloaderrormessageimagehalign,
-                    dataLoadErrorMessageImageVAlign: this.dataloaderrormessageimagevalign,
-                    dataLoadErrorMessageImageAlpha: this.dataloaderrormessageimagealpha,
-                    dataLoadErrorMessageImageScale: this.dataloaderrormessageimagescale,
-                    dataLoadStartMessageImageHAlign: this.dataloadstartmessageimagehalign,
-                    dataLoadStartMessageImageVAlign: this.dataloadstartmessageimagevalign,
-                    dataLoadStartMessageImageAlpha: this.dataloadstartmessageimagealpha,
-                    dataLoadStartMessageImageScale: this.dataloadstartmessageimagescale,
-                    dataInvalidMessageImageHAlign: this.datainvalidmessageimagehalign,
-                    dataInvalidMessageImageVAlign: this.datainvalidmessageimagevalign,
-                    dataInvalidMessageImageAlpha: this.datainvalidmessageimagealpha,
-                    dataInvalidMessageImageScale: this.datainvalidmessageimagescale,
-                    dataEmptyMessageImageHAlign: this.dataemptymessageimagehalign,
-                    dataEmptyMessageImageVAlign: this.dataemptymessageimagevalign,
-                    dataEmptyMessageImageAlpha: this.dataemptymessageimagealpha,
-                    dataEmptyMessageImageScale: this.dataemptymessageimagescale,
-                    renderErrorMessageImageHAlign: this.rendererrormessageimagehalign,
-                    renderErrorMessageImageVAlign: this.rendererrormessageimagevalign,
-                    renderErrorMessageImageAlpha: this.rendererrormessageimagealpha,
-                    renderErrorMessageImageScale: this.rendererrormessageimagescale,
-                    loadMessageImageHAlign: this.loadmessageimagehalign,
-                    loadMessageImageVAlign: this.loadmessageimagevalign,
-                    loadMessageImageAlpha: this.loadmessageimagealpha,
-                    loadMessageImageScale: this.loadmessageimagescale
-                });
-                this.chartObj.render();
+                let THIS = this,
+                    config = THIS.getOptions(),
+                    chartObj = THIS.chartObj;
+
+                THIS.setLastOptions(config);
+
+                if (chartObj && chartObj.dispose) {
+                    chartObj.dispose();
+                }
+
+                THIS.chartObj = chartObj = new FC(config);
+                chartObj.render(THIS.$el);
             },
             updateChart: function () {
+                let THIS = this,
+                    config = THIS.getOptions(),
+                    prevConfig = THIS.getLastOptions(),
+                    chartObj = THIS.chartObj;
+
+                if (config.width !== prevConfig.width || config.height !== prevConfig.height) {
+                    chartObj && chartObj.resizeTo(config.width, config.height);
+                } else if (config.type !== prevConfig.type) {
+                    chartObj.chartType(config.type);
+                } else {
+                    chartObj.setChartData(config.dataSource, config.dataFormat);
+                }
+
+                THIS.setLastOptions(config);
             }
         },
         watch: {
@@ -134,6 +178,12 @@ export default (FC) => {
             },
             height: function () {
                 this.chartObj.resizeTo(this.width, this.height);
+            },
+            options: {
+                handler: function () {
+                    this.updateChart();
+                },
+                deep: true
             },
             datasource: {
                 handler: function () {

@@ -18,14 +18,7 @@
 <body>
 	
 	<div id="chart1">
-		<fusioncharts
-			type='Column2D'
-			:width='width'
-			:height='height'
-			:dataformat='dataFormat'
-			:datasource='dataSource'
-			:events='events'> FusionCharts will render here...
-		</fusioncharts>
+		<fusioncharts :options="options"> FusionCharts will render here...</fusioncharts>
 		<p class="message-box">The value that you have selected is: {{displayValue}} </p>
 	</div>
 

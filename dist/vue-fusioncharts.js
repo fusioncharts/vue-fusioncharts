@@ -231,6 +231,7 @@ exports.default = function (FC) {
                     config = THIS.getOptions(),
                     chartObj = THIS.chartObj;
 
+                config.renderAt = THIS.$el;
                 THIS.setLastOptions(config);
 
                 if (chartObj && chartObj.dispose) {
@@ -238,7 +239,7 @@ exports.default = function (FC) {
                 }
 
                 THIS.chartObj = chartObj = new FC(config);
-                chartObj.render(THIS.$el);
+                chartObj.render();
             },
             updateChart: function updateChart() {
                 var THIS = this,
@@ -310,6 +311,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.install = exports.FCComponent = undefined;
 
 var _fusioncharts = __webpack_require__(1);
 
@@ -320,6 +322,8 @@ var _vueFusioncharts = __webpack_require__(0);
 var _vueFusioncharts2 = _interopRequireDefault(_vueFusioncharts);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FCComponent = (0, _vueFusioncharts2.default)(_fusioncharts2.default);
 
 var install = function install(Vue) {
     for (var _len = arguments.length, options = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
@@ -336,8 +340,9 @@ var install = function install(Vue) {
     Vue.component('fusioncharts', (0, _vueFusioncharts2.default)(FC));
 };
 
+exports.FCComponent = FCComponent;
+exports.install = install;
 exports.default = install;
-module.exports = exports['default'];
 
 /***/ })
 /******/ ]);

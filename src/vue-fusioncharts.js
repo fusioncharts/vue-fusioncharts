@@ -143,6 +143,7 @@ export default (FC) => {
                     config = THIS.getOptions(),
                     chartObj = THIS.chartObj;
 
+                config.renderAt = THIS.$el;
                 THIS.setLastOptions(config);
 
                 if (chartObj && chartObj.dispose) {
@@ -150,7 +151,7 @@ export default (FC) => {
                 }
 
                 THIS.chartObj = chartObj = new FC(config);
-                chartObj.render(THIS.$el);
+                chartObj.render();
             },
             updateChart: function () {
                 let THIS = this,

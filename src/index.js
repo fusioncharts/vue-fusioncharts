@@ -1,5 +1,7 @@
 import _FC from 'fusioncharts';
-import FCComponent from './vue-fusioncharts';
+import _FCComponent from './vue-fusioncharts';
+
+let FCComponent = _FCComponent(_FC);
 
 const install = (Vue, FC = _FC, ...options) => {
 
@@ -7,7 +9,8 @@ const install = (Vue, FC = _FC, ...options) => {
         modules(FC);
     });
 
-    Vue.component('fusioncharts', FCComponent(FC));
+    Vue.component('fusioncharts', _FCComponent(FC));
 };
 
+export {FCComponent, install};
 export default install;

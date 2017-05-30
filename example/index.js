@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueFusionCharts from '../dist/vue-fusioncharts.js';
+import VueFusionCharts from '../src';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
 import Fint from 'fusioncharts/themes/fusioncharts.theme.fint';

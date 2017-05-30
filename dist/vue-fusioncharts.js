@@ -337,7 +337,9 @@ var install = function install(Vue) {
         modules(FC);
     });
 
-    Vue.component('fusioncharts', (0, _vueFusioncharts2.default)(FC));
+    var component = (0, _vueFusioncharts2.default)(FC);
+
+    Vue.component(component.name, component);
 };
 
 exports.FCComponent = FCComponent;

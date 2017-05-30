@@ -8,8 +8,10 @@ const install = (Vue, FC = _FC, ...options) => {
     options && options.forEach && options.forEach((modules) => {
         modules(FC);
     });
+    
+    let component = _FCComponent(FC);
 
-    Vue.component('fusioncharts', _FCComponent(FC));
+    Vue.component(component.name, component);
 };
 
 export {FCComponent, install};

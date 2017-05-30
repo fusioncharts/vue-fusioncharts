@@ -10,6 +10,7 @@
     "build": "webpack --config webpack.config.babel.js",
     "rollup": "rollup src/index.js -f umd -n VueFusionCharts -g fusioncharts:FusionCharts -o dist/vue-fusioncharts.js",
     "watch": "webpack --config webpack.config.babel.js -w",
+    "dev": "webpack-dev-server --config example/webpack.config.js",
     "start": "webpack-dev-server --config example/webpack.config.js"
   },
   "keywords": [],

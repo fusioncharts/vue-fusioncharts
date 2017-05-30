@@ -13,15 +13,10 @@ export default {
         path: __dirname + '/dist',
         filename: '[name].js',
         library: libraryName,
-        libraryTarget: 'umd',
-        // umdNamedDefine: false
+        libraryTarget: 'umd'
     },
     module: {
         rules: [
-            // {
-            //     test: require.resolve('fusioncharts'),
-            //     use: 'imports-loader?this=>false'
-            // },
             {
                 test: /(\.jsx|\.js)$/,
                 loader: 'babel-loader',
@@ -33,14 +28,14 @@ export default {
                 exclude: /node_modules/
             }
         ]
-    },    
+    },
     externals: {
-      fusioncharts: {
-        commonjs2: "fusioncharts",
-        commonjs: "fusioncharts",
-        amd: "fusioncharts",
-        root: "FusionCharts"
-      }
+        fusioncharts: {
+            commonjs2: 'fusioncharts',
+            commonjs: 'fusioncharts',
+            amd: 'fusioncharts',
+            root: 'FusionCharts'
+        }
     },
     plugins: [
         new UglifyJsPlugin({ 

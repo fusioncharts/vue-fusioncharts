@@ -2,7 +2,7 @@
 
 > FusionCharts component for Vue
 
-FusionCharts component for Vue allows to easily include `FusionCharts` to your `Vue.js` projects.
+The Vue-FusionCharts component lets you easily include FusionCharts in your Vue.js projects.
 
 ## Installation
 
@@ -20,7 +20,7 @@ yarn add vue-fusioncharts
 
 ### manual
 
-Download [`vue-fusioncharts.js`](https://github.com/fusioncharts/vue-fusioncharts/blob/feature/plugin-development/dist/vue-fusioncharts.js) and include it to an HTML `<script>` tag.
+Download [`vue-fusioncharts.js`](https://github.com/fusioncharts/vue-fusioncharts/blob/feature/plugin-development/dist/vue-fusioncharts.js) and include it in the HTML `<script>` tag.
 
 ```html
 <script src='path/to/vue-fusioncharts/dist/vue-fusioncharts.js' type='text/javascript'></script>
@@ -150,11 +150,11 @@ If you are not using any bundler, you can refer the file in a script tag. The li
 Click [here](https://jsfiddle.net/rohitcoolblog/5Lt720a9/) to view the live example.
 
 ## Register `vue-fusioncharts` component
-### Use `Vue.use` global method to register the component globally
+### Use the `Vue.use` global method to register the component globally
 ```js
 Vue.use(VueFusionCharts, FusionCharts, Charts);
 ```
-### Use `Vue.component` method to register the component locally
+### Use the `Vue.component` method to register the component locally
 ```js
 // es6 style
 import {FCComponent} from 'vue-fusioncharts'
@@ -170,7 +170,7 @@ Vue.component('fusioncharts', FCComponent);
 
 * `options`
 
-    Following configurations are required to initialize FusionCharts. The complete list of supported configuration option can be found in [FusionCharts' API documentation](http://www.fusioncharts.com/dev/api/fusioncharts.html).
+    The commonly used configurations required to initialize FusionCharts are described in the table below. The complete list of supported configurations can be found in the [FusionCharts API documentation](http://www.fusioncharts.com/dev/api/fusioncharts.html).
 
     <table>
         <thead>
@@ -192,31 +192,31 @@ Vue.component('fusioncharts', FCComponent);
                 <td>width</td>
                 <td>String/Number</td>
                 <td><code>400</code></td>
-                <td>Set the width in pixels or percent such as <code>640</code> or <code>'50%'</code>.</td>
+                <td>Width in pixels (for example, <code>640</code>) or percent (for example, <code>50%</code>).</td>
             </tr>
             <tr>
                 <td>height</td>
                 <td>String/Number</td>
                 <td><code>400</code></td>
-                <td>Set the height in pixels or percent such as <code>640</code> or <code>'50%'</code>.</td>
+                <td>Height in pixels (for example, <code>640</code>) or percent (for example, <code>50%</code>).</td>
             </tr>
             <tr>
                 <td>id</td>
                 <td>String</td>
                 <td><code>chart-object-*</code></td>
-                <td>This name is used to refer to the current chart instance after the chart has been created.</td>
+                <td>Name of the current chart instance, after the chart has been created.</td>
             </tr>
             <tr>
                 <td>dataFormat</td>
                 <td>String</td>
                 <td><code>JSON</code></td>
-                <td>This is the name of the format of data passed to the dataSource option below. Currently, <code>FusionCharts</code> accepts only <code>JSON</code> and <code>XML</code> data.</td>
+                <td>Format of the source data, passed to the <code>dataSource</code> attribute. Currently FusionCharts accepts data in the <code>JSON</code> and <code>XML</code> formats.</td>
             </tr>
             <tr>
                 <td>dataSource</td>
                 <td>String/Object</td>
                 <td><code>none</code></td>
-                <td>Provide the source of data and configuration of the chart. FusionCharts accepts data in the formats specified in dataFormats.</td>
+                <td>Source data/source of the chart data and the chart configuration. Currently FusionCharts accepts data in the <code>JSON</code> and <code>XML</code> formats.</td>
             </tr>
         </tbody>
     </table>
@@ -224,10 +224,10 @@ Vue.component('fusioncharts', FCComponent);
 
 
 ## Development
-* Clone the repository
-* Install dependency
-* Run `npm start` to start the dev server
-* Open `http://localhost:8080/` in your browser
+* Clone the repository.
+* Install dependency.
+* Run `npm start` to start the dev server.
+* Open `http://localhost:8080/` in your browser.
 
 ```sh
 $ git clone https://github.com/fusioncharts/vue-fusioncharts.git

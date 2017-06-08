@@ -1,0 +1,14 @@
+# Node
+node_modules/*
+npm-debug.log
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
+**/.DS_Store
+
+# Example files
+example/

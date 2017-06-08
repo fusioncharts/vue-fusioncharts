@@ -4,6 +4,42 @@
   "description": "FusionCharts component for Vue.js",
   "main": "dist/vue-fusioncharts.js",
   "module": "src/index.js",
+  "author": "FusionCharts",
+  "homepage": "http://www.fusioncharts.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fusioncharts/react-fusioncharts-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fusioncharts/react-fusioncharts-component/issues"
+  },
+  "contributors": [
+    {
+      "name": "Rohit Kumar",
+      "email": "rohit.kr001@gmail.com",
+      "url": "https://github.com/rohitkr",
+      "contributions": 18,
+      "additions": 44526,
+      "deletions": 144,
+      "hireable": null
+    }
+  ],
+  "keywords": [
+    "Vue",
+    "Vue.js",
+    "vue-fusioncharts-component",
+    "vue-fusioncharts",
+    "fusioncharts",
+    "javascript-charts",
+    "interactive-charts",
+    "charts",
+    "graphs",
+    "visualization",
+    "data-visualization",
+    "dataviz",
+    "browserify",
+    "webpack"
+  ],
   "scripts": {
     "test": "npm run lint",
     "lint": "eslint ./src/**/*.js webpack.config.babel.js",
@@ -13,9 +49,7 @@
     "dev": "webpack-dev-server --config example/webpack.config.js",
     "start": "webpack-dev-server --config example/webpack.config.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.24.1",

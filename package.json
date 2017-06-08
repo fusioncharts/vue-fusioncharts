@@ -8,10 +8,10 @@
   "homepage": "http://www.fusioncharts.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fusioncharts/react-fusioncharts-component.git"
+    "url": "https://github.com/fusioncharts/vue-fusioncharts.git"
   },
   "bugs": {
-    "url": "https://github.com/fusioncharts/react-fusioncharts-component/issues"
+    "url": "https://github.com/fusioncharts/vue-fusioncharts/issues"
   },
   "contributors": [
     {

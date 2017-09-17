@@ -149,10 +149,11 @@ a.download:hover {
 }
 
 #demo-container {
-    padding: 10px;
+    padding: 0 0 0 20px;
 }
 
 #demo-container .error {
     color: red;
     text-align: center;
 }
+

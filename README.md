@@ -1,6 +1,6 @@
 # Vue-FusionCharts
 
-Simple and Lightweight `VueJS` component for FusionCharts JavaScript Charting Library. The Vue-FusionCharts component lets you easily include FusionCharts in your VueJS projects.
+A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Charting Library. The `Vue-FusionCharts` component lets you easily include FusionCharts in your `VueJS` projects.
 
 ## Installation
 
@@ -26,7 +26,7 @@ Download [`vue-fusioncharts.js`](https://rawgit.com/fusioncharts/vue-fusionchart
 
 ## Getting Started
 
-### ES6 Modules
+### ES6 Module
 
 ```js
 import Vue from 'vue';
@@ -43,7 +43,7 @@ Charts(FusionCharts);
 Vue.use(VueFusionCharts, FusionCharts);
 ```
 
-### CommonJS Modules
+### CommonJS
 
 ```js
 const Vue = require('vue');
@@ -92,14 +92,15 @@ If you are not using any bundler, you can refer the file in a script tag. The li
 </head>
 
 <body>
+
     <div id="app">
         <fusioncharts
-            :type="type"
-            :width="width"
-            :height="height"
-            :dataFormat="dataFormat"
-            :dataSource="dataSource"
-            :events="events">
+        :type="type"
+        :width="width"
+        :height="height"
+        :dataFormat="dataFormat"
+        :dataSource="dataSource"
+        :events="events">
         </fusioncharts>
         <p>Display Value: {{displayValue}}</p>
     </div>
@@ -124,12 +125,12 @@ If you are not using any bundler, you can refer the file in a script tag. The li
                 height: '300',
                 dataFormat: 'json',
                 dataSource: myDataSource,
-                displayValue: '',
                 events: {
                   dataplotRollover: function (ev, props) {
                     app.displayValue = props.displayValue       
                   }       
-                }
+                },
+                displayValue: ''
               }
             }
         });
@@ -138,11 +139,11 @@ If you are not using any bundler, you can refer the file in a script tag. The li
 ```
 Click [here](https://jsfiddle.net/rohitcoolblog/5Lt720a9/) to view the live example.
 
-## Register `vue-fusioncharts` component
+## Register `vue-fusioncharts` Component
 
 ### Register Globally
 
-Use the `Vue.use` global method to register the component globally
+Use the `Vue.use` method to register the component globally.
 
 ```js
 Vue.use(VueFusionCharts, FusionCharts, Charts);
@@ -150,7 +151,7 @@ Vue.use(VueFusionCharts, FusionCharts, Charts);
 
 ### Register Locally
 
-Use the `Vue.component` method to register the component locally
+Use the `Vue.component` method to register the component locally.
 
 ```js
 // es6 style
@@ -231,4 +232,4 @@ $ npm install
 $ npm start
 ```
 
-## [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
+### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)

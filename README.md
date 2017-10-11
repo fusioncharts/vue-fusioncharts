@@ -106,7 +106,7 @@ If you are not using any bundler, you can refer the file in a script tag. The li
     </div>
     
     <script>
-        // Use VueFusionCharts component by calling the Vue.use() global method:
+        // Use VueFusionCharts component by calling the Vue.use() method:
         Vue.use(VueFusionCharts);
         
         const myDataSource = {

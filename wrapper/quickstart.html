@@ -1,0 +1,103 @@
+<div class="qs-section">
+    <h3 class="qs-heading">
+        Step 1: Install <span class="qs-highlight">Vue-FusionCharts</span> wrapper framework
+    </h3>
+    <p class="qs-text">
+        In the terminal run the following command:
+    </p>
+    <pre class="qs-code"><code class="language-javascript">$ npm install vue-fusioncharts --save</code></pre>
+</div>
+
+<div class="qs-section">
+    <h3 class="qs-heading">
+        Step 2: Register the <span class="qs-highlight">VueFusionCharts</span> component            
+    </h3>
+    <p class="qs-text">
+        Use the <span class="qs-highlight">Vue.use</span> method to register the component globally            
+    </p>
+    <pre class="qs-code"><code class="language-javascript">import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+
+// resolve charts dependency
+Charts(FusionCharts);
+
+// register VueFusionCharts component
+Vue.use(VueFusionCharts);</code></pre>
+<p class="qs-text" style="margin-top: 10px;">
+    Use the <span class="qs-highlight">Vue.component</span> method to register the component locally         
+</p>
+<pre class="qs-code"><code class="language-javascript">import Vue from 'vue';
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+import { FCComponent } from 'vue-fusioncharts';
+
+// resolve charts dependency
+Charts(FusionCharts);
+
+// register Vue-FusionCharts component
+Vue.component('fusioncharts', FCComponent);</code></pre>
+</div>
+
+<div class="qs-section">
+    <h3 class="qs-heading">
+        Step 3: Render the Chart
+    </h3>
+    <p class="qs-text">
+        For example render a simple pie chart
+    </p>
+    <pre class="qs-code"><code class="language-javascript">Vue.use(VueFusionCharts);
+
+const myDataSource = {
+    "chart": {
+        "caption": "Age profile of website visitors",
+        "subcaption": "Last Year",
+        "theme": "ocean"
+    },
+    "data": [
+        {
+            "label": "Teenage",
+            "value": "1250400"
+        },
+        {
+            "label": "Adult",
+            "value": "1463300"
+        },
+        {
+            "label": "Mid-age",
+            "value": "1050700"
+        },
+        {
+            "label": "Senior",
+            "value": "491000"
+        }
+    ]
+};
+
+const chart = new Vue({
+    el: '#app',
+    data: {
+        type: 'pie2d',
+        width: '500',
+        height: '300',
+        dataFormat: 'json',
+        dataSource: myDataSource
+    }
+});
+</code></pre>
+<p class="qs-text" style="margin-top: 10px;">
+    The HTML template for the above example
+</p>
+<pre class="qs-code"><code class="language-html">
+&lt;div id="app"&gt;
+    &lt;fusioncharts
+        :type="type"
+        :width="width"
+        :height="height"
+        :dataFormat="dataFormat"
+        :dataSource="dataSource"&gt;
+    &lt;/fusioncharts&gt;
+&lt;/div&gt;
+</code></pre>
+</div>

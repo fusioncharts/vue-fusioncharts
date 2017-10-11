@@ -162,7 +162,7 @@ const FCComponent = require('vue-fusioncharts').FCComponent;
 Vue.component('fusioncharts', FCComponent);
 ```
 
-### props
+### Component Props
 
 * `options`
 
@@ -217,8 +217,6 @@ Vue.component('fusioncharts', FCComponent);
         </tbody>
     </table>
 
-## [`Demos and Documentation`](https://fusioncharts.github.io/vue-fusioncharts/)
-
 ## Contributing
 
 * Clone the repository.
@@ -232,3 +230,5 @@ $ cd vue-fusioncharts
 $ npm install
 $ npm start
 ```
+
+## [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)

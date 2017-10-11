@@ -1,6 +1,6 @@
 # Vue-FusionCharts
 
-A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Charting Library. The `Vue-FusionCharts` component lets you easily include FusionCharts in your `VueJS` projects.
+A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Charting Library. The `Vue-FusionCharts` wrapper lets you easily include FusionCharts in your `VueJS` projects.
 
 ## Installation
 

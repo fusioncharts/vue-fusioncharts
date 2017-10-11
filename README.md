@@ -1,8 +1,6 @@
 # Vue-FusionCharts
 
-> FusionCharts component for Vue
-
-The Vue-FusionCharts component lets you easily include FusionCharts in your Vue.js projects.
+Simple and Lightweight `VueJS` component for FusionCharts JavaScript Charting Library. The Vue-FusionCharts component lets you easily include FusionCharts in your VueJS projects.
 
 ## Installation
 
@@ -18,17 +16,17 @@ npm install vue-fusioncharts --save
 yarn add vue-fusioncharts
 ```
 
-### manual
+### VanillaJS
 
-Download [`vue-fusioncharts.js`](https://github.com/fusioncharts/vue-fusioncharts/blob/feature/plugin-development/dist/vue-fusioncharts.js) and include it in the HTML `<script>` tag.
+Download [`vue-fusioncharts.js`](https://rawgit.com/fusioncharts/vue-fusioncharts/master/dist/vue-fusioncharts.js) and include it in the HTML `<script>` tag.
 
 ```html
-<script src='path/to/vue-fusioncharts/dist/vue-fusioncharts.js' type='text/javascript'></script>
+<script src='vue-fusioncharts.js' type='text/javascript'></script>
 ```
 
-## Usage
+## Getting Started
 
-### ES6 Modules (Recommended)
+### ES6 Modules
 
 ```js
 import Vue from 'vue';
@@ -39,7 +37,7 @@ import FusionCharts from 'fusioncharts'
 import Charts from 'fusioncharts/fusioncharts.charts'
 
 // resolve charts dependency
-Chart(FusionCharts);
+Charts(FusionCharts);
 
 // register VueFusionCharts component
 Vue.use(VueFusionCharts, FusionCharts);
@@ -48,13 +46,12 @@ Vue.use(VueFusionCharts, FusionCharts);
 ### CommonJS Modules
 
 ```js
-var Vue = require('vue');
-
-var VueFusionCharts = require('vue-fusioncharts');
+const Vue = require('vue');
+const VueFusionCharts = require('vue-fusioncharts');
 
 // import FusionCharts modules and resolve dependency
-var FusionCharts = require('fusioncharts');
-var Charts = require('fusioncharts/fusioncharts.charts');
+const FusionCharts = require('fusioncharts');
+const Charts = require('fusioncharts/fusioncharts.charts');
 
 // resolve charts dependency
 Charts(FusionCharts);
@@ -62,7 +59,6 @@ Charts(FusionCharts);
 // register VueFusionCharts component
 Vue.use(VueFusionCharts, FusionCharts);
 ```
-
 
 ### AMD
 
@@ -83,9 +79,9 @@ require(['vue', 'vue-fusioncharts', 'fusioncharts', 'charts'], function (Vue, Vu
 });
 ```
 
-### Standalone / CDN
-If you are not using any bundler, you can refer the file in a script tag. The library will be available in a global object named `VueFusionCharts`.
+### VanillaJS
 
+If you are not using any bundler, you can refer the file in a script tag. The library will be available in a global object named `VueFusionCharts`.
 
 ```html
 <head>
@@ -96,52 +92,45 @@ If you are not using any bundler, you can refer the file in a script tag. The li
 </head>
 
 <body>
-    <div id='chart'>
-        <fusioncharts :options="pieChartConfig"></fusioncharts>
-        <p class="message-box">The value that you have selected is: {{displayValue}} </p>
+    <div id="app">
+        <fusioncharts
+            :type="type"
+            :width="width"
+            :height="height"
+            :dataFormat="dataFormat"
+            :dataSource="dataSource"
+            :events="events">
+        </fusioncharts>
+        <p>Display Value: {{displayValue}}</p>
     </div>
-    
-    <style>
-      .message-box {
-          text-align: center;
-          margin-top: 0px;
-          background-color: #F5FBFF;
-          width: 500px;
-          color: #006BB8;
-          padding: 5px 10px;
-          box-sizing: border-box;
-          border: 1px solid #B8E1FF;
-      }
-    </style>
     
     <script>
         // Use VueFusionCharts component by calling the Vue.use() global method:
         Vue.use(VueFusionCharts);
         
+        const myDataSource = {
+            chart: {
+                caption: 'Vue FusionCharts Sample',
+                theme: 'fint'
+            }
+            data: [{value: 1.9}, {value: 2.3}, {value: 2.1}]
+        }
         // bootstrap the demo
-        var chart = new Vue({
+        var app = new Vue({
             el: '#chart',
             data: {
-              pieChartConfig: {
                 type: 'Pie2D',
                 width: '500',
                 height: '300',
                 dataFormat: 'json',
-                dataSource: {
-                  chart: {
-                    caption: 'Vue FusionCharts Sample',
-                    theme: 'fint'
-                  },
-                  data: [{value: 1.9}, {value: 2.3}, {value: 2.1}]
-                },
-                displayValue: 'nothing',
+                dataSource: myDataSource,
+                displayValue: '',
                 events: {
                   dataplotRollover: function (ev, props) {
-                    chart.displayValue = props.displayValue       
+                    app.displayValue = props.displayValue       
                   }       
                 }
-              },
-              displayValue: 'nothing'
+              }
             }
         });
     </script>
@@ -150,20 +139,27 @@ If you are not using any bundler, you can refer the file in a script tag. The li
 Click [here](https://jsfiddle.net/rohitcoolblog/5Lt720a9/) to view the live example.
 
 ## Register `vue-fusioncharts` component
-### Use the `Vue.use` global method to register the component globally
+
+### Register Globally
+
+Use the `Vue.use` global method to register the component globally
+
 ```js
 Vue.use(VueFusionCharts, FusionCharts, Charts);
 ```
-### Use the `Vue.component` method to register the component locally
+
+### Register Locally
+
+Use the `Vue.component` method to register the component locally
+
 ```js
 // es6 style
-import {FCComponent} from 'vue-fusioncharts'
+import { FCComponent } from 'vue-fusioncharts'
 
 // CommpnJS
-var FCComponent = require('vue-fusioncharts').FCComponent;
+const FCComponent = require('vue-fusioncharts').FCComponent;
 
 Vue.component('fusioncharts', FCComponent);
-
 ```
 
 ### props
@@ -221,11 +217,12 @@ Vue.component('fusioncharts', FCComponent);
         </tbody>
     </table>
 
+## [`Demos and Documentation`](https://fusioncharts.github.io/vue-fusioncharts/)
 
+## Contributing
 
-## Development
 * Clone the repository.
-* Install dependency.
+* Install dependencies
 * Run `npm start` to start the dev server.
 * Open `http://localhost:8080/` in your browser.
 
@@ -235,4 +232,3 @@ $ cd vue-fusioncharts
 $ npm install
 $ npm start
 ```
-

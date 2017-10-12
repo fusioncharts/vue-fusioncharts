@@ -1,5 +1,5 @@
-<a href="https://fusioncharts.github.io/vue-fusioncharts/">
-    <div style="float: right;">Demos and Documentation<div/>
+<a href="https://fusioncharts.github.io/vue-fusioncharts/" align="right">
+    Demos and Documentation
 </a>
 
 # Vue-FusionCharts

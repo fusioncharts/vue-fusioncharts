@@ -1,8 +1,6 @@
 
 Vue.use(VueFusionCharts);
 
-const myDdataSource = getDataFromSomeWhere();
-
 const app = new Vue({
   el: '#app',
   data: {
@@ -10,7 +8,7 @@ const app = new Vue({
     width: 600,
     height: 400,
     dataFormat: 'json',
-    dataSource: myDdataSource,
+    dataSource: {/* see data tab */},
   },
   methods: {
     changeBackgroundColor() {

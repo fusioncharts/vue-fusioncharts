@@ -1,8 +1,6 @@
 
 Vue.use(VueFusionCharts);
 
-const myDataSource = getDataFromSomeWhere();
-
 const app = new Vue({
   el: '#app',
   data: {
@@ -10,6 +8,6 @@ const app = new Vue({
     width: '400',
     height: '350',
     dataFormat: 'json',
-    dataSource: myDataSource
+    dataSource: {/* see data tab */}
   }
 });

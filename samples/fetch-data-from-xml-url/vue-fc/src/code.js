@@ -8,6 +8,6 @@ const app = new Vue({
     width: 600,
     height: 400,
     dataFormat: 'xmlurl',
-    dataSource: 'data.xml'
+    dataSource: 'data.xml' /* see data tab */
   }
 });

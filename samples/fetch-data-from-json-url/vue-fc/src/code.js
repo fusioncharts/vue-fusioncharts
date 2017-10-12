@@ -8,6 +8,6 @@ const app = new Vue({
     width: 600,
     height: 400,
     dataFormat: 'jsonurl',
-    dataSource: 'data.json'
+    dataSource: 'data.json' /* see data tab */
   }
 });

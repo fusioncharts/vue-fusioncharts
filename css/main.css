@@ -153,14 +153,12 @@ a {
 .samples-slider {
     background: #f4f4f4;
     position: relative;
-    padding: 5px 0;
     margin-bottom: 35px;
-    max-height: 80px;
 }
 
 .slider-container {
     overflow: hidden;
-    height: 80px;
+    height: 76px;
 }
 
 .sample-item-container {
@@ -172,10 +170,11 @@ a {
     height: 60px;
     text-align: center;
     background: #fff;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
     border-radius: 2px;
     padding: 2px;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .sample-logo-container {
@@ -391,7 +390,7 @@ a {
 }
 
 /*
-* For Tablet like devices
+* For Tablet devices
 */
 @media screen and (max-width: 800px) {
 
@@ -431,7 +430,7 @@ a {
 }
 
 /*
-* For Mobile like devices
+* For Mobile devices
 */
 @media screen and (max-width: 500px) {
     
@@ -496,6 +495,15 @@ a {
         display: block;
     }
 
+    .slider-container {
+        overflow: hidden;
+        height: 83px;
+    }
+
+    .sample-item {
+        height: 67px;
+    }
+
     .sample-title {
         padding: 0;
     }
@@ -536,5 +544,17 @@ a {
     .community-virtical-line-item {
         display: none;
     } 
+
+}
+
+/*
+* For landscape mode in Mobile devices
+*/
+@media screen and (max-width: 800px) and (orientation: landscape) {
+
+    .container {
+        padding-left: 35px;
+        padding-right: 35px;;
+    }
 
 }

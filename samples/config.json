@@ -1,16 +1,16 @@
 {
   "sampleRouteMapping": {
-    "1": "simple-chart",
+    "1": "simple-column-chart",
     "2": "3d-pie-chart",
     "3": "column-area-line-combi-chart",
     "4": "fetch-data-from-json-url",
     "5": "fetch-data-from-xml-url",
     "6": "update-chart-data",
-    "7": "update-chart-attribute",
-    "8": "client-side-export",
+    "7": "update-chart-attributes",
+    "8": "client-side-exporting",
     "9": "change-chart-type-runtime",
-    "10": "triger-event-from-chart",
-    "11": "using-annotations",
+    "10": "trigger-events-from-chart",
+    "11": "use-annotations",
     "12": "render-fusionmaps"
   },
   "wrapperSampleMapping": {
@@ -18,7 +18,7 @@
   },
   "sampleProps": {
     "1": {
-      "title": "A Simple Chart",
+      "title": "A Simple Column Chart",
       "data": "data.json",
       "logo": "logo.svg",
       "logoHover": "logo-hover.svg",
@@ -99,7 +99,7 @@
       }
     },
     "10": {
-      "title": "Triger event from chart",
+      "title": "Trigger events from chart",
       "data": "data.json",
       "logo": "logo.svg",
       "logoHover": "logo-hover.svg",
@@ -108,7 +108,7 @@
       }
     },
     "11": {
-      "title": "Using annotations",
+      "title": "Use annotations",
       "data": "data.json",
       "logo": "logo.svg",
       "logoHover": "logo-hover.svg",

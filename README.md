@@ -1,6 +1,5 @@
-<a href="https://fusioncharts.github.io/vue-fusioncharts/" align="right">
-    Demos and Documentation
-</a>
+
+#### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
 
 # Vue-FusionCharts
 

@@ -1,0 +1,17 @@
+{
+  "name": "vue-fc",
+  "logo": "wrapper/logo.png",
+  "heading": "Vue-FusionCharts",
+  "subHeading": "An easy-to-use, lightweight VueJS component for the FusionCharts JavaScript Charting Library",
+  "about": "The Vue-FusionCharts component lets you easily include FusionCharts in your VueJS projects and add interactive charts to your VueJS applications.",
+  "features": [
+    "Adds a chart using just one single component.",
+    "Auto-updates the chart object when the data source is modified.",
+    "Adds a chart from a JSON URL, from a XML URL, or using Props Array Binding.",
+    "Allows you to enable interactivity between Javascript charts.",
+    "Offers advanced control by giving you access to the complete FusionCharts object (containing the chart configuration)."
+  ],
+  "githubRepo": "https://github.com/fusioncharts/vue-fusioncharts",
+  "issuesURL": "https://github.com/fusioncharts/vue-fusioncharts/issues",
+  "newIssueURL": "https://github.com/fusioncharts/vue-fusioncharts/issues/new"
+}

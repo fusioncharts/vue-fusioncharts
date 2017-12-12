@@ -38,9 +38,9 @@ export default {
         }
     },
     plugins: [
-        new UglifyJsPlugin({ 
+        new UglifyJsPlugin({
             include: 'vue-fusioncharts.min.js',
-            minimize: true 
+            minimize: true
         })
     ]
 };

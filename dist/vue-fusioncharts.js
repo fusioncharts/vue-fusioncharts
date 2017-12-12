@@ -144,6 +144,24 @@ var optionsMap = {
     loadmessageimagescale: 'loadMessageImageScale'
 };
 
+var generateUUID = function () {
+    var table = [],
+        i = 0;
+
+    for (; i < 256; i++) {
+        table[i] = (i < 16 ? '0' : '') + i.toString(16);
+    }
+
+    return function () {
+        var d0 = Math.random() * 0xffffffff | 0,
+            d1 = Math.random() * 0xffffffff | 0,
+            d2 = Math.random() * 0xffffffff | 0,
+            d3 = Math.random() * 0xffffffff | 0;
+
+        return table[d0 & 0xff] + table[d0 >> 8 & 0xff] + table[d0 >> 16 & 0xff] + table[d0 >> 24 & 0xff] + '-' + table[d1 & 0xff] + table[d1 >> 8 & 0xff] + '-' + table[d1 >> 16 & 0x0f | 0x40] + table[d1 >> 24 & 0xff] + '-' + table[d2 & 0x3f | 0x80] + table[d2 >> 8 & 0xff] + '-' + table[d2 >> 16 & 0xff] + table[d2 >> 24 & 0xff] + table[d3 & 0xff] + table[d3 >> 8 & 0xff] + table[d3 >> 16 & 0xff] + table[d3 >> 24 & 0xff];
+    };
+}();
+
 exports.default = function (FC) {
     return {
         name: 'fusioncharts',
@@ -231,6 +249,7 @@ exports.default = function (FC) {
                     config = THIS.getOptions(),
                     chartObj = THIS.chartObj;
 
+                THIS.$el.setAttribute('id', generateUUID());
                 config.renderAt = THIS.$el;
                 THIS.setLastOptions(config);
 

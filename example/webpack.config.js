@@ -4,7 +4,7 @@ module.exports = {
     entry: './example/index.js',
     output: {
         filename: 'bundle.js',
-        library: "FC",
+        library: 'FC',
         path: path.resolve(__dirname, './')
     },
     devtool: 'source-map',
@@ -14,7 +14,7 @@ module.exports = {
         }
     },
     devServer: {
-    	'contentBase': './example',
+        'contentBase': './example',
         // open: true
     }
 };

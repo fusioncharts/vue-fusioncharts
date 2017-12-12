@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>My first vue app</title>
-	<script type="text/javascript" src="https://unpkg.com/vue@2.3.3"></script>
-	<script type="text/javascript" src="../node_modules/fusioncharts/fusioncharts.js"></script>
+    <title>My first vue app</title>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.3.3"></script>
+    <script type="text/javascript" src="../node_modules/fusioncharts/fusioncharts.js"></script>
     <script type="text/javascript" src="../node_modules/fusioncharts/fusioncharts.charts.js"></script>
-	<script type="text/javascript" src="../node_modules/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
-	<script type="text/javascript" src="../dist/vue-fusioncharts.min.js"></script>
+    <script type="text/javascript" src="../node_modules/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
+    <script type="text/javascript" src="../dist/vue-fusioncharts.min.js"></script>
     <style type="text/css">
         .message-box {
             text-align: center;
@@ -17,23 +18,16 @@
             padding: 5px 10px;
             box-sizing: border-box;
             border: 1px solid #B8E1FF;
-        }        
+        }
     </style>
 </head>
+
 <body>
 
-<!-- demo root element -->
+    <!-- demo root element -->
     <div id="chart1">
-        <fusioncharts
-        	:type="type"
-            :dataformat="dataFormat"
-        	:datasource="dataSource"
-        	:width="width"
-        	:height="height"
-            :events="events"
-          
-            ref="fusioncharts"
-        >
+        <fusioncharts :type="type" :dataformat="dataFormat" :datasource="dataSource" :width="width" :height="height" :events="events"
+            ref="fusioncharts">
         </fusioncharts>
         <p class="message-box">The value that you have selected is: {{displayValue}} </p>
     </div>
@@ -45,26 +39,172 @@
         var chart = new Vue({
             el: '#chart1',
             data: {
-                type: 'Column2D',
-                width: '500',
-                height: '300',
+                type: 'column2d',
+                width: '600',
+                height: '400',
                 dataFormat: 'json',
                 dataSource: {
-                    chart: {
-                        caption: 'Vue FusionCharts Sample',
-                        theme: 'fint'
+                    "chart": {
+                        "caption": "Top 3 Juice Flavors",
+                        "subcaption": "Last year",
+                        "xaxisname": "Flavor",
+                        "yaxisname": "Amount (In USD)",
+                        "numberprefix": "$",
+                        "palettecolors": "#008ee4",
+                        "canvasbgalpha": "0",
+                        "canvasborderalpha": "0",
+                        "useplotgradientcolor": "0",
+                        "showplotborder": "0",
+                        "placevaluesinside": "1",
+                        "valuefontcolor": "#ffffff",
+                        "captionpadding": "20",
+                        "showaxislines": "1",
+                        "axislinealpha": "20",
+                        "divlinealpha": "20",
+                        "showborder": "1",
+                        "bgalpha": "0",
+                        "animation": "0",
+                        'theme': 'fint'
                     },
-                    data: [{value: 1.9}, {value: 2.3}, {value: 2.1}]
+                    "data": [{
+                        "label": "Apple",
+                        "value": "810000",
+                        "link": "newchart-xml-apple"
+                    }, {
+                        "label": "Cranberry",
+                        "value": "620000",
+                        "link": "newchart-xml-cranberry"
+                    }, {
+                        "label": "Grapes",
+                        "value": "350000",
+                        "link": "newchart-xml-grapes"
+                    }],
+                    "linkeddata": [{
+                        "id": "apple",
+                        "linkedchart": {
+                            "chart": {
+                                "caption": "Apple Juice - Quarterly Sales",
+                                "subcaption": "Last year",
+                                "xaxisname": "Quarter",
+                                "yaxisname": "Amount (In USD)",
+                                "numberprefix": "$",
+                                "palettecolors": "#008ee4",
+                                "canvasbgalpha": "0",
+                                "canvasborderalpha": "0",
+                                "useplotgradientcolor": "0",
+                                "showplotborder": "0",
+                                "placevaluesinside": "1",
+                                "valuefontcolor": "#ffffff",
+                                "captionpadding": "20",
+                                "showaxislines": "1",
+                                "axislinealpha": "20",
+                                "divlinealpha": "20",
+                                "showborder": "1",
+                                "bgalpha": "0",
+                                "animation": "0"
+                            },
+                            "data": [{
+                                "label": "Q1",
+                                "value": "157000"
+                            }, {
+                                "label": "Q2",
+                                "value": "172000"
+                            }, {
+                                "label": "Q3",
+                                "value": "206000"
+                            }, {
+                                "label": "Q4",
+                                "value": "275000"
+                            }]
+                        }
+                    }, {
+                        "id": "cranberry",
+                        "linkedchart": {
+                            "chart": {
+                                "caption": "Cranberry Juice - Quarterly Sales",
+                                "subcaption": "Last year",
+                                "xaxisname": "Quarter",
+                                "yaxisname": "Amount (In USD)",
+                                "numberprefix": "$",
+                                "palettecolors": "#008ee4",
+                                "canvasbgalpha": "0",
+                                "canvasborderalpha": "0",
+                                "useplotgradientcolor": "0",
+                                "showplotborder": "0",
+                                "placevaluesinside": "1",
+                                "valuefontcolor": "#ffffff",
+                                "captionpadding": "20",
+                                "showaxislines": "1",
+                                "axislinealpha": "20",
+                                "divlinealpha": "20",
+                                "showborder": "1",
+                                "bgalpha": "0",
+                                "animation": "0"
+                            },
+                            "data": [{
+                                "label": "Q1",
+                                "value": "102000"
+                            }, {
+                                "label": "Q2",
+                                "value": "142000"
+                            }, {
+                                "label": "Q3",
+                                "value": "187000"
+                            }, {
+                                "label": "Q4",
+                                "value": "189000"
+                            }]
+                        }
+                    }, {
+                        "id": "grapes",
+                        "linkedchart": {
+                            "chart": {
+                                "caption": "Grape Juice - Quarterly Sales",
+                                "subcaption": "Last year",
+                                "xaxisname": "Quarter",
+                                "yaxisname": "Amount (In USD)",
+                                "numberprefix": "$",
+                                "palettecolors": "#008ee4",
+                                "canvasbgalpha": "0",
+                                "canvasborderalpha": "0",
+                                "useplotgradientcolor": "0",
+                                "showplotborder": "0",
+                                "placevaluesinside": "1",
+                                "valuefontcolor": "#ffffff",
+                                "captionpadding": "20",
+                                "showaxislines": "1",
+                                "axislinealpha": "20",
+                                "divlinealpha": "20",
+                                "showborder": "1",
+                                "bgalpha": "0",
+                                "animation": "0"
+                            },
+                            "data": [{
+                                "label": "Q1",
+                                "value": "45000"
+                            }, {
+                                "label": "Q2",
+                                "value": "72000"
+                            }, {
+                                "label": "Q3",
+                                "value": "95000"
+                            }, {
+                                "label": "Q4",
+                                "value": "108000"
+                            }]
+                        }
+                    }]
                 },
                 displayValue: 'nothing',
                 events: {
                     dataplotRollover: function (ev, props) {
-                        chart.displayValue = props.displayValue       
-                    }       
+                        chart.displayValue = props.displayValue
+                    }
                 }
             }
         });
     </script>
 
 </body>
+
 </html>

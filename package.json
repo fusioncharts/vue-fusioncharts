@@ -68,7 +68,7 @@
     "yards": "^0.1.4"
   },
   "dependencies": {
-    "fusioncharts": "^3.12.0",
+    "fusioncharts": "^3.13.0",
     "vue": "^2.3.3"
   }
 }

@@ -4,7 +4,7 @@ const optionsMap = {
     width: 'width',
     height: 'height',
     dataformat: 'dataFormat',
-    datasource: 'dataSource',
+    dataSource: 'dataSource',
     events: 'events',
     link: 'link',
     showdataloadingmessage: 'showDataLoadingMessage',
@@ -60,6 +60,7 @@ export default (FC) => {
     return {
         name: 'fusioncharts',
         template: '<div></div>',
+        render: h => h('div'),
         props: {
             options: Object,
             type: String,
@@ -67,7 +68,7 @@ export default (FC) => {
             width: '',
             height: '',
             dataformat: String,
-            datasource: '',
+            dataSource: '',
             events: Object,
             link: Object,
             showdataloadingmessage: Boolean,
@@ -186,9 +187,9 @@ export default (FC) => {
                 },
                 deep: true
             },
-            datasource: {
+            dataSource: {
                 handler: function () {
-                    this.chartObj.setChartData(this.datasource, this.dataformat);
+                    this.chartObj.setChartData(this.dataSource, this.dataformat);
                 },
                 deep: true
             }

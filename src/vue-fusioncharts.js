@@ -189,7 +189,7 @@ export default (FC) => {
             },
             dataSource: {
                 handler: function () {
-                    this.chartObj.setChartData(this.dataSource, this.dataformat);
+                    this.chartObj.setChartData(this.dataSource, this.dataFormat);
                 },
                 deep: true
             }

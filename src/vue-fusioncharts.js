@@ -120,6 +120,13 @@ export default (FC) => {
             loadMessageImageScale: Number
         },
         methods: {
+            attachListeners: function (){
+                Object.keys(this.$listeners).forEach((event)=>{
+                    this.chartObj.addEventListener(event, (e)=>{
+                        this.$emit(event, e);
+                    });
+                });
+            },
             setLastOptions: function (config) {
                 this._oldOptions = Object.assign({}, config);
             },
@@ -152,6 +159,7 @@ export default (FC) => {
                 }
 
                 THIS.chartObj = chartObj = new FC(config);
+                this.attachListeners();
                 chartObj.render();
             },
             updateChart: function () {

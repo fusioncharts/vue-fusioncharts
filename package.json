@@ -58,8 +58,7 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^3.5.0",
-    "eslint": "^3.19.0",
-    "eslint-loader": "^1.7.1",
+    "eslint-loader": "^2.0.0",
     "mocha": "^3.4.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
@@ -68,6 +67,7 @@
     "yards": "^0.1.4"
   },
   "dependencies": {
+    "eslint": "^3.19.0",
     "fusioncharts": "^3.13.0",
     "vue": "^2.3.3"
   }

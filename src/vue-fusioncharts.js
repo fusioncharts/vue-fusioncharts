@@ -121,11 +121,13 @@ export default (FC) => {
         },
         methods: {
             attachListeners: function (){
-                Object.keys(this.$listeners).forEach((event)=>{
-                    this.chartObj.addEventListener(event, (e)=>{
-                        this.$emit(event, e);
+                if(this.$listeners && typeof this.$listeners === 'object'){
+                    Object.keys(this.$listeners).forEach((event)=>{
+                        this.chartObj.addEventListener(event, (e)=>{
+                            this.$emit(event, e);
+                        });
                     });
-                });
+                }
             },
             setLastOptions: function (config) {
                 this._oldOptions = Object.assign({}, config);

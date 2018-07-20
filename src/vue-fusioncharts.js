@@ -53,7 +53,57 @@ const optionsMap = {
     loadMessageImageHAlign: 'loadMessageImageHAlign',
     loadMessageImageVAlign: 'loadMessageImageVAlign',
     loadMessageImageAlpha: 'loadMessageImageAlpha',
-    loadMessageImageScale: 'loadMessageImageScale'
+    loadMessageImageScale: 'loadMessageImageScale',
+///////////////////////////////////////////////////////
+    dataformat: 'dataFormat',
+    datasource: 'dataSource',
+    showdataloadingmessage: 'showDataLoadingMessage',
+    showchartloadingmessage: 'showChartLoadingMessage',
+    basechartmessagefont: 'baseChartMessageFont',
+    basechartmessagefontsize: 'baseChartMessageFontSize',
+    basechartmessagecolor: 'baseChartMessageColor',
+    dataloadstartmessage: 'dataLoadStartMessage',
+    dataloaderrormessage: 'dataLoadErrorMessage',
+    datainvalidmessage: 'dataInvalidMessage',
+    dataemptymessage: 'dataEmptyMessage',
+    typenotsupportedmessage: 'typeNotSupportedMessage',
+    loadmessage: 'loadMessage',
+    rendererrormessage: 'renderErrorMessage',
+    containerbackgroundcolor: 'containerBackgroundColor',
+    containerbackgroundopacity: 'containerBackgroundOpacity',
+    containerclassname: 'containerClassName',
+    basechartmessageimagehalign: 'baseChartMessageImageHAlign',
+    basechartmessageimagevalign: 'baseChartMessageImageVAlign',
+    basechartmessageimagealpha: 'baseChartMessageImageAlpha',
+    basechartmessageimagescale: 'baseChartMessageImageScale',
+    typenotsupportedmessageimagehalign: 'typeNotSupportedMessageImageHAlign',
+    typenotsupportedmessageimagevalign: 'typeNotSupportedMessageImageVAlign',
+    typenotsupportedmessageimagealpha: 'typeNotSupportedMessageImageAlpha',
+    typenotsupportedmessageimagescale: 'typeNotSupportedMessageImageScale',
+    dataloaderrormessageimagehalign: 'dataLoadErrorMessageImageHAlign',
+    dataloaderrormessageimagevalign: 'dataLoadErrorMessageImageVAlign',
+    dataloaderrormessageimagealpha: 'dataLoadErrorMessageImageAlpha',
+    dataloaderrormessageimagescale: 'dataLoadErrorMessageImageScale',
+    dataloadstartmessageimagehalign: 'dataLoadStartMessageImageHAlign',
+    dataloadstartmessageimagevalign: 'dataLoadStartMessageImageVAlign',
+    dataloadstartmessageimagealpha: 'dataLoadStartMessageImageAlpha',
+    dataloadstartmessageimagescale: 'dataLoadStartMessageImageScale',
+    datainvalidmessageimagehalign: 'dataInvalidMessageImageHAlign',
+    datainvalidmessageimagevalign: 'dataInvalidMessageImageVAlign',
+    datainvalidmessageimagealpha: 'dataInvalidMessageImageAlpha',
+    datainvalidmessageimagescale: 'dataInvalidMessageImageScale',
+    dataemptymessageimagehalign: 'dataEmptyMessageImageHAlign',
+    dataemptymessageimagevalign: 'dataEmptyMessageImageVAlign',
+    dataemptymessageimagealpha: 'dataEmptyMessageImageAlpha',
+    dataemptymessageimagescale: 'dataEmptyMessageImageScale',
+    rendererrormessageimagehalign: 'renderErrorMessageImageHAlign',
+    rendererrormessageimagevalign: 'renderErrorMessageImageVAlign',
+    rendererrormessageimagealpha: 'renderErrorMessageImageAlpha',
+    rendererrormessageimagescale: 'renderErrorMessageImageScale',
+    loadmessageimagehalign: 'loadMessageImageHAlign',
+    loadmessageimagevalign: 'loadMessageImageVAlign',
+    loadmessageimagealpha: 'loadMessageImageAlpha',
+    loadmessageimagescale: 'loadMessageImageScale'
 };
 
 export default (FC) => {
@@ -117,7 +167,58 @@ export default (FC) => {
             loadMessageImageHAlign: String,
             loadMessageImageVAlign: String,
             loadMessageImageAlpha: Number,
-            loadMessageImageScale: Number
+            loadMessageImageScale: Number,
+            ///////////////////////////////////////////////
+            dataformat: String,
+            datasource: '',
+            showdataloadingmessage: Boolean,
+            showchartloadingmessage: Boolean,
+            basechartmessagefont: String,
+            basechartmessagefontsize: String,
+            basechartmessagecolor: String,
+            dataloadstartmessage: String,
+            dataloaderrormessage: String,
+            datainvalidmessage: String,
+            dataemptymessage: String,
+            typenotsupportedmessage: String,
+            loadmessage: String,
+            rendererrormessage: String,
+            containerbackgroundcolor: String,
+            containerbackgroundopacity: Number,
+            containerclassname: String,
+            basechartmessageimagehalign: String,
+            basechartmessageimagevalign: String,
+            basechartmessageimagealpha: Number,
+            basechartmessageimagescale: Number,
+            typenotsupportedmessageimagehalign: String,
+            typenotsupportedmessageimagevalign: String,
+            typenotsupportedmessageimagealpha: Number,
+            typenotsupportedmessageimagescale: Number,
+            dataloaderrormessageimagehalign: String,
+            dataloaderrormessageimagevalign: String,
+            dataloaderrormessageimagealpha: Number,
+            dataloaderrormessageimagescale: Number,
+            dataloadstartmessageimagehalign: String,
+            dataloadstartmessageimagevalign: String,
+            dataloadstartmessageimagealpha: Number,
+            dataloadstartmessageimagescale: Number,
+            datainvalidmessageimagehalign: String,
+            datainvalidmessageimagevalign: String,
+            datainvalidmessageimagealpha: Number,
+            datainvalidmessageimagescale: Number,
+            dataemptymessageimagehalign: String,
+            dataemptymessageimagevalign: String,
+            dataemptymessageimagealpha: Number,
+            dataemptymessageimagescale: Number,
+            rendererrormessageimagehalign: String,
+            rendererrormessageimagevalign: String,
+            rendererrormessageimagealpha: Number,
+            rendererrormessageimagescale: Number,
+            loadmessageimagehalign: String,
+            loadmessageimagevalign: String,
+            loadmessageimagealpha: Number,
+            loadmessageimagescale: Number
+
         },
         methods: {
             attachListeners: function (){
@@ -159,7 +260,7 @@ export default (FC) => {
                 if (chartObj && chartObj.dispose) {
                     chartObj.dispose();
                 }
-
+                console.log(config);
                 THIS.chartObj = chartObj = new FC(config);
                 this.attachListeners();
                 chartObj.render();
@@ -200,6 +301,12 @@ export default (FC) => {
             dataSource: {
                 handler: function () {
                     this.chartObj.setChartData(this.dataSource, this.dataFormat);
+                },
+                deep: true
+            },
+            datasource: {
+                handler: function () {
+                    this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
                 },
                 deep: true
             }

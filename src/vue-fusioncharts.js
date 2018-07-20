@@ -110,7 +110,14 @@ export default (FC) => {
     return {
         name: 'fusioncharts',
         template: '<div></div>',
-        render: h => h('div'),
+        render: function(h){
+            this.containerID = 'fc-'+this._uid;
+            return h('div', {
+                attrs:{
+                    'id':this.containerID
+                }
+            });
+        },
         props: {
             options: Object,
             type: String,
@@ -254,13 +261,12 @@ export default (FC) => {
                     config = THIS.getOptions(),
                     chartObj = THIS.chartObj;
 
-                config.renderAt = THIS.$el;
+                config.renderAt = this.containerID;
                 THIS.setLastOptions(config);
 
                 if (chartObj && chartObj.dispose) {
                     chartObj.dispose();
                 }
-                console.log(config);
                 THIS.chartObj = chartObj = new FC(config);
                 this.attachListeners();
                 chartObj.render();
@@ -311,8 +317,11 @@ export default (FC) => {
                 deep: true
             }
         },
+        deactivated: function() {
+            this.chartObj && this.chartObj.dispose();
+        },
         beforeDestroy: function() {
-            this.chartObj.dispose();
+            this.chartObj && this.chartObj.dispose();
         },
         mounted: function () {
             this.renderChart();

@@ -1,0 +1,127 @@
+<div class="qs-section">
+    <h3 class="qs-heading">
+        Step 1: Install <span class="qs-highlight">angular2-fusioncharts</span>
+    </h3>
+    <p class="qs-text">
+        In the terminal run the following command:
+    </p>
+    <pre class="qs-code"><code class="language-javascript">$ npm install angular2-fusioncharts --save</code></pre>
+</div>
+
+<div class="qs-section">
+    <h3 class="qs-heading">
+        Step 2: Import <span class="qs-highlight">angular2-fusioncharts</span> in the root @NgModule            
+    </h3>
+    <p class="qs-text">
+        In the root Angular <span class="qs-highlight">@NgModule</span> import <span class="qs-highlight">FusionChartsModule</span> from <span class="qs-highlight">angular2-fusioncharts</span> and add the FusionChartsModule as a dependency.            
+    </p>
+    <pre class="qs-code"><code class="language-javascript">import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+// Import the library
+import { FusionChartsModule } from 'angular2-fusioncharts';
+import { AppComponent } from './app.component';
+
+// Import angular2-fusioncharts
+import { FusionChartsModule } from 'angular2-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+// Import FusionCharts Charts module
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+    
+@NgModule({
+    declarations: [
+    AppComponent
+    ],
+    imports: [
+    BrowserModule, 
+    // Specify FusionChartsModule as an import 
+    // and pass FusionCharts and Charts as a dependency
+    // You can pass all other FusionCharts modules such as Charts, PowerCharts
+    // Maps, Widgets e.t.c. after FusionCharts
+    FusionChartsModule.forRoot(FusionCharts, Charts)
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre>
+</div>
+
+<div class="qs-section">
+    <h3 class="qs-heading">
+        Step 3: Add the <span class="qs-highlight">fusioncharts</span> directive
+    </h3>
+    <p class="qs-text">
+        In the template, add a <span class="qs-highlight">&lt;fusioncharts&gt;</span> directive in the section where you wish to render the chart. We are assuming it's <span class="qs-highlight">AppComponent</span> which would change based on your usage.
+    </p>
+    <pre class="qs-code"><code class="language-javascript">import { Component } from '@angular/core';
+
+@Component({
+    selector: 'my-app',
+    template: `<fusioncharts
+        width="500" 
+        height="300"
+        type="column2d"
+        dataFormat="json"
+        [dataSource]="data" >
+    </fusioncharts>
+    `,
+})
+export class AppComponent {
+    data: Object;
+    
+    constructor() {
+    this.data = {
+        chart: { },
+        data: [
+        {value: 500},
+        {value: 600},
+        {value: 700}
+        ]
+    };
+    }
+}</code></pre>
+<p class="qs-text">The chart will render when you load the page.</p>
+<a href="#" class="qs-link">Live Example</a>
+</div>
+
+<div class="qs-section">
+    <h3 class="qs-heading">
+        Render FusionMaps
+    </h3>
+    <p>
+        To render a map, import the FusionMaps module along with the map definition. Then pass as a dependency to <span class="qs-highlight">FusionChartsModule</span> in the <span class="qs-highlight">@NgModule</span>:
+    </p>
+    <pre class="qs-code"><code class="language-javascript">import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+// Import the library
+import { FusionChartsModule } from 'angular2-fusioncharts';
+import { AppComponent } from './app.component';
+
+// Import angular2-fusioncharts
+import { FusionChartsModule } from 'angular2-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+// Import FusionMaps Maps module
+import * as FusionMaps from 'fusioncharts/fusioncharts.maps';
+// Import WorldMap map definition module
+import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
+    
+@NgModule({
+    declarations: [
+    AppComponent
+    ],
+    imports: [
+    BrowserModule, 
+    // Specify FusionChartsModule as an import 
+    // and pass FusionCharts and Charts as a dependency
+    // You can pass all other FusionCharts modules such as Charts, PowerCharts
+    // Maps, Widgets etc. after FusionCharts
+    FusionChartsModule.forRoot(FusionCharts, FusionMaps, WorldMap)
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre>
+<p class="qs-text">The World map will render when you load the page.</p>
+<a href="#" class="qs-link">Live Example</a>
+</div>

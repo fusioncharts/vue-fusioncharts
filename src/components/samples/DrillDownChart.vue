@@ -181,6 +181,7 @@ export default {
     :height="height"
     :dataFormat="dataFormat"
     :dataSource="dataSource"
+    ref="fc"
     ></fusioncharts>
 </div>`,
 sourceJS:
@@ -199,6 +200,26 @@ sourceJS:
             type: "column2d",
             dataFormat: "json",
             dataSource: dataSource
+        },
+        methods: {
+            configureLink: function(chart){
+                this.chartInstance = chart; // Save it for further use
+        
+                // Configure Drilldown attributes 
+                // See this : https://www.fusioncharts.com/dev/api/fusioncharts/fusioncharts-methods#configureLink
+                this.chartInstance.configureLink({
+                type: "pie2d",
+                overlayButton: {
+                    message: 'close',
+                    fontColor: '880000',
+                    bgColor: 'FFEEEE',
+                    borderColor: '660000'
+                    }
+                },0)
+            }
+        },
+        mounted: function(){
+            this.configureLink(this.$refs.fc.chartObj); // this.$refs.fc gets the vue-fusionchart component
         }
     });
 });`,
@@ -208,9 +229,6 @@ sourceJS:
             type: "column2d",
             dataFormat: "json",
             creditLabel: 'false',
-            events: {
-                initialized: null
-            }
             }
         }
     },

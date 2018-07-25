@@ -87,13 +87,13 @@ sourceJS:
     Vue.use(VueFusionCharts);
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-            type: "mscombi2d",
-            width: "600",
-            height: "400",
-            dataFormat: "xmlurl",
-            dataSource: "data.xml"
+            type: 'mscombi2d',
+            width: '600',
+            height: '400',
+            dataFormat: 'xmlurl',
+            dataSource: 'data.xml'
         }
     });
 });`,

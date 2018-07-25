@@ -7,7 +7,7 @@
                 :dataSource="dataSource"
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
-                <h3>Percentage is {{displayValue}}% of the total</h3>
+                <div v-html="displayValue" class="chart-hover"/>
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -107,7 +107,7 @@ export default {
     :events="events"
     :dataSource="dataSource"
     ></fusioncharts>
-    <p>The value that you have selected is: {{ displayValue }}</p>
+    <div v-html="displayValue"/>
 </div>`,
         sourceJS:
 `FusionCharts.ready(function() {
@@ -118,17 +118,17 @@ export default {
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
             width: '600',
             height: '400',
-            type: "column2d",
-            dataFormat: "json",
+            type: 'column2d',
+            dataFormat: 'json',
             dataSource: dataSource,
             events: {
                 dataplotRollover: null
             },
-            displayValue:""
+            displayValue:'Hover on the plot to see the value along with the label'
         },
         created: function(){
             let myData = this.dataSource.data;
@@ -136,7 +136,7 @@ export default {
     
             this.options.events.dataplotRollover = (e, arg)=>{
                 let value = (arg.value / this.total * 100).toFixed(2);
-                this.displayValue = value;
+                this.displayValue =  \`<strong>\${arg.categoryLabel}</strong> is <strong>\${value}%</strong> of the total\`;
             }
         },
     });
@@ -151,7 +151,7 @@ export default {
                 dataplotRollover: null
             }
         },
-        displayValue:'0'
+        displayValue:'Hover on the plot to see the value along with the label'
         }
     },
     computed: {
@@ -165,7 +165,7 @@ export default {
  
         this.options.events.dataplotRollover = (e, arg)=>{
             let value = (arg.value / this.total * 100).toFixed(2);
-            this.displayValue = value;
+            this.displayValue =  `<strong>${arg.categoryLabel}</strong> is <strong>${value}%</strong> of the total`;
         }
     },
     components:{

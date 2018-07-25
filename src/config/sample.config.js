@@ -74,31 +74,31 @@ export default {
             }
         },
         "10": {
-            "title": "Client side exporting",
+            "title": "Export multiple charts",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "11": {
-            "title": "Drill Down Chart",
+            "title": "Add drill-down to chart",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "12": {
-            "title": "Render a  Widget",
+            "title": "A Simple Gauge",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "13": {
-            "title": "Render a Map",
+            "title": "World Map",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "14": {
-            "title": "Using a Theme",
+            "title": "Applying a different theme",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

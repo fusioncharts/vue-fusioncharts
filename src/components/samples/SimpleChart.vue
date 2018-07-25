@@ -115,12 +115,12 @@ sourceJS:
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
             width: '600',
             height: '400',
-            type: "column2d",
-            dataFormat: "json",
+            type: 'column2d',
+            dataFormat: 'json',
             dataSource: dataSource
         }
     });

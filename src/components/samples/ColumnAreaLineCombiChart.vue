@@ -139,12 +139,12 @@ sourceJS:
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-            type: "mscombi2d",
-            width: "600",
-            height: "600",
-            dataFormat: "json",
+            type: 'mscombi2d',
+            width: '600',
+            height: '600',
+            dataFormat: 'json',
             dataSource: dataSource
         }
     });

@@ -112,13 +112,13 @@ sourceJS:
     Vue.use(VueFusionCharts);
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-            type: "mscombi2d",
-            width: "600",
-            height: "400",
-            dataFormat: "jsonurl",
-            dataSource: "data.json"
+            type: 'mscombi2d',
+            width: '600',
+            height: '400',
+            dataFormat: 'jsonurl',
+            dataSource: 'data.json'
         }
     });
 });`,

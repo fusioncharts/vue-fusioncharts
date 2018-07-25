@@ -8,7 +8,9 @@
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
                 <br />
-                <button @click="changeBackground">Change Chart Background</button>
+                <div :style="{textAlign: 'center'}">
+                    <button @click="changeBackground">Change Chart Background</button>
+                </div>
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -119,18 +121,19 @@ sourceJS:
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
             width: '700',
             height: '400',
-            type: "column2d",
-            dataFormat: "json",
+            type: 'column2d',
+            dataFormat: 'json',
             dataSource: dataSource
         },
         methods:{
+            // Changes chart background
             changeBackground: function(){
-                const data = extend({}, this.dataSource); //copy of object
-                data.chart.bgColor = "#efefef";
+                const data = Object.assign({}, this.dataSource); //copy of object
+                data.chart.bgColor = '#efefef';
                 this.dataSource = data;
             }
         }

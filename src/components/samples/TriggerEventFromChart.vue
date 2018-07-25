@@ -7,7 +7,7 @@
                 :dataSource="dataSource"
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
-                <p>The value that you have selected is: {{ displayValue }}</p>
+                <div v-html="displayValue" class="chart-hover" />
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -107,7 +107,7 @@ export default {
     :events="events"
     :dataSource="dataSource"
     ></fusioncharts>
-    <p>The value that you have selected is: {{ displayValue }}</p>
+    <div v-html="displayValue"/>
 </div>`,
         sourceJS:
 `FusionCharts.ready(function() {
@@ -118,21 +118,21 @@ export default {
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
             width: '600',
             height: '400',
-            type: "column2d",
-            dataFormat: "json",
+            type: 'column2d',
+            dataFormat: 'json',
             dataSource: dataSource,
             events: {
                 dataplotRollover: null
             },
-            displayValue:""
+            displayValue:'Hover on the plot to see the value along with the label'
         },
         created: function(){
             this.options.events.dataplotRollover = (e, arg)=>{
-                this.displayValue = arg.displayValue;
+                this.displayValue = \`You're are currently hovering over <strong>\${arg.categoryLabel}</strong> whose value is <strong>\${arg.displayValue}</strong>\`;
             }
         },
     });
@@ -147,7 +147,7 @@ export default {
                 dataplotRollover: null
             }
         },
-        displayValue:''
+        displayValue:'Hover on the plot to see the value along with the label'
         }
     },
     computed: {
@@ -157,7 +157,7 @@ export default {
     },
     created: function(){
         this.options.events.dataplotRollover = (e, arg)=>{
-            this.displayValue = arg.displayValue;
+            this.displayValue = `You're are currently hovering over <strong>${arg.categoryLabel}</strong> whose value is <strong>${arg.displayValue}</strong>`;
         }
     },
     components:{

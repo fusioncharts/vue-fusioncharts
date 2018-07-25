@@ -107,12 +107,12 @@ sourceJS:
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-            type: "pie3d",
-            width: "600",
-            height: "400",
-            dataFormat: "json",
+            type: 'pie3d',
+            width: '600',
+            height: '400',
+            dataFormat: 'json',
             dataSource: dataSource
         }
     });

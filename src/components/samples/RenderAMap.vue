@@ -147,12 +147,12 @@ sourceJS:
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
             width: '600',
             height: '400',
-            type: "world",
-            dataFormat: "json",
+            type: 'world',
+            dataFormat: 'json',
             dataSource: dataSource
         }
     });

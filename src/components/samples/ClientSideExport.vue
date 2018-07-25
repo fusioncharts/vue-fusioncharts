@@ -10,12 +10,14 @@
                 <fusioncharts
                 width="600"
                 height="600"
-                type="bar2d"
+                type="stackedcolumn2d"
                 dataFormat="json"
-                :dataSource="dataSource.barData">
+                :dataSource="dataSource.stackedColumnData">
                 </fusioncharts>
                 <br/>
-                <button @click="exportToPdf">Export to PDF</button>
+                <div :style="{textAlign: 'center'}">
+                    <button @click="exportToPdf">Export both charts as a single PDF</button>
+                </div>
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -70,7 +72,7 @@ export default {
     props:['showMessage'],
     data(){
         return {
-        sourceData:
+       sourceData:
 `{
     "columnData":
     {
@@ -108,107 +110,155 @@ export default {
             "value": "30"
         }]
     },
-    "barData":
+    "stackedColumnData":
     {
       "chart": {
-        "caption": "Lead sources by industry",
-        "yAxisName": "Number of Leads",
-        "alignCaptionWithCanvas": "0",
-        "plotToolText": "<b>$dataValue</b> leads received",
+        "caption": "Yearly Energy Production Rate",
+        "subCaption": " Top 5 Developed Countries",
+        "numbersuffix": " TWh",
+        "showSum": "1",
+        "plotToolText": "$label produces <b>$dataValue</b> of energy from $seriesName",
         "theme": "fusion"
       },
-
-      "data": [{
-          "label": "Travel & Leisure",
-          "value": "41"
+      "categories": [
+        {
+          "category": [
+            {
+              "label": "Canada"
+            },
+            {
+              "label": "China"
+            },
+            {
+              "label": "Russia"
+            },
+            {
+              "label": "Australia"
+            },
+            {
+              "label": "United States"
+            },
+            {
+              "label": "France"
+            }
+          ]
+        }
+      ],
+      "dataSet": [
+        {
+          "seriesName": "Coal",
+          "data": [
+            {
+              "value": "400"
+            },
+            {
+              "value": "830"
+            },
+            {
+              "value": "500"
+            },
+            {
+              "value": "420"
+            },
+            {
+              "value": "790"
+            },
+            {
+              "value": "380"
+            }
+          ]
         },
         {
-          "label": "Advertising/Marketing/PR",
-          "value": "39"
+          "seriesName": "Hydro",
+          "data": [
+            {
+              "value": "350"
+            },
+            {
+              "value": "620"
+            },
+            {
+              "value": "410"
+            },
+            {
+              "value": "370"
+            },
+            {
+              "value": "720"
+            },
+            {
+              "value": "310"
+            }
+          ]
         },
         {
-          "label": "Other",
-          "value": "38"
+          "seriesName": "Nuclear",
+          "data": [
+            {
+              "value": "210"
+            },
+            {
+              "value": "400"
+            },
+            {
+              "value": "450"
+            },
+            {
+              "value": "180"
+            },
+            {
+              "value": "570"
+            },
+            {
+              "value": "270"
+            }
+          ]
         },
         {
-          "label": "Real Estate",
-          "value": "32"
+          "seriesName": "Gas",
+          "data": [
+            {
+              "value": "180"
+            },
+            {
+              "value": "330"
+            },
+            {
+              "value": "230"
+            },
+            {
+              "value": "160"
+            },
+            {
+              "value": "440"
+            },
+            {
+              "value": "350"
+            }
+          ]
         },
         {
-          "label": "Communications/Cable/Phone",
-          "value": "26"
-        },
-        {
-          "label": "Construction",
-          "value": "25"
-        },
-        {
-          "label": "Entertainment",
-          "value": "25"
-        },
-        {
-          "label": "Staffing Firm/Full Time/Temporary",
-          "value": "24"
-        },
-        {
-          "label": "Transportation/Logistics",
-          "value": "23"
-        },
-        {
-          "label": "Utilities",
-          "value": "22"
-        },
-        {
-          "label": "Aerospace/Defense Products",
-          "value": "18"
-        },
-        {
-          "label": "Banking/Finance/Securities",
-          "value": "16"
-        },
-        {
-          "label": "Consumer Products - Non-Durables",
-          "value": "15"
-        },
-        {
-          "label": "Distribution",
-          "value": "13"
-        },
-        {
-          "label": "Education",
-          "value": "12"
-        },
-        {
-          "label": "Health Products & Services",
-          "value": "11"
-        },
-        {
-          "label": "Hospitality & Hotels",
-          "value": "10"
-        },
-        {
-          "label": "Non-Business/Residential",
-          "value": "6"
-        },
-        {
-          "label": "Pharmaceutical",
-          "value": "4"
-        },
-        {
-          "label": "Printing & Publishing",
-          "value": "1"
-        },
-        {
-          "label": "Professional Services",
-          "value": "1"
-        },
-        {
-          "label": "VAR/ISV",
-          "value": "1"
-        },
-        {
-          "label": "Warranty Administrators",
-          "value": "1"
+          "seriesName": "Oil",
+          "data": [
+            {
+              "value": "60"
+            },
+            {
+              "value": "200"
+            },
+            {
+              "value": "200"
+            },
+            {
+              "value": "50"
+            },
+            {
+              "value": "230"
+            },
+            {
+              "value": "150"
+            }
+          ]
         }
       ]
     }
@@ -220,9 +270,18 @@ export default {
     :width="width"
     :height="height"
     :dataFormat="dataFormat"
-    :dataSource="dataSource"
+    :dataSource="dataSource.columnData"
     ></fusioncharts>
-    <button @click="exportToPdf">Export to PDF</button>
+    <fusioncharts
+    width="600"
+    height="600"
+    type="stackedcolumn2d"
+    dataFormat="json"
+    :dataSource="dataSource.stackedColumnData">
+    </fusioncharts>
+    <div :style="{textAlign: 'center'}">
+        <button @click="exportToPdf">Export both charts as a single PDF</button>
+    </div>
 </div>`,
 sourceJS:
 `FusionCharts.ready(function() {
@@ -233,15 +292,16 @@ sourceJS:
     var dataSource = getDataSource(); 
 
     var app = new Vue({
-        el: "#app",
+        el: '#app',
         data: {
             width: '600',
             height: '400',
-            type: "column2d",
-            dataFormat: "json",
-            dataSource: dataSource
+            type: 'column2d',
+            dataFormat: 'json',
+            dataSource: dataSource.columnData
         },
         methods: {
+            // Export to pdf
             exportToPdf: function(){
                 FusionCharts.batchExport({
                     exportFormat:'pdf'

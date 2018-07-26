@@ -8,8 +8,9 @@ import Maps from 'fusioncharts/fusioncharts.maps'
 import world from 'fusioncharts/maps/fusioncharts.world'
 import VueFusionCharts from './vue-fusioncharts/vue-fusioncharts'
 
-import Fint from "fusioncharts/themes/fusioncharts.theme.fint";
-Vue.use(VueFusionCharts, FusionCharts, Charts, Widgets, Maps, world, Fint)
+import "./utils/fusioncharts.theme.gammel";
+
+Vue.use(VueFusionCharts, FusionCharts, Charts, Widgets, Maps, world)
 //require css files
 import './assets/css/main.css'
 import 'prismjs/themes/prism.css'

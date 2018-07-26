@@ -68,7 +68,7 @@ export default {
         "xAxisName": "Country",
         "yAxisName": "Reserves (MMbbl)",
         "numberSuffix": "K",
-        "theme": "fint"
+        "theme": "gammel"
     },
     "data": [{
         "label": "Venezuela",

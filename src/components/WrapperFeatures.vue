@@ -1,15 +1,20 @@
 <template>
-  <div class="wrapper-features">
-      <h3>Features</h3>
-      <div>
-        <div class="list-container features-half-left">
-          <List :values="featureHalfs[1]" />
+    <div class="container container-1200 info-wrapper pb-3">
+        <div class="row">
+            <div class="col">
+                <div class="h2 mt-2">Features</div>
+                <!-- list start -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <List :values="featureHalfs[0]" />
+                    </div>
+                    <div class="col-md-6">
+                        <List :values="featureHalfs[1]" />
+                    </div>
+                </div>
+                <!-- list end -->
+            </div>
         </div>
-        <div class="list-container features-half-right">
-          <List :values="featureHalfs[1]" />
-        </div>
-        <div :style="{ clear: 'both' }" />
-      </div>
     </div>
 </template>
 

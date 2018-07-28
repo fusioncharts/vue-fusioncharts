@@ -1,6 +1,9 @@
 <template>
   <li>
-    <p>{{ value }}</p>
+      <span>
+          <i class="icn-inline icn-success fc_select"></i>
+      </span>
+      <div> {{value }}</div>
   </li>
 </template>
 

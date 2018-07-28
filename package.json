@@ -10,11 +10,13 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "codemirror": "^5.39.2",
     "extend": "^3.0.1",
     "fusioncharts": "bitbucket:fusioncharts/fusioncharts-npm",
     "jquery": "^3.3.1",
     "prismjs": "^1.15.0",
     "vue": "^2.5.11",
+    "vue-codemirror": "^4.0.5",
     "vue-slick": "^1.1.13"
   },
   "browserslist": [

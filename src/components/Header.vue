@@ -1,15 +1,18 @@
 <template>
 
-<header class="container header">
-    <div class="fc-icon">
-      <a :href="wrapperGithubRepoUrl" rel="noreferrer noopener" target="_blank" >
-        <img class="fc-logo" alt="FusionCharts" src="../assets/images/fc-logo.png"/>
+<!-- navbar start -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg bg-light">
+      <!-- logo -->
+      <a href="/" target="_self" class="navbar-brand active">
+          <img src="../assets/images/fc-logo.svg" width="149" height="27" alt="FusionCharts" class="img-circle">
       </a>
-    </div>
-    <div class="fc-home">
-      <a class="inline-link" href="http://fusioncharts.com/" rel="noreferrer noopener" target="_blank">FusionCharts Home</a>
-    </div>
-</header>
+      <!-- FC home -->
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="header-link" :href="wrapperGithubRepoUrl" target="_blank">GitHub Repository</a>
+          </li>
+      </ul>
+  </nav>
     
 </template>
 

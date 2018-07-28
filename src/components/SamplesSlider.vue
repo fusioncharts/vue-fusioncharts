@@ -1,15 +1,15 @@
 <template>
-  <div class="samples-slider">
-        <ArrowView dir="left" :visible="leftArrowVisible" @click="prevSlide" />
-        <ArrowView dir="right" :visible="rightArrowVisible" @click="nextSlide" />
-        <div class="slider-container">
-          <Slider ref="slider" :options="sliderSettings" @afterChange="afterSlideChange">
-            <div v-for="sample in samples" class="sample-item-container" :key="sample.id">
-                  <SampleItem :data="sample" :active="sample.id === activeSample" />
-              </div>
-          </Slider>
-        </div>
+  <div class="side-nav col-3 d-none d-md-block">
+      <div class="nav-heading">Quick Demo:</div>
+      <div class="nav-list">
+          <div v-for="sample in samples" :key="sample.id" 
+          :class="`nav-item ${sample.id===activeSample?'selected':''}`"
+          @click="()=>sample.onSampleItemClick(sample.id)">
+              <div class="h5">{{ sample.title }}</div>
+              <div class="p item-desc">A simple chart with all data embedded into the directive</div>
+          </div>
       </div>
+  </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="feature-list">
       <ListItem v-for="(v, i) in values" :key="i" :value="v"/>
   </ul>
 </template>

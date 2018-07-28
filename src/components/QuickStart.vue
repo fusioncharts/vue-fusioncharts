@@ -1,112 +1,179 @@
 <template>
-<div><div class="qs-section">
-    <h3 class="qs-heading">
-        Step 1: Install the <span class="qs-highlight">Vue-FusionCharts</span> wrapper framework
-    </h3>
-    <p class="qs-text">
-        In the terminal run the following command:
-    </p>
-    <pre class="qs-code language-javascript"><code class=" language-javascript">$ npm install vue<span class="token operator">-</span>fusioncharts <span class="token operator">--</span>save</code></pre>
-</div>
-
-<div class="qs-section">
-    <h3 class="qs-heading">
-        Step 2: Register the <span class="qs-highlight">VueFusionCharts</span> component            
-    </h3>
-    <p class="qs-text">
-        Use the <span class="qs-highlight">Vue.use</span> method to register the component globally            
-    </p>
-    <pre class="qs-code language-javascript"><code class=" language-javascript"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> VueFusionCharts <span class="token keyword">from</span> <span class="token string">'vue-fusioncharts'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> FusionCharts <span class="token keyword">from</span> <span class="token string">'fusioncharts'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Charts <span class="token keyword">from</span> <span class="token string">'fusioncharts/fusioncharts.charts'</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// resolve charts dependency</span>
-<span class="token function">Charts</span><span class="token punctuation">(</span>FusionCharts<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// register VueFusionCharts component</span>
-Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueFusionCharts<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p class="qs-text" style="margin-top: 10px;">
-    Use the <span class="qs-highlight">Vue.component</span> method to register the component locally         
-</p>
-<pre class="qs-code language-javascript"><code class=" language-javascript"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> FusionCharts <span class="token keyword">from</span> <span class="token string">'fusioncharts'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Charts <span class="token keyword">from</span> <span class="token string">'fusioncharts/fusioncharts.charts'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> FCComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-fusioncharts'</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// resolve charts dependency</span>
-<span class="token function">Charts</span><span class="token punctuation">(</span>FusionCharts<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// register Vue-FusionCharts component</span>
-Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'fusioncharts'</span><span class="token punctuation">,</span> FCComponent<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</div>
-
-<div class="qs-section">
-    <h3 class="qs-heading">
-        Step 3: Render your Chart
-    </h3>
-    <p class="qs-text">
-        For example render a simple pie chart
-    </p>
-    <pre class="qs-code language-javascript"><code class=" language-javascript">Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueFusionCharts<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> myDataSource <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">"chart"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">"caption"</span><span class="token punctuation">:</span> <span class="token string">"Age profile of website visitors"</span><span class="token punctuation">,</span>
-        <span class="token string">"subcaption"</span><span class="token punctuation">:</span> <span class="token string">"Last Year"</span><span class="token punctuation">,</span>
-        <span class="token string">"theme"</span><span class="token punctuation">:</span> <span class="token string">"ocean"</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">{</span>
-            <span class="token string">"label"</span><span class="token punctuation">:</span> <span class="token string">"Teenage"</span><span class="token punctuation">,</span>
-            <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"1250400"</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">{</span>
-            <span class="token string">"label"</span><span class="token punctuation">:</span> <span class="token string">"Adult"</span><span class="token punctuation">,</span>
-            <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"1463300"</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">{</span>
-            <span class="token string">"label"</span><span class="token punctuation">:</span> <span class="token string">"Mid-age"</span><span class="token punctuation">,</span>
-            <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"1050700"</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">{</span>
-            <span class="token string">"label"</span><span class="token punctuation">:</span> <span class="token string">"Senior"</span><span class="token punctuation">,</span>
-            <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"491000"</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> chart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-    data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        type<span class="token punctuation">:</span> <span class="token string">'pie2d'</span><span class="token punctuation">,</span>
-        width<span class="token punctuation">:</span> <span class="token string">'500'</span><span class="token punctuation">,</span>
-        height<span class="token punctuation">:</span> <span class="token string">'300'</span><span class="token punctuation">,</span>
-        dataFormat<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
-        dataSource<span class="token punctuation">:</span> myDataSource
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p class="qs-text" style="margin-top: 10px;">
-    Here's the HTML template for the above example
-</p>
-<pre class="qs-code language-html"><code class=" language-html">
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fusioncharts</span>
-        <span class="token attr-name">:type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>type<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>height<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:dataFormat</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dataFormat<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:dataSource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fusioncharts</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-</div>
-</div>
+    <div>
+        <div class="row">
+            <div class="col-12 pt-3">
+                <div class="h5">
+                    <span>Step 1: Install the Vue-FusionCharts wrapper framework</span>
+                </div>
+                <p class="code-desc">In the terminal run the following command:</p>
+                <div class="code-view mt-2">
+                    <div class="card-shadow">
+                        <div class="card-body p-0">
+                            <div class="code-panel">
+                                
+                                <div class="codeMirrorDiv" id="c1">
+                                    <codemirror v-model="code.c1"></codemirror>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="code-desc">Also install fusionCharts, if it is not already installed:</p>
+                <div class="code-view mt-2">
+                    <div class="card-shadow">
+                        <div class="card-body p-0">
+                            <div class="code-panel">
+                                <div class="codeMirrorDiv" id="c2">
+                                    <codemirror v-model="code.c2" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 pt-3">
+                <div class="h5">
+                    <span>Step 2: Register the VueFusionCharts component</span>
+                </div>
+                <p class="code-desc">Use the Vue.use method to register the component globally:</p>
+                <div class="code-view mt-2">
+                    <div class="card-shadow">
+                        <div class="card-body p-0">
+                            <div class="code-panel">
+                                <div class="codeMirrorDiv" id="c3">
+                                    <codemirror v-model="code.c3"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="code-desc">Use the Vue.component method to register the component locally:</p>
+                <div class="code-view mt-2">
+                    <div class="card-shadow">
+                        <div class="card-body p-0">
+                            <div class="code-panel">
+                                <div class="codeMirrorDiv" id="c4">
+                                    <codemirror v-model="code.c4"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 pt-3">
+                <div class="h5">
+                    <span>Step 3: Render your Chart</span>
+                </div>
+                <p class="code-desc">For example render a simple pie chart</p>
+                <div class="code-view mt-2">
+                    <div class="card-shadow">
+                        <div class="card-body p-0">
+                            <div class="code-panel">
+                                <div class="codeMirrorDiv" id="c5">
+                                    <codemirror v-model="code.c5"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="code-desc">Here's the HTML template for the above example</p>
+                <div class="code-view mt-2">
+                    <div class="card-shadow">
+                        <div class="card-body p-0">
+                            <div class="code-panel">
+                                <div class="codeMirrorDiv" id="c6">
+                                    <codemirror v-model="code.c6"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'QuickStart'
+    name: 'QuickStart',
+    data(){
+        return {
+code: {
+    c1: "$ npm install vue-fusioncharts --save",
+    c2: "$ npm install fusioncharts --save",
+    c3: `import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+
+// resolve charts dependency
+Charts(FusionCharts);
+
+// register VueFusionCharts component
+Vue.use(VueFusionCharts);`,
+    c4:`import Vue from 'vue';
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+import { FCComponent } from 'vue-fusioncharts';
+
+// resolve charts dependency
+Charts(FusionCharts);
+
+// register Vue-FusionCharts component
+Vue.component('fusioncharts', FCComponent);`,
+    c5:`Vue.use(VueFusionCharts);
+
+const myDataSource = {
+    "chart": {
+        "caption": "Age profile of website visitors",
+        "subcaption": "Last Year",
+        "theme": "ocean"
+    },
+    "data": [
+        {
+            "label": "Teenage",
+            "value": "1250400"
+        },
+        {
+            "label": "Adult",
+            "value": "1463300"
+        },
+        {
+            "label": "Mid-age",
+            "value": "1050700"
+        },
+        {
+            "label": "Senior",
+            "value": "491000"
+        }
+    ]
+};
+
+const chart = new Vue({
+    el: '#app',
+    data: {
+        type: 'pie2d',
+        width: '500',
+        height: '300',
+        dataFormat: 'json',
+        dataSource: myDataSource
+    }
+});`,
+    c6: `<div id="app">
+    <fusioncharts
+        :type="type"
+        :width="width"
+        :height="height"
+        :dataFormat="dataFormat"
+        :dataSource="dataSource">
+    </fusioncharts>
+</div>`
+}
+        }
+    }
 }
 </script>

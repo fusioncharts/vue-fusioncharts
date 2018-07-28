@@ -1,13 +1,9 @@
 <template>
-    <div class="container wrapper-info">
+    <div class="content-container">
         <WrapperHeader
             :logo="config.logo"
             :heading="config.heading"
             :subHeading="config.subHeading"
-        />
-         <WrapperAbout
-            :heading="config.heading"
-            :about="config.about"
         />
         <WrapperFeatures
             :features="config.features"

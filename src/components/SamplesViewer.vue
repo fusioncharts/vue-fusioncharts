@@ -1,12 +1,16 @@
 <template>
 
-  <div class="container samples-viewer" v-if="!emptySamples">
-        <SamplesSlider :samples="samples" :activeSample="sampleId" />
-        <SampleTabs
-          :sampleName="samplesConfig.sampleRouteMapping[sampleId]"
-          :interactiveViewURL="samplesConfig.sampleProps[sampleId].interactiveViewURL[wrapperName]"
-          :wrapperName="wrapperName"
-        />
+  <div class="demo bg-light-purple pt-4 pb-4">
+        <div class="container container-1200 info-wrapper">
+        <div class="row">
+          <SamplesSlider :samples="samples" :activeSample="sampleId" />
+          <SampleTabs
+            :sampleName="samplesConfig.sampleRouteMapping[sampleId]"
+            :interactiveViewURL="samplesConfig.sampleProps[sampleId].interactiveViewURL[wrapperName]"
+            :wrapperName="wrapperName"
+          />
+        </div>
+    </div>
   </div>
 </template>
 

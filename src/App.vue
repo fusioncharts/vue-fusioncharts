@@ -1,20 +1,31 @@
 <template>
   <div id="app">
     <the-header :wrapper-github-repo-url='config.githubRepo' />
-    <WrapperInfo :config="config" />
-    <SamplesViewer
-      :samplesConfig="sampleConfig"
-      :wrapperName="config.name"
-    />
-    <QuickStartViewer
-      :quickStartHTMLCode="config.quickStartGuide"
-    />
-    <app-footer
-      :wrapperHeading="config.heading"
-      :githubRepoURL="config.githubRepo"
-      :issuesURL="config.issuesURL"
-      :newIssueURL="config.newIssueURL"
-    />
+    <div class="page-container">
+      <div id="mainContainer" class="main-container">
+            <WrapperInfo :config="config" />
+            <SamplesViewer
+              :samplesConfig="sampleConfig"
+              :wrapperName="config.name"
+            />
+          <div class="container container-1200 info-wrapper pt-4">
+            <QuickStartViewer
+              :quickStartHTMLCode="config.quickStartGuide"
+            />
+            <app-footer
+              :wrapperHeading="config.heading"
+              :githubRepoURL="config.githubRepo"
+              :issuesURL="config.issuesURL"
+              :newIssueURL="config.newIssueURL"
+            />
+          </div>
+        <div id="footbar" class="row text-center mt-2">
+            <div class="col-12">
+                <p class="foot-item pt-4">© 2002-2018 InfoSoft Global Private Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

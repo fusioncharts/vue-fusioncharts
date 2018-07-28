@@ -1,10 +1,6 @@
 <template>
     <div class="content-container">
-        <WrapperHeader
-            :logo="config.logo"
-            :heading="config.heading"
-            :subHeading="config.subHeading"
-        />
+        <WrapperHeader />
         <WrapperFeatures
             :features="config.features"
         />
@@ -13,7 +9,6 @@
 
 <script>
 import WrapperHeader from './WrapperHeader';
-import WrapperAbout from './WrapperAbout';
 import WrapperFeatures from './WrapperFeatures';
 
 export default {
@@ -23,7 +18,6 @@ export default {
     },
     components: {
         WrapperHeader,
-        WrapperAbout,
         WrapperFeatures
     }
 }

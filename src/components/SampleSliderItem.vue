@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name:'ListItem',
+  name:'SampleSliderItem',
   props:['sample','mobile', 'active'],
   methods: {
       onClick: function(){

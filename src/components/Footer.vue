@@ -4,7 +4,7 @@
         <div class="col-12 pt-3">
             <div class="h5">Support</div>
             <p>
-                <a class="ref-link" :href="githubRepoURL+'/issues'" target="_blank">GitHub Issues</a> |
+                <a class="ref-link" :href="issuesURL" target="_blank">GitHub Issues</a> |
                 <a class="ref-link" href="mailto:support@fusioncharts.com" target="_blank">Contact FusionCharts Support</a>
             </p>
         </div>
@@ -25,22 +25,9 @@
 
 <script>
 
-import VerticalLine from './VerticalLine';
 export default {
   name: 'AppFooter',
-  props: ['githubRepoURL', 'issuesURL', 'newIssueURL', 'wrapperHeading'],
-  data(){
-    return {
-      verticalLineStyle: {
-        height: 10,
-        marginTop: 3,
-        backgroundColor: '#a3a3a3',
-      }
-    }
-  },
-  components: {
-    VerticalLine
-  }
+  props: ['issuesURL']
 }
 </script>
 

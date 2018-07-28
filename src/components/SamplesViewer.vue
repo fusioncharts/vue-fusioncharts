@@ -9,8 +9,6 @@
           <SamplesSlider :samples="samples" :activeSample="sampleId" />
           <SampleTabs
             :sampleName="samplesConfig.sampleRouteMapping[sampleId]"
-            :interactiveViewURL="samplesConfig.sampleProps[sampleId].interactiveViewURL[wrapperName]"
-            :wrapperName="wrapperName"
           />
         </div>
     </div>
@@ -28,7 +26,7 @@ import sampleConfig from '../config/sample.config';
 
 export default {
   name: 'SamplesViewer',
-  props:['samplesConfig', 'wrapperName'],
+  props:['samplesConfig'],
   data(){
     return {
       sampleId: null,

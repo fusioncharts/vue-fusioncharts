@@ -10,7 +10,7 @@ import world from 'fusioncharts/maps/fusioncharts.world'
 import VueFusionCharts from './vue-fusioncharts/vue-fusioncharts'
 import VueCodemirror from 'vue-codemirror'
 
-import "./utils/fusioncharts.theme.gammel";
+import "./assets/js/fusioncharts.theme.gammel";
 
 Vue.use(VueFusionCharts, FusionCharts, Charts, Widgets, Maps, world)
 Vue.use(VueCodemirror, {

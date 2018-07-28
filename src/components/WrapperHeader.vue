@@ -26,13 +26,7 @@
 </template>
 
 <script>
-import VerticalLine from "./VerticalLine";
-import images from "./../config/images";
 export default {
-  name: "WrapperHeader",
-  components: {
-    VerticalLine
-  },
-  props: ["logo", "heading", "subHeading"]
+  name: "WrapperHeader"
 };
 </script>

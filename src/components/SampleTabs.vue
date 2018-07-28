@@ -6,10 +6,6 @@
 </template>
 
 <script>
-import TabView from './TabView';
-import Tab from './Tab'
-import CodeWrapper from './CodeWrapper'
-import FrameView from './FrameView'
 
 import SimpleChart from './samples/SimpleChart'
 import Pie3dChart from "./samples/Pie3dChart";
@@ -31,7 +27,7 @@ import appConfig from './../config/app.config'
 import extend from 'extend'
 export default {
   name: 'SampleTabs',
-  props:['sampleName', 'wrapperName', 'interactiveViewURL'],
+  props:['sampleName'],
   data(){
     return {
       showMessage: false,
@@ -60,10 +56,6 @@ export default {
     this.sampleDataLoadingErrorMessage = ""
   },
   components: {
-    TabView,
-    Tab,
-    CodeWrapper,
-    /////////////////
     SimpleChart,
     Pie3dChart,
     ColumnAreaLineCombiChart,

@@ -1,73 +1,31 @@
 <template>
-    <div :style="{ display: !showMessage ? 'block' : 'none' }" class="clearfix">
-        <div class="chart-viewer">
-            <!-- <FrameView :styles="{width: '100%', height: '100%' }" :url="chartIframeURL" /> -->
-                <fusioncharts
-                :options="options"
-                :dataSource="dataSource.columnData"
-                :style="{ 'text-align': 'center' }"
-                ></fusioncharts>
-                <fusioncharts
-                width="600"
-                height="600"
-                type="stackedcolumn2d"
-                dataFormat="json"
-                :dataSource="dataSource.stackedColumnData">
-                </fusioncharts>
-                <br/>
-                <div :style="{textAlign: 'center'}">
-                    <button @click="exportToPdf">Export both charts as a single PDF</button>
-                </div>
+    <sample-wrapper :panels="panels" :activePanel="selectedPanel">
+        <fusioncharts
+        :options="options"
+        :dataSource="dataSource.columnData"
+        :style="{ 'text-align': 'center' }"
+        ></fusioncharts>
+        <fusioncharts
+        width="800"
+        height="600"
+        type="stackedcolumn2d"
+        dataFormat="json"
+        :dataSource="dataSource.stackedColumnData">
+        </fusioncharts>
+        <br/>
+        <div :style="{textAlign: 'center'}">
+            <button class='btn btn-outline-secondary btn-sm' @click="exportToPdf">Export both charts as a single PDF</button>
         </div>
-        <div class="code-viewer">
-            <TabView border>
-            <Tab label="JavaScript" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceJS"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="HTML" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="html"
-                    :code="sourceHTML"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="Data" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceData"
-                    />
-                </div>
-                </div>
-            </Tab>
-            </TabView>
-        </div>
-        <div :styles="{ clear: 'both' }" />
-        </div>
+    </sample-wrapper>
 </template>
 
 <script>
 
-import TabView from './../TabView';
-import Tab from './../Tab'
-import CodeWrapper from './../CodeWrapper'
+import mixin from './common/SamplesMixin'
 import FusionCharts from 'fusioncharts'
 
 export default {
+    mixins:[ mixin ],
     name: 'ClientSideExport',
     props:['showMessage'],
     data(){
@@ -273,7 +231,7 @@ export default {
     :dataSource="dataSource.columnData"
     ></fusioncharts>
     <fusioncharts
-    width="600"
+    width="800"
     height="600"
     type="stackedcolumn2d"
     dataFormat="json"
@@ -294,7 +252,7 @@ sourceJS:
     var app = new Vue({
         el: '#app',
         data: {
-            width: '600',
+            width: '800',
             height: '400',
             type: 'column2d',
             dataFormat: 'json',
@@ -311,7 +269,7 @@ sourceJS:
     });
 });`,
             options: {
-                width: '600',
+                width: '800',
                 height: '400',
                 type: "column2d",
                 dataFormat: "json",
@@ -330,11 +288,6 @@ sourceJS:
                 exportFormat:'pdf'
             });
         }
-    },
-    components:{
-        TabView,
-        Tab,
-        CodeWrapper
     }
 }
 </script>

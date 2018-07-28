@@ -1,7 +1,5 @@
 <template>
-    <div :style="{ display: !showMessage ? 'block' : 'none' }" class="clearfix">
-        <div class="chart-viewer">
-            <!-- <FrameView :styles="{width: '100%', height: '100%' }" :url="chartIframeURL" /> -->
+    <sample-wrapper :panels="panels" :activePanel="selectedPanel">
                 <fusioncharts
                 :options="options"
                 :dataSource="dataSource"
@@ -9,58 +7,18 @@
                 ></fusioncharts>
                 <br />
                 <div :style="{textAlign: 'center'}">
-                    <button @click="changeBackground">Change Chart Background</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeBackground">Change Chart Background</button>
                 </div>
-        </div>
-        <div class="code-viewer">
-            <TabView border>
-            <Tab label="JavaScript" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceJS"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="HTML" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="html"
-                    :code="sourceHTML"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="Data" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceData"
-                    />
-                </div>
-                </div>
-            </Tab>
-            </TabView>
-        </div>
-        <div :styles="{ clear: 'both' }" />
-        </div>
+    </sample-wrapper>
 </template>
 
 <script>
 
-import TabView from './../TabView';
-import Tab from './../Tab'
-import CodeWrapper from './../CodeWrapper'
+import mixin from './common/SamplesMixin'
 import extend from 'extend'
 
 export default {
+    mixins:[mixin],
     name: 'UpdateChartAttribute',
     props:['showMessage'],
     data(){
@@ -123,7 +81,7 @@ sourceJS:
     var app = new Vue({
         el: '#app',
         data: {
-            width: '700',
+            width: '800',
             height: '400',
             type: 'column2d',
             dataFormat: 'json',
@@ -140,7 +98,7 @@ sourceJS:
     });
 });`,
         options: {
-            width: '600',
+            width: '800',
             height: '400',
             type: "column2d",
             dataFormat: "json",
@@ -153,22 +111,12 @@ sourceJS:
         this.dataSource = JSON.parse(this.sourceData)
         
     },
-    watch: {
-        changeBackground: function(){
-            console.log('changeBackground')
-        }
-    },
     methods:{
         changeBackground: function(){
             const data = extend({}, this.dataSource);
             data.chart.bgColor = "#efefef";
             this.dataSource = data;
         }
-    },
-    components:{
-        TabView,
-        Tab,
-        CodeWrapper
     }
 }
 </script>

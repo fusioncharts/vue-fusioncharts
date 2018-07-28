@@ -1,13 +1,14 @@
 <template>
+  
   <div class="side-nav col-3 d-none d-md-block">
       <div class="nav-heading">Quick Demo:</div>
       <div class="nav-list">
-          <div v-for="sample in samples" :key="sample.id" 
-          :class="`nav-item ${sample.id===activeSample?'selected':''}`"
-          @click="()=>sample.onSampleItemClick(sample.id)">
-              <div class="h5">{{ sample.title }}</div>
-              <div class="p item-desc">A simple chart with all data embedded into the directive</div>
-          </div>
+          <SampleSliderItem v-for="sample in samples" 
+          :key="sample.id"
+          :sample="sample" 
+          :active="sample.id===activeSample"
+          @click="()=>sample.onSampleItemClick(sample.id)" 
+          :mobile="false"/>
       </div>
   </div>
 </template>
@@ -15,6 +16,7 @@
 <script>
 
 import Slider from 'vue-slick';
+import SampleSliderItem from './SampleSliderItem';
 import SampleItem from './SampleItem';
 import ArrowView from './ArrowView';
 
@@ -85,7 +87,8 @@ export default {
   components: {
     Slider,
     ArrowView,
-    SampleItem
+    SampleItem,
+    SampleSliderItem
   }
 }
 </script>

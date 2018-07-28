@@ -6,6 +6,7 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 import Widgets from 'fusioncharts/fusioncharts.widgets'
 import Maps from 'fusioncharts/fusioncharts.maps'
 import world from 'fusioncharts/maps/fusioncharts.world'
+
 import VueFusionCharts from './vue-fusioncharts/vue-fusioncharts'
 import VueCodemirror from 'vue-codemirror'
 
@@ -23,10 +24,11 @@ Vue.use(VueCodemirror, {
   }
 })
 //require css files
-import './assets/css/css/style.css'
+import './assets/css/style.css'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/theme/dracula.css'
+
 import './assets/css/fusioncharts.theme.fusion.css'
 import './assets/js/fusioncharts.theme.fusion'
 ////////

@@ -1,66 +1,24 @@
 <template>
-    <div :style="{ display: !showMessage ? 'block' : 'none' }" class="clearfix">
-        <div class="chart-viewer">
-            <!-- <FrameView :styles="{width: '100%', height: '100%' }" :url="chartIframeURL" /> -->
-                <fusioncharts
-                :options="options"
-                :dataSource="dataSource"
-                :style="{ 'text-align': 'center' }"
-                ></fusioncharts>
-                <br/>
-                <div :style="{textAlign: 'center'}">
-                    <button @click="updateData">Click to Update Data</button>
-                </div>
+    <sample-wrapper :panels="panels" :activePanel="selectedPanel">
+        <fusioncharts
+        :options="options"
+        :dataSource="dataSource"
+        :style="{ 'text-align': 'center' }"
+        ></fusioncharts>
+        <br/>
+        <div :style="{textAlign: 'center'}">
+            <button class='btn btn-outline-secondary btn-sm' @click="updateData">Click to Update Data</button>
         </div>
-        <div class="code-viewer">
-            <TabView border>
-            <Tab label="JavaScript" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceJS"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="HTML" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="html"
-                    :code="sourceHTML"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="Data" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceData"
-                    />
-                </div>
-                </div>
-            </Tab>
-            </TabView>
-        </div>
-        <div :styles="{ clear: 'both' }" />
-        </div>
+    </sample-wrapper>
 </template>
 
 <script>
 
-import TabView from './../TabView';
-import Tab from './../Tab'
-import CodeWrapper from './../CodeWrapper'
+import mixin from './common/SamplesMixin'
 import extend from 'extend'
 
 export default {
+    mixins:[mixin],
     name: 'UpdateChartData',
     props:['showMessage'],
     data(){
@@ -125,8 +83,8 @@ sourceJS:
         el: '#app',
         data: {
             type: 'column2d',
-            width: '400',
-            height: '350',
+            width: '800',
+            height: '400',
             dataFormat: 'json',
             dataSource: dataSource
         },
@@ -151,8 +109,8 @@ sourceJS:
 });`,
         options: {
             type: "Column2D",
-            width: "600",
-            height: "350",
+            width: "800",
+            height: "400",
             dataFormat: "json"
         },
         dataSource: null
@@ -175,11 +133,6 @@ sourceJS:
     },
     created: function(){
         this.dataSource = JSON.parse(this.sourceData)
-    },
-    components:{
-        TabView,
-        Tab,
-        CodeWrapper
     }
 }
 </script>

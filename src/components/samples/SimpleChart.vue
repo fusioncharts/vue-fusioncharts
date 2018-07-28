@@ -89,6 +89,11 @@ sourceJS:
             creditLabel: 'false',
             }
         }
+    },
+    computed: {
+        dataSource: function(){
+            return JSON.parse(this.sourceData)
+        }
     }
 }
 </script>

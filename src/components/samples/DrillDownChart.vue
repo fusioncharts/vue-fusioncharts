@@ -1,63 +1,20 @@
 <template>
-    <div :style="{ display: !showMessage ? 'block' : 'none' }" class="clearfix">
-        <div class="chart-viewer">
-            <!-- <FrameView :styles="{width: '100%', height: '100%' }" :url="chartIframeURL" /> -->
-                <fusioncharts
-                :options="options"
-                :dataSource="dataSource"
-                :style="{ 'text-align': 'center' }"
-                ref='fc'
-                ></fusioncharts>
-        </div>
-        <div class="code-viewer">
-            <TabView border>
-            <Tab label="JavaScript" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceJS"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="HTML" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="html"
-                    :code="sourceHTML"
-                    />
-                </div>
-                </div>
-            </Tab>
-            <Tab label="Data" slot='tab'>
-                <div class="code-tab-container">
-                <div class="code-tab">
-                    <CodeWrapper
-                    :styles="{width: '100%', height: '100%' }"
-                    language="javascript"
-                    :code="sourceData"
-                    />
-                </div>
-                </div>
-            </Tab>
-            </TabView>
-        </div>
-        <div :styles="{ clear: 'both' }" />
-        </div>
+    <sample-wrapper :panels="panels" :activePanel="selectedPanel">    
+        <fusioncharts
+        :options="options"
+        :dataSource="dataSource"
+        :style="{ 'text-align': 'center' }"
+        ref='fc'
+        ></fusioncharts>
+    </sample-wrapper>
 </template>
 
 <script>
 
-import TabView from './../TabView';
-import Tab from './../Tab'
-import CodeWrapper from './../CodeWrapper'
-import FusionCharts from 'fusioncharts'
+import mixin from './common/SamplesMixin'
 
 export default {
+    mixins:[mixin],
     name: 'DrillDownChart',
     props:['showMessage'],
     data(){
@@ -208,7 +165,7 @@ sourceJS:
     var app = new Vue({
         el: '#app',
         data: {
-            width: '600',
+            width: '800',
             height: '400',
             type: 'column2d',
             dataFormat: 'json',
@@ -237,7 +194,7 @@ sourceJS:
     });
 });`,
         options: {
-            width: '600',
+            width: '800',
             height: '400',
             type: "column2d",
             dataFormat: "json",
@@ -260,20 +217,16 @@ sourceJS:
             type: "pie2d",
             overlayButton: {
                 message: 'Back',
-                fontColor: '880000',
-                bgColor: 'FFEEEE',
-                borderColor: '660000'
+                color: '6957da',
+                bgColor: 'FFFFFF',
+                borderColor: '6957da',
+                padding:'5'
                 }
             },0)
         }
     },
     mounted: function(){
         this.configureLink(this.$refs.fc.chartObj);
-    },
-    components:{
-        TabView,
-        Tab,
-        CodeWrapper
     }
 }
 </script>

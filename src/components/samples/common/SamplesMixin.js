@@ -11,11 +11,6 @@ export default {
             ]
         }
     },
-    computed: {
-        dataSource: function(){
-            return JSON.parse(this.sourceData)
-        }
-    },
     methods: {
         selectTab: function(num){
             this.selectedPanel = num;

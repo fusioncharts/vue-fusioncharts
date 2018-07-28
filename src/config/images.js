@@ -1,5 +1,5 @@
 export default {
-    logo: require('./../assets/wrapper/logo.png'),
+    // vue_logo: require('./../assets/wrapper/Vue.js_Logo.svg'),
     "sampleLogo": {
         "logo":{
             "1": "./dist/samples/simple-chart/logo.svg",

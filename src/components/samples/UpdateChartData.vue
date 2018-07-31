@@ -72,44 +72,47 @@ export default {
     <button @click="updateData">Click to Update Data</button>
 </div>`,
 sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d'
 
-    Vue.use(VueFusionCharts);
-    
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            type: 'column2d',
-            width: '800',
-            height: '400',
-            dataFormat: 'json',
-            dataSource: dataSource
+// Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/;
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        type: 'column2d',
+        width: '100%',
+        height: '400',
+        dataFormat: 'json',
+        dataSource: dataSource
+    },
+    methods:{
+        // Updates the chart data
+        updateData: function(){
+            const data = Object.assign({}, this.dataSource); //clones data
+            data.data[2].label = 'This Label is Updated';
+            data.data[2].value = this.getRandomNumber();
+
+            data.data[3].label = 'This is updated as well';
+            data.data[3].value = this.getRandomNumber();
+            this.dataSource = data;
         },
-        methods:{
-            // Updates the chart data
-            updateData: function(){
-                const data = Object.assign({}, this.dataSource); //clones data
-                data.data[2].label = 'This Label is Updated';
-                data.data[2].value = this.getRandomNumber();
-
-                data.data[3].label = 'This is updated as well';
-                data.data[3].value = this.getRandomNumber();
-                this.dataSource = data;
-            },
-            // Generates a random number between min and max
-            getRandomNumber: function () {
-                var max = 300, min = 50;
-                return Math.round(((max - min) * Math.random()) + min);
-            }
-        },
-    });
+        // Generates a random number between min and max
+        getRandomNumber: function () {
+            var max = 300, min = 50;
+            return Math.round(((max - min) * Math.random()) + min);
+        }
+    },
 });`,
         options: {
             type: "Column2D",
-            width: "800",
+            width: "100%",
             height: "400",
             dataFormat: "json"
         },

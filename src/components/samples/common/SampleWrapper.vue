@@ -21,6 +21,7 @@
                     <div v-if="selectedPanel===i" class="code-panel">
                         <codemirror
                         :code="panel.code"
+                        :options="{mode:panel.mode}"
                         />
                     </div>
                 </div>

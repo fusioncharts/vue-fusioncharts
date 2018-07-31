@@ -67,39 +67,42 @@ export default {
     <div v-html="displayValue"/>
 </div>`,
         sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d'
 
-    Vue.use(VueFusionCharts);
-    
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            width: '800',
-            height: '400',
-            type: 'column2d',
-            dataFormat: 'json',
-            dataSource: dataSource,
-            events: {
-                dataplotRollover: null
-            },
-            displayValue:'Hover on the plot to see the value along with the label'
+// Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/;
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        width: '100%',
+        height: '400',
+        type: 'column2d',
+        dataFormat: 'json',
+        dataSource: dataSource,
+        events: {
+            dataplotRollover: null
         },
-        created: function(){
-            let myData = this.dataSource.data;
-            this.total = myData.reduce((p,c)=>p+Number(c.value), 0);
-    
-            this.options.events.dataplotRollover = (e, arg)=>{
-                let value = (arg.value / this.total * 100).toFixed(2);
-                this.displayValue =  \`<strong>\${arg.categoryLabel}</strong> is <strong>\${value}%</strong> of the total\`;
-            }
-        },
-    });
+        displayValue:'Hover on the plot to see the value along with the label'
+    },
+    created: function(){
+        let myData = this.dataSource.data;
+        this.total = myData.reduce((p,c)=>p+Number(c.value), 0);
+
+        this.options.events.dataplotRollover = (e, arg)=>{
+            let value = (arg.value / this.total * 100).toFixed(2);
+            this.displayValue =  \`<strong>\${arg.categoryLabel}</strong> is <strong>\${value}%</strong> of the total\`;
+        }
+    },
 });`,
         options: {
-            width: '800',
+            width: '100%',
             height: '400',
             type: "column2d",
             dataFormat: "json",

@@ -38,6 +38,8 @@
                     <span>Step 2: Register the VueFusionCharts component</span>
                 </div>
                 <p class="code-desc">Use the Vue.use method to register the component globally:</p>
+                <p class="code-desc">In case of vue-cli or vue with bundlers, traditionally <b>main.js</b> 
+                contains the initialization code below</p>
                 <div class="code-view mt-2">
                     <div class="card-shadow">
                         <div class="card-body p-0">
@@ -49,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="code-desc">Use the Vue.component method to register the component locally:</p>
+                <p class="code-desc">Or, Use the Vue.component method to register the component locally:</p>
                 <div class="code-view mt-2">
                     <div class="card-shadow">
                         <div class="card-body p-0">
@@ -99,7 +101,7 @@
 
 <script>
 export default {
-    name: 'QuickStart',
+    name: 'QuickStartNPM',
     data(){
         return {
 code: {
@@ -107,25 +109,23 @@ code: {
     c2: "$ npm install fusioncharts --save",
     c3: `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts';
-import Charts from 'fusioncharts/fusioncharts.charts';
-
-// resolve charts dependency
-Charts(FusionCharts);
+import FusionCharts from 'fusioncharts/core';
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts);`,
+Vue.use(VueFusionCharts, FusionCharts);`,
     c4:`import Vue from 'vue';
-import FusionCharts from 'fusioncharts';
-import Charts from 'fusioncharts/fusioncharts.charts';
+import FusionCharts from 'fusioncharts/core';
 import { FCComponent } from 'vue-fusioncharts';
 
-// resolve charts dependency
-Charts(FusionCharts);
-
 // register Vue-FusionCharts component
-Vue.component('fusioncharts', FCComponent);`,
-    c5:`Vue.use(VueFusionCharts);
+Vue.component('fusioncharts', FCComponent, FusionCharts);`,
+    c5:`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Pie2D from 'fusioncharts/viz/pie2d'
+
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Pie2D)
 
 const myDataSource = {
     "chart": {

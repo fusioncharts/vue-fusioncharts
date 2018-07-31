@@ -60,26 +60,29 @@ export default {
     ></fusioncharts>
 </div>`,
 sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Widgets from 'fusioncharts/widgets'
 
-    Vue.use(VueFusionCharts);
-    
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Widgets)
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            width: '600',
-            height: '400',
-            type: 'angulargauge',
-            dataFormat: 'json',
-            dataSource: dataSource
-        }
-    });
+// Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/;
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        width: '100%',
+        height: '400',
+        type: 'angulargauge',
+        dataFormat: 'json',
+        dataSource: dataSource
+    }
 });`,
         options: {
-            width: '800',
+            width: '100%',
             height: '400',
             type: "angulargauge",
             dataFormat: "json",

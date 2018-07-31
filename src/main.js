@@ -27,6 +27,7 @@ Vue.use(VueCodemirror, {
 import './assets/css/style.css'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/mode/javascript/javascript'
+import 'codemirror/mode/htmlembedded/htmlembedded'
 import 'codemirror/theme/dracula.css'
 
 import './assets/css/fusioncharts.theme.fusion.css'

@@ -155,46 +155,50 @@ export default {
     ></fusioncharts>
 </div>`,
 sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d'
+import Pie2D from 'fusioncharts/viz/pie2d';
 
-    Vue.use(VueFusionCharts);
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Column2D, Pie2D)
+
+// Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/; 
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        width: '100%',
+        height: '400',
+        type: 'column2d',
+        dataFormat: 'json',
+        dataSource: dataSource
+    },
+    methods: {
+        configureLink: function(chart){
+            this.chartInstance = chart; // Save it for further use
     
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
-
-    var app = new Vue({
-        el: '#app',
-        data: {
-            width: '800',
-            height: '400',
-            type: 'column2d',
-            dataFormat: 'json',
-            dataSource: dataSource
-        },
-        methods: {
-            configureLink: function(chart){
-                this.chartInstance = chart; // Save it for further use
-        
-                // Configure Drilldown attributes 
-                // See this : https://www.fusioncharts.com/dev/api/fusioncharts/fusioncharts-methods#configureLink
-                this.chartInstance.configureLink({
-                type: "pie2d",
-                overlayButton: {
-                    message: 'Back',
-                    fontColor: '880000',
-                    bgColor: 'FFEEEE',
-                    borderColor: '660000'
-                    }
-                },0)
-            }
-        },
-        mounted: function(){
-            this.configureLink(this.$refs.fc.chartObj); // this.$refs.fc gets the vue-fusionchart component
+            // Configure Drilldown attributes 
+            // See this : https://www.fusioncharts.com/dev/api/fusioncharts/fusioncharts-methods#configureLink
+            this.chartInstance.configureLink({
+            type: "pie2d",
+            overlayButton: {
+                message: 'Back',
+                fontColor: '880000',
+                bgColor: 'FFEEEE',
+                borderColor: '660000'
+                }
+            },0)
         }
-    });
+    },
+    mounted: function(){
+        this.configureLink(this.$refs.fc.chartObj); // this.$refs.fc gets the vue-fusionchart component
+    }
 });`,
         options: {
-            width: '800',
+            width: '100%',
             height: '400',
             type: "column2d",
             dataFormat: "json",

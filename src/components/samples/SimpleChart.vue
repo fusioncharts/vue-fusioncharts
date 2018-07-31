@@ -63,26 +63,29 @@ export default {
     ></fusioncharts>
 </div>`,
 sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d'
 
-    Vue.use(VueFusionCharts);
-    
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            width: '800',
-            height: '400',
-            type: 'column2d',
-            dataFormat: 'json',
-            dataSource: dataSource
-        }
-    });
+// Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/;
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        width: '100%',
+        height: '400',
+        type: 'column2d',
+        dataFormat: 'json',
+        dataSource: dataSource
+    }
 });`,
         options: {
-            width: '800',
+            width: '100%',
             height: '400',
             type: "column2d",
             dataFormat: "json",

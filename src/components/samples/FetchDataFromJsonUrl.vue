@@ -65,24 +65,27 @@ export default {
     ></fusioncharts>
 </div>`,
 sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d'
 
-    Vue.use(VueFusionCharts);
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            type: 'mscombi2d',
-            width: '800',
-            height: '400',
-            dataFormat: 'jsonurl',
-            dataSource: 'data.json'
-        }
-    });
+var app = new Vue({
+    el: '#app',
+    data: {
+        type: 'column2d',
+        width: '100%',
+        height: '400',
+        dataFormat: 'jsonurl',
+        dataSource: 'data.json' // url of datasource
+    }
 });`,
         options: {
                 type: "column2d",
-                width: "800",
+                width: "100%",
                 height: "400",
                 dataFormat: "jsonurl"
             }

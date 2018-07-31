@@ -7,7 +7,7 @@
             <SamplesViewer
               :samplesConfig="sampleConfig"
             />
-          <div class="container container-1200 info-wrapper pt-4">
+          <div class="container container-1200 info-wrapper pt-4" style="z-index:0">
             <QuickStartViewer />
             <app-footer :issuesURL="config.issuesURL" />
           </div>

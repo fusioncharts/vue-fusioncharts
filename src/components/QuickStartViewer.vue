@@ -5,16 +5,16 @@
             <div class="h2 mt-2">Quick Start</div>
         </div>
     </div>
-    <QuickStart />
+    <QuickStartNPM />
   </div>
 </template>
 
 <script>
-import QuickStart from './QuickStart'
+import QuickStartNPM from './QuickStartNPM'
 export default {
   name: 'QuickStartViewer',
   components: {
-    QuickStart
+    QuickStartNPM
   }
 }
 </script>

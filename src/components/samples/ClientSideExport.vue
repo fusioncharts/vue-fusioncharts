@@ -242,31 +242,35 @@ export default {
     </div>
 </div>`,
 sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d'
+import StackedColumn2D from 'fusioncharts/viz/stackedcolumn2d';
 
-    Vue.use(VueFusionCharts);
-    
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Column2D, StackedColumn2D)
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            width: '800',
-            height: '400',
-            type: 'column2d',
-            dataFormat: 'json',
-            dataSource: dataSource.columnData
-        },
-        methods: {
-            // Export to pdf
-            exportToPdf: function(){
-                FusionCharts.batchExport({
-                    exportFormat:'pdf'
-                });
-            }
+// Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/; 
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        width: '800',
+        height: '400',
+        type: 'column2d',
+        dataFormat: 'json',
+        dataSource: dataSource.columnData
+    },
+    methods: {
+        // Export to pdf
+        exportToPdf: function(){
+            FusionCharts.batchExport({
+                exportFormat:'pdf'
+            });
         }
-    });
+    }
 });`,
             options: {
                 width: '800',

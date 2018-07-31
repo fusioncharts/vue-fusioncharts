@@ -67,35 +67,38 @@ export default {
     <div v-html="displayValue"/>
 </div>`,
         sourceJS:
-`FusionCharts.ready(function() {
+`import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts/core';
+import Column2D from 'fusioncharts/viz/column2d'
 
-    Vue.use(VueFusionCharts);
-    
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
-    var app = new Vue({
-        el: '#app',
-        data: {
-            width: '800',
-            height: '400',
-            type: 'column2d',
-            dataFormat: 'json',
-            dataSource: dataSource,
-            events: {
-                dataplotRollover: null
-            },
-            displayValue:'Hover on the plot to see the value along with the label'
+// Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/;
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        width: '100%',
+        height: '400',
+        type: 'column2d',
+        dataFormat: 'json',
+        dataSource: dataSource,
+        events: {
+            dataplotRollover: null
         },
-        created: function(){
-            this.options.events.dataplotRollover = (e, arg)=>{
-                this.displayValue = \`You're are currently hovering over <strong>\${arg.categoryLabel}</strong> whose value is <strong>\${arg.displayValue}</strong>\`;
-            }
-        },
-    });
+        displayValue:'Hover on the plot to see the value along with the label'
+    },
+    created: function(){
+        this.options.events.dataplotRollover = (e, arg)=>{
+            this.displayValue = \`You're are currently hovering over <strong>\${arg.categoryLabel}</strong> whose value is <strong>\${arg.displayValue}</strong>\`;
+        }
+    },
 });`,
         options: {
-            width: '800',
+            width: '100%',
             height: '400',
             type: "column2d",
             dataFormat: "json",

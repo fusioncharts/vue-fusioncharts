@@ -18,9 +18,9 @@ export default {
     },
     created: function(){
         this.panels = [
-            {type: 'Javascript', code: this.sourceJS},
-            {type: 'HTML', code: this.sourceHTML},
-            {type: 'Data', code: this.sourceData}
+            {type: 'Javascript', code: this.sourceJS, mode:'javascript'},
+            {type: 'HTML', code: this.sourceHTML, mode:'htmlembedded'},
+            {type: 'Data', code: this.sourceData, mode:'javascript'}
         ]
     },
     components:{

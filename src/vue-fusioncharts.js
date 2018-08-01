@@ -306,7 +306,7 @@ export default (FC) => {
             },
             dataSource: {
                 handler: function () {
-                    this.chartObj.setChartData(this.dataSource, this.dataFormat);
+                    this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
                 },
                 deep: true
             },

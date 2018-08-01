@@ -54,7 +54,7 @@ const optionsMap = {
     loadMessageImageVAlign: 'loadMessageImageVAlign',
     loadMessageImageAlpha: 'loadMessageImageAlpha',
     loadMessageImageScale: 'loadMessageImageScale',
-///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
     dataformat: 'dataFormat',
     datasource: 'dataSource',
     showdataloadingmessage: 'showDataLoadingMessage',

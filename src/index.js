@@ -1,18 +1,24 @@
 import _FC from 'fusioncharts';
 import _FCComponent from './vue-fusioncharts';
 
-let FCComponent = _FCComponent(_FC);
-
-const install = (Vue, FC = _FC, ...options) => {
-
+const addDep = (FC, _FC, modules) => {
+    if ( FC ){
+        if ( modules.getName || modules.name ){
+            FC.addDep(modules);
+        } else {
+            modules(FC);
+        }
+    } else {
+        modules(_FC);
+    }
+};
+const install = (Vue, FC, ...options) => {
     options && options.forEach && options.forEach((modules) => {
-        modules(FC);
+        addDep(FC, _FC, modules);
     });
-    
     let component = _FCComponent(FC);
 
     Vue.component(component.name, component);
 };
 
-export {FCComponent, install};
 export default install;

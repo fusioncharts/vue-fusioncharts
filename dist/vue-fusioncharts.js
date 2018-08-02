@@ -86,15 +86,68 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var optionsMap = {
     type: 'type',
     id: 'id',
     width: 'width',
     height: 'height',
-    dataformat: 'dataFormat',
-    datasource: 'dataSource',
+    dataFormat: 'dataFormat',
+    dataSource: 'dataSource',
     events: 'events',
     link: 'link',
+    showDataLoadingMessage: 'showDataLoadingMessage',
+    showChartLoadingMessage: 'showChartLoadingMessage',
+    baseChartMessageFont: 'baseChartMessageFont',
+    baseChartMessageFontSize: 'baseChartMessageFontSize',
+    baseChartMessageColor: 'baseChartMessageColor',
+    dataLoadStartMessage: 'dataLoadStartMessage',
+    dataLoadErrorMessage: 'dataLoadErrorMessage',
+    dataInvalidMessage: 'dataInvalidMessage',
+    dataEmptyMessage: 'dataEmptyMessage',
+    typeNotSupportedMessage: 'typeNotSupportedMessage',
+    loadMessage: 'loadMessage',
+    renderErrorMessage: 'renderErrorMessage',
+    containerBackgroundColor: 'containerBackgroundColor',
+    containerBackgroundOpacity: 'containerBackgroundOpacity',
+    containerClassName: 'containerClassName',
+    baseChartMessageImageHAlign: 'baseChartMessageImageHAlign',
+    baseChartMessageImageVAlign: 'baseChartMessageImageVAlign',
+    baseChartMessageImageAlpha: 'baseChartMessageImageAlpha',
+    baseChartMessageImageScale: 'baseChartMessageImageScale',
+    typeNotSupportedMessageImageHAlign: 'typeNotSupportedMessageImageHAlign',
+    typeNotSupportedMessageImageVAlign: 'typeNotSupportedMessageImageVAlign',
+    typeNotSupportedMessageImageAlpha: 'typeNotSupportedMessageImageAlpha',
+    typeNotSupportedMessageImageScale: 'typeNotSupportedMessageImageScale',
+    dataLoadErrorMessageImageHAlign: 'dataLoadErrorMessageImageHAlign',
+    dataLoadErrorMessageImageVAlign: 'dataLoadErrorMessageImageVAlign',
+    dataLoadErrorMessageImageAlpha: 'dataLoadErrorMessageImageAlpha',
+    dataLoadErrorMessageImageScale: 'dataLoadErrorMessageImageScale',
+    dataLoadStartMessageImageHAlign: 'dataLoadStartMessageImageHAlign',
+    dataLoadStartMessageImageVAlign: 'dataLoadStartMessageImageVAlign',
+    dataLoadStartMessageImageAlpha: 'dataLoadStartMessageImageAlpha',
+    dataLoadStartMessageImageScale: 'dataLoadStartMessageImageScale',
+    dataInvalidMessageImageHAlign: 'dataInvalidMessageImageHAlign',
+    dataInvalidMessageImageVAlign: 'dataInvalidMessageImageVAlign',
+    dataInvalidMessageImageAlpha: 'dataInvalidMessageImageAlpha',
+    dataInvalidMessageImageScale: 'dataInvalidMessageImageScale',
+    dataEmptyMessageImageHAlign: 'dataEmptyMessageImageHAlign',
+    dataEmptyMessageImageVAlign: 'dataEmptyMessageImageVAlign',
+    dataEmptyMessageImageAlpha: 'dataEmptyMessageImageAlpha',
+    dataEmptyMessageImageScale: 'dataEmptyMessageImageScale',
+    renderErrorMessageImageHAlign: 'renderErrorMessageImageHAlign',
+    renderErrorMessageImageVAlign: 'renderErrorMessageImageVAlign',
+    renderErrorMessageImageAlpha: 'renderErrorMessageImageAlpha',
+    renderErrorMessageImageScale: 'renderErrorMessageImageScale',
+    loadMessageImageHAlign: 'loadMessageImageHAlign',
+    loadMessageImageVAlign: 'loadMessageImageVAlign',
+    loadMessageImageAlpha: 'loadMessageImageAlpha',
+    loadMessageImageScale: 'loadMessageImageScale',
+    ///////////////////////////////////////////////////////
+    dataformat: 'dataFormat',
+    datasource: 'dataSource',
     showdataloadingmessage: 'showDataLoadingMessage',
     showchartloadingmessage: 'showChartLoadingMessage',
     basechartmessagefont: 'baseChartMessageFont',
@@ -148,16 +201,74 @@ exports.default = function (FC) {
     return {
         name: 'fusioncharts',
         template: '<div></div>',
+        render: function render(h) {
+            this.containerID = 'fc-' + this._uid;
+            return h('div', {
+                attrs: {
+                    'id': this.containerID
+                }
+            });
+        },
         props: {
             options: Object,
             type: String,
             id: String,
             width: '',
             height: '',
-            dataformat: String,
-            datasource: '',
+            dataFormat: String,
+            dataSource: '',
             events: Object,
             link: Object,
+            showDataLoadingMessage: Boolean,
+            showChartLoadingMessage: Boolean,
+            baseChartMessageFont: String,
+            baseChartMessageFontSize: String,
+            baseChartMessageColor: String,
+            dataLoadStartMessage: String,
+            dataLoadErrorMessage: String,
+            dataInvalidMessage: String,
+            dataEmptyMessage: String,
+            typeNotSupportedMessage: String,
+            loadMessage: String,
+            renderErrorMessage: String,
+            containerBackgroundColor: String,
+            containerBackgroundOpacity: Number,
+            containerClassName: String,
+            baseChartMessageImageHAlign: String,
+            baseChartMessageImageVAlign: String,
+            baseChartMessageImageAlpha: Number,
+            baseChartMessageImageScale: Number,
+            typeNotSupportedMessageImageHAlign: String,
+            typeNotSupportedMessageImageVAlign: String,
+            typeNotSupportedMessageImageAlpha: Number,
+            typeNotSupportedMessageImageScale: Number,
+            dataLoadErrorMessageImageHAlign: String,
+            dataLoadErrorMessageImageVAlign: String,
+            dataLoadErrorMessageImageAlpha: Number,
+            dataLoadErrorMessageImageScale: Number,
+            dataLoadStartMessageImageHAlign: String,
+            dataLoadStartMessageImageVAlign: String,
+            dataLoadStartMessageImageAlpha: Number,
+            dataLoadStartMessageImageScale: Number,
+            dataInvalidMessageImageHAlign: String,
+            dataInvalidMessageImageVAlign: String,
+            dataInvalidMessageImageAlpha: Number,
+            dataInvalidMessageImageScale: Number,
+            dataEmptyMessageImageHAlign: String,
+            dataEmptyMessageImageVAlign: String,
+            dataEmptyMessageImageAlpha: Number,
+            dataEmptyMessageImageScale: Number,
+            renderErrorMessageImageHAlign: String,
+            renderErrorMessageImageVAlign: String,
+            renderErrorMessageImageAlpha: Number,
+            renderErrorMessageImageScale: Number,
+            loadMessageImageHAlign: String,
+            loadMessageImageVAlign: String,
+            loadMessageImageAlpha: Number,
+            loadMessageImageScale: Number,
+            ///////////////////////////////////////////////
+            dataformat: String,
+            datasource: '',
             showdataloadingmessage: Boolean,
             showchartloadingmessage: Boolean,
             basechartmessagefont: String,
@@ -205,8 +316,20 @@ exports.default = function (FC) {
             loadmessageimagevalign: String,
             loadmessageimagealpha: Number,
             loadmessageimagescale: Number
+
         },
         methods: {
+            attachListeners: function attachListeners() {
+                var _this = this;
+
+                if (this.$listeners && _typeof(this.$listeners) === 'object') {
+                    Object.keys(this.$listeners).forEach(function (event) {
+                        _this.chartObj.addEventListener(event, function (e) {
+                            _this.$emit(event, e);
+                        });
+                    });
+                }
+            },
             setLastOptions: function setLastOptions(config) {
                 this._oldOptions = Object.assign({}, config);
             },
@@ -231,14 +354,14 @@ exports.default = function (FC) {
                     config = THIS.getOptions(),
                     chartObj = THIS.chartObj;
 
-                config.renderAt = THIS.$el;
+                config.renderAt = this.containerID;
                 THIS.setLastOptions(config);
 
                 if (chartObj && chartObj.dispose) {
                     chartObj.dispose();
                 }
-
                 THIS.chartObj = chartObj = new FC(config);
+                this.attachListeners();
                 chartObj.render();
             },
             updateChart: function updateChart() {
@@ -274,15 +397,24 @@ exports.default = function (FC) {
                 },
                 deep: true
             },
+            dataSource: {
+                handler: function handler() {
+                    this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+                },
+                deep: true
+            },
             datasource: {
                 handler: function handler() {
-                    this.chartObj.setChartData(this.datasource, this.dataformat);
+                    this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
                 },
                 deep: true
             }
         },
+        deactivated: function deactivated() {
+            this.chartObj && this.chartObj.dispose();
+        },
         beforeDestroy: function beforeDestroy() {
-            this.chartObj.dispose();
+            this.chartObj && this.chartObj.dispose();
         },
         mounted: function mounted() {
             this.renderChart();
@@ -311,7 +443,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.install = exports.FCComponent = undefined;
 
 var _fusioncharts = __webpack_require__(1);
 
@@ -323,28 +454,32 @@ var _vueFusioncharts2 = _interopRequireDefault(_vueFusioncharts);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var FCComponent = (0, _vueFusioncharts2.default)(_fusioncharts2.default);
-
-var install = function install(Vue) {
+var addDep = function addDep(FC, _FC, modules) {
+    if (FC) {
+        if (modules.getName || modules.name) {
+            FC.addDep(modules);
+        } else {
+            modules(FC);
+        }
+    } else {
+        modules(_FC);
+    }
+};
+var install = function install(Vue, FC) {
     for (var _len = arguments.length, options = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
         options[_key - 2] = arguments[_key];
     }
 
-    var FC = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _fusioncharts2.default;
-
-
     options && options.forEach && options.forEach(function (modules) {
-        modules(FC);
+        addDep(FC, _fusioncharts2.default, modules);
     });
-
     var component = (0, _vueFusioncharts2.default)(FC);
 
     Vue.component(component.name, component);
 };
 
-exports.FCComponent = FCComponent;
-exports.install = install;
 exports.default = install;
+module.exports = exports['default'];
 
 /***/ })
 /******/ ]);

@@ -21,7 +21,7 @@ yarn add vue-fusioncharts
 
 ### VanillaJS
 
-Download [`vue-fusioncharts.js`](https://rawgit.com/fusioncharts/vue-fusioncharts/master/dist/vue-fusioncharts.js) and include it in the HTML `<script>` tag.
+Download [`vue-fusioncharts.js`](https://github.com/fusioncharts/vue-fusioncharts/blob/master/dist/vue-fusioncharts.js) and include it in the HTML `<script>` tag.
 
 ```html
 <script src='vue-fusioncharts.js' type='text/javascript'></script>
@@ -36,14 +36,11 @@ import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 
 // import FusionCharts modules and resolve dependency
-import FusionCharts from 'fusioncharts'
-import Charts from 'fusioncharts/fusioncharts.charts'
-
-// resolve charts dependency
-Charts(FusionCharts);
+import FusionCharts from 'fusioncharts/core'
+import Pie2D from 'fusioncharts/viz/pie2d'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts);
+Vue.use(VueFusionCharts, FusionCharts, Pie2D);
 ```
 
 ### CommonJS
@@ -56,11 +53,8 @@ const VueFusionCharts = require('vue-fusioncharts');
 const FusionCharts = require('fusioncharts');
 const Charts = require('fusioncharts/fusioncharts.charts');
 
-// resolve charts dependency
-Charts(FusionCharts);
-
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts);
+Vue.use(VueFusionCharts, FusionCharts, Charts);
 ```
 
 ### AMD

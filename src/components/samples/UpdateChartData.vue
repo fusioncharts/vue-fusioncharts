@@ -122,10 +122,8 @@ var app = new Vue({
     methods:{
         updateData: function(){
             const data = extend({}, this.dataSource);
-            data.data[2].label = "This Label is Updated";
             data.data[2].value = this.getRandomNumber();
 
-            data.data[3].label = "This is updated as well";
             data.data[3].value = this.getRandomNumber();
             this.dataSource = data;
         },

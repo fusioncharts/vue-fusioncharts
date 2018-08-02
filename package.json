@@ -69,7 +69,5 @@
     "webpack-dev-server": "^2.4.5",
     "yards": "^0.1.4"
   },
-  "dependencies": {
-    "fusioncharts": "^3.13.0"
-  }
+  "dependencies": {}
 }

@@ -1,4 +1,4 @@
-# Vue-FusionCharts
+# vue-fusioncharts
 
 > FusionCharts component for Vue
 

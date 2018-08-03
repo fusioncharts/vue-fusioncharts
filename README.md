@@ -1,7 +1,4 @@
-
-#### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
-
-# Vue-FusionCharts
+# vue-fusioncharts
 
 A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Charting Library. The `Vue-FusionCharts` wrapper lets you easily include FusionCharts in your `VueJS` projects.
 

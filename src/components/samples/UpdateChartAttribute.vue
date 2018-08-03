@@ -105,9 +105,11 @@ var app = new Vue({
             data.chart.bgColor = '#efefef';
             this.dataSource = data;
         },
+        // Resets all the chart data to it's initial verison
         resetAttr: function(){
             this.dataSource = JSON.parse(JSON.stringify(this.originalData));
         },
+        // Makes the caption text left aligned
         makeCaptionLeft: function(){
             const data = Object.assign({}, this.dataSource);
             data.chart.captionAlignment = 'left';

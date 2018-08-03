@@ -3,7 +3,7 @@
 <!-- navbar start -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-lg bg-light">
       <!-- logo -->
-      <a href="/" target="_self" class="navbar-brand active">
+      <a href="https://fusioncharts.com/" target="_blank" class="navbar-brand active">
           <img src="../assets/images/fc-logo.svg" width="149" height="27" alt="FusionCharts" class="img-circle">
       </a>
       <!-- FC home -->

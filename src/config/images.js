@@ -1,4 +1,5 @@
 export default {
+    favicon: require('./../assets/images/favicon.png'),
     logo: require('./../assets/images/Vue.js_Logo.svg'),
     "sampleLogo": {
         "logo":{

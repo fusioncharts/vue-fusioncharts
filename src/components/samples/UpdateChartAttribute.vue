@@ -8,6 +8,8 @@
                 <br />
                 <div :style="{textAlign: 'center'}">
                     <button class='btn btn-outline-secondary btn-sm' @click="changeBackground">Change Chart Background</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="makeCaptionLeft">Make Caption text left-aligned</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="resetAttr">Reset Attributes</button>
                 </div>
     </sample-wrapper>
 </template>
@@ -69,6 +71,8 @@ export default {
     :dataSource="dataSource"
     ></fusioncharts>
     <button @click="changeBackground">Change Chart Background</button>
+    <button @click="makeCaptionLeft">Make Caption text left-aligned</button>
+    <button @click="resetAttr">Reset Attributes</button>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
@@ -91,11 +95,22 @@ var app = new Vue({
         dataFormat: 'json',
         dataSource: dataSource
     },
+    created: function(){
+        this.originalData = JSON.parse(JSON.stringify(this.dataSource)); //for deep copy
+    },
     methods:{
         // Changes chart background
         changeBackground: function(){
             const data = Object.assign({}, this.dataSource); //copy of object
             data.chart.bgColor = '#efefef';
+            this.dataSource = data;
+        },
+        resetAttr: function(){
+            this.dataSource = JSON.parse(JSON.stringify(this.originalData));
+        },
+        makeCaptionLeft: function(){
+            const data = Object.assign({}, this.dataSource);
+            data.chart.captionAlignment = 'left';
             this.dataSource = data;
         }
     }
@@ -112,12 +127,20 @@ var app = new Vue({
     },
     created: function(){
         this.dataSource = JSON.parse(this.sourceData)
-        
+        this.originalData = JSON.parse(this.sourceData);
     },
     methods:{
         changeBackground: function(){
             const data = extend({}, this.dataSource);
             data.chart.bgColor = "#efefef";
+            this.dataSource = data;
+        },
+        resetAttr: function(){
+            this.dataSource = JSON.parse(this.sourceData);
+        },
+        makeCaptionLeft: function(){
+            const data = extend({}, this.dataSource);
+            data.chart.captionAlignment = 'left';
             this.dataSource = data;
         }
     }

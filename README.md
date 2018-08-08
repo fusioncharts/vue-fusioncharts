@@ -227,7 +227,10 @@ $ npm start
 ```
 
 ### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
+<<<<<<< HEAD
 
 > ### Using Legacy Webpack Templates
 > If you are using legacy webpack templates using (ex: `vue init webpack-simple myProject`), you need to use the new UglifyJS webpack plugin as the default plugin doesn't support ES5+ syntaxes.  
 > Refer here on what to change in the webpack.config.js: https://github.com/vuejs-templates/webpack-simple/issues/166#issuecomment-354394253
+=======
+>>>>>>> develop

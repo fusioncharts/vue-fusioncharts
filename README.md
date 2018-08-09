@@ -94,7 +94,7 @@ If you are not using any bundler, you can refer the file in a script tag. The li
         :height="height"
         :dataFormat="dataFormat"
         :dataSource="dataSource"
-        :events="events">
+        @dataplotRollover="dataplotRollover">
         </fusioncharts>
         <p>Display Value: {{displayValue}}</p>
     </div>
@@ -119,12 +119,12 @@ If you are not using any bundler, you can refer the file in a script tag. The li
                 height: '300',
                 dataFormat: 'json',
                 dataSource: myDataSource,
-                events: {
-                  dataplotRollover: function (ev, props) {
-                    app.displayValue = props.displayValue       
-                  }       
-                },
                 displayValue: ''
+              },
+            methods:{
+                dataplotRollover: function (e) {
+                    app.displayValue = e.data.displayValue       
+                }
               }
             }
         });
@@ -211,6 +211,20 @@ Vue.component('fusioncharts', FCComponent);
             </tr>
         </tbody>
     </table>
+## Working with Events
+
+To attach event listeners to FusionCharts, you can use the `v-on` or `@` operator in the vue-fusioncharts component.
+
+```html
+<fusioncharts
+:type="type"
+:width="width"
+:height="height"
+:dataFormat="dataFormat"
+:dataSource="dataSource"
+@eventName="eventHandler">
+</fusioncharts>
+```
 
 ## Contributing
 
@@ -227,10 +241,7 @@ $ npm start
 ```
 
 ### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
-<<<<<<< HEAD
 
 > ### Using Legacy Webpack Templates
 > If you are using legacy webpack templates using (ex: `vue init webpack-simple myProject`), you need to use the new UglifyJS webpack plugin as the default plugin doesn't support ES5+ syntaxes.  
 > Refer here on what to change in the webpack.config.js: https://github.com/vuejs-templates/webpack-simple/issues/166#issuecomment-354394253
-=======
->>>>>>> develop

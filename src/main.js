@@ -7,7 +7,7 @@ import Widgets from 'fusioncharts/fusioncharts.widgets'
 import Maps from 'fusioncharts/fusioncharts.maps'
 import world from 'fusioncharts/maps/fusioncharts.world'
 
-import VueFusionCharts from './vue-fusioncharts/vue-fusioncharts'
+import VueFusionCharts from 'vue-fusioncharts'
 import VueCodemirror from 'vue-codemirror'
 
 import "./assets/js/fusioncharts.theme.gammel";

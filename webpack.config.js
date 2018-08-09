@@ -1,12 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
 var CopyWebpack = require('copy-webpack-plugin');
-var repositoryName = process.env.NODE_ENV !== "development"?'/vue-fusioncharts':''
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: `${repositoryName}/dist/`,
+    publicPath: './dist/',
     filename: 'build.js'
   },
   module: {
@@ -72,10 +72,9 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
+    new UglifyJsPlugin({
+      uglifyOptions: {        
+        ecma: 8      
       }
     }),
     new webpack.LoaderOptionsPlugin({

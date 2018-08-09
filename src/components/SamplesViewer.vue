@@ -60,7 +60,6 @@ export default {
     getSamples: function() {
       const sConfig = this.samplesConfig;
       const samples = this.sampleIds.map((sampleId) => {
-        console.log(sConfig.sampleImages['logo-hover'][sampleId]);
         return {
           id: sampleId,
           title: sConfig.sampleProps[sampleId].title,

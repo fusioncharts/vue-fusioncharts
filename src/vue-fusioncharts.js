@@ -238,17 +238,17 @@ export default (FC) => {
                 }
             },
             createEvents: function(){
+                const ret = {
+                    'events':{}
+                };
                 if(this.$listeners && typeof this.$listeners === 'object'){
-                    const ret = {
-                        'events':{}
-                    };
                     Object.keys(this.$listeners).forEach((event)=>{
                         ret.events[event] = (e)=>{
                             this.$emit(event, e);
                         };
                     });
-                    return ret;
                 }
+                return ret;
             },
             setLastOptions: function (config) {
                 this._oldOptions = Object.assign({}, config);

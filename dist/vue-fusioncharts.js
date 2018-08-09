@@ -333,17 +333,17 @@ exports.default = function (FC) {
             createEvents: function createEvents() {
                 var _this2 = this;
 
+                var ret = {
+                    'events': {}
+                };
                 if (this.$listeners && _typeof(this.$listeners) === 'object') {
-                    var ret = {
-                        'events': {}
-                    };
                     Object.keys(this.$listeners).forEach(function (event) {
                         ret.events[event] = function (e) {
                             _this2.$emit(event, e);
                         };
                     });
-                    return ret;
                 }
+                return ret;
             },
             setLastOptions: function setLastOptions(config) {
                 this._oldOptions = Object.assign({}, config);

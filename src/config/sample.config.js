@@ -16,7 +16,8 @@ export default {
         "13": "render-a-map",
         "14": "using-a-theme",
         "15": "render-alert",
-        "16": "special-events"
+        "16": "special-events",
+        "17": "update-chart-attribute-api"
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -129,6 +130,13 @@ export default {
         "16": {
             "title": "Special Events",
             "desc": "Drag a column column to see its change.",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "17": {
+            "title": "Update chart attribute through methods",
+            "desc": "Change a chart attribute by calling FusionCharts methods.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

@@ -11,9 +11,13 @@ import world from 'fusioncharts/maps/fusioncharts.world'
 import VueFusionCharts from 'vue-fusioncharts'
 import VueCodemirror from 'vue-codemirror'
 
-import "./assets/js/fusioncharts.theme.gammel";
+import Gammel from 'fusioncharts/themes/fusioncharts.theme.gammel'
+import Candy from 'fusioncharts/themes/fusioncharts.theme.candy'
+import Zune from 'fusioncharts/themes/fusioncharts.theme.zune'
+import Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean'
+import Carbon from 'fusioncharts/themes/fusioncharts.theme.carbon'
 
-Vue.use(VueFusionCharts, FusionCharts, Charts, PowerCharts, Widgets, Maps, world)
+Vue.use(VueFusionCharts, FusionCharts, Charts, PowerCharts, Widgets, Maps, world, Gammel, Candy, Zune, Ocean, Carbon)
 Vue.use(VueCodemirror, {
   options: {
     theme:'dracula',

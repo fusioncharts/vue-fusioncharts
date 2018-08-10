@@ -307,6 +307,11 @@ body {
     cursor: pointer;
 }
 
+.text-style {
+    padding: 10px;
+    background: #f5f2f0;
+}
+
 @media (min-width:768px) {
     .navbar {
         padding: .5rem

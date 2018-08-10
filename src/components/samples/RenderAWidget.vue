@@ -63,10 +63,10 @@ sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
-import Widgets from 'fusioncharts/widgets'
+import AngularGauge from 'fusioncharts/viz/angulargauge'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Widgets)
+Vue.use(VueFusionCharts, FusionCharts, AngularGauge)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

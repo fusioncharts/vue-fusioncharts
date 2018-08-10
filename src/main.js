@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import FusionCharts from 'fusioncharts'
-import Charts from 'fusioncharts/fusioncharts.charts'; 
+import Charts from 'fusioncharts/fusioncharts.charts'
+import PowerCharts from 'fusioncharts/fusioncharts.powercharts'
 import Widgets from 'fusioncharts/fusioncharts.widgets'
 import Maps from 'fusioncharts/fusioncharts.maps'
 import world from 'fusioncharts/maps/fusioncharts.world'
@@ -12,7 +13,7 @@ import VueCodemirror from 'vue-codemirror'
 
 import "./assets/js/fusioncharts.theme.gammel";
 
-Vue.use(VueFusionCharts, FusionCharts, Charts, Widgets, Maps, world)
+Vue.use(VueFusionCharts, FusionCharts, Charts, PowerCharts, Widgets, Maps, world)
 Vue.use(VueCodemirror, {
   options: {
     theme:'dracula',

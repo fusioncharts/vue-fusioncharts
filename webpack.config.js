@@ -2,11 +2,12 @@ var path = require('path')
 var webpack = require('webpack')
 var CopyWebpack = require('copy-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var repositoryName = process.env.NODE_ENV !== 'development' ? './' : '/'
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: './dist/',
+    publicPath: `${repositoryName}dist/`,
     filename: 'build.js'
   },
   module: {

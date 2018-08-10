@@ -3,7 +3,7 @@
         <fusioncharts
         :options="options"
         :dataSource="dataSource"
-        @rendered="rendered"
+        @disposed="disposed"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
     <div class="text-style" >{{message}}</div>
@@ -12,6 +12,8 @@
 
 <script>
 import mixin from './common/SamplesMixin'
+import FusionCharts from 'fusioncharts'
+var handler = function () { this.message = 'Chart has completed rendering.' };
 export default {
     mixins:[mixin],
     name: 'ChartInteractivity',
@@ -71,7 +73,7 @@ export default {
     :height="height"
     :dataFormat="dataFormat"
     :dataSource="dataSource"
-    @rendered="rendered"
+    @disposed="disposed"
     ></fusioncharts>
     <div>{{message}}</div>
 </div>`,
@@ -85,7 +87,8 @@ import Column2D from 'fusioncharts/viz/column2d'
 Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
 // Copy datasource from 'Data' tab
-var dataSource = /*{ "chart": {..}, ..}*/;
+var dataSource = /*{ "chart": {..}, ..}*/,
+    handler = function () { this.message = 'Chart has completed rendering.' };
 
 var app = new Vue({
     el: '#app',
@@ -96,10 +99,15 @@ var app = new Vue({
         dataFormat: 'json',
         dataSource: dataSource
     },
+    mounted: function () {
+            handler = handler.bind(this);
+            FusionCharts.addEventListener('rendered', handler);
+        },
     methods: {
-        rendered: function(){
-            this.message = 'Chart has completed rendering.'
+        disposed: function () {
+            FusionCharts.removeEventListener('rendered', handler);
         }
+    }
     }
 });`,
         options: {
@@ -117,9 +125,13 @@ var app = new Vue({
             return JSON.parse(this.sourceData)
         }
     },
+    mounted: function () {
+            handler = handler.bind(this);
+            FusionCharts.addEventListener('rendered', handler);
+        },
     methods: {
-        rendered: function(){
-            this.message = 'Chart has completed rendering.'
+        disposed: function () {
+            FusionCharts.removeEventListener('rendered', handler);
         }
     }
 }

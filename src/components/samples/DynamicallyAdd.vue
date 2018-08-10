@@ -84,7 +84,12 @@ export default {
     :dataSource="dataSource"
     @disposed="disposed"
     ></fusioncharts>
-    <div>{{message}}</div>
+    <div class="text-style" v-html="message" ></div>
+    <br>
+    <div>
+        <button @click="attachHandler">TRACK DATA PLOT CLICK</button>
+        <button @click="removeHandler">Reset Listener</button>
+    </div>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
@@ -96,8 +101,11 @@ import Column2D from 'fusioncharts/viz/column2d'
 Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
 // Copy datasource from 'Data' tab
-var dataSource = /*{ "chart": {..}, ..}*/,
-    handler = function () { this.message = 'Chart has completed rendering.' };
+var handler = function (e) {
+        this.message = \`You have clicked plot \${e.data.categoryLabel} whose value is \${e.data.displayValue}.\`
+     },
+    attached = false,
+    defaultMessage = 'Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataPlotClick event';
 
 var app = new Vue({
     el: '#app',
@@ -108,13 +116,21 @@ var app = new Vue({
         dataFormat: 'json',
         dataSource: dataSource
     },
-    mounted: function () {
-            handler = handler.bind(this);
-            FusionCharts.addEventListener('rendered', handler);
-        },
     methods: {
+        attachHandler: function () {
+            if (attached) return;
+            attached = true;
+            handler = handler.bind(this);
+            this.message = 'Click on a plot to see the value along with the label'
+            FusionCharts.addEventListener('dataPlotClick', handler);
+        },
+        removeHandler: function () {
+            attached = false;
+            this.message = defaultMessage;
+            FusionCharts.removeEventListener('dataPlotClick', handler);
+        },
         disposed: function () {
-            FusionCharts.removeEventListener('rendered', handler);
+            FusionCharts.removeEventListener('dataPlotClick', handler);
         }
     }
     }

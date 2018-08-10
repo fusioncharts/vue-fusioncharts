@@ -256,7 +256,10 @@
   color: #9FA0B7;
   font-weight: 300 !important;
 }
-
+.negitive-btn {
+    border-color: #ff0000;
+    color: #ff0000;
+}
 /* Navbar Customization */
 
 #navbar {

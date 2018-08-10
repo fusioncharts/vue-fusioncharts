@@ -23,6 +23,7 @@ import RenderAMap from './samples/RenderAMap'
 import UsingATheme from './samples/UsingATheme'
 import RenderAlert from './samples/RenderAlert'
 import SpecialEvents from './samples/SpecialEvents'
+import DynamicallyAdd from './samples/DynamicallyAdd'
 import UpdateChartAttributeApi from './samples/UpdateChartAttributeApi'
 import SpecialChartApi from './samples/SpecialChartApi'
 
@@ -76,6 +77,7 @@ export default {
     UsingATheme,
     RenderAlert,
     SpecialEvents,
+    DynamicallyAdd,
     UpdateChartAttributeApi,
     SpecialChartApi
   }

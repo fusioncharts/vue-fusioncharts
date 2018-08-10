@@ -17,8 +17,9 @@ export default {
         "14": "using-a-theme",
         "15": "render-alert",
         "16": "special-events",
-        "17": "update-chart-attribute-api",
-        "18": "special-chart-api"
+        "17": "dynamically-add",
+        "18": "update-chart-attribute-api",
+        "19": "special-chart-api"
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -136,13 +137,20 @@ export default {
             }
         },
         "17": {
+            "title": "Dynamically add chart event listener",
+            "desc": "Clicking the button adds an event to the chart to track 'dataplotClick'.",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "18": {
             "title": "Update chart attribute through methods",
             "desc": "Change a chart attribute by calling FusionCharts methods.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "18": {
+        "19": {
             "title": "Slice data plots",
             "desc": "Click the button to slice out Microsoft from the rest of the plots.",
             "interactiveViewURL": {

@@ -17,7 +17,8 @@ export default {
         "14": "using-a-theme",
         "15": "render-alert",
         "16": "special-events",
-        "17": "update-chart-attribute-api"
+        "17": "update-chart-attribute-api",
+        "18": "special-chart-api"
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -137,6 +138,13 @@ export default {
         "17": {
             "title": "Update chart attribute through methods",
             "desc": "Change a chart attribute by calling FusionCharts methods.",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "18": {
+            "title": "Slice data plots",
+            "desc": "Click the button to slice out Microsoft from the rest of the plots.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

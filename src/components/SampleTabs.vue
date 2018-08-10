@@ -24,6 +24,7 @@ import UsingATheme from './samples/UsingATheme'
 import RenderAlert from './samples/RenderAlert'
 import SpecialEvents from './samples/SpecialEvents'
 import UpdateChartAttributeApi from './samples/UpdateChartAttributeApi'
+import SpecialChartApi from './samples/SpecialChartApi'
 
 import * as utils from './../utils/utils'
 import appConfig from './../config/app.config'
@@ -75,7 +76,8 @@ export default {
     UsingATheme,
     RenderAlert,
     SpecialEvents,
-    UpdateChartAttributeApi
+    UpdateChartAttributeApi,
+    SpecialChartApi
   }
 }
 </script>

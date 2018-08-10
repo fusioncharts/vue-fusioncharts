@@ -93,9 +93,32 @@ export default {
     :dataSource="dataSource"
     ref="fc"
     ></fusioncharts>
-    <button @click="changeBackground">Change Chart Background</button>
-    <button @click="makeCaptionLeft">Make Caption text left-aligned</button>
-    <button @click="resetAttr">Reset Attributes</button>
+    <div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
+        <label>Fusion</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
+        <label>Gammel</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
+        <label>Candy</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
+        <label>Zune</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
+        <label>Ocean</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
+        <label>Carbon</label>
+        </div>
+    </div>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
@@ -118,27 +141,12 @@ var app = new Vue({
         dataFormat: 'json',
         dataSource: dataSource
     },
-    created: function(){
-        this.originalData = JSON.parse(JSON.stringify(this.dataSource)); //for deep copy
-    },
     methods:{
-        // Changes chart background
-        changeBackground: function(){
-            const data = Object.assign({}, this.dataSource); //copy of object
-            data.chart.bgColor = '#efefef';
-            this.dataSource = data;
-        },
-        // Resets all the chart data to it's initial verison
-        resetAttr: function(){
-            this.dataSource = JSON.parse(JSON.stringify(this.originalData));
-        },
-        // Makes the caption text left aligned
-        makeCaptionLeft: function(){
-            const data = Object.assign({}, this.dataSource);
-            data.chart.captionAlignment = 'left';
-            this.dataSource = data;
+        onChangeTheme: function (e) {
+            const chart = this.$refs.fc.chartObj,
+                theme = e.target.value.toLowerCase();
+            chart.setChartAttribute('theme', theme);
         }
-    }
 });`,
         options: {
             width: '100%',
@@ -146,13 +154,13 @@ var app = new Vue({
             type: "column2d",
             dataFormat: "json",
             creditLabel: 'false',
-        },
-        dataSource: null
+        }
         }
     },
-    created: function(){
-        this.dataSource = JSON.parse(this.sourceData)
-        this.originalData = JSON.parse(this.sourceData);
+    computed: {
+        dataSource: function(){
+            return JSON.parse(this.sourceData)
+        }
     },
     methods:{
         onChangeTheme: function (e) {

@@ -225,6 +225,43 @@ To attach event listeners to FusionCharts, you can use the `v-on` or `@` operato
 @eventName="eventHandler">
 </fusioncharts>
 ```
+Where `eventName` can be any fusioncharts event. You can find the list of events at [fusioncharts devcenter](https://www.fusioncharts.com/dev/api/fusioncharts/fusioncharts-events)
+
+## Working with APIs
+
+To call APIs we will need the chart object. To get the chart object from the component we can use `ref` and retrieve it from `this.$refs[refname].chartObj`
+
+```html
+<fusioncharts
+:type="type"
+:width="width"
+:height="height"
+:dataFormat="dataFormat"
+:dataSource="dataSource"
+@dataPlotRollover="onDataPlotRollover"
+ref="fc">
+</fusioncharts>
+```
+Now, we can access the chart object from `this.$refs.fc.chartObj`
+
+```js
+var app = new Vue({
+    el: '#chart',
+    data: {
+        type: 'Pie2D',
+        width: '500',
+        height: '300',
+        dataFormat: 'json',
+        dataSource: myDataSource,
+        },
+    methods:{
+        onDataPlotRollover: function (e) {
+            this.$refs.fc.chartObj.slicePlotItem(0);  
+        }
+    }
+});
+```
+This example will slice a Pie2d section when you rollover the chart. 
 
 ## Contributing
 

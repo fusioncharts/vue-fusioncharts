@@ -27,6 +27,7 @@ import DynamicallyAdd from './samples/DynamicallyAdd'
 import UpdateChartAttributeApi from './samples/UpdateChartAttributeApi'
 import SpecialChartApi from './samples/SpecialChartApi'
 import UpdateChartType from './samples/UpdateChartType'
+import Annotation from './samples/Annotation'
 
 import * as utils from './../utils/utils'
 import appConfig from './../config/app.config'
@@ -81,7 +82,8 @@ export default {
     DynamicallyAdd,
     UpdateChartAttributeApi,
     SpecialChartApi,
-    UpdateChartType
+    UpdateChartType,
+    Annotation
   }
 }
 </script>

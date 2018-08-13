@@ -20,7 +20,8 @@ export default {
         "17": "dynamically-add",
         "18": "update-chart-attribute-api",
         "19": "special-chart-api",
-        "20": "update-chart-type"
+        "20": "update-chart-type",
+        "21": "annotation"
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -161,6 +162,13 @@ export default {
         "20": {
             "title": "Change chart type at run time",
             "desc": "Change the chart type after it has been rendered.",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "21": {
+            "title": "Use Annotations",
+            "desc": "Use of annotations in charts.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

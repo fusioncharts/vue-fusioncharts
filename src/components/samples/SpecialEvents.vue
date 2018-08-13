@@ -121,7 +121,7 @@ var app = new Vue({
     },
     methods: {
         dataplotdragend: function(){
-            this.message = 'Chart has completed rendering.'
+            this.message = \`You have dragged a plot of <b>\${e.data.datasetName}</b> dataset, its previous value was <b>\${e.data.startValue}</b> and its current value is <b>\${e.data.endValue}</b>\`
         }
     }
 });`,
@@ -142,7 +142,7 @@ var app = new Vue({
     },
     methods: {
         dataplotdragend: function(e){
-            this.message = `You have dragged a plot of ${e.data.datasetName} dataset, its previous value was ${e.data.startValue} and its current value is ${e.data.endValue}`
+            this.message = `You have dragged a plot of <b>${e.data.datasetName}</b> dataset, its previous value was <b>${e.data.startValue}</b> and its current value is <b>${e.data.endValue}</b>`;
         }
     }
 }

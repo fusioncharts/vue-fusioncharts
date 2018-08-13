@@ -19,7 +19,8 @@ export default {
         "16": "special-events",
         "17": "dynamically-add",
         "18": "update-chart-attribute-api",
-        "19": "special-chart-api"
+        "19": "special-chart-api",
+        "20": "update-chart-type"
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -153,6 +154,13 @@ export default {
         "19": {
             "title": "Slice data plots",
             "desc": "Click the button to slice out Microsoft from the rest of the plots.",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "20": {
+            "title": "Change chart type at run time",
+            "desc": "Change the chart type after it has been rendered.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

@@ -6,7 +6,7 @@
         @dataplotdragend="dataplotdragend"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-    <div class="text-style" >{{message}}</div>
+    <div class="text-style" v-html='message'></div>
     </sample-wrapper>
 </template>
 
@@ -96,16 +96,16 @@ export default {
     :dataSource="dataSource"
     @dataplotdragend="dataplotdragend"
     ></fusioncharts>
-    <div>{{message}}</div>
+    <div v-html='message'></div>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
+import DragColumn from 'fusioncharts/viz/dragcolumn'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D)
+Vue.use(VueFusionCharts, FusionCharts, DragColumn)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

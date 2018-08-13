@@ -7,7 +7,8 @@
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
         <div :style="{textAlign: 'center'}">
-            <button class='btn btn-outline-secondary btn-sm' @click="sliceItems">Slice out Microsoft</button>
+            <button class='btn btn-outline-secondary btn-sm' @click="sliceOutItems">Slice out Microsoft</button>
+            <button class='btn btn-outline-secondary btn-sm' @click="sliceInItems">Slice in Microsoft</button>
         </div>
     </sample-wrapper>
 </template>
@@ -57,7 +58,8 @@ export default {
     ref="fc"
     ></fusioncharts>
     <div>
-        <button @click="sliceItems">Slice out Microsoft</button>
+        <button @click="sliceOutItems">Slice out Microsoft</button>
+        <button @click="sliceInItems">Slice in Microsoft</button>
     </div>
 </div>`,
 sourceJS:
@@ -82,9 +84,13 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods: {
-        sliceItems: function () {
+        sliceOutItems: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.slicePlotItem(1);
+            chart.slicePlotItem(1, true);
+        },
+        sliceInItems: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.slicePlotItem(1, false);
         }
     }
 });`,
@@ -102,9 +108,13 @@ var app = new Vue({
         }
     },
     methods: {
-        sliceItems: function () {
+        sliceOutItems: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.slicePlotItem(1);
+            chart.slicePlotItem(1, true);
+        },
+        sliceInItems: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.slicePlotItem(1, false);
         }
     }
 }

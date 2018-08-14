@@ -6,7 +6,7 @@
         @dataplotdragend="dataplotdragend"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-    <div class="text-style" v-html='message'></div>
+    <div class="chart-hover" v-html='message'></div>
     </sample-wrapper>
 </template>
 
@@ -132,7 +132,7 @@ var app = new Vue({
             dataFormat: "json",
             creditLabel: 'false'
             },
-        message: ''
+        message: 'You have dragged a plot of ______ dataset, its previous value was _______ and its current value is _______'
         }
     },
     computed: {
@@ -142,6 +142,7 @@ var app = new Vue({
     },
     methods: {
         dataplotdragend: function(e){
+          console.log(e)
             this.message = `You have dragged a plot of <b>${e.data.datasetName}</b> dataset, its previous value was <b>${e.data.startValue}</b> and its current value is <b>${e.data.endValue}</b>`;
         }
     }

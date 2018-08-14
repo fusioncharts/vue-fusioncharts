@@ -6,7 +6,7 @@
         @disposed="disposed"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-        <div class="text-style" v-html="message" ></div>
+        <div class="chart-hover" v-html="message" ></div>
         <br>
         <div :style="{textAlign: 'center'}">
             <button class='btn btn-outline-secondary btn-sm' @click="attachHandler">TRACK DATA PLOT CLICK</button>
@@ -114,7 +114,8 @@ var app = new Vue({
         height: '400',
         type: 'column2d',
         dataFormat: 'json',
-        dataSource: dataSource
+        dataSource: dataSource,
+        message: defaultMessage
     },
     methods: {
         attachHandler: function () {

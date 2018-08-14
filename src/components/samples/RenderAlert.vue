@@ -6,7 +6,7 @@
         @disposed="disposed"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-    <div class="text-style" >{{message}}</div>
+    <div class="chart-hover" >{{message}}</div>
     </sample-wrapper>
 </template>
 

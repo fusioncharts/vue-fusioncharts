@@ -86,18 +86,28 @@ export default {
     ref="fc"
     ></fusioncharts>
     <div>
+        <div id="container" ref="container">
+            <fusioncharts
+            :options="options"
+            :dataSource="dataSource"
+            ref="fc"
+            ></fusioncharts>
+        </div>
+    </div>
+    <br />
+    <div class="change-type">
         <div>
-            <input name='chartType' type="radio" @change="onChartSizeChange" value="Column2d" checked/>
-            <label>Column 2D Chart</label>
-            </div>
-            <div>
-            <input name='chartType' type="radio" @change="onChartSizeChange" value="Bar2d" />
-            <label>Bar 2D Chart</label>
-            </div>
-            <div>
-            <input name='chartType' type="radio" @change="onChartSizeChange" value="Line" />
-            <label>Line 2D Chart</label>
-            </div>
+        <input name='chartSize' type="radio" @change="onChartSizeChange" value="400x250"/>
+        <label>400 &#10005 250</label>
+        </div>
+        <div>
+        <input name='chartSize' type="radio" @change="onChartSizeChange" value="600x350" checked/>
+        <label>600 &#10005 350</label>
+        </div>
+        <div>
+        <input name='chartSize' type="radio" @change="onChartSizeChange" value="700x400" />
+        <label>700 &#10005 400</label>
+        </div>
     </div>
 </div>`,
 sourceJS:
@@ -127,10 +137,12 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods:{
+        // changes the height and width of the parent container of FusionCharts
         onChartSizeChange: function (e) {
-            const chart = this.$refs.fc.chartObj,
-                type = e.target.value.toLowerCase();
-            chart.chartType(type);
+            const container = this.$refs.container,
+                size = e.target.value.split('x');
+            container.style.width = size[0] + 'px';
+            container.style.height = size[1] + 'px';
         }
     });`,
         options: {

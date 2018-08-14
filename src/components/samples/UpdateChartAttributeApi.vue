@@ -150,6 +150,7 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods:{
+        // sets the theme attribute through FusionCharts API 'setChartAttribute'
         onChangeTheme: function (e) {
             const chart = this.$refs.fc.chartObj,
                 theme = e.target.value.toLowerCase();

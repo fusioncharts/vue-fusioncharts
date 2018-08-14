@@ -123,6 +123,7 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods: {
+        // uses the data of the event 'dataPlotDragEnd' and formats them using FusionCharts formatNumber API
         dataplotdragend: function(e){
           let startValue = FusionCharts.formatNumber(e.data.startValue),
             endValue = FusionCharts.formatNumber(e.data.endValue);
@@ -145,7 +146,7 @@ var app = new Vue({
             return JSON.parse(this.sourceData)
         }
     },
-    methods: {
+    methods: { 
         dataplotdragend: function(e){
           let startValue = FusionCharts.formatNumber(e.data.startValue),
             endValue = FusionCharts.formatNumber(e.data.endValue);

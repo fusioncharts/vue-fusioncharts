@@ -121,6 +121,7 @@ var app = new Vue({
         message: defaultMessage
     },
     methods: {
+        // attach event handler to 'dataPlotClick' event once 
         attachHandler: function () {
             if (attached) return;
             attached = true;
@@ -128,11 +129,13 @@ var app = new Vue({
             this.message = 'Click on a plot to see the value along with the label'
             FusionCharts.addEventListener('dataPlotClick', handler);
         },
+        // removes the event handler of 'dataPlotClick' when not required
         removeHandler: function () {
             attached = false;
             this.message = defaultMessage;
             FusionCharts.removeEventListener('dataPlotClick', handler);
         },
+        // removes the event handler of 'dataPlotClick' when chart get disposed
         disposed: function () {
             FusionCharts.removeEventListener('dataPlotClick', handler);
         }

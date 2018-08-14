@@ -105,10 +105,13 @@ var app = new Vue({
         dataSource: dataSource
     },
     mounted: function () {
+            // binds the function with the context of vue
             bindedFn = handler.bind(this);
+            // adds listener in FusionCharts
             FusionCharts.addEventListener('rendered', bindedFn);
         },
     methods: {
+        // removes the listener when the instance of chart gets disposed
         disposed: function () {
             FusionCharts.removeEventListener('rendered', bindedFn);
         }

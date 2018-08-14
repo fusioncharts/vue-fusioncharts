@@ -87,10 +87,12 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods: {
+        // uses chartInstance API 'slicePlotItem' to slice out an item
         sliceOutItems: function () {
             const chart = this.$refs.fc.chartObj;
             chart.slicePlotItem(1, true);
         },
+        // uses chartInstance API 'slicePlotItem' to slice in an item
         sliceInItems: function () {
             const chart = this.$refs.fc.chartObj;
             chart.slicePlotItem(1, false);

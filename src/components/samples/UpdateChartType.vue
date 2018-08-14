@@ -123,6 +123,7 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods:{
+        // uses the chartInstance API 'chartType' to change the chart type after render
         onChartTypeChange: function (e) {
             const chart = this.$refs.fc.chartObj,
                 type = e.target.value.toLowerCase();

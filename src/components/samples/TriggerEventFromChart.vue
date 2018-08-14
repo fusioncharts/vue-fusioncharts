@@ -6,7 +6,7 @@
         @dataplotRollover="dataplotRollover"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-        <div v-html="displayValue" class="chart-hover" />
+        <div v-html="displayValue" class="text-style" />
     </sample-wrapper>
 </template>
 

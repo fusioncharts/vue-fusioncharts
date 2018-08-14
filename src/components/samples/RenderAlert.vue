@@ -13,7 +13,8 @@
 <script>
 import mixin from './common/SamplesMixin'
 import FusionCharts from 'fusioncharts'
-var handler = function () { this.message = 'Chart has completed rendering.' };
+var handler = function () { this.message = 'Chart has completed rendering.' },
+    bindedFn;
 export default {
     mixins:[mixin],
     name: 'ChartInteractivity',
@@ -88,7 +89,8 @@ Vue.use(VueFusionCharts, FusionCharts, Column2D)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/,
-    handler = function () { this.message = 'Chart has completed rendering.' };
+    handler = function () { this.message = 'Chart has completed rendering.' },
+    bindedFn;
 
 var app = new Vue({
     el: '#app',
@@ -100,12 +102,12 @@ var app = new Vue({
         dataSource: dataSource
     },
     mounted: function () {
-            handler = handler.bind(this);
-            FusionCharts.addEventListener('rendered', handler);
+            bindedFn = handler.bind(this);
+            FusionCharts.addEventListener('rendered', bindedFn);
         },
     methods: {
         disposed: function () {
-            FusionCharts.removeEventListener('rendered', handler);
+            FusionCharts.removeEventListener('rendered', bindedFn);
         }
     }
     }
@@ -126,12 +128,12 @@ var app = new Vue({
         }
     },
     mounted: function () {
-            handler = handler.bind(this);
-            FusionCharts.addEventListener('rendered', handler);
+            bindedFn = handler.bind(this);
+            FusionCharts.addEventListener('rendered', bindedFn);
         },
     methods: {
         disposed: function () {
-            FusionCharts.removeEventListener('rendered', handler);
+            FusionCharts.removeEventListener('rendered', bindedFn);
         }
     }
 }

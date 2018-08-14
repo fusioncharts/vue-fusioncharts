@@ -120,8 +120,10 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods: {
-        dataplotdragend: function(){
-            this.message = \`You have dragged a plot of <b>\${e.data.datasetName}</b> dataset, its previous value was <b>\${e.data.startValue}</b> and its current value is <b>\${e.data.endValue}</b>\`
+        dataplotdragend: function(e){
+          let startValue = FusionCharts.formatNumber(e.data.startValue),
+            endValue = FusionCharts.formatNumber(e.data.endValue);
+          this.message = \`You have dragged a plot of <b>\${e.data.datasetName}</b> dataset, its previous value was <b>\${startValue}</b> and its current value is <b>\${endValue}</b>\`;
         }
     }
 });`,

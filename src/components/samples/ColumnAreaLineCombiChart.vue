@@ -93,8 +93,11 @@ import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import MSCombi2D from 'fusioncharts/viz/mscombi2d'
 
+//import the theme
+import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, MSCombi2D)
+Vue.use(VueFusionCharts, FusionCharts, MSCombi2D, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/; 

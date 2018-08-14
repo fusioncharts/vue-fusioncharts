@@ -97,8 +97,11 @@ import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d'
 
+//import the theme
+import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D)
+Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var handler = function (e) {

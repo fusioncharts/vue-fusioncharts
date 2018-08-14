@@ -159,10 +159,12 @@ sourceJS:
 import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d'
-import Pie2D from 'fusioncharts/viz/pie2d';
+
+//import the theme
+import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, Pie2D)
+Vue.use(VueFusionCharts, FusionCharts, Column2D, Pie2D, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/; 

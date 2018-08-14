@@ -101,8 +101,11 @@ import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Line from 'fusioncharts/viz/line'
 
+//import the theme
+import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Line)
+Vue.use(VueFusionCharts, FusionCharts, Line, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

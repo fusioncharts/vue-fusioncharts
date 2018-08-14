@@ -102,8 +102,11 @@ import FusionCharts from 'fusioncharts/core';
 import Maps from 'fusioncharts/maps'
 import World from 'fusioncharts/maps/es/fusioncharts.world'
 
+//import the theme
+import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Maps, World)
+Vue.use(VueFusionCharts, FusionCharts, Maps, World, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/; 

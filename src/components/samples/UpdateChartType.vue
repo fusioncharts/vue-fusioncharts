@@ -104,8 +104,11 @@ import Column2D from 'fusioncharts/viz/column2d'
 import Bar2D from 'fusioncharts/viz/bar2d'
 import Line from 'fusioncharts/viz/line'
 
+//import the theme
+import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, Bar2D, Line)
+Vue.use(VueFusionCharts, FusionCharts, Column2D, Bar2D, Line, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

@@ -126,8 +126,16 @@ import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d'
 
+//import the themes
+import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import * as GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
+import * as CandyTheme from 'fusioncharts/themes/es/fusioncharts.theme.candy'
+import * as ZuneTheme from 'fusioncharts/themes/es/fusioncharts.theme.zune'
+import * as OceanTheme from 'fusioncharts/themes/es/fusioncharts.theme.ocean'
+import * as CarbonTheme from 'fusioncharts/themes/es/fusioncharts.theme.carbon'
+
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D)
+Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme, GammelTheme, CandyTheme, ZuneTheme, OceanTheme, CarbonTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

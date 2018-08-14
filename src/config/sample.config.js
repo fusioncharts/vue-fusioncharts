@@ -20,8 +20,9 @@ export default {
         "17": "dynamically-add",
         "18": "update-chart-attribute-api",
         "19": "special-chart-api",
-        "20": "update-chart-type",
-        "21": "annotation"
+        "20": "dynamic-size-change",
+        "21": "update-chart-type",
+        "22": "annotation"
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -160,13 +161,20 @@ export default {
             }
         },
         "20": {
+            "title": "Responsive charts",
+            "desc": "Select any of the dimensions given in the list. The chart adjusts itself to its alloted percentage",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "21": {
             "title": "Change chart type at run time",
             "desc": "Change the chart type after it has been rendered.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "21": {
+        "22": {
             "title": "Use Annotations",
             "desc": "Use of annotations in charts.",
             "interactiveViewURL": {

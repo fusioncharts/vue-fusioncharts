@@ -411,3 +411,13 @@ body {
     margin-right: 1.4rem
   }
 }
+
+
+.dynamic-container{
+  height: 350px;
+  width: 600px;
+}
+.min-size{
+  height: 400px;
+  width: 700px;
+}

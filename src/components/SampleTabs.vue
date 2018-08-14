@@ -26,6 +26,7 @@ import SpecialEvents from './samples/SpecialEvents'
 import DynamicallyAdd from './samples/DynamicallyAdd'
 import UpdateChartAttributeApi from './samples/UpdateChartAttributeApi'
 import SpecialChartApi from './samples/SpecialChartApi'
+import DynamicSizeChange from './samples/DynamicSizeChnage'
 import UpdateChartType from './samples/UpdateChartType'
 import Annotation from './samples/Annotation'
 
@@ -82,6 +83,7 @@ export default {
     DynamicallyAdd,
     UpdateChartAttributeApi,
     SpecialChartApi,
+    DynamicSizeChange,
     UpdateChartType,
     Annotation
   }

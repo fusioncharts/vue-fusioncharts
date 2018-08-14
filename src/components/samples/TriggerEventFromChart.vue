@@ -94,7 +94,7 @@ var app = new Vue({
     },
     methods: {
         dataplotRollover: (e) => {
-            this.displayValue = \`You're are currently hovering over <strong>\${e.data.categoryLabel}</strong> whose value is <strong>\${e.data.displayValue}</strong>\`;
+            this.displayValue = \`You are currently hovering over <strong>\${e.data.categoryLabel}</strong> whose value is <strong>\${e.data.displayValue}</strong>\`;
         }
     }
 });`,
@@ -115,7 +115,7 @@ var app = new Vue({
     },
     methods: {
         dataplotRollover: function (e) {
-            this.displayValue = `You're are currently hovering over <strong>${e.data.categoryLabel}</strong> whose value is <strong>${e.data.displayValue}</strong>`;
+            this.displayValue = `You are currently hovering over <strong>${e.data.categoryLabel}</strong> whose value is <strong>${e.data.displayValue}</strong>`;
         }
     }
 }

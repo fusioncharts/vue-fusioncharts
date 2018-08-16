@@ -99,10 +99,7 @@ var app = new Vue({
         // Updates the chart data
         updateData: function(){
             const data = Object.assign({}, this.dataSource); //clones data
-            data.data[2].label = 'This Label is Updated';
             data.data[2].value = this.getRandomNumber();
-
-            data.data[3].label = 'This is updated as well';
             data.data[3].value = this.getRandomNumber();
             this.dataSource = data;
         },

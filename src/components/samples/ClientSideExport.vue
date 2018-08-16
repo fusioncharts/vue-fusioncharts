@@ -264,7 +264,7 @@ var app = new Vue({
         height: '400',
         type: 'column2d',
         dataFormat: 'json',
-        dataSource: dataSource.columnData
+        dataSource: dataSource
     },
     methods: {
         // Export to pdf

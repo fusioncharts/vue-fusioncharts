@@ -19,7 +19,7 @@
 import mixin from './common/SamplesMixin'
 import FusionCharts from 'fusioncharts'
 var handler = function (e) {
-        this.message = `You have clicked plot ${e.data.categoryLabel} whose value is ${e.data.displayValue}.` 
+        this.message = `You have clicked plot <b>${e.data.categoryLabel}</b> whose value is <b>${e.data.displayValue}</b>.` 
      },
     attached = false,
     defaultMessage = 'Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataPlotClick event';
@@ -84,7 +84,7 @@ export default {
     :dataSource="dataSource"
     @disposed="disposed"
     ></fusioncharts>
-    <div class="text-style" v-html="message" ></div>
+    <div v-html="message" ></div>
     <br>
     <div>
         <button @click="attachHandler">TRACK DATA PLOT CLICK</button>
@@ -104,8 +104,10 @@ import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
 Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme)
 
 // Copy datasource from 'Data' tab
+var dataSource = /*{ "chart": {..}, ..}*/;
+
 var handler = function (e) {
-        this.message = \`You have clicked plot \${e.data.categoryLabel} whose value is \${e.data.displayValue}.\`
+        this.message = \`You have clicked plot <b>\${e.data.categoryLabel}</b> whose value is <b>\${e.data.displayValue}</b>.\`
      },
     attached = false,
     defaultMessage = 'Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataPlotClick event';
@@ -139,7 +141,6 @@ var app = new Vue({
         disposed: function () {
             FusionCharts.removeEventListener('dataPlotClick', handler);
         }
-    }
     }
 });`,
         options: {

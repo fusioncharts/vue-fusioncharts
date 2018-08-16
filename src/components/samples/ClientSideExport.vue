@@ -237,7 +237,7 @@ export default {
     dataFormat="json"
     :dataSource="dataSource.stackedColumnData">
     </fusioncharts>
-    <div :style="{textAlign: 'center'}">
+    <div>
         <button @click="exportToPdf">Export both charts as a single PDF</button>
     </div>
 </div>`,

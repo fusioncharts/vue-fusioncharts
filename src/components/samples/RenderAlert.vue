@@ -117,7 +117,6 @@ var app = new Vue({
             FusionCharts.removeEventListener('rendered', bindedFn);
         }
     }
-    }
 });`,
         options: {
             width: '100%',

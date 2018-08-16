@@ -94,7 +94,7 @@ var app = new Vue({
     },
     methods: {
         // uses the data info of the event 'dataplotrollover' and represents it
-        dataplotRollover: (e) => {
+        dataplotRollover: function (e) {
             this.displayValue = \`You are currently hovering over <strong>\${e.data.categoryLabel}</strong> whose value is <strong>\${e.data.displayValue}</strong>\`;
         }
     }

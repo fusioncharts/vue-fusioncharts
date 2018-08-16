@@ -6,7 +6,7 @@
         @dataplotRollover="dataplotRollover"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-        <div v-html="displayValue" class="text-style" />
+        <div v-html="displayValue" class="text-style"></div>
     </sample-wrapper>
 </template>
 
@@ -65,7 +65,7 @@ export default {
     :dataSource="dataSource"
     @dataplotRollover="dataplotRollover"
     ></fusioncharts>
-    <div v-html="displayValue"/>
+    <div v-html="displayValue"></div>
 </div>`,
         sourceJS:
 `import Vue from 'vue';

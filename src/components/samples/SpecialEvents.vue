@@ -120,13 +120,14 @@ var app = new Vue({
         height: '400',
         type: 'dragcolumn2d',
         dataFormat: 'json',
-        dataSource: dataSource
+        dataSource: dataSource,
+        message: 'You have dragged a plot of ______ dataset, its previous value was _______ and its current value is _______'
     },
     methods: {
         // uses the data of the event 'dataPlotDragEnd' and formats them using FusionCharts formatNumber API
         dataplotdragend: function(e){
-          let startValue = FusionCharts.formatNumber(e.data.startValue),
-            endValue = FusionCharts.formatNumber(e.data.endValue);
+          let startValue = FusionCharts.formatNumber(e.data.startValue, { decimals: 2 }),
+            endValue = FusionCharts.formatNumber(e.data.endValue, { decimals: 2 });
           this.message = \`You have dragged a plot of <b>\${e.data.datasetName}</b> dataset, its previous value was <b>\${startValue}</b> and its current value is <b>\${endValue}</b>\`;
         }
     }
@@ -148,8 +149,8 @@ var app = new Vue({
     },
     methods: { 
         dataplotdragend: function(e){
-          let startValue = FusionCharts.formatNumber(e.data.startValue),
-            endValue = FusionCharts.formatNumber(e.data.endValue);
+          let startValue = FusionCharts.formatNumber(e.data.startValue, { decimals: 2 }),
+            endValue = FusionCharts.formatNumber(e.data.endValue, { decimals: 2 });
           this.message = `You have dragged a plot of <b>${e.data.datasetName}</b> dataset, its previous value was <b>${startValue}</b> and its current value is <b>${endValue}</b>`;
         }
     }

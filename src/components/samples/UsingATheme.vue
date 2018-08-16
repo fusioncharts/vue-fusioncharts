@@ -70,7 +70,7 @@ import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d'
 
 //import the theme
-import * as GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
+import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
 
 // register VueFusionCharts component
 Vue.use(VueFusionCharts, FusionCharts, Column2D, GammelTheme)

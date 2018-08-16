@@ -102,7 +102,7 @@ import FusionCharts from 'fusioncharts/core';
 import Line from 'fusioncharts/viz/line'
 
 //import the theme
-import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
 Vue.use(VueFusionCharts, FusionCharts, Line, FusionTheme)

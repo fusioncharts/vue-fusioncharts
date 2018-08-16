@@ -103,7 +103,7 @@ import Maps from 'fusioncharts/maps'
 import World from 'fusioncharts/maps/es/fusioncharts.world'
 
 //import the theme
-import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
 Vue.use(VueFusionCharts, FusionCharts, Maps, World, FusionTheme)

@@ -127,12 +127,12 @@ import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d'
 
 //import the themes
-import * as FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
-import * as GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
-import * as CandyTheme from 'fusioncharts/themes/es/fusioncharts.theme.candy'
-import * as ZuneTheme from 'fusioncharts/themes/es/fusioncharts.theme.zune'
-import * as OceanTheme from 'fusioncharts/themes/es/fusioncharts.theme.ocean'
-import * as CarbonTheme from 'fusioncharts/themes/es/fusioncharts.theme.carbon'
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
+import CandyTheme from 'fusioncharts/themes/es/fusioncharts.theme.candy'
+import ZuneTheme from 'fusioncharts/themes/es/fusioncharts.theme.zune'
+import OceanTheme from 'fusioncharts/themes/es/fusioncharts.theme.ocean'
+import CarbonTheme from 'fusioncharts/themes/es/fusioncharts.theme.carbon'
 
 // register VueFusionCharts component
 Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme, GammelTheme, CandyTheme, ZuneTheme, OceanTheme, CarbonTheme)

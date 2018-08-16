@@ -102,7 +102,8 @@ var app = new Vue({
         height: '400',
         type: 'column2d',
         dataFormat: 'json',
-        dataSource: dataSource
+        dataSource: dataSource,
+        message: 'You will see a notification here after chart completes rendering.'
     },
     mounted: function () {
             // binds the function with the context of vue

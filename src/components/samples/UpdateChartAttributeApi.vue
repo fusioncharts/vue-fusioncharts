@@ -156,6 +156,7 @@ var app = new Vue({
                 theme = e.target.value.toLowerCase();
             chart.setChartAttribute('theme', theme);
         }
+    }
 });`,
         options: {
             width: '100%',

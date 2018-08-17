@@ -162,7 +162,7 @@ export default {
         },
         "20": {
             "title": "Responsive charts",
-            "desc": "Select any of the dimensions given in the list. The chart adjusts itself to its alloted percentage",
+            "desc": "Select any of the dimensions given in the list. The chart adjusts itself to its allotted percentage",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

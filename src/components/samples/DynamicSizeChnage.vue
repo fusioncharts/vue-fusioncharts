@@ -77,18 +77,13 @@ export default {
 }`,
     sourceHTML:
 `<div id="app">
-    <fusioncharts
-    :type="type"
-    :width="width"
-    :height="height"
-    :dataFormat="dataFormat"
-    :dataSource="dataSource"
-    ref="fc"
-    ></fusioncharts>
     <div>
         <div id="container" ref="container">
             <fusioncharts
-            :options="options"
+            :type="type"
+            :width="width"
+            :height="height"
+            :dataFormat="dataFormat"
             :dataSource="dataSource"
             ref="fc"
             ></fusioncharts>
@@ -144,7 +139,8 @@ var app = new Vue({
             container.style.width = size[0] + 'px';
             container.style.height = size[1] + 'px';
         }
-    });`,
+    }
+});`,
         options: {
             width: '100%',
             height: '100%',

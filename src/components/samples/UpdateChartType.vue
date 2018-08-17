@@ -129,7 +129,8 @@ var app = new Vue({
                 type = e.target.value.toLowerCase();
             chart.chartType(type);
         }
-    });`,
+    }
+});`,
         options: {
             width: '100%',
             height: '400',

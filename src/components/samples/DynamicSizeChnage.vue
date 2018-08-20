@@ -14,15 +14,15 @@
                 <div class="change-type">
                     <div>
                     <input name='chartSize' type="radio" @change="onChartSizeChange" value="400x250"/>
-                    <label>400 &#10005 250</label>
+                    <label>400 &#10005; 250</label>
                     </div>
                     <div>
                     <input name='chartSize' type="radio" @change="onChartSizeChange" value="600x350" checked/>
-                    <label>600 &#10005 350</label>
+                    <label>600 &#10005; 350</label>
                     </div>
                     <div>
                     <input name='chartSize' type="radio" @change="onChartSizeChange" value="700x400" />
-                    <label>700 &#10005 400</label>
+                    <label>700 &#10005; 400</label>
                     </div>
                 </div>
     </sample-wrapper>

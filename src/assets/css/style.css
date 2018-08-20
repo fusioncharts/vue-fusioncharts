@@ -421,3 +421,11 @@ body {
   height: 400px;
   width: 700px;
 }
+
+.disable, .disable:hover, .disable:focus {
+  border-color: #d3d3d3;
+  color: #d3d3d3;
+  background: none;
+  box-shadow: none;
+  cursor: default;
+}

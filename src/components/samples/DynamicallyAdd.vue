@@ -9,8 +9,8 @@
         <div class="text-style" v-html="message" ></div>
         <br>
         <div :style="{textAlign: 'center'}">
-            <button class='btn btn-outline-secondary btn-sm' @click="attachHandler">TRACK DATA PLOT CLICK</button>
-            <button class='btn btn-outline-secondary btn-sm negitive-btn' @click="removeHandler">Reset Listener</button>
+            <button class='btn btn-outline-secondary btn-sm' v-bind:class="{disable: listen}" @click="attachHandler">Listen to data plot click event</button>
+            <button class='btn btn-outline-secondary btn-sm' v-bind:class="{disable: remove}" @click="removeHandler">Remove data plot click event</button>
         </div>
     </sample-wrapper>
 </template>
@@ -22,7 +22,7 @@ var handler = function (e) {
         this.message = `You have clicked plot <b>${e.data.categoryLabel}</b> whose value is <b>${e.data.displayValue}</b>.` 
      },
     attached = false,
-    defaultMessage = 'Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataPlotClick event';
+    defaultMessage = 'Click the below buttons to add an event dynamically to the chart.';
 export default {
     mixins:[mixin],
     name: 'ChartInteractivity',
@@ -87,8 +87,8 @@ export default {
     <div v-html="message" ></div>
     <br>
     <div>
-        <button @click="attachHandler">TRACK DATA PLOT CLICK</button>
-        <button @click="removeHandler">Reset Listener</button>
+        <button v-bind:class="{disabled: listen}" @click="attachHandler">Listen to data plot click event</button>
+        <button v-bind:class="{disabled: remove}" @click="removeHandler">Remove data plot click event</button>
     </div>
 </div>`,
 sourceJS:
@@ -110,7 +110,7 @@ var handler = function (e) {
         this.message = \`You have clicked plot <b>\${e.data.categoryLabel}</b> whose value is <b>\${e.data.displayValue}</b>.\`
      },
     attached = false,
-    defaultMessage = 'Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataPlotClick event';
+    defaultMessage = 'Click the below buttons to add an event dynamically to the chart.';
 
 var app = new Vue({
     el: '#app',
@@ -120,13 +120,17 @@ var app = new Vue({
         type: 'column2d',
         dataFormat: 'json',
         dataSource: dataSource,
+        listen: false,
+        remove: true,
         message: defaultMessage
     },
     methods: {
-        // attach event handler to 'dataPlotClick' event once 
+        // attach event handler to 'dataPlotClick' event once
         attachHandler: function () {
             if (attached) return;
             attached = true;
+            this.listen = true;
+            this.remove = false;
             handler = handler.bind(this);
             this.message = 'Click on a plot to see the value along with the label'
             FusionCharts.addEventListener('dataPlotClick', handler);
@@ -134,6 +138,8 @@ var app = new Vue({
         // removes the event handler of 'dataPlotClick' when not required
         removeHandler: function () {
             attached = false;
+            this.listen = false;
+            this.remove = true;
             this.message = defaultMessage;
             FusionCharts.removeEventListener('dataPlotClick', handler);
         },
@@ -150,6 +156,8 @@ var app = new Vue({
             dataFormat: "json",
             creditLabel: 'false'
             },
+        listen: false,
+        remove: true,
         message: defaultMessage
         }
     },
@@ -159,18 +167,25 @@ var app = new Vue({
         }
     },
     methods: {
+        // attach event handler to 'dataPlotClick' event once
         attachHandler: function () {
             if (attached) return;
             attached = true;
+            this.listen = true;
+            this.remove = false;
             handler = handler.bind(this);
             this.message = 'Click on a plot to see the value along with the label'
             FusionCharts.addEventListener('dataPlotClick', handler);
         },
+        // removes the event handler of 'dataPlotClick' when not required
         removeHandler: function () {
             attached = false;
+            this.listen = false;
+            this.remove = true;
             this.message = defaultMessage;
             FusionCharts.removeEventListener('dataPlotClick', handler);
         },
+        // removes the event handler of 'dataPlotClick' when chart get disposed
         disposed: function () {
             FusionCharts.removeEventListener('dataPlotClick', handler);
         }

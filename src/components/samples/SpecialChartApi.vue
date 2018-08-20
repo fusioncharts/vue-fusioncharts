@@ -6,9 +6,28 @@
         ref="fc"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-        <div :style="{textAlign: 'center'}">
-            <button class='btn btn-outline-secondary btn-sm' @click="sliceOutItems">Slice out Microsoft</button>
-            <button class='btn btn-outline-secondary btn-sm' @click="sliceInItems">Slice in Microsoft</button>
+        <br>
+        <div class="change-type">
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="none" checked/>
+            <label>None</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="0" />
+            <label>Apache</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="1" />
+            <label>Microsoft</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="2" />
+            <label>Zeus</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="3" />
+            <label>Other</label>
+            </div>
         </div>
     </sample-wrapper>
 </template>
@@ -24,29 +43,34 @@ export default {
         return {
         sourceData:
 `{
-	"chart": {
-		"caption": "Market Share of Web Servers",
-		"plottooltext": "<b>$percentValue</b> of web servers run on $label servers",
-		"showLegend": "1",
-		"showPercentValues": "1",
-		"legendPosition": "bottom",
-		"useDataPlotColorForLabels": "1",
-		"theme": "fusion"
-	},
-	"data": [{
-		"label": "Apache",
-		"value": "32647479"
-	}, {
-		"label": "Microsoft",
-		"value": "22100932"
-	}, {
-		"label": "Zeus",
-		"value": "14376"
-	}, {
-		"label": "Other",
-		"value": "18674221"
-	}]
-}`,
+    "chart": {
+    "caption": "Market Share of Web Servers",
+    "plottooltext": "<b>$percentValue</b> of web servers run on $label servers",
+    "showLegend": "1",
+    "showPercentValues": "1",
+    "legendPosition": "bottom",
+    "useDataPlotColorForLabels": "1",
+    "enableMultiSlicing": "0",
+    "theme": "fusion"
+    },
+    "data": [
+        {
+            "label": "Apache",
+            "value": "32647479"
+        },
+        {
+            "label": "Microsoft",
+            "value": "22100932"
+        }, {
+            "label": "Zeus",
+            "value": "14376"
+        }, {
+            "label": "Other",
+            "value": "18674221"
+        }
+    ]
+}
+`,
     sourceHTML:
 `<div id="app">
     <fusioncharts
@@ -57,10 +81,29 @@ export default {
     :dataSource="dataSource"
     ref="fc"
     ></fusioncharts>
-    <div>
-        <button @click="sliceOutItems">Slice out Microsoft</button>
-        <button @click="sliceInItems">Slice in Microsoft</button>
-    </div>
+    <br>
+        <div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="none" checked/>
+            <label>None</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="0" />
+            <label>Apache</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="1" />
+            <label>Microsoft</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="2" />
+            <label>Zeus</label>
+            </div>
+            <div>
+            <input name='items' type="radio" @change="onChangeItem" value="3" />
+            <label>Other</label>
+            </div>
+        </div>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
@@ -87,15 +130,18 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods: {
-        // uses chartInstance API 'slicePlotItem' to slice out an item
-        sliceOutItems: function () {
-            const chart = this.$refs.fc.chartObj;
-            chart.slicePlotItem(1, true);
-        },
-        // uses chartInstance API 'slicePlotItem' to slice in an item
-        sliceInItems: function () {
-            const chart = this.$refs.fc.chartObj;
-            chart.slicePlotItem(1, false);
+        onChangeItem: function (e) {
+            const chart = this.$refs.fc.chartObj,
+                value = e.target.value;
+            if (value === 'none') {
+                var iterator = this.dataSource.data.keys(),
+                    key;
+                for (key of iterator) {
+                    chart.slicePlotItem(key, false);
+                }
+            } else {
+                chart.slicePlotItem(value, true);
+            }
         }
     }
 });`,
@@ -113,13 +159,18 @@ var app = new Vue({
         }
     },
     methods: {
-        sliceOutItems: function () {
-            const chart = this.$refs.fc.chartObj;
-            chart.slicePlotItem(1, true);
-        },
-        sliceInItems: function () {
-            const chart = this.$refs.fc.chartObj;
-            chart.slicePlotItem(1, false);
+        onChangeItem: function (e) {
+            const chart = this.$refs.fc.chartObj,
+                value = e.target.value;
+            if (value === 'none') {
+                var iterator = this.dataSource.data.keys(),
+                    key;
+                for (key of iterator) {
+                    chart.slicePlotItem(key, false);
+                }
+            } else {
+                chart.slicePlotItem(value, true);
+            }
         }
     }
 }

@@ -17,8 +17,8 @@
                     <label>Bar 2D Chart</label>
                     </div>
                     <div>
-                    <input name='chartType' type="radio" @change="onChartTypeChange" value="Line" />
-                    <label>Line 2D Chart</label>
+                    <input name='chartType' type="radio" @change="onChartTypeChange" value="Pie2d" />
+                    <label>Pie 2D Chart</label>
                     </div>
                 </div>
     </sample-wrapper>
@@ -38,37 +38,29 @@ export default {
         sourceData:
 `{
     "chart": {
-        "caption": "Countries With Most Oil Reserves [2017-18]",
-        "subCaption": "In MMbbl = One Million barrels",
-        "xAxisName": "Country",
-        "yAxisName": "Reserves (MMbbl)",
-        "numberSuffix": "K",
+        "caption": "Recommended Portfolio Split",
+        "subCaption" : "For a net-worth of $1M",
+        "showValues":"1",
+        "showPercentInTooltip" : "0",
+        "numberPrefix" : "$",
+        "enableMultiSlicing":"1",
         "theme": "fusion"
     },
     "data": [{
-        "label": "Venezuela",
-        "value": "290"
+        "label": "Equity",
+        "value": "300000"
     }, {
-        "label": "Saudi",
-        "value": "260"
+        "label": "Debt",
+        "value": "230000"
     }, {
-        "label": "Canada",
-        "value": "180"
+        "label": "Bullion",
+        "value": "180000"
     }, {
-        "label": "Iran",
-        "value": "140"
+        "label": "Real-estate",
+        "value": "270000"
     }, {
-        "label": "Russia",
-        "value": "115"
-    }, {
-        "label": "UAE",
-        "value": "100"
-    }, {
-        "label": "US",
-        "value": "30"
-    }, {
-        "label": "China",
-        "value": "30"
+        "label": "Insurance",
+        "value": "20000"
     }]
 }`,
     sourceHTML:
@@ -91,8 +83,8 @@ export default {
             <label>Bar 2D Chart</label>
             </div>
             <div>
-            <input name='chartType' type="radio" @change="onChartTypeChange" value="Line" />
-            <label>Line 2D Chart</label>
+            <input name='chartType' type="radio" @change="onChartTypeChange" value="Pie2d" />
+            <label>Pie 2D Chart</label>
             </div>
     </div>
 </div>`,

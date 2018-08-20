@@ -1,19 +1,48 @@
 <template>
-            <sample-wrapper :panels="panels" :activePanel="selectedPanel">
-            <fusioncharts
+    <sample-wrapper :panels="panels" :activePanel="selectedPanel">
+                <fusioncharts
                 :options="options"
                 :dataSource="dataSource"
+                ref="fc"
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
-            </sample-wrapper>
+                <br />
+                <div class="change-type">
+                    <div>
+                    <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
+                    <label>Fusion</label>
+                    </div>
+                    <div>
+                    <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
+                    <label>Gammel</label>
+                    </div>
+                    <div>
+                    <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
+                    <label>Candy</label>
+                    </div>
+                    <div>
+                    <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
+                    <label>Zune</label>
+                    </div>
+                    <div>
+                    <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
+                    <label>Ocean</label>
+                    </div>
+                    <div>
+                    <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
+                    <label>Carbon</label>
+                    </div>
+                </div>
+    </sample-wrapper>
 </template>
 
 <script>
 
 import mixin from './common/SamplesMixin'
+
 export default {
-    mixins:[ mixin ],
-    name: 'UsingATheme',
+    mixins:[mixin],
+    name: 'UpdateChartAttribute',
     props:['showMessage'],
     data(){
         return {
@@ -25,7 +54,7 @@ export default {
         "xAxisName": "Country",
         "yAxisName": "Reserves (MMbbl)",
         "numberSuffix": "K",
-        "theme": "gammel"
+        "theme": "fusion"
     },
     "data": [{
         "label": "Venezuela",
@@ -61,7 +90,34 @@ export default {
     :height="height"
     :dataFormat="dataFormat"
     :dataSource="dataSource"
+    ref="fc"
     ></fusioncharts>
+    <div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
+        <label>Fusion</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
+        <label>Gammel</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
+        <label>Candy</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
+        <label>Zune</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
+        <label>Ocean</label>
+        </div>
+        <div>
+        <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
+        <label>Carbon</label>
+        </div>
+    </div>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
@@ -69,11 +125,16 @@ import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts/core';
 import Column2D from 'fusioncharts/viz/column2d'
 
-//import the theme
+//import the themes
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
 import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
+import CandyTheme from 'fusioncharts/themes/es/fusioncharts.theme.candy'
+import ZuneTheme from 'fusioncharts/themes/es/fusioncharts.theme.zune'
+import OceanTheme from 'fusioncharts/themes/es/fusioncharts.theme.ocean'
+import CarbonTheme from 'fusioncharts/themes/es/fusioncharts.theme.carbon'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, GammelTheme)
+Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme, GammelTheme, CandyTheme, ZuneTheme, OceanTheme, CarbonTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;
@@ -86,6 +147,14 @@ var app = new Vue({
         type: 'column2d',
         dataFormat: 'json',
         dataSource: dataSource
+    },
+    methods:{
+        // sets the theme attribute through FusionCharts API 'setChartAttribute'
+        onChangeTheme: function (e) {
+            const chart = this.$refs.fc.chartObj,
+                theme = e.target.value.toLowerCase();
+            chart.setChartAttribute('theme', theme);
+        }
     }
 });`,
         options: {
@@ -94,12 +163,19 @@ var app = new Vue({
             type: "column2d",
             dataFormat: "json",
             creditLabel: 'false',
-            }
+        }
         }
     },
     computed: {
         dataSource: function(){
             return JSON.parse(this.sourceData)
+        }
+    },
+    methods:{
+        onChangeTheme: function (e) {
+            const chart = this.$refs.fc.chartObj,
+                theme = e.target.value.toLowerCase();
+            chart.setChartAttribute('theme', theme);
         }
     }
 }

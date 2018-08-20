@@ -7,31 +7,11 @@
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
                 <br />
-                <div class="change-type">
-                    <div>
-                    <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
-                    <label>Fusion</label>
-                    </div>
-                    <div>
-                    <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
-                    <label>Gammel</label>
-                    </div>
-                    <div>
-                    <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
-                    <label>Candy</label>
-                    </div>
-                    <div>
-                    <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
-                    <label>Zune</label>
-                    </div>
-                    <div>
-                    <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
-                    <label>Ocean</label>
-                    </div>
-                    <div>
-                    <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
-                    <label>Carbon</label>
-                    </div>
+                <div :style="{textAlign: 'center'}">
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeCaption">Change Caption: Test Caption</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeXAxisName">Change X-Axis Name: Test X-AXIS</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeYAxisName">Change Y-Axis Name: Test Y-AXIS</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="resetAttr">Reset</button>
                 </div>
     </sample-wrapper>
 </template>
@@ -94,30 +74,10 @@ export default {
     ref="fc"
     ></fusioncharts>
     <div>
-        <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
-        <label>Fusion</label>
-        </div>
-        <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
-        <label>Gammel</label>
-        </div>
-        <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
-        <label>Candy</label>
-        </div>
-        <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
-        <label>Zune</label>
-        </div>
-        <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
-        <label>Ocean</label>
-        </div>
-        <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
-        <label>Carbon</label>
-        </div>
+        <button @click="changeCaption">Change Caption: Test Caption</button>
+        <button @click="changeXAxisName">Change X-Axis Name: Test X-AXIS</button>
+        <button @click="changeYAxisName">Change Y-Axis Name: Test Y-AXIS</button>
+        <button @click="resetAttr">Reset</button>
     </div>
 </div>`,
 sourceJS:
@@ -128,14 +88,9 @@ import Column2D from 'fusioncharts/viz/column2d'
 
 //import the themes
 import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
-import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
-import CandyTheme from 'fusioncharts/themes/es/fusioncharts.theme.candy'
-import ZuneTheme from 'fusioncharts/themes/es/fusioncharts.theme.zune'
-import OceanTheme from 'fusioncharts/themes/es/fusioncharts.theme.ocean'
-import CarbonTheme from 'fusioncharts/themes/es/fusioncharts.theme.carbon'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme, GammelTheme, CandyTheme, ZuneTheme, OceanTheme, CarbonTheme)
+Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;
@@ -150,11 +105,25 @@ var app = new Vue({
         dataSource: dataSource
     },
     methods:{
-        // sets the theme attribute through FusionCharts API 'setChartAttribute'
-        onChangeTheme: function (e) {
-            const chart = this.$refs.fc.chartObj,
-                theme = e.target.value.toLowerCase();
-            chart.setChartAttribute('theme', theme);
+        // chnages caption text
+        changeCaption: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.setChartAttribute('caption', 'Test Caption');
+        },
+        // changes x axis name
+        changeXAxisName: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.setChartAttribute('xAxisName', 'Test X-Axis');
+        },
+        // changes y axis name
+        changeYAxisName: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.setChartAttribute('yAxisName', 'Test Y-Axis');
+        },
+        // resets all chart attributes to default
+        resetAttr: function () {
+            const chart = this.$refs.fc.chartObj;
+            Object.entries(this.dataSource.chart).forEach(el => chart.setChartAttribute(el[0], el[1]));
         }
     }
 });`,
@@ -173,10 +142,21 @@ var app = new Vue({
         }
     },
     methods:{
-        onChangeTheme: function (e) {
-            const chart = this.$refs.fc.chartObj,
-                theme = e.target.value.toLowerCase();
-            chart.setChartAttribute('theme', theme);
+        changeCaption: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.setChartAttribute('caption', 'Test Caption');
+        },
+        changeXAxisName: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.setChartAttribute('xAxisName', 'Test X-Axis');
+        },
+        changeYAxisName: function () {
+            const chart = this.$refs.fc.chartObj;
+            chart.setChartAttribute('yAxisName', 'Test Y-Axis');
+        },
+        resetAttr: function () {
+            const chart = this.$refs.fc.chartObj;
+            Object.entries(this.dataSource.chart).forEach(el => chart.setChartAttribute(el[0], el[1]));
         }
     }
 }

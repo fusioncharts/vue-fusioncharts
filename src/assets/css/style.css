@@ -429,3 +429,7 @@ body {
   box-shadow: none;
   cursor: default;
 }
+.tables {
+  width: 100%;
+  text-align: left;
+}

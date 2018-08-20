@@ -126,8 +126,8 @@ export default {
             }
         },
         "15": {
-            "title": "Render Alert",
-            "desc": "Show a message that the chart is rendered on the ‘rendered’ event.",
+            "title": "Lifecycle events",
+            "desc": "This sample shows the basic lifecycle events of  FusionCharts.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

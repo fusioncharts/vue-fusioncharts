@@ -21,68 +21,71 @@ export default {
         sourceData:
 `{
       "chart": {
-        "caption": "App Publishing Trend",
-        "subCaption": "2012-2016",
-        "xAxisName": "Years",
-        "yAxisName" : "Total number of apps in store",
-        "formatnumberscale": "1",
-        "drawCrossLine":"1",
-        "plotToolText" : "<b>$dataValue</b> apps on $seriesName in $label",
-				"theme": "fusion"
+        "caption": "Android and iOS Devices Sales Projections",
+        "subCaption": "Drag the top of columns to adjust projections for 2017 & 2018",
+        "numberPrefix": "$",
+        "numberSuffix": "M",
+        "yaxismaxvalue": "200",
+        "theme": "fusion",
+        "plotToolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
       },
-
       "categories": [{
         "category": [{
-          "label": "2012"
+          "label": "2014",
+          "fontItalic": "0"
         }, {
-          "label": "2013"
+          "label": "2015",
+          "fontItalic": "0"
         }, {
-          "label": "2014"
+          "label": "2016",
+          "fontItalic": "0"
         }, {
-          "label": "2015"
-        },{
-        "label": "2016"
-        }
-        ]
+          "label": "2017 (Projected)"
+        }, {
+          "label": "2018 (Projected)"
+        }]
       }],
       "dataset": [{
-        "seriesname": "iOS App Store",
+        "seriesname": "Android Devices",
         "data": [{
-          "value": "125000"
+          "value": "73",
+          "alpha": "100",
+          "allowDrag": "0"
         }, {
-          "value": "300000"
+          "value": "80",
+          "alpha": "100",
+          "allowDrag": "0"
         }, {
-          "value": "480000"
+          "value": "97",
+          "alpha": "100",
+          "allowDrag": "0"
         }, {
-          "value": "800000"
+          "value": "110",
+          "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
         }, {
-          "value": "1100000"
+          "value": "180",
+          "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
         }]
       }, {
-        "seriesname": "Google Play Store",
+        "seriesname": "iOS Devices",
         "data": [{
-          "value": "70000"
+          "value": "63.2",
+          "alpha": "100",
+          "allowDrag": "0"
         }, {
-          "value": "150000"
+          "value": "68",
+          "alpha": "100",
+          "allowDrag": "0"
         }, {
-          "value": "350000"
+          "value": "82",
+          "alpha": "100",
+          "allowDrag": "0"
         }, {
-          "value": "600000"
-        },{
-          "value": "1400000"
-        }]
-      }, {
-        "seriesname": "Amazon AppStore",
-        "data": [{
-          "value": "10000"
+          "value": "99",
+          "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
         }, {
-          "value": "100000"
-        }, {
-          "value": "300000"
-        }, {
-          "value": "600000"
-        },{
-          "value": "900000"
+          "value": "150",
+          "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
         }]
       }]
     }`,
@@ -121,14 +124,14 @@ var app = new Vue({
         type: 'dragcolumn2d',
         dataFormat: 'json',
         dataSource: dataSource,
-        message: 'You have dragged a plot of ______ dataset, its previous value was _______ and its current value is _______'
+        message: 'Drag any column for years 2017 or 2018 to see updated value along with the label'
     },
     methods: {
         // uses the data of the event 'dataPlotDragEnd' and formats them using FusionCharts formatNumber API
         dataplotdragend: function(e){
           let startValue = FusionCharts.formatNumber(e.data.startValue, { decimals: 2 }),
             endValue = FusionCharts.formatNumber(e.data.endValue, { decimals: 2 });
-          this.message = \`You have dragged a plot of <b>\${e.data.datasetName}</b> dataset, its previous value was <b>\${startValue}</b> and its current value is <b>\${endValue}</b>\`;
+          this.message = \`<b>\${e.data.datasetName}</b> is modified to <b>\${endValue}M</b> from <b>\${startValue}M</b>\`;
         }
     }
 });`,
@@ -139,7 +142,7 @@ var app = new Vue({
             dataFormat: "json",
             creditLabel: 'false'
             },
-        message: 'You have dragged a plot of ______ dataset, its previous value was _______ and its current value is _______'
+        message: 'Drag any column for years 2017 or 2018 to see updated value along with the label'
         }
     },
     computed: {
@@ -151,7 +154,7 @@ var app = new Vue({
         dataplotdragend: function(e){
           let startValue = FusionCharts.formatNumber(e.data.startValue, { decimals: 2 }),
             endValue = FusionCharts.formatNumber(e.data.endValue, { decimals: 2 });
-          this.message = `You have dragged a plot of <b>${e.data.datasetName}</b> dataset, its previous value was <b>${startValue}</b> and its current value is <b>${endValue}</b>`;
+          this.message = `<b>${e.data.datasetName}</b> is modified to <b>${endValue}M</b> from <b>${startValue}M</b>`;
         }
     }
 }

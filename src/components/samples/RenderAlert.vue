@@ -21,12 +21,12 @@
                 <td>{{dataUpdatedEvent}}</td>
             </tr>
             <tr>
-                <td>drawComplete</td>
-                <td>{{drawCompleteEvent}}</td>
-            </tr>
-            <tr>
                 <td>renderComplete</td>
                 <td>{{renderCompleteEvent}}</td>
+            </tr>
+            <tr>
+                <td>animationComplete</td>
+                <td>{{animationCompleteEvent}}</td>
             </tr>
         </table>
     </div>
@@ -39,8 +39,8 @@ import FusionCharts from 'fusioncharts'
 var mapping = {
         beforedataupdate: 'beforeDataUpdateEvent',
         dataupdated: 'dataUpdatedEvent',
-        drawcomplete: 'drawCompleteEvent',
-        rendercomplete: 'renderCompleteEvent'
+        rendercomplete: 'renderCompleteEvent',
+        animationcomplete: 'animationCompleteEvent'
     },
     handler = function (e) {
         let doFormat = (text, reqLen) => {
@@ -73,7 +73,8 @@ export default {
         "xAxisName": "Country",
         "yAxisName": "Reserves (MMbbl)",
         "numberSuffix": "K",
-        "theme": "fusion"
+        "theme": "fusion",
+        "animationDuration":"2"
     },
     "data": [
         {
@@ -135,12 +136,12 @@ export default {
                 <td>{{dataUpdatedEvent}}</td>
             </tr>
             <tr>
-                <td>drawComplete</td>
-                <td>{{drawCompleteEvent}}</td>
-            </tr>
-            <tr>
                 <td>renderComplete</td>
                 <td>{{renderCompleteEvent}}</td>
+            </tr>
+            <tr>
+                <td>animationComplete</td>
+                <td>{{animationCompleteEvent}}</td>
             </tr>
         </table>
     </div>
@@ -162,8 +163,8 @@ var dataSource = /*{ "chart": {..}, ..}*/,
     mapping = {
         beforedataupdate: 'beforeDataUpdateEvent',
         dataupdated: 'dataUpdatedEvent',
-        drawcomplete: 'drawCompleteEvent',
-        rendercomplete: 'renderCompleteEvent'
+        rendercomplete: 'renderCompleteEvent',
+        animationcomplete: 'animationCompleteEvent'
     },
     // function to listen events and log time accordingly
     handler = function (e) {
@@ -195,8 +196,8 @@ var app = new Vue({
         dataSource: dataSource,
         beforeDataUpdateEvent: 'Not Fired',
         dataUpdatedEvent: 'Not Fired',
-        drawCompleteEvent: 'Not Fired',
-        renderCompleteEvent: 'Not Fired'
+        renderCompleteEvent: 'Not Fired',
+        animationCompleteEvent: 'Not Fired'
     },
     created: function () {
             // binds the function with the context of vue
@@ -204,16 +205,16 @@ var app = new Vue({
             // adds listener in FusionCharts
             FusionCharts.addEventListener('beforeDataUpdate', bindedFn);
             FusionCharts.addEventListener('dataUpdated', bindedFn);
-            FusionCharts.addEventListener('drawComplete', bindedFn);
             FusionCharts.addEventListener('renderComplete', bindedFn);
+            FusionCharts.addEventListener('animationComplete', bindedFn);
         },
     methods: {
         // removes the listener when the instance of chart gets disposed
         disposed: function () {
             FusionCharts.removeEventListener('beforeDataUpdate', bindedFn);
             FusionCharts.removeEventListener('dataUpdated', bindedFn);
-            FusionCharts.removeEventListener('drawComplete', bindedFn);
             FusionCharts.removeEventListener('renderComplete', bindedFn);
+            FusionCharts.removeEventListener('animationComplete', bindedFn);
         }
     }
 });`,
@@ -226,8 +227,8 @@ var app = new Vue({
             },
         beforeDataUpdateEvent: 'Not Fired',
         dataUpdatedEvent: 'Not Fired',
-        drawCompleteEvent: 'Not Fired',
-        renderCompleteEvent: 'Not Fired'
+        renderCompleteEvent: 'Not Fired',
+        animationCompleteEvent: 'Not Fired'
         }
     },
     computed: {
@@ -239,15 +240,15 @@ var app = new Vue({
             bindedFn = handler.bind(this);
             FusionCharts.addEventListener('beforeDataUpdate', bindedFn);
             FusionCharts.addEventListener('dataUpdated', bindedFn);
-            FusionCharts.addEventListener('drawComplete', bindedFn);
             FusionCharts.addEventListener('renderComplete', bindedFn);
+            FusionCharts.addEventListener('animationComplete', bindedFn);
         },
     methods: {
         disposed: function () {
             FusionCharts.removeEventListener('beforeDataUpdate', bindedFn);
             FusionCharts.removeEventListener('dataUpdated', bindedFn);
-            FusionCharts.removeEventListener('drawComplete', bindedFn);
             FusionCharts.removeEventListener('renderComplete', bindedFn);
+            FusionCharts.removeEventListener('animationComplete', bindedFn);
         }
     }
 }

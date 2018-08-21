@@ -4,28 +4,29 @@
         :options="options"
         :dataSource="dataSource"
         ref="fc"
+        @dataPlotClick="onSliceClick"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
         <br>
         <div class="change-type">
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="none" checked/>
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="none" checked/>
             <label>None</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="0" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="0" />
             <label>Apache</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="1" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="1" />
             <label>Microsoft</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="2" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="2" />
             <label>Zeus</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="3" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="3" />
             <label>Other</label>
             </div>
         </div>
@@ -51,7 +52,8 @@ export default {
     "legendPosition": "bottom",
     "useDataPlotColorForLabels": "1",
     "enableMultiSlicing": "0",
-    "theme": "fusion"
+    "theme": "fusion",
+    "showlegend":"0"
     },
     "data": [
         {
@@ -79,28 +81,29 @@ export default {
     :height="height"
     :dataFormat="dataFormat"
     :dataSource="dataSource"
+    @dataPlotClick="onSliceClick"
     ref="fc"
     ></fusioncharts>
     <br>
         <div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="none" checked/>
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="none" checked/>
             <label>None</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="0" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="0" />
             <label>Apache</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="1" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="1" />
             <label>Microsoft</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="2" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="2" />
             <label>Zeus</label>
             </div>
             <div>
-            <input name='items' type="radio" @change="onChangeItem" value="3" />
+            <input name='items' type="radio" v-model="radioValue" @change="onChangeItem" value="3" />
             <label>Other</label>
             </div>
         </div>
@@ -127,20 +130,30 @@ var app = new Vue({
         width: '100%',
         height: '400',
         dataFormat: 'json',
-        dataSource: dataSource
+        dataSource: dataSource,
+        radioValue: 'none',
+        lastActive: 'none'
     },
     methods: {
-        onChangeItem: function (e) {
+        // function to slice items when radio buttons are clicked using the slicePlotItems api
+        onChangeItem: function () {
             const chart = this.$refs.fc.chartObj,
-                value = e.target.value;
+                lastActive = this.lastActive,
+                value = this.radioValue;
+            this.lastActive = value;
             if (value === 'none') {
-                var iterator = this.dataSource.data.keys(),
-                    key;
-                for (key of iterator) {
-                    chart.slicePlotItem(key, false);
-                }
+                chart.slicePlotItem(lastActive, false);
             } else {
                 chart.slicePlotItem(value, true);
+            }
+        },
+        // function to actiavte radio buttons when plots are clicked
+        onSliceClick: function (e) {
+            var isSliced = e.data.isSliced;
+            if (isSliced) {
+                this.lastActive = this.radioValue = 'none'
+            } else {
+                this.lastActive = this.radioValue = e.data.index
             }
         }
     }
@@ -150,7 +163,9 @@ var app = new Vue({
                 width: "100%",
                 height: "400",
                 dataFormat: "json"
-            }
+            },
+        radioValue: 'none',
+        lastActive: 'none'
         }
     },
     computed: {
@@ -159,17 +174,23 @@ var app = new Vue({
         }
     },
     methods: {
-        onChangeItem: function (e) {
+        onChangeItem: function () {
             const chart = this.$refs.fc.chartObj,
-                value = e.target.value;
+                lastActive = this.lastActive,
+                value = this.radioValue;
+            this.lastActive = value;
             if (value === 'none') {
-                var iterator = this.dataSource.data.keys(),
-                    key;
-                for (key of iterator) {
-                    chart.slicePlotItem(key, false);
-                }
+                chart.slicePlotItem(lastActive, false);
             } else {
                 chart.slicePlotItem(value, true);
+            }
+        },
+        onSliceClick: function (e) {
+            var isSliced = e.data.isSliced;
+            if (isSliced) {
+                this.lastActive = this.radioValue = 'none'
+            } else {
+                this.lastActive = this.radioValue = e.data.index
             }
         }
     }

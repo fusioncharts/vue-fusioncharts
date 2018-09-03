@@ -21,7 +21,7 @@ import DrillDownChart from './samples/DrillDownChart'
 import RenderAWidget from './samples/RenderAWidget'
 import RenderAMap from './samples/RenderAMap'
 import UsingATheme from './samples/UsingATheme'
-import RenderAlert from './samples/RenderAlert'
+// import RenderAlert from './samples/RenderAlert'
 import SpecialEvents from './samples/SpecialEvents'
 import DynamicallyAdd from './samples/DynamicallyAdd'
 import UpdateChartAttributeApi from './samples/UpdateChartAttributeApi'
@@ -78,7 +78,7 @@ export default {
     RenderAWidget,
     RenderAMap,
     UsingATheme,
-    RenderAlert,
+    // RenderAlert,
     SpecialEvents,
     DynamicallyAdd,
     UpdateChartAttributeApi,

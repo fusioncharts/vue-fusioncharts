@@ -15,14 +15,14 @@ export default {
         "12": "render-a-widget",
         "13": "render-a-map",
         "14": "using-a-theme",
-        "15": "render-alert",
-        "16": "special-events",
-        "17": "dynamically-add",
-        "18": "update-chart-attribute-api",
-        "19": "special-chart-api",
-        "20": "dynamic-size-change",
-        "21": "update-chart-type",
-        "22": "annotation"
+        // "15": "render-alert",
+        "15": "special-events",
+        "16": "dynamically-add",
+        "17": "update-chart-attribute-api",
+        "18": "special-chart-api",
+        "19": "dynamic-size-change",
+        "20": "update-chart-type",
+        "21": "annotation"
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -125,56 +125,56 @@ export default {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
+        // "15": {
+        //     "title": "Lifecycle events",
+        //     "desc": "This sample shows the basic lifecycle events of  FusionCharts.",
+        //     "interactiveViewURL": {
+        //         "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+        //     }
+        // },
         "15": {
-            "title": "Lifecycle events",
-            "desc": "This sample shows the basic lifecycle events of  FusionCharts.",
-            "interactiveViewURL": {
-                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
-            }
-        },
-        "16": {
             "title": "Special Events",
             "desc": "Drag a projected column to see its change.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "17": {
+        "16": {
             "title": "Dynamically add chart event listener",
             "desc": "Clicking the button adds an event to the chart to track 'dataplotClick'.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "18": {
+        "17": {
             "title": "Update chart attribute through methods",
             "desc": "Change a chart attribute by calling FusionCharts methods.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "19": {
+        "18": {
             "title": "Slice data plots",
             "desc": "Click the button to slice out Microsoft from the rest of the plots.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "20": {
+        "19": {
             "title": "Responsive charts",
             "desc": "Select any of the dimensions given in the list. The chart adjusts itself to its allotted percentage",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "21": {
+        "20": {
             "title": "Change chart type at run time",
             "desc": "Change the chart type after it has been rendered.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "22": {
+        "21": {
             "title": "Use Annotations",
             "desc": "Use of annotations in charts.",
             "interactiveViewURL": {

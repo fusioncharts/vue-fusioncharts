@@ -134,7 +134,7 @@ export default {
         },
         "16": {
             "title": "Special Events",
-            "desc": "Drag a column column to see its change.",
+            "desc": "Drag a projected column to see its change.",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

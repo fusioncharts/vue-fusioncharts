@@ -29,6 +29,7 @@ import SpecialChartApi from './samples/SpecialChartApi'
 import DynamicSizeChange from './samples/DynamicSizeChnage'
 import UpdateChartType from './samples/UpdateChartType'
 import Annotation from './samples/Annotation'
+import LifeCycleEvents from './samples/LifeCycleEvents'
 
 import * as utils from './../utils/utils'
 import appConfig from './../config/app.config'
@@ -85,7 +86,8 @@ export default {
     SpecialChartApi,
     DynamicSizeChange,
     UpdateChartType,
-    Annotation
+    Annotation,
+    LifeCycleEvents
   }
 }
 </script>

@@ -122,19 +122,19 @@ export default {
 sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
 
 //import the themes
-import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
-import GammelTheme from 'fusioncharts/themes/es/fusioncharts.theme.gammel'
-import CandyTheme from 'fusioncharts/themes/es/fusioncharts.theme.candy'
-import ZuneTheme from 'fusioncharts/themes/es/fusioncharts.theme.zune'
-import OceanTheme from 'fusioncharts/themes/es/fusioncharts.theme.ocean'
-import CarbonTheme from 'fusioncharts/themes/es/fusioncharts.theme.carbon'
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
+import GammelTheme from 'fusioncharts/themes/fusioncharts.theme.gammel'
+import CandyTheme from 'fusioncharts/themes/fusioncharts.theme.candy'
+import ZuneTheme from 'fusioncharts/themes/fusioncharts.theme.zune'
+import OceanTheme from 'fusioncharts/themes/fusioncharts.theme.ocean'
+import CarbonTheme from 'fusioncharts/themes/fusioncharts.theme.carbon'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme, GammelTheme, CandyTheme, ZuneTheme, OceanTheme, CarbonTheme)
+Vue.use(VueFusionCharts, FusionCharts, Charts, FusionTheme, GammelTheme, CandyTheme, ZuneTheme, OceanTheme, CarbonTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

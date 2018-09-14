@@ -9,24 +9,22 @@
                 <div :style="{textAlign: 'center'}">
                     <button class='btn btn-outline-secondary btn-sm' @click="changeBackground">Change Chart Background</button>
                     <button class='btn btn-outline-secondary btn-sm' @click="makeCaptionLeft">Make Caption text left-aligned</button>
-                    <button class='btn btn-outline-secondary btn-sm' @click="resetAttr">Reset Attributes</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="resetAttr">Reset</button>
                 </div>
     </sample-wrapper>
 </template>
 
 <script>
-
-import mixin from './common/SamplesMixin'
-import extend from 'extend'
+import mixin from "./common/SamplesMixin";
+import extend from "extend";
 
 export default {
-    mixins:[mixin],
-    name: 'UpdateChartAttribute',
-    props:['showMessage'],
-    data(){
-        return {
-        sourceData:
-`{
+  mixins: [mixin],
+  name: "UpdateChartAttribute",
+  props: ["showMessage"],
+  data() {
+    return {
+      sourceData: `{
     "chart": {
         "caption": "Countries With Most Oil Reserves [2017-18]",
         "subCaption": "In MMbbl = One Million barrels",
@@ -61,8 +59,7 @@ export default {
         "value": "30"
     }]
 }`,
-    sourceHTML:
-`<div id="app">
+      sourceHTML: `<div id="app">
     <fusioncharts
     :type="type"
     :width="width"
@@ -74,17 +71,16 @@ export default {
     <button @click="makeCaptionLeft">Make Caption text left-aligned</button>
     <button @click="resetAttr">Reset Attributes</button>
 </div>`,
-sourceJS:
-`import Vue from 'vue';
+      sourceJS: `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
 
 //import the theme
-import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme)
+Vue.use(VueFusionCharts, FusionCharts, Charts, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;
@@ -120,38 +116,37 @@ var app = new Vue({
         }
     }
 });`,
-        options: {
-            width: '100%',
-            height: '400',
-            type: "column2d",
-            dataFormat: "json",
-            creditLabel: 'false',
-        },
-        dataSource: null
-        }
+      options: {
+        width: "100%",
+        height: "400",
+        type: "column2d",
+        dataFormat: "json",
+        creditLabel: "false"
+      },
+      dataSource: null
+    };
+  },
+  created: function() {
+    this.dataSource = JSON.parse(this.sourceData);
+    this.originalData = JSON.parse(this.sourceData);
+  },
+  methods: {
+    changeBackground: function() {
+      const data = extend({}, this.dataSource);
+      data.chart.bgColor = "#efefef";
+      this.dataSource = data;
     },
-    created: function(){
-        this.dataSource = JSON.parse(this.sourceData)
-        this.originalData = JSON.parse(this.sourceData);
+    resetAttr: function() {
+      this.dataSource = JSON.parse(this.sourceData);
     },
-    methods:{
-        changeBackground: function(){
-            const data = extend({}, this.dataSource);
-            data.chart.bgColor = "#efefef";
-            this.dataSource = data;
-        },
-        resetAttr: function(){
-            this.dataSource = JSON.parse(this.sourceData);
-        },
-        makeCaptionLeft: function(){
-            const data = extend({}, this.dataSource);
-            data.chart.captionAlignment = 'left';
-            this.dataSource = data;
-        }
+    makeCaptionLeft: function() {
+      const data = extend({}, this.dataSource);
+      data.chart.captionAlignment = "left";
+      this.dataSource = data;
     }
-}
+  }
+};
 </script>
 
 <style>
-
 </style>

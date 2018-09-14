@@ -244,15 +244,14 @@ export default {
 sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
-import StackedColumn2D from 'fusioncharts/viz/stackedcolumn2d';
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
 
 //import the theme
-import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, StackedColumn2D, FusionTheme)
+Vue.use(VueFusionCharts, FusionCharts, Charts, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/; 

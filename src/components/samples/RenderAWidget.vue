@@ -62,14 +62,14 @@ export default {
 sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import AngularGauge from 'fusioncharts/viz/angulargauge'
+import FusionCharts from 'fusioncharts';
+import Widgets from 'fusioncharts/fusioncharts.widgets'
 
 //import the theme
-import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, AngularGauge, FusionTheme)
+Vue.use(VueFusionCharts, FusionCharts, Widgets, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

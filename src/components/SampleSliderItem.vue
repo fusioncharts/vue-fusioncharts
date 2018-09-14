@@ -8,12 +8,12 @@
 
 <script>
 export default {
-  name:'SampleSliderItem',
-  props:['sample','mobile', 'active'],
+  name: "SampleSliderItem",
+  props: ["sample", "mobile", "active"],
   methods: {
-      onClick: function(){
-          this.$emit('click', this.sample)
-      }
+    onClick: function() {
+      this.$emit("click", this.sample);
+    }
   }
-}
+};
 </script>

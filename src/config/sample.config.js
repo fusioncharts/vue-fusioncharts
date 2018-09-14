@@ -14,15 +14,16 @@ export default {
         "11": "drill-down-chart",
         "12": "render-a-widget",
         "13": "render-a-map",
-        "14": "using-a-theme",
         // "15": "render-alert",
-        "15": "special-events",
+        "14": "special-events",
+        "15": "life-cycle-events",
         "16": "dynamically-add",
-        "17": "update-chart-attribute-api",
-        "18": "special-chart-api",
-        "19": "dynamic-size-change",
-        "20": "update-chart-type",
-        "21": "annotation"
+        "17": "special-chart-api",
+        "18": "dynamic-size-change",
+        "19": "update-chart-type",
+        "20": "annotation",
+        "21": "update-chart-attribute-api",
+        "22": "using-a-theme",
     },
     "sampleImages": images.sampleLogo,
     "sampleProps": {
@@ -42,43 +43,43 @@ export default {
         },
         "3": {
             "title": "A Column, Line and Area Combi Chart",
-            "desc": "A column, line and area combination chart using the datasource attribute",
+            "desc": "A combination chart of column, line and area",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "4": {
-            "title": "Fetch data from a JSON URL",
+            "title": "Fetch data from JSON URL",
             "desc": "Fetch data remotely from a JSON file or URL",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "5": {
-            "title": "Fetch data from a XML URL",
-            "desc": "Fetch data remotely from a XML file or URL",
+            "title": "Fetch data from XML URL",
+            "desc": "Fetch data remotely from an XML file or URL",
             "data": "data.xml",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "6": {
-            "title": "Update Chart Data from Component",
-            "desc": "Change the data dynamically in the component and watch the chart update automatically",
+            "title": "Update chart data",
+            "desc": "Change the data dynamically and watch the chart update automatically",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "7": {
-            "title": "Update Chart Attribute from Component",
-            "desc": "Change a parameter in the components variable and see it automatically update the chart",
+            "title": "Update chart attribute",
+            "desc": "Update the chart with new attributes",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "8": {
-            "title": "Trigger events from chart",
-            "desc": "Hover on a plot to trigger an event in the component, and update variables",
+            "title": "Listen to events from chart",
+            "desc": "Bind event listener to the chart and get the related event data",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
@@ -92,7 +93,7 @@ export default {
         },
         "10": {
             "title": "Export multiple charts",
-            "desc": "Use Batch Export to export multiple charts as a single image/PDF",
+            "desc": "Use Batch Export Feature to export multiple charts as a single image/PDF",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
@@ -105,7 +106,7 @@ export default {
             }
         },
         "12": {
-            "title": "A Simple Gauge",
+            "title": "A simple gauge",
             "desc": "A simple gauge to show customer satisfaction score",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
@@ -118,65 +119,72 @@ export default {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        "14": {
-            "title": "Applying a different theme",
-            "desc": "Choosing from different themes available in FusionCharts Suite",
-            "interactiveViewURL": {
-                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
-            }
-        },
         // "15": {
         //     "title": "Lifecycle events",
-        //     "desc": "This sample shows the basic lifecycle events of  FusionCharts.",
+        //     "desc": "This sample lists the basic lifecycle events at the time of rendering FusionCharts",
         //     "interactiveViewURL": {
         //         "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
         //     }
         // },
-        "15": {
+        "14": {
             "title": "Special Events",
-            "desc": "Drag a projected column to see its change.",
+            "desc": "Drag a projected column to see its change",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "15": {
+            "title": "Lifecycle events",
+            "desc": "This sample lists the basic lifecycle events at the time of rendering FusionCharts",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "16": {
             "title": "Dynamically add chart event listener",
-            "desc": "Clicking the button adds an event to the chart to track 'dataplotClick'.",
+            "desc": "How you can dynamically(runtime) add & remove chart specific events in FusionCharts",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "17": {
-            "title": "Update chart attribute through methods",
-            "desc": "Change a chart attribute by calling FusionCharts methods.",
+            "title": "Slice data plots",
+            "desc": "Use Chart specific custom API",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "18": {
-            "title": "Slice data plots",
-            "desc": "Click the button to slice out Microsoft from the rest of the plots.",
+            "title": "Responsive charts",
+            "desc": "Select any of the dimensions given in the list. The chart adjusts itself to its alloted percentage",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "19": {
-            "title": "Responsive charts",
-            "desc": "Select any of the dimensions given in the list. The chart adjusts itself to its allotted percentage",
+            "title": "Change chart type at run time",
+            "desc": "Change the chart type dynamically or at runtime",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "20": {
-            "title": "Change chart type at run time",
-            "desc": "Change the chart type after it has been rendered.",
+            "title": "Use Annotations",
+            "desc": "Add custom shapes to highlight a specific data point",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "21": {
-            "title": "Use Annotations",
-            "desc": "Use of annotations in charts.",
+            "title": "Usage of FusionCharts methods (API)",
+            "desc": "Change a chart attribute by calling FusionCharts setChartAttribute API",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
+        "22": {
+            "title": "Applying a different theme",
+            "desc": "Choosing from different themes available in FusionCharts Suite",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

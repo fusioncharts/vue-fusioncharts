@@ -8,9 +8,9 @@
                 ></fusioncharts>
                 <br />
                 <div :style="{textAlign: 'center'}">
-                    <button class='btn btn-outline-secondary btn-sm' @click="changeCaption">Change Caption: Test Caption</button>
-                    <button class='btn btn-outline-secondary btn-sm' @click="changeXAxisName">Change X-Axis Name: Test X-AXIS</button>
-                    <button class='btn btn-outline-secondary btn-sm' @click="changeYAxisName">Change Y-Axis Name: Test Y-AXIS</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeCaption">Change Caption To: Caption</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeXAxisName">Change X_Axis Name To: X-AXIS</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeYAxisName">Change Y_Axis Name To: Y-AXIS</button>
                     <button class='btn btn-outline-secondary btn-sm' @click="resetAttr">Reset</button>
                 </div>
     </sample-wrapper>
@@ -74,23 +74,23 @@ export default {
     ref="fc"
     ></fusioncharts>
     <div>
-        <button @click="changeCaption">Change Caption: Test Caption</button>
-        <button @click="changeXAxisName">Change X-Axis Name: Test X-AXIS</button>
-        <button @click="changeYAxisName">Change Y-Axis Name: Test Y-AXIS</button>
+        <button @click="changeCaption">Change Caption To: Caption</button>
+        <button @click="changeXAxisName">Change X_Axis Name To: X-AXIS</button>
+        <button @click="changeYAxisName">Change Y_Axis Name To: Y-AXIS</button>
         <button @click="resetAttr">Reset</button>
     </div>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts'
 
 //import the themes
-import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme)
+Vue.use(VueFusionCharts, FusionCharts, Charts, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;
@@ -144,15 +144,15 @@ var app = new Vue({
     methods:{
         changeCaption: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('caption', 'Test Caption');
+            chart.setChartAttribute('caption', 'Caption');
         },
         changeXAxisName: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('xAxisName', 'Test X-Axis');
+            chart.setChartAttribute('xAxisName', 'X-Axis');
         },
         changeYAxisName: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('yAxisName', 'Test Y-Axis');
+            chart.setChartAttribute('yAxisName', 'Y-Axis');
         },
         resetAttr: function () {
             const chart = this.$refs.fc.chartObj;

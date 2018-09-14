@@ -9,8 +9,8 @@
         <div class="text-style" v-html="message" ></div>
         <br>
         <div :style="{textAlign: 'center'}">
-            <button class='btn btn-outline-secondary btn-sm' v-bind:class="{disable: listen}" @click="attachHandler">Listen to data plot click event</button>
-            <button class='btn btn-outline-secondary btn-sm' v-bind:class="{disable: remove}" @click="removeHandler">Remove data plot click event</button>
+            <button class='btn btn-outline-secondary btn-sm' v-bind:class="{disable: listen}" @click="attachHandler">Add/Listen to dataplotclick event</button>
+            <button class='btn btn-outline-secondary btn-sm' v-bind:class="{disable: remove}" @click="removeHandler">Remove dataplotclick event</button>
         </div>
     </sample-wrapper>
 </template>
@@ -87,21 +87,21 @@ export default {
     <div v-html="message" ></div>
     <br>
     <div>
-        <button v-bind:class="{disabled: listen}" @click="attachHandler">Listen to data plot click event</button>
-        <button v-bind:class="{disabled: remove}" @click="removeHandler">Remove data plot click event</button>
+        <button v-bind:class="{disabled: listen}" @click="attachHandler">Add/Listen to dataplotclick event</button>
+        <button v-bind:class="{disabled: remove}" @click="removeHandler">Remove dataplotclick event</button>
     </div>
 </div>`,
 sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
 
 //import the theme
-import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion'
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme)
+Vue.use(VueFusionCharts, FusionCharts, Charts, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;

@@ -115,7 +115,7 @@ var app = new Vue({
     data: {
         width: '100%',
         height: '400',
-        type: 'line',
+        type: 'spline',
         dataFormat: 'json',
         dataSource: dataSource
     }
@@ -123,7 +123,7 @@ var app = new Vue({
         options: {
             width: '100%',
             height: '400',
-            type: "line",
+            type: "spline",
             dataFormat: "json",
             creditLabel: 'false',
             }

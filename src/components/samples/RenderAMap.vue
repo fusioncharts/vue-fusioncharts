@@ -98,12 +98,15 @@ export default {
 sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Maps from 'fusioncharts/maps'
-import World from 'fusioncharts/maps/es/fusioncharts.world'
+import FusionCharts from 'fusioncharts';
+import Maps from 'fusioncharts/fusioncharts.maps'
+import World from 'fusioncharts/maps/fusioncharts.world'
+
+//import the theme
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Maps, World)
+Vue.use(VueFusionCharts, FusionCharts, Maps, World, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/; 

@@ -109,23 +109,23 @@ code: {
     c2: "$ npm install fusioncharts --save",
     c3: `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
+import FusionCharts from 'fusioncharts';
 
 // register VueFusionCharts component
 Vue.use(VueFusionCharts, FusionCharts);`,
     c4:`import Vue from 'vue';
-import FusionCharts from 'fusioncharts/core';
+import FusionCharts from 'fusioncharts';
 import { FCComponent } from 'vue-fusioncharts';
 
 // register Vue-FusionCharts component
 Vue.component('fusioncharts', FCComponent, FusionCharts);`,
     c5:`import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Pie2D from 'fusioncharts/viz/pie2d'
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Pie2D)
+Vue.use(VueFusionCharts, FusionCharts, Charts)
 
 const myDataSource = {
     "chart": {

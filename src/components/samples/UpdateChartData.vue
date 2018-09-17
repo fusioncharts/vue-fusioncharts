@@ -13,18 +13,16 @@
 </template>
 
 <script>
-
-import mixin from './common/SamplesMixin'
-import extend from 'extend'
+import mixin from "./common/SamplesMixin";
+import extend from "extend";
 
 export default {
-    mixins:[mixin],
-    name: 'UpdateChartData',
-    props:['showMessage'],
-    data(){
-        return {
-        sourceData:
-`{
+  mixins: [mixin],
+  name: "UpdateChartData",
+  props: ["showMessage"],
+  data() {
+    return {
+      sourceData: `{
     "chart": {
         "caption": "Countries With Most Oil Reserves [2017-18]",
         "subCaption": "In MMbbl = One Million barrels",
@@ -60,8 +58,7 @@ export default {
         "value": "30"
     }]
 }`,
-    sourceHTML:
-`<div id="app">
+      sourceHTML: `<div id="app">
     <fusioncharts
     :type="type"
     :width="width"
@@ -71,14 +68,16 @@ export default {
     ></fusioncharts>
     <button @click="updateData">Click to Update Data</button>
 </div>`,
-sourceJS:
-`import Vue from 'vue';
+      sourceJS: `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+
+//import the theme
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D)
+Vue.use(VueFusionCharts, FusionCharts, Charts, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;
@@ -96,10 +95,7 @@ var app = new Vue({
         // Updates the chart data
         updateData: function(){
             const data = Object.assign({}, this.dataSource); //clones data
-            data.data[2].label = 'This Label is Updated';
             data.data[2].value = this.getRandomNumber();
-
-            data.data[3].label = 'This is updated as well';
             data.data[3].value = this.getRandomNumber();
             this.dataSource = data;
         },
@@ -110,34 +106,34 @@ var app = new Vue({
         }
     },
 });`,
-        options: {
-            type: "Column2D",
-            width: "100%",
-            height: "400",
-            dataFormat: "json"
-        },
-        dataSource: null
-        }
-    },
-    methods:{
-        updateData: function(){
-            const data = extend({}, this.dataSource);
-            data.data[2].value = this.getRandomNumber();
+      options: {
+        type: "Column2D",
+        width: "100%",
+        height: "400",
+        dataFormat: "json"
+      },
+      dataSource: null
+    };
+  },
+  methods: {
+    updateData: function() {
+      const data = extend({}, this.dataSource);
+      data.data[2].value = this.getRandomNumber();
 
-            data.data[3].value = this.getRandomNumber();
-            this.dataSource = data;
-        },
-        getRandomNumber: function () {
-            var max = 300, min = 50;
-            return Math.round(((max - min) * Math.random()) + min);
-        }
+      data.data[3].value = this.getRandomNumber();
+      this.dataSource = data;
     },
-    created: function(){
-        this.dataSource = JSON.parse(this.sourceData)
+    getRandomNumber: function() {
+      var max = 300,
+        min = 50;
+      return Math.round((max - min) * Math.random() + min);
     }
-}
+  },
+  created: function() {
+    this.dataSource = JSON.parse(this.sourceData);
+  }
+};
 </script>
 
 <style>
-
 </style>

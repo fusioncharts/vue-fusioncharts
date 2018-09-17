@@ -3,9 +3,10 @@
         <fusioncharts
         :options="options"
         :dataSource="dataSource"
+        @dataplotRollover="dataplotRollover"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
-        <div v-html="displayValue" class="chart-hover" />
+        <div v-html="displayValue" class="text-style"></div>
     </sample-wrapper>
 </template>
 
@@ -61,19 +62,22 @@ export default {
     :width="width"
     :height="height"
     :dataFormat="dataFormat"
-    :events="events"
     :dataSource="dataSource"
+    @dataplotRollover="dataplotRollover"
     ></fusioncharts>
-    <div v-html="displayValue"/>
+    <div v-html="displayValue"></div>
 </div>`,
         sourceJS:
 `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts/core';
-import Column2D from 'fusioncharts/viz/column2d'
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+
+//import the theme
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 
 // register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Column2D)
+Vue.use(VueFusionCharts, FusionCharts, Charts, FusionTheme)
 
 // Copy datasource from 'Data' tab
 var dataSource = /*{ "chart": {..}, ..}*/;
@@ -86,26 +90,21 @@ var app = new Vue({
         type: 'column2d',
         dataFormat: 'json',
         dataSource: dataSource,
-        events: {
-            dataplotRollover: null
-        },
         displayValue:'Hover on the plot to see the value along with the label'
     },
-    created: function(){
-        this.options.events.dataplotRollover = (e, arg)=>{
-            this.displayValue = \`You're are currently hovering over <strong>\${arg.categoryLabel}</strong> whose value is <strong>\${arg.displayValue}</strong>\`;
+    methods: {
+        // uses the data info of the event 'dataplotrollover' and represents it
+        dataplotRollover: function (e) {
+            this.displayValue = \`You are currently hovering over <strong>\${e.data.categoryLabel}</strong> whose value is <strong>\${e.data.displayValue}</strong>\`;
         }
-    },
+    }
 });`,
         options: {
             width: '100%',
             height: '400',
             type: "column2d",
             dataFormat: "json",
-            creditLabel: 'false',
-            events: {
-                dataplotRollover: null
-            }
+            creditLabel: 'false'
         },
         displayValue:'Hover on the plot to see the value along with the label'
         }
@@ -115,9 +114,10 @@ var app = new Vue({
             return JSON.parse(this.sourceData)
         }
     },
-    created: function(){
-        this.options.events.dataplotRollover = (e, arg)=>{
-            this.displayValue = `You're are currently hovering over <strong>${arg.categoryLabel}</strong> whose value is <strong>${arg.displayValue}</strong>`;
+    methods: {
+        // uses the data of of the event and represents it
+        dataplotRollover: function (e) {
+            this.displayValue = `You are currently hovering over <strong>${e.data.categoryLabel}</strong> whose value is <strong>${e.data.displayValue}</strong>`;
         }
     }
 }

@@ -21,6 +21,15 @@ import DrillDownChart from './samples/DrillDownChart'
 import RenderAWidget from './samples/RenderAWidget'
 import RenderAMap from './samples/RenderAMap'
 import UsingATheme from './samples/UsingATheme'
+// import RenderAlert from './samples/RenderAlert'
+import SpecialEvents from './samples/SpecialEvents'
+import DynamicallyAdd from './samples/DynamicallyAdd'
+import UpdateChartAttributeApi from './samples/UpdateChartAttributeApi'
+import SpecialChartApi from './samples/SpecialChartApi'
+import DynamicSizeChange from './samples/DynamicSizeChnage'
+import UpdateChartType from './samples/UpdateChartType'
+import Annotation from './samples/Annotation'
+import LifeCycleEvents from './samples/LifeCycleEvents'
 
 import * as utils from './../utils/utils'
 import appConfig from './../config/app.config'
@@ -69,7 +78,16 @@ export default {
     DrillDownChart,
     RenderAWidget,
     RenderAMap,
-    UsingATheme
+    UsingATheme,
+    // RenderAlert,
+    SpecialEvents,
+    DynamicallyAdd,
+    UpdateChartAttributeApi,
+    SpecialChartApi,
+    DynamicSizeChange,
+    UpdateChartType,
+    Annotation,
+    LifeCycleEvents
   }
 }
 </script>

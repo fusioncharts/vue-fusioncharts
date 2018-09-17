@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     changeSampleId: function(newId) {
-        this.sampleId = newId;
+      this.sampleId = newId;
     },
     getSampleIds: function() {
       const sConfig = this.samplesConfig;

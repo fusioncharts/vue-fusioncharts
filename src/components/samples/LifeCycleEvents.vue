@@ -124,26 +124,26 @@ var app = new Vue({
     this.total = myData.reduce((p, c) => p + Number(c.value), 0);
   },
   methods: {
-		beforeDataUpdate: function() {
-			this.displayValue = "Status: renderComplete";
-			console.log('beforeDataUpdate');
-		},
-		dataUpdated: function() {
-			console.log('dataUpdated');
-			let prevValue = this.displayValue;
-			this.displayValue = prevValue + ", dataUpdated";
-		},
-		drawComplete: function() {
-			console.log('drawComplete');
-			let prevValue = this.displayValue;
-			this.displayValue = prevValue + ", drawComplete";
-		},
-		renderComplete: function() {
-			console.log('renderComplete');
-			let prevValue = this.displayValue;
-			this.displayValue = prevValue + ", renderComplete";
+    beforeDataUpdate: function() {
+      this.displayValue = "Status: renderComplete";
+      console.log("beforeDataUpdate");
+    },
+    dataUpdated: function() {
+      console.log("dataUpdated");
+      let prevValue = this.displayValue;
+      this.displayValue = prevValue + ", dataUpdated";
+    },
+    drawComplete: function() {
+      console.log("drawComplete");
+      let prevValue = this.displayValue;
+      this.displayValue = prevValue + ", drawComplete";
+    },
+    renderComplete: function() {
+      console.log("renderComplete");
+      let prevValue = this.displayValue;
+      this.displayValue = prevValue + ", renderComplete";
     }
-	}
+  }
 };
 </script>
 

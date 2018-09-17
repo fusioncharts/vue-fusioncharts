@@ -11,15 +11,14 @@
 </template>
 
 <script>
-import mixin from './common/SamplesMixin'
+import mixin from "./common/SamplesMixin";
 export default {
-    mixins:[mixin],
-    name: 'ChartInteractivity',
-    props:['showMessage'],
-    data(){
-        return {
-        sourceData:
-`{
+  mixins: [mixin],
+  name: "ChartInteractivity",
+  props: ["showMessage"],
+  data() {
+    return {
+      sourceData: `{
       "chart": {
         "caption": "Android and iOS Devices Sales Projections",
         "subCaption": "Drag the top of columns to adjust projections for 2017 & 2018",
@@ -89,8 +88,7 @@ export default {
         }]
       }]
     }`,
-    sourceHTML:
-`<div id="app">
+      sourceHTML: `<div id="app">
     <fusioncharts
     :type="type"
     :width="width"
@@ -101,8 +99,7 @@ export default {
     ></fusioncharts>
     <div v-html='message'></div>
 </div>`,
-sourceJS:
-`import Vue from 'vue';
+      sourceJS: `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
@@ -129,33 +126,40 @@ var app = new Vue({
     methods: {
         // uses the data of the event 'dataPlotDragEnd' and formats them using FusionCharts formatNumber API
         dataplotdragend: function(e){
+          let label = JSON.parse(this.sourceData).categories[0].category[e.data.dataIndex].label;
           let startValue = FusionCharts.formatNumber(e.data.startValue, { decimals: 2 }),
             endValue = FusionCharts.formatNumber(e.data.endValue, { decimals: 2 });
-          this.message = \`<b>\${e.data.datasetName}</b> is modified to <b>\${endValue}M</b> from <b>\${startValue}M</b>\`;
+          this.message = \`<b>\${e.data.datasetName}</b> is modified to <b>\${endValue}M</b> from <b>\${startValue}M</b>\ or <b>\${label}</b>\`;
         }
     }
 });`,
-        options: {
-            width: '100%',
-            height: '400',
-            type: "dragcolumn2d",
-            dataFormat: "json",
-            creditLabel: 'false'
-            },
-        message: 'Drag any column for years 2017 or 2018 to see updated value along with the label'
-        }
-    },
-    computed: {
-        dataSource: function(){
-            return JSON.parse(this.sourceData)
-        }
-    },
-    methods: { 
-        dataplotdragend: function(e){
-          let startValue = FusionCharts.formatNumber(e.data.startValue, { decimals: 2 }),
-            endValue = FusionCharts.formatNumber(e.data.endValue, { decimals: 2 });
-          this.message = `<b>${e.data.datasetName}</b> is modified to <b>${endValue}M</b> from <b>${startValue}M</b>`;
-        }
+      options: {
+        width: "100%",
+        height: "400",
+        type: "dragcolumn2d",
+        dataFormat: "json",
+        creditLabel: "false"
+      },
+      message:
+        "Drag any column for years 2017 or 2018 to see updated value along with the label"
+    };
+  },
+  computed: {
+    dataSource: function() {
+      return JSON.parse(this.sourceData);
     }
-}
+  },
+  methods: {
+    dataplotdragend: function(e) {
+      let label = JSON.parse(this.sourceData).categories[0].category[e.data.dataIndex].label;
+      let startValue = FusionCharts.formatNumber(e.data.startValue, {
+          decimals: 2
+        }),
+        endValue = FusionCharts.formatNumber(e.data.endValue, { decimals: 2 });
+      this.message = `<b>${
+        e.data.datasetName
+      }</b> is modified to <b>${endValue}M</b> from <b>${startValue}M</b> for <b>${label}</b>`;
+    }
+  }
+};
 </script>

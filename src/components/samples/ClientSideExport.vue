@@ -20,18 +20,16 @@
 </template>
 
 <script>
-
-import mixin from './common/SamplesMixin'
-import FusionCharts from 'fusioncharts'
+import mixin from "./common/SamplesMixin";
+import FusionCharts from "fusioncharts";
 
 export default {
-    mixins:[ mixin ],
-    name: 'ClientSideExport',
-    props:['showMessage'],
-    data(){
-        return {
-       sourceData:
-`{
+  mixins: [mixin],
+  name: "ClientSideExport",
+  props: ["showMessage"],
+  data() {
+    return {
+      sourceData: `{
     "columnData":
     {
         "chart": {
@@ -221,8 +219,7 @@ export default {
       ]
     }
 }`,
-    sourceHTML:
-`<div id="app">
+      sourceHTML: `<div id="app">
     <fusioncharts
     :type="type"
     :width="width"
@@ -241,8 +238,7 @@ export default {
         <button @click="exportToPdf">Export both charts as a single PDF</button>
     </div>
 </div>`,
-sourceJS:
-`import Vue from 'vue';
+      sourceJS: `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
@@ -274,30 +270,29 @@ var app = new Vue({
         }
     }
 });`,
-            options: {
-                width: '800',
-                height: '400',
-                type: "column2d",
-                dataFormat: "json",
-                creditLabel: 'false',
-            },
-        }
-    },
-    computed: {
-        dataSource: function(){
-            return JSON.parse(this.sourceData)
-        }
-    },
-    methods: {
-        exportToPdf: function(){
-            FusionCharts.batchExport({
-                exportFormat:'pdf'
-            });
-        }
+      options: {
+        width: "800",
+        height: "400",
+        type: "column2d",
+        dataFormat: "json",
+        creditLabel: "false"
+      }
+    };
+  },
+  computed: {
+    dataSource: function() {
+      return JSON.parse(this.sourceData);
     }
-}
+  },
+  methods: {
+    exportToPdf: function() {
+      FusionCharts.batchExport({
+        exportFormat: "pdf"
+      });
+    }
+  }
+};
 </script>
 
 <style>
-
 </style>

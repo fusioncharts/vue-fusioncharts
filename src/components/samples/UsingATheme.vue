@@ -7,6 +7,7 @@
       :style="{ 'text-align': 'center' }"
       ></fusioncharts>
       <br />
+      <span id="select-text">Choose a theme:</span>
       <div class="change-type">
         <div>
           <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>

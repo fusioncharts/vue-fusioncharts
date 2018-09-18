@@ -1,6 +1,6 @@
 {
   "name": "vue-fusioncharts",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "FusionCharts component for Vue.js",
   "main": "dist/vue-fusioncharts.js",
   "module": "src/index.js",

@@ -237,6 +237,19 @@ export default (FC) => {
                     });
                 }
             },
+            createEvents: function(){
+                const ret = {
+                    'events':{}
+                };
+                if(this.$listeners && typeof this.$listeners === 'object'){
+                    Object.keys(this.$listeners).forEach((event)=>{
+                        ret.events[event] = (e)=>{
+                            this.$emit(event, e);
+                        };
+                    });
+                }
+                return ret;
+            },
             setLastOptions: function (config) {
                 this._oldOptions = Object.assign({}, config);
             },
@@ -267,8 +280,10 @@ export default (FC) => {
                 if (chartObj && chartObj.dispose) {
                     chartObj.dispose();
                 }
+                const events = this.createEvents();
+                config.events = Object.assign({}, config.events, events.events);
+
                 THIS.chartObj = chartObj = new FC(config);
-                this.attachListeners();
                 chartObj.render();
             },
             updateChart: function () {

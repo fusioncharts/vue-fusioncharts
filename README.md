@@ -26,20 +26,6 @@ Download [`vue-fusioncharts.js`](https://github.com/fusioncharts/vue-fusionchart
 
 ## Getting Started
 
-### ES6 Module
-
-```js
-import Vue from 'vue';
-import VueFusionCharts from 'vue-fusioncharts';
-
-// import FusionCharts modules and resolve dependency
-import FusionCharts from 'fusioncharts/core'
-import Pie2D from 'fusioncharts/viz/pie2d'
-
-// register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Pie2D);
-```
-
 ### CommonJS
 
 ```js
@@ -94,7 +80,7 @@ If you are not using any bundler, you can refer the file in a script tag. The li
         :height="height"
         :dataFormat="dataFormat"
         :dataSource="dataSource"
-        :events="events">
+        @dataplotRollover="dataplotRollover">
         </fusioncharts>
         <p>Display Value: {{displayValue}}</p>
     </div>
@@ -119,12 +105,12 @@ If you are not using any bundler, you can refer the file in a script tag. The li
                 height: '300',
                 dataFormat: 'json',
                 dataSource: myDataSource,
-                events: {
-                  dataplotRollover: function (ev, props) {
-                    app.displayValue = props.displayValue       
-                  }       
-                },
                 displayValue: ''
+              },
+            methods:{
+                dataplotRollover: function (e) {
+                    app.displayValue = e.data.displayValue       
+                }
               }
             }
         });
@@ -141,20 +127,6 @@ Use the `Vue.use` method to register the component globally.
 
 ```js
 Vue.use(VueFusionCharts, FusionCharts, Charts);
-```
-
-### Register Locally
-
-Use the `Vue.component` method to register the component locally.
-
-```js
-// es6 style
-import { FCComponent } from 'vue-fusioncharts'
-
-// CommpnJS
-const FCComponent = require('vue-fusioncharts').FCComponent;
-
-Vue.component('fusioncharts', FCComponent);
 ```
 
 ### Component Props
@@ -211,6 +183,57 @@ Vue.component('fusioncharts', FCComponent);
             </tr>
         </tbody>
     </table>
+## Working with Events
+
+To attach event listeners to FusionCharts, you can use the `v-on` or `@` operator in the vue-fusioncharts component.
+
+```html
+<fusioncharts
+:type="type"
+:width="width"
+:height="height"
+:dataFormat="dataFormat"
+:dataSource="dataSource"
+@eventName="eventHandler">
+</fusioncharts>
+```
+Where `eventName` can be any fusioncharts event. You can find the list of events at [fusioncharts devcenter](https://www.fusioncharts.com/dev/api/fusioncharts/fusioncharts-events)
+
+## Working with APIs
+
+To call APIs we will need the chart object. To get the chart object from the component we can use `ref` and retrieve it from `this.$refs[refname].chartObj`
+
+```html
+<fusioncharts
+:type="type"
+:width="width"
+:height="height"
+:dataFormat="dataFormat"
+:dataSource="dataSource"
+@dataPlotRollover="onDataPlotRollover"
+ref="fc">
+</fusioncharts>
+```
+Now, we can access the chart object from `this.$refs.fc.chartObj`
+
+```js
+var app = new Vue({
+    el: '#chart',
+    data: {
+        type: 'Pie2D',
+        width: '500',
+        height: '300',
+        dataFormat: 'json',
+        dataSource: myDataSource,
+        },
+    methods:{
+        onDataPlotRollover: function (e) {
+            this.$refs.fc.chartObj.slicePlotItem(0);  
+        }
+    }
+});
+```
+This example will slice a Pie2d section when you rollover the chart. 
 
 ## Contributing
 
@@ -227,3 +250,7 @@ $ npm start
 ```
 
 ### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
+
+> ### Using Legacy Webpack Templates
+> If you are using legacy webpack templates using (ex: `vue init webpack-simple myProject`), you need to use the new UglifyJS webpack plugin as the default plugin doesn't support ES5+ syntaxes.  
+> Refer here on what to change in the webpack.config.js: https://github.com/vuejs-templates/webpack-simple/issues/166#issuecomment-354394253

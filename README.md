@@ -26,20 +26,6 @@ Download [`vue-fusioncharts.js`](https://github.com/fusioncharts/vue-fusionchart
 
 ## Getting Started
 
-### ES6 Module
-
-```js
-import Vue from 'vue';
-import VueFusionCharts from 'vue-fusioncharts';
-
-// import FusionCharts modules and resolve dependency
-import FusionCharts from 'fusioncharts/core'
-import Pie2D from 'fusioncharts/viz/pie2d'
-
-// register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Pie2D);
-```
-
 ### CommonJS
 
 ```js
@@ -141,20 +127,6 @@ Use the `Vue.use` method to register the component globally.
 
 ```js
 Vue.use(VueFusionCharts, FusionCharts, Charts);
-```
-
-### Register Locally
-
-Use the `Vue.component` method to register the component locally.
-
-```js
-// es6 style
-import { FCComponent } from 'vue-fusioncharts'
-
-// CommpnJS
-const FCComponent = require('vue-fusioncharts').FCComponent;
-
-Vue.component('fusioncharts', FCComponent);
 ```
 
 ### Component Props

@@ -8,9 +8,9 @@
                 ></fusioncharts>
                 <br />
                 <div :style="{textAlign: 'center'}">
-                    <button class='btn btn-outline-secondary btn-sm' @click="changeCaption">Change Caption To: Caption</button>
-                    <button class='btn btn-outline-secondary btn-sm' @click="changeXAxisName">Change X_Axis Name To: X-AXIS</button>
-                    <button class='btn btn-outline-secondary btn-sm' @click="changeYAxisName">Change Y_Axis Name To: Y-AXIS</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeCaption">CHANGE CAPTION TO: CAPTION</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeXAxisName">CHANGE X_AXIS NAME TO: X-AXIS NAME</button>
+                    <button class='btn btn-outline-secondary btn-sm' @click="changeYAxisName">CHANGE Y_AXIS NAME TO: Y-AXIS NAME</button>
                     <button class='btn btn-outline-secondary btn-sm' @click="resetAttr">Reset</button>
                 </div>
     </sample-wrapper>
@@ -74,10 +74,10 @@ export default {
     ref="fc"
     ></fusioncharts>
     <div>
-        <button @click="changeCaption">Change Caption To: Caption</button>
-        <button @click="changeXAxisName">Change X_Axis Name To: X-AXIS</button>
-        <button @click="changeYAxisName">Change Y_Axis Name To: Y-AXIS</button>
-        <button @click="resetAttr">Reset</button>
+        <button @click="changeCaption">CHANGE CAPTION TO: CAPTION</button>
+        <button @click="changeXAxisName">CHANGE X_AXIS NAME TO: X-AXIS NAME</button>
+        <button @click="changeYAxisName">CHANGE Y_AXIS NAME TO: Y-AXIS NAME</button>
+        <button @click="resetAttr">RESET</button>
     </div>
 </div>`,
 sourceJS:
@@ -108,17 +108,17 @@ var app = new Vue({
         // chnages caption text
         changeCaption: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('caption', 'Test Caption');
+            chart.setChartAttribute('caption', 'Caption');
         },
         // changes x axis name
         changeXAxisName: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('xAxisName', 'Test X-Axis');
+            chart.setChartAttribute('xAxisName', 'X-Axis Name');
         },
         // changes y axis name
         changeYAxisName: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('yAxisName', 'Test Y-Axis');
+            chart.setChartAttribute('yAxisName', 'Y-Axis Name');
         },
         // resets all chart attributes to default
         resetAttr: function () {
@@ -148,11 +148,11 @@ var app = new Vue({
         },
         changeXAxisName: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('xAxisName', 'X-Axis');
+            chart.setChartAttribute('xAxisName', 'X-Axis Name');
         },
         changeYAxisName: function () {
             const chart = this.$refs.fc.chartObj;
-            chart.setChartAttribute('yAxisName', 'Y-Axis');
+            chart.setChartAttribute('yAxisName', 'Y-Axis Name');
         },
         resetAttr: function () {
             const chart = this.$refs.fc.chartObj;

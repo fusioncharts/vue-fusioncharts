@@ -7,30 +7,33 @@
       :style="{ 'text-align': 'center' }"
       ></fusioncharts>
       <br />
-      <div class="change-type">
-        <div>
-          <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
-          <label>Fusion</label>
-        </div>
-        <div>
-          <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
-          <label>Gammel</label>
-        </div>
-        <div>
-          <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
-          <label>Candy</label>
-        </div>
-        <div>
-          <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
-          <label>Zune</label>
-        </div>
-        <div>
-          <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
-          <label>Ocean</label>
-        </div>
-        <div>
-          <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
-          <label>Carbon</label>
+      <div style="display: flex; position: absolute; bottom: 2px;">
+        <div id="select-text">Choose a theme:</div>
+        <div class="change-type">
+          <div>
+            <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
+            <label>Fusion</label>
+          </div>
+          <div>
+            <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
+            <label>Gammel</label>
+          </div>
+          <div>
+            <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
+            <label>Candy</label>
+          </div>
+          <div>
+            <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
+            <label>Zune</label>
+          </div>
+          <div>
+            <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
+            <label>Ocean</label>
+          </div>
+          <div>
+            <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
+            <label>Carbon</label>
+          </div>
         </div>
       </div>
     </sample-wrapper>
@@ -89,30 +92,31 @@ export default {
     :dataSource="dataSource"
     ref="fc"
     ></fusioncharts>
-    <div>
-        <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
-        <label>Fusion</label>
+    <div style="display: flex; position: absolute; bottom: 2px;">
+        <div id="select-text">Choose a theme:</div>
+        <div class="change-type">
+          <input name='theme' type="radio" @change="onChangeTheme" value="Fusion" checked/>
+          <label>Fusion</label>
         </div>
         <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
-        <label>Gammel</label>
+          <input name='theme' type="radio" @change="onChangeTheme" value="Gammel" />
+          <label>Gammel</label>
         </div>
         <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
-        <label>Candy</label>
+          <input name='theme' type="radio" @change="onChangeTheme" value="Candy" />
+          <label>Candy</label>
         </div>
         <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
-        <label>Zune</label>
+          <input name='theme' type="radio" @change="onChangeTheme" value="Zune" />
+          <label>Zune</label>
         </div>
         <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
-        <label>Ocean</label>
+          <input name='theme' type="radio" @change="onChangeTheme" value="Ocean" />
+          <label>Ocean</label>
         </div>
         <div>
-        <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
-        <label>Carbon</label>
+          <input name='theme' type="radio" @change="onChangeTheme" value="Carbon" />
+          <label>Carbon</label>
         </div>
     </div>
 </div>`,

@@ -97,7 +97,7 @@ var app = new Vue({
         // uses the data info of the event 'dataplotrollover' and represents it
         dataplotRollover: function (e) {
             let value = (e.data.value / this.total * 100).toFixed(2);
-            this.displayValue =  \`<strong>\${e.data.categoryLabel}</strong> is <strong>\${value}%</strong> of the total\`;
+            this.displayValue =  \`<strong>\${e.data.categoryLabel}</strong> is <strong>\${value}%</strong> of top 8 oil reserve countries\`;
         }
     }
 });`,
@@ -125,7 +125,7 @@ var app = new Vue({
       let value = (e.data.value / this.total * 100).toFixed(2);
       this.displayValue = `<strong>${
         e.data.categoryLabel
-      }</strong> is <strong>${value}%</strong> of the total`;
+      }</strong> is <strong>${value}%</strong> of top 8 oil reserve countries`;
     },
     renderComplete: function(chart) {
       console.log('Render completed');

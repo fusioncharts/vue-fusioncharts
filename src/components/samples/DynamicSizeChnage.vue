@@ -11,6 +11,7 @@
                     </div>
                 </div>
                 <br />
+                <span  id="select-text">Select size:</span>
                 <div class="change-type">
                     <div>
                     <input name='chartSize' type="radio" @change="onChartSizeChange" value="400x250"/>

@@ -3,9 +3,9 @@
         <fusioncharts
         :options="options"
         :dataSource="dataSource"
-				@beforeDataUpdate="beforeDataUpdate"
-				@dataUpdated="dataUpdated"
-				@drawComplete="drawComplete"
+        @beforeDataUpdate="beforeDataUpdate"
+        @dataUpdated="dataUpdated"
+        @drawComplete="drawComplete"
         @renderComplete="renderComplete"
         :style="{ 'text-align': 'center' }"
         ></fusioncharts>
@@ -63,7 +63,10 @@ export default {
     :height="height"
     :dataFormat="dataFormat"
     :dataSource="dataSource"
-    @dataplotRollover="dataplotRollover"
+    @beforeDataUpdate="beforeDataUpdate"
+    @dataUpdated="dataUpdated"
+    @drawComplete="drawComplete"
+    @renderComplete="renderComplete"
     ></fusioncharts>
     <div v-html="displayValue"></div>
 </div>`,
@@ -89,18 +92,26 @@ var app = new Vue({
         type: 'column2d',
         dataFormat: 'json',
         dataSource: dataSource,
-        displayValue:'Hover on the plot to see the value along with the label'
-    },
-    created: function () {
-        let myData = this.dataSource.data;
-        this.total = myData.reduce((p,c)=>p+Number(c.value), 0);
-    },
+        displayValue: '<b>Status: </b>'
+	},
     methods: {
-        // uses the data info of the event 'dataplotrollover' and represents it
-        dataplotRollover: function (e) {
-            let value = (e.data.value / this.total * 100).toFixed(2);
-            this.displayValue =  \`<strong>\${e.data.categoryLabel}</strong> is <strong>\${value}%</strong> of the total\`;
-        }
+		// Binding Life Cycle events
+        beforeDataUpdate: function() {
+			let prevValue = this.displayValue;
+      		this.displayValue = prevValue + " beforeDataUpdate";
+    	},
+		dataUpdated: function() {
+			let prevValue = this.displayValue;
+			this.displayValue = prevValue + ", dataUpdated";
+		},
+		drawComplete: function() {
+			let prevValue = this.displayValue;
+			this.displayValue = prevValue + ", drawComplete";
+		},
+		renderComplete: function() {
+			let prevValue = this.displayValue;
+			this.displayValue = prevValue + ", renderComplete";
+		}
     }
 });`,
       options: {
@@ -110,8 +121,7 @@ var app = new Vue({
         dataFormat: "json",
         creditLabel: "false"
       },
-      displayValue:
-        "You will see notifications here for the chart lifecycle events"
+      displayValue: "<b>Status: </b>"
     };
   },
   computed: {
@@ -125,21 +135,18 @@ var app = new Vue({
   },
   methods: {
     beforeDataUpdate: function() {
-      this.displayValue = "Status: renderComplete";
-      console.log("beforeDataUpdate");
+      let prevValue = this.displayValue;
+      this.displayValue = prevValue + " beforeDataUpdate";
     },
     dataUpdated: function() {
-      console.log("dataUpdated");
       let prevValue = this.displayValue;
       this.displayValue = prevValue + ", dataUpdated";
     },
     drawComplete: function() {
-      console.log("drawComplete");
       let prevValue = this.displayValue;
       this.displayValue = prevValue + ", drawComplete";
     },
     renderComplete: function() {
-      console.log("renderComplete");
       let prevValue = this.displayValue;
       this.displayValue = prevValue + ", renderComplete";
     }

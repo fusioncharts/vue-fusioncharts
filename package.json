@@ -62,7 +62,7 @@
     "eslint": "^3.19.0",
     "eslint-loader": "^2.0.0",
     "fusioncharts": "^3.13.1-sr.2",
-    "mocha": "^3.4.1",
+    "mocha": "^5.2.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "vue": "^2.3.3",

@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
 	<style type="text/css">
 		.message-box {
-		    text-align: center;
-		    margin-top: 0px;
-		    background-color: #F5FBFF;
-		    width: 500px;
-		    color: #006BB8;
-		    padding: 5px 10px;
-		    box-sizing: border-box;
-		    border: 1px solid #B8E1FF;
+			text-align: center;
+			margin-top: 0px;
+			background-color: #F5FBFF;
+			width: 500px;
+			color: #006BB8;
+			padding: 5px 10px;
+			box-sizing: border-box;
+			border: 1px solid #B8E1FF;
 		}
 	</style>
 </head>
+
 <body>
-	
+
 	<div id="chart1">
-		<fusioncharts :options="options"> FusionCharts will render here...</fusioncharts>
+		<fusioncharts :options="options">
+			FusionCharts will render here...
+		</fusioncharts>
 		<p class="message-box">The value that you have selected is: {{displayValue}} </p>
 	</div>
 
 	<script type="text/javascript" src="bundle.js"></script>
 
 </body>
-</html>
 
+</html>

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 // import VueFusionCharts from '../src';
 // import VueFCComponent from '../src/vue-fusioncharts-component';
-import VueFCComponent from '../component/vue-fusioncharts-component';
+import VueFCComponent from '../component';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
 import Fint from 'fusioncharts/themes/fusioncharts.theme.fint';

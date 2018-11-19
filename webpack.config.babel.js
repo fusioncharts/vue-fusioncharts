@@ -49,14 +49,12 @@ const vueFCPluginConfig = {
 
 const vueFCComponentConfig = {
   entry: {
-    'vue-fusioncharts-component':
-      __dirname + '/src/vue-fusioncharts-component.js',
-    'vue-fusioncharts-component.min':
-      __dirname + '/src/vue-fusioncharts-component.js'
+    index: __dirname + '/src/vue-fusioncharts-component.js',
+    'index.min': __dirname + '/src/vue-fusioncharts-component.js'
   },
   devtool: 'source-map',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/component',
     filename: '[name].js',
     library: libraryNameComponent,
     libraryTarget: 'umd'
@@ -85,7 +83,7 @@ const vueFCComponentConfig = {
   },
   plugins: [
     new UglifyJsPlugin({
-      include: 'vue-fusioncharts-component.min.js',
+      include: 'index.min.js',
       minimize: true
     })
   ]

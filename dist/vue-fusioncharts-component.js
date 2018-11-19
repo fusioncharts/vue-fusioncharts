@@ -4,10 +4,10 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["fusioncharts"], factory);
 	else if(typeof exports === 'object')
-		exports["VueFusionCharts"] = factory(require("fusioncharts"));
+		exports["VueFusionChartsComponent"] = factory(require("fusioncharts"));
 	else
-		root["VueFusionCharts"] = factory(root["FusionCharts"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+		root["VueFusionChartsComponent"] = factory(root["FusionCharts"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,11 +73,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88,6 +94,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _fusioncharts = __webpack_require__(0);
+
+var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var optionsMap = {
   type: 'type',
@@ -197,7 +209,123 @@ var optionsMap = {
   loadmessageimagescale: 'loadMessageImageScale'
 };
 
-exports.default = function (FC) {
+var props = {
+  options: Object,
+  type: String,
+  id: String,
+  width: '',
+  height: '',
+  dataFormat: String,
+  dataSource: '',
+  events: Object,
+  link: Object,
+  showDataLoadingMessage: Boolean,
+  showChartLoadingMessage: Boolean,
+  baseChartMessageFont: String,
+  baseChartMessageFontSize: String,
+  baseChartMessageColor: String,
+  dataLoadStartMessage: String,
+  dataLoadErrorMessage: String,
+  dataInvalidMessage: String,
+  dataEmptyMessage: String,
+  typeNotSupportedMessage: String,
+  loadMessage: String,
+  renderErrorMessage: String,
+  containerBackgroundColor: String,
+  containerBackgroundOpacity: Number,
+  containerClassName: String,
+  baseChartMessageImageHAlign: String,
+  baseChartMessageImageVAlign: String,
+  baseChartMessageImageAlpha: Number,
+  baseChartMessageImageScale: Number,
+  typeNotSupportedMessageImageHAlign: String,
+  typeNotSupportedMessageImageVAlign: String,
+  typeNotSupportedMessageImageAlpha: Number,
+  typeNotSupportedMessageImageScale: Number,
+  dataLoadErrorMessageImageHAlign: String,
+  dataLoadErrorMessageImageVAlign: String,
+  dataLoadErrorMessageImageAlpha: Number,
+  dataLoadErrorMessageImageScale: Number,
+  dataLoadStartMessageImageHAlign: String,
+  dataLoadStartMessageImageVAlign: String,
+  dataLoadStartMessageImageAlpha: Number,
+  dataLoadStartMessageImageScale: Number,
+  dataInvalidMessageImageHAlign: String,
+  dataInvalidMessageImageVAlign: String,
+  dataInvalidMessageImageAlpha: Number,
+  dataInvalidMessageImageScale: Number,
+  dataEmptyMessageImageHAlign: String,
+  dataEmptyMessageImageVAlign: String,
+  dataEmptyMessageImageAlpha: Number,
+  dataEmptyMessageImageScale: Number,
+  renderErrorMessageImageHAlign: String,
+  renderErrorMessageImageVAlign: String,
+  renderErrorMessageImageAlpha: Number,
+  renderErrorMessageImageScale: Number,
+  loadMessageImageHAlign: String,
+  loadMessageImageVAlign: String,
+  loadMessageImageAlpha: Number,
+  loadMessageImageScale: Number,
+  ///////////////////////////////////////////////
+  dataformat: String,
+  datasource: '',
+  showdataloadingmessage: Boolean,
+  showchartloadingmessage: Boolean,
+  basechartmessagefont: String,
+  basechartmessagefontsize: String,
+  basechartmessagecolor: String,
+  dataloadstartmessage: String,
+  dataloaderrormessage: String,
+  datainvalidmessage: String,
+  dataemptymessage: String,
+  typenotsupportedmessage: String,
+  loadmessage: String,
+  rendererrormessage: String,
+  containerbackgroundcolor: String,
+  containerbackgroundopacity: Number,
+  containerclassname: String,
+  basechartmessageimagehalign: String,
+  basechartmessageimagevalign: String,
+  basechartmessageimagealpha: Number,
+  basechartmessageimagescale: Number,
+  typenotsupportedmessageimagehalign: String,
+  typenotsupportedmessageimagevalign: String,
+  typenotsupportedmessageimagealpha: Number,
+  typenotsupportedmessageimagescale: Number,
+  dataloaderrormessageimagehalign: String,
+  dataloaderrormessageimagevalign: String,
+  dataloaderrormessageimagealpha: Number,
+  dataloaderrormessageimagescale: Number,
+  dataloadstartmessageimagehalign: String,
+  dataloadstartmessageimagevalign: String,
+  dataloadstartmessageimagealpha: Number,
+  dataloadstartmessageimagescale: Number,
+  datainvalidmessageimagehalign: String,
+  datainvalidmessageimagevalign: String,
+  datainvalidmessageimagealpha: Number,
+  datainvalidmessageimagescale: Number,
+  dataemptymessageimagehalign: String,
+  dataemptymessageimagevalign: String,
+  dataemptymessageimagealpha: Number,
+  dataemptymessageimagescale: Number,
+  rendererrormessageimagehalign: String,
+  rendererrormessageimagevalign: String,
+  rendererrormessageimagealpha: Number,
+  rendererrormessageimagescale: Number,
+  loadmessageimagehalign: String,
+  loadmessageimagevalign: String,
+  loadmessageimagealpha: Number,
+  loadmessageimagescale: Number
+};
+
+var GetComponent = function GetComponent(FC) {
+  for (var _len = arguments.length, options = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    options[_key - 1] = arguments[_key];
+  }
+
+  options && options.forEach && options.forEach(function (modules) {
+    addDep(FC, _fusioncharts2.default, modules);
+  });
   return {
     name: 'fusioncharts',
     template: '<div></div>',
@@ -209,114 +337,7 @@ exports.default = function (FC) {
         }
       });
     },
-    props: {
-      options: Object,
-      type: String,
-      id: String,
-      width: '',
-      height: '',
-      dataFormat: String,
-      dataSource: '',
-      events: Object,
-      link: Object,
-      showDataLoadingMessage: Boolean,
-      showChartLoadingMessage: Boolean,
-      baseChartMessageFont: String,
-      baseChartMessageFontSize: String,
-      baseChartMessageColor: String,
-      dataLoadStartMessage: String,
-      dataLoadErrorMessage: String,
-      dataInvalidMessage: String,
-      dataEmptyMessage: String,
-      typeNotSupportedMessage: String,
-      loadMessage: String,
-      renderErrorMessage: String,
-      containerBackgroundColor: String,
-      containerBackgroundOpacity: Number,
-      containerClassName: String,
-      baseChartMessageImageHAlign: String,
-      baseChartMessageImageVAlign: String,
-      baseChartMessageImageAlpha: Number,
-      baseChartMessageImageScale: Number,
-      typeNotSupportedMessageImageHAlign: String,
-      typeNotSupportedMessageImageVAlign: String,
-      typeNotSupportedMessageImageAlpha: Number,
-      typeNotSupportedMessageImageScale: Number,
-      dataLoadErrorMessageImageHAlign: String,
-      dataLoadErrorMessageImageVAlign: String,
-      dataLoadErrorMessageImageAlpha: Number,
-      dataLoadErrorMessageImageScale: Number,
-      dataLoadStartMessageImageHAlign: String,
-      dataLoadStartMessageImageVAlign: String,
-      dataLoadStartMessageImageAlpha: Number,
-      dataLoadStartMessageImageScale: Number,
-      dataInvalidMessageImageHAlign: String,
-      dataInvalidMessageImageVAlign: String,
-      dataInvalidMessageImageAlpha: Number,
-      dataInvalidMessageImageScale: Number,
-      dataEmptyMessageImageHAlign: String,
-      dataEmptyMessageImageVAlign: String,
-      dataEmptyMessageImageAlpha: Number,
-      dataEmptyMessageImageScale: Number,
-      renderErrorMessageImageHAlign: String,
-      renderErrorMessageImageVAlign: String,
-      renderErrorMessageImageAlpha: Number,
-      renderErrorMessageImageScale: Number,
-      loadMessageImageHAlign: String,
-      loadMessageImageVAlign: String,
-      loadMessageImageAlpha: Number,
-      loadMessageImageScale: Number,
-      ///////////////////////////////////////////////
-      dataformat: String,
-      datasource: '',
-      showdataloadingmessage: Boolean,
-      showchartloadingmessage: Boolean,
-      basechartmessagefont: String,
-      basechartmessagefontsize: String,
-      basechartmessagecolor: String,
-      dataloadstartmessage: String,
-      dataloaderrormessage: String,
-      datainvalidmessage: String,
-      dataemptymessage: String,
-      typenotsupportedmessage: String,
-      loadmessage: String,
-      rendererrormessage: String,
-      containerbackgroundcolor: String,
-      containerbackgroundopacity: Number,
-      containerclassname: String,
-      basechartmessageimagehalign: String,
-      basechartmessageimagevalign: String,
-      basechartmessageimagealpha: Number,
-      basechartmessageimagescale: Number,
-      typenotsupportedmessageimagehalign: String,
-      typenotsupportedmessageimagevalign: String,
-      typenotsupportedmessageimagealpha: Number,
-      typenotsupportedmessageimagescale: Number,
-      dataloaderrormessageimagehalign: String,
-      dataloaderrormessageimagevalign: String,
-      dataloaderrormessageimagealpha: Number,
-      dataloaderrormessageimagescale: Number,
-      dataloadstartmessageimagehalign: String,
-      dataloadstartmessageimagevalign: String,
-      dataloadstartmessageimagealpha: Number,
-      dataloadstartmessageimagescale: Number,
-      datainvalidmessageimagehalign: String,
-      datainvalidmessageimagevalign: String,
-      datainvalidmessageimagealpha: Number,
-      datainvalidmessageimagescale: Number,
-      dataemptymessageimagehalign: String,
-      dataemptymessageimagevalign: String,
-      dataemptymessageimagealpha: Number,
-      dataemptymessageimagescale: Number,
-      rendererrormessageimagehalign: String,
-      rendererrormessageimagevalign: String,
-      rendererrormessageimagealpha: Number,
-      rendererrormessageimagescale: Number,
-      loadmessageimagehalign: String,
-      loadmessageimagevalign: String,
-      loadmessageimagealpha: Number,
-      loadmessageimagescale: Number
-    },
+    props: props,
     methods: {
       attachListeners: function attachListeners() {
         var _this = this;
@@ -441,36 +462,6 @@ exports.default = function (FC) {
   };
 };
 
-module.exports = exports['default'];
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _fusioncharts = __webpack_require__(1);
-
-var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
-
-var _vueFusioncharts = __webpack_require__(0);
-
-var _vueFusioncharts2 = _interopRequireDefault(_vueFusioncharts);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// This code is used if we use vue-fusioncharts as a Plugin.
 var addDep = function addDep(FC, _FC, modules) {
   if (FC) {
     if (modules.getName && modules.getType || modules.name && modules.type) {
@@ -482,29 +473,11 @@ var addDep = function addDep(FC, _FC, modules) {
     modules(_FC);
   }
 };
-var install = function install(Vue, FC) {
-  for (var _len = arguments.length, options = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    options[_key - 2] = arguments[_key];
-  }
 
-  options && options.forEach && options.forEach(function (modules) {
-    addDep(FC, _fusioncharts2.default, modules);
-  });
-  var component = (0, _vueFusioncharts2.default)(FC);
-
-  Vue.component(component.name, component);
-};
-
-exports.default = install;
-
-// This code is used if we use vue-fusioncharts as a Component
-// import _FCComponent from "./vue-fusioncharts-component";
-
-// export default _FCComponent;
-
+exports.default = GetComponent;
 module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=vue-fusioncharts.js.map
+//# sourceMappingURL=vue-fusioncharts-component.js.map

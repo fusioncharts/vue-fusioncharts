@@ -1,7 +1,7 @@
 import Vue from 'vue';
-// import VueFusionCharts from '../src';
+import VueFusionCharts from '../src';
 // import VueFCComponent from '../src/vue-fusioncharts-component';
-import VueFCComponent from '../component';
+// import VueFCComponent from '../component';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
 import Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
@@ -10,16 +10,16 @@ import Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
 // Fint(FusionCharts);
 
 // Use VueFusionCharts plugins by calling the Vue.use() global method:
-// Vue.use(VueFusionCharts, FusionCharts, Charts);
+Vue.use(VueFusionCharts, FusionCharts, Charts);
 
 //Use this to add vue-fusioncharts a component
-let vFC = VueFCComponent(FusionCharts, Charts, Fint);
+// let vFC = VueFCComponent(FusionCharts, Charts, Fint);
 // Vue.component('fusioncharts', vFC);
 
 // bootstrap the demo
 var chart = new Vue({
   el: '#chart1',
-  components: { fusioncharts: vFC },
+  // components: { fusioncharts: vFC },
   data: {
     options: {
       type: 'Pie2D',

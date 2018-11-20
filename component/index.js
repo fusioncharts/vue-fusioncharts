@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["fusioncharts"], factory);
 	else if(typeof exports === 'object')
-		exports["VueFusionCharts"] = factory(require("fusioncharts"));
+		exports["VueFusionChartsComponent"] = factory(require("fusioncharts"));
 	else
-		root["VueFusionCharts"] = factory(root["FusionCharts"]);
+		root["VueFusionChartsComponent"] = factory(root["FusionCharts"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -73,173 +73,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _require = __webpack_require__(2),
-    optionsMap = _require.optionsMap,
-    props = _require.props;
-
-exports.default = function (FC) {
-  return {
-    name: 'fusioncharts',
-    template: '<div></div>',
-    render: function render(h) {
-      this.containerID = 'fc-' + this._uid;
-      return h('div', {
-        attrs: {
-          id: this.containerID
-        }
-      });
-    },
-    props: props,
-    methods: {
-      attachListeners: function attachListeners() {
-        var _this = this;
-
-        if (this.$listeners && _typeof(this.$listeners) === 'object') {
-          Object.keys(this.$listeners).forEach(function (event) {
-            _this.chartObj.addEventListener(event, function (e) {
-              _this.$emit(event, e);
-            });
-          });
-        }
-      },
-      createEvents: function createEvents() {
-        var _this2 = this;
-
-        var ret = {
-          events: {}
-        };
-        if (this.$listeners && _typeof(this.$listeners) === 'object') {
-          Object.keys(this.$listeners).forEach(function (event) {
-            ret.events[event] = function (e) {
-              _this2.$emit(event, e);
-            };
-          });
-        }
-        return ret;
-      },
-      setLastOptions: function setLastOptions(config) {
-        this._oldOptions = Object.assign({}, config);
-      },
-      getLastOptions: function getLastOptions() {
-        return this._oldOptions;
-      },
-      getOptions: function getOptions() {
-        var config = {},
-            THIS = this;
-        for (var i in optionsMap) {
-          if (THIS[i] !== undefined && THIS[i] !== null) {
-            config[optionsMap[i]] = THIS[i];
-          }
-        }
-
-        var options = Object.assign(Object.assign({}, THIS.options), config);
-
-        return options;
-      },
-      renderChart: function renderChart() {
-        var THIS = this,
-            config = THIS.getOptions(),
-            chartObj = THIS.chartObj;
-
-        config.renderAt = this.containerID;
-        THIS.setLastOptions(config);
-
-        if (chartObj && chartObj.dispose) {
-          chartObj.dispose();
-        }
-        var events = this.createEvents();
-        config.events = Object.assign({}, config.events, events.events);
-
-        THIS.chartObj = chartObj = new FC(config);
-        chartObj.render();
-      },
-      updateChart: function updateChart() {
-        var THIS = this,
-            config = THIS.getOptions(),
-            prevConfig = THIS.getLastOptions(),
-            chartObj = THIS.chartObj;
-
-        if (config.width !== prevConfig.width || config.height !== prevConfig.height) {
-          chartObj && chartObj.resizeTo(config.width, config.height);
-        } else if (config.type !== prevConfig.type) {
-          chartObj.chartType(config.type);
-        } else {
-          chartObj.setChartData(config.dataSource, config.dataFormat);
-        }
-
-        THIS.setLastOptions(config);
-      }
-    },
-    watch: {
-      type: function type() {
-        this.chartObj.chartType(this.type);
-      },
-      width: function width() {
-        this.chartObj.resizeTo(this.width, this.height);
-      },
-      height: function height() {
-        this.chartObj.resizeTo(this.width, this.height);
-      },
-      options: {
-        handler: function handler() {
-          this.updateChart();
-        },
-        deep: true
-      },
-      dataSource: {
-        handler: function handler() {
-          this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
-        },
-        deep: true
-      },
-      datasource: {
-        handler: function handler() {
-          this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
-        },
-        deep: true
-      }
-    },
-    deactivated: function deactivated() {
-      this.chartObj && this.chartObj.dispose();
-    },
-    beforeDestroy: function beforeDestroy() {
-      this.chartObj && this.chartObj.dispose();
-    },
-    mounted: function mounted() {
-      this.renderChart();
-    },
-    ready: function ready() {
-      this.renderChart();
-    }
-  };
-};
-
-module.exports = exports['default'];
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -465,7 +303,13 @@ var props = {
 module.exports = { optionsMap: optionsMap, props: props };
 
 /***/ }),
-/* 3 */
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -475,17 +319,162 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _fusioncharts = __webpack_require__(1);
 
 var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
 
-var _vueFusioncharts = __webpack_require__(0);
-
-var _vueFusioncharts2 = _interopRequireDefault(_vueFusioncharts);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// This code is used if we use vue-fusioncharts as a Plugin.
+var _require = __webpack_require__(0),
+    optionsMap = _require.optionsMap,
+    props = _require.props;
+
+var GetComponent = function GetComponent(FC) {
+  for (var _len = arguments.length, options = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    options[_key - 1] = arguments[_key];
+  }
+
+  options && options.forEach && options.forEach(function (modules) {
+    addDep(FC, _fusioncharts2.default, modules);
+  });
+  return {
+    name: 'fusioncharts',
+    template: '<div></div>',
+    render: function render(h) {
+      this.containerID = 'fc-' + this._uid;
+      return h('div', {
+        attrs: {
+          id: this.containerID
+        }
+      });
+    },
+    props: props,
+    methods: {
+      attachListeners: function attachListeners() {
+        var _this = this;
+
+        if (this.$listeners && _typeof(this.$listeners) === 'object') {
+          Object.keys(this.$listeners).forEach(function (event) {
+            _this.chartObj.addEventListener(event, function (e) {
+              _this.$emit(event, e);
+            });
+          });
+        }
+      },
+      createEvents: function createEvents() {
+        var _this2 = this;
+
+        var ret = {
+          events: {}
+        };
+        if (this.$listeners && _typeof(this.$listeners) === 'object') {
+          Object.keys(this.$listeners).forEach(function (event) {
+            ret.events[event] = function (e) {
+              _this2.$emit(event, e);
+            };
+          });
+        }
+        return ret;
+      },
+      setLastOptions: function setLastOptions(config) {
+        this._oldOptions = Object.assign({}, config);
+      },
+      getLastOptions: function getLastOptions() {
+        return this._oldOptions;
+      },
+      getOptions: function getOptions() {
+        var config = {},
+            THIS = this;
+        for (var i in optionsMap) {
+          if (THIS[i] !== undefined && THIS[i] !== null) {
+            config[optionsMap[i]] = THIS[i];
+          }
+        }
+
+        var options = Object.assign(Object.assign({}, THIS.options), config);
+
+        return options;
+      },
+      renderChart: function renderChart() {
+        var THIS = this,
+            config = THIS.getOptions(),
+            chartObj = THIS.chartObj;
+
+        config.renderAt = this.containerID;
+        THIS.setLastOptions(config);
+
+        if (chartObj && chartObj.dispose) {
+          chartObj.dispose();
+        }
+        var events = this.createEvents();
+        config.events = Object.assign({}, config.events, events.events);
+
+        THIS.chartObj = chartObj = new FC(config);
+        chartObj.render();
+      },
+      updateChart: function updateChart() {
+        var THIS = this,
+            config = THIS.getOptions(),
+            prevConfig = THIS.getLastOptions(),
+            chartObj = THIS.chartObj;
+
+        if (config.width !== prevConfig.width || config.height !== prevConfig.height) {
+          chartObj && chartObj.resizeTo(config.width, config.height);
+        } else if (config.type !== prevConfig.type) {
+          chartObj.chartType(config.type);
+        } else {
+          chartObj.setChartData(config.dataSource, config.dataFormat);
+        }
+
+        THIS.setLastOptions(config);
+      }
+    },
+    watch: {
+      type: function type() {
+        this.chartObj.chartType(this.type);
+      },
+      width: function width() {
+        this.chartObj.resizeTo(this.width, this.height);
+      },
+      height: function height() {
+        this.chartObj.resizeTo(this.width, this.height);
+      },
+      options: {
+        handler: function handler() {
+          this.updateChart();
+        },
+        deep: true
+      },
+      dataSource: {
+        handler: function handler() {
+          this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+        },
+        deep: true
+      },
+      datasource: {
+        handler: function handler() {
+          this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+        },
+        deep: true
+      }
+    },
+    deactivated: function deactivated() {
+      this.chartObj && this.chartObj.dispose();
+    },
+    beforeDestroy: function beforeDestroy() {
+      this.chartObj && this.chartObj.dispose();
+    },
+    mounted: function mounted() {
+      this.renderChart();
+    },
+    ready: function ready() {
+      this.renderChart();
+    }
+  };
+};
+
 var addDep = function addDep(FC, _FC, modules) {
   if (FC) {
     if (modules.getName && modules.getType || modules.name && modules.type) {
@@ -497,29 +486,11 @@ var addDep = function addDep(FC, _FC, modules) {
     modules(_FC);
   }
 };
-var install = function install(Vue, FC) {
-  for (var _len = arguments.length, options = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    options[_key - 2] = arguments[_key];
-  }
 
-  options && options.forEach && options.forEach(function (modules) {
-    addDep(FC, _fusioncharts2.default, modules);
-  });
-  var component = (0, _vueFusioncharts2.default)(FC);
-
-  Vue.component(component.name, component);
-};
-
-exports.default = install;
-
-// This code is used if we use vue-fusioncharts as a Component
-// import _FCComponent from "./vue-fusioncharts-component";
-
-// export default _FCComponent;
-
+exports.default = GetComponent;
 module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=vue-fusioncharts.js.map
+//# sourceMappingURL=index.js.map

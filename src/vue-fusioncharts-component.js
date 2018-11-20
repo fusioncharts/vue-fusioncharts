@@ -1,6 +1,12 @@
+import _FC from 'fusioncharts';
 const { optionsMap, props } = require('./config.js');
 
-export default FC => {
+const GetComponent = function(FC, ...options) {
+  options &&
+    options.forEach &&
+    options.forEach(modules => {
+      addDep(FC, _FC, modules);
+    });
   return {
     name: 'fusioncharts',
     template: '<div></div>',
@@ -141,3 +147,20 @@ export default FC => {
     }
   };
 };
+
+const addDep = (FC, _FC, modules) => {
+  if (FC) {
+    if (
+      (modules.getName && modules.getType) ||
+      (modules.name && modules.type)
+    ) {
+      FC.addDep(modules);
+    } else {
+      modules(FC);
+    }
+  } else {
+    modules(_FC);
+  }
+};
+
+export default GetComponent;

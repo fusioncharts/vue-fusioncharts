@@ -1,20 +1,17 @@
 import Vue from 'vue';
 import VueFusionCharts from '../src';
-// import VueFCComponent from '../src/vue-fusioncharts-component';
+import VueFCComponent from '../src/vue-fusioncharts-component';
 // import VueFCComponent from '../component';
+// import VueFusionCharts from '../dist/vue-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
-import Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
-
-// Charts(FusionCharts);
-// Fint(FusionCharts);
 
 // Use VueFusionCharts plugins by calling the Vue.use() global method:
-Vue.use(VueFusionCharts, FusionCharts, Charts);
+// Vue.use(VueFusionCharts, FusionCharts, Charts);
 
 //Use this to add vue-fusioncharts a component
-// let vFC = VueFCComponent(FusionCharts, Charts, Fint);
-// Vue.component('fusioncharts', vFC);
+let vFC = VueFCComponent(FusionCharts, Charts);
+Vue.component('fusioncharts', vFC);
 
 // bootstrap the demo
 var chart = new Vue({

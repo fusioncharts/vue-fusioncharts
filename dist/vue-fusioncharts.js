@@ -7,7 +7,7 @@
 		exports["VueFusionCharts"] = factory(require("fusioncharts"));
 	else
 		root["VueFusionCharts"] = factory(root["FusionCharts"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_4__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -89,11 +89,26 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _require = __webpack_require__(2),
+var _fusioncharts = __webpack_require__(4);
+
+var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
+
+var _utils = __webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _require = __webpack_require__(1),
     optionsMap = _require.optionsMap,
     props = _require.props;
 
 exports.default = function (FC) {
+  for (var _len = arguments.length, options = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    options[_key - 1] = arguments[_key];
+  }
+
+  options && options.forEach && options.forEach(function (modules) {
+    (0, _utils.addDep)(FC, _fusioncharts2.default, modules);
+  });
   return {
     name: 'fusioncharts',
     template: '<div></div>',
@@ -234,12 +249,6 @@ module.exports = exports['default'];
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -465,7 +474,7 @@ var props = {
 module.exports = { optionsMap: optionsMap, props: props };
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -475,18 +484,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _fusioncharts = __webpack_require__(1);
+var _vueFusionchartsComponent = __webpack_require__(0);
 
-var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
-
-var _vueFusioncharts = __webpack_require__(0);
-
-var _vueFusioncharts2 = _interopRequireDefault(_vueFusioncharts);
+var _vueFusionchartsComponent2 = _interopRequireDefault(_vueFusionchartsComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// This code is used if we use vue-fusioncharts as a Plugin.
-var addDep = function addDep(FC, _FC, modules) {
+var install = function install(Vue, FC) {
+  for (var _len = arguments.length, options = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    options[_key - 2] = arguments[_key];
+  }
+
+  var component = _vueFusionchartsComponent2.default.apply(undefined, [FC].concat(options));
+  Vue.component(component.name, component);
+};
+
+exports.default = install;
+module.exports = exports['default'];
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var addDep = exports.addDep = function addDep(FC, _FC, modules) {
   if (FC) {
     if (modules.getName && modules.getType || modules.name && modules.type) {
       FC.addDep(modules);
@@ -497,27 +523,12 @@ var addDep = function addDep(FC, _FC, modules) {
     modules(_FC);
   }
 };
-var install = function install(Vue, FC) {
-  for (var _len = arguments.length, options = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    options[_key - 2] = arguments[_key];
-  }
 
-  options && options.forEach && options.forEach(function (modules) {
-    addDep(FC, _fusioncharts2.default, modules);
-  });
-  var component = (0, _vueFusioncharts2.default)(FC);
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
 
-  Vue.component(component.name, component);
-};
-
-exports.default = install;
-
-// This code is used if we use vue-fusioncharts as a Component
-// import _FCComponent from "./vue-fusioncharts-component";
-
-// export default _FCComponent;
-
-module.exports = exports['default'];
+module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
 
 /***/ })
 /******/ ]);

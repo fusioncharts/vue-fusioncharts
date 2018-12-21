@@ -101,9 +101,9 @@ var chart = new Vue({
       // this.pieDataSource = dataSource;
     },
     changeSecondChartAttr: function() {
-      let dataSource = Object.assign({}, this.timeseriesOptions.dataSource);
+      let dataSource = Object.assign({}, this.dataSource);
       dataSource.caption.text = 'Changed to something else';
-      this.timeseriesOptions.dataSource = dataSource;
+      this.dataSource = dataSource;
     },
     getRandomNumber: function() {
       var max = 5,
@@ -119,7 +119,7 @@ var chart = new Vue({
         data,
         schema
       );
-      this.timeseriesOptions.dataSource.data = fusionTable;
+      this.dataSource.data = fusionTable;
       this.displayChart = true;
     });
   }

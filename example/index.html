@@ -22,7 +22,13 @@
         FusionCharts will render here...
       </fusioncharts>
       <div v-show="displayChart">
-        <fusioncharts :options="timeseriesOptions">
+        <fusioncharts
+          :width="width"
+          :height="height"
+          :type="type"
+          :dataFormat="dataFormat"
+          :dataSource="dataSource"
+        >
           FusionCharts will render here...
         </fusioncharts>
       </div>

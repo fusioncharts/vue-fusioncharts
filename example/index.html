@@ -21,9 +21,15 @@
       <fusioncharts :options="options">
         FusionCharts will render here...
       </fusioncharts>
-      <p class="message-box">
-        The value that you have selected is: {{ displayValue }}
-      </p>
+      <div v-show="displayChart">
+        <fusioncharts :options="timeseriesOptions">
+          FusionCharts will render here...
+        </fusioncharts>
+      </div>
+      <button @click="changeFirstChartAttr">Change 1st Chart Attributes</button>
+      <button @click="changeSecondChartAttr">
+        Change 2nd Chart Attributes
+      </button>
     </div>
     <script type="text/javascript" src="bundle.js"></script>
   </body>

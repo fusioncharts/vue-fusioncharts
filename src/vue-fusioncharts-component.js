@@ -1,6 +1,6 @@
 import _FC from 'fusioncharts';
 const { optionsMap, props } = require('./config.js');
-import { addDep } from './utils';
+import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
 
 export default (FC, ...options) => {
   options &&
@@ -76,6 +76,12 @@ export default (FC, ...options) => {
         const events = this.createEvents();
         config.events = Object.assign({}, config.events, events.events);
 
+        let ds = config.dataSource || config.datasource;
+
+        if (checkIfDataTableExists(ds))
+          this.prevDataSource = cloneDataSource(ds, 'diff');
+        else this.prevDataSource = cloneDataSource(ds, 'clone');
+
         THIS.chartObj = chartObj = new FC(config);
         chartObj.render();
       },
@@ -93,7 +99,8 @@ export default (FC, ...options) => {
         } else if (config.type !== prevConfig.type) {
           chartObj.chartType(config.type);
         } else {
-          chartObj.setChartData(config.dataSource, config.dataFormat);
+          if (!checkIfDataTableExists(config.dataSource))
+            chartObj.setChartData(config.dataSource, config.dataFormat);
         }
 
         THIS.setLastOptions(config);
@@ -117,19 +124,23 @@ export default (FC, ...options) => {
       },
       dataSource: {
         handler: function() {
-          this.chartObj.setChartData(
-            this.datasource || this.dataSource,
-            this.dataFormat || this.dataformat
-          );
+          if (!checkIfDataTableExists(this.dataSource)) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
         },
         deep: true
       },
       datasource: {
         handler: function() {
-          this.chartObj.setChartData(
-            this.datasource || this.dataSource,
-            this.dataFormat || this.dataformat
-          );
+          if (!checkIfDataTableExists(this.datasource)) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
         },
         deep: true
       }
@@ -145,6 +156,16 @@ export default (FC, ...options) => {
     },
     ready: function() {
       this.renderChart();
+    },
+    beforeUpdate: function() {
+      const strPrevClonedDataSource = JSON.stringify(this.prevDataSource);
+      const ds = this.datasource || this.dataSource || this.options.dataSource;
+      const strCurrClonedDataSource = JSON.stringify(
+        cloneDataSource(ds, 'diff')
+      );
+      if (strPrevClonedDataSource !== strCurrClonedDataSource) {
+        this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
+      }
     }
   };
 };

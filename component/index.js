@@ -7,7 +7,7 @@
 		exports["VueFusionChartsComponent"] = factory(require("fusioncharts"));
 	else
 		root["VueFusionChartsComponent"] = factory(root["FusionCharts"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -304,12 +304,34 @@ module.exports = { optionsMap: optionsMap, props: props };
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var addDep = exports.addDep = function addDep(FC, _FC, modules) {
+  if (FC) {
+    if (modules.getName && modules.getType || modules.name && modules.type) {
+      FC.addDep(modules);
+    } else {
+      modules(FC);
+    }
+  } else {
+    modules(_FC);
+  }
+};
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -321,9 +343,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _fusioncharts = __webpack_require__(1);
+var _fusioncharts = __webpack_require__(2);
 
 var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
+
+var _utils = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -331,13 +355,13 @@ var _require = __webpack_require__(0),
     optionsMap = _require.optionsMap,
     props = _require.props;
 
-var GetComponent = function GetComponent(FC) {
+exports.default = function (FC) {
   for (var _len = arguments.length, options = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     options[_key - 1] = arguments[_key];
   }
 
   options && options.forEach && options.forEach(function (modules) {
-    addDep(FC, _fusioncharts2.default, modules);
+    (0, _utils.addDep)(FC, _fusioncharts2.default, modules);
   });
   return {
     name: 'fusioncharts',
@@ -475,19 +499,6 @@ var GetComponent = function GetComponent(FC) {
   };
 };
 
-var addDep = function addDep(FC, _FC, modules) {
-  if (FC) {
-    if (modules.getName && modules.getType || modules.name && modules.type) {
-      FC.addDep(modules);
-    } else {
-      modules(FC);
-    }
-  } else {
-    modules(_FC);
-  }
-};
-
-exports.default = GetComponent;
 module.exports = exports['default'];
 
 /***/ })

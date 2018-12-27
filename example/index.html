@@ -18,7 +18,13 @@
 
   <body>
     <div id="chart1">
-      <fusioncharts :options="options">
+      <fusioncharts
+        :width="width"
+        :height="height"
+        :type="pieType"
+        :dataFormat="dataFormat"
+        :dataSource="chartDs"
+      >
         FusionCharts will render here...
       </fusioncharts>
       <div v-show="displayChart">

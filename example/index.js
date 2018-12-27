@@ -58,6 +58,16 @@ var chart = new Vue({
         }
       ]
     },
+    pieType: 'Pie2D',
+    chartDs: {
+      chart: {
+        caption: 'Vue FusionCharts Sample',
+        theme: 'fint',
+        animation: '1',
+        updateanimduration: '100'
+      },
+      data: [{ value: 1.9 }, { value: 2.3 }, { value: 2.1 }]
+    },
     options: {
       width: '500',
       height: '300',
@@ -95,9 +105,9 @@ var chart = new Vue({
   methods: {
     changeFirstChartAttr: function() {
       // let dataSource = Object.assign({}, this.pieDataSource);
-      this.options.dataSource.chart.caption = 'Changed to something else';
-      // dataSource.data[2].value = this.getRandomNumber();
-      // dataSource.data[1].value = this.getRandomNumber();
+      this.chartDs.chart.caption = 'Changed to something else';
+      this.chartDs.data[2].value = this.getRandomNumber();
+      this.chartDs.data[1].value = this.getRandomNumber();
       // this.pieDataSource = dataSource;
     },
     changeSecondChartAttr: function() {

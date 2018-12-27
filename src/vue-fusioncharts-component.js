@@ -124,6 +124,7 @@ export default (FC, ...options) => {
       },
       dataSource: {
         handler: function() {
+          console.log('Called dataSource');
           if (!checkIfDataTableExists(this.dataSource)) {
             this.chartObj.setChartData(
               this.datasource || this.dataSource,
@@ -143,6 +144,24 @@ export default (FC, ...options) => {
           }
         },
         deep: true
+      },
+      'datasource.data': {
+        handler: function() {
+          this.chartObj.setChartData(
+            this.datasource || this.dataSource,
+            this.dataFormat || this.dataformat
+          );
+        },
+        deep: false
+      },
+      'dataSource.data': {
+        handler: function() {
+          this.chartObj.setChartData(
+            this.datasource || this.dataSource,
+            this.dataFormat || this.dataformat
+          );
+        },
+        deep: false
       }
     },
     deactivated: function() {

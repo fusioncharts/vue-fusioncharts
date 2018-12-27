@@ -181,6 +181,10 @@ exports.default = function (FC) {
         var events = this.createEvents();
         config.events = Object.assign({}, config.events, events.events);
 
+        var ds = config.dataSource || config.datasource;
+
+        if ((0, _utils.checkIfDataTableExists)(ds)) this.prevDataSource = (0, _utils.cloneDataSource)(ds, 'diff');else this.prevDataSource = (0, _utils.cloneDataSource)(ds, 'clone');
+
         THIS.chartObj = chartObj = new FC(config);
         chartObj.render();
       },
@@ -195,7 +199,7 @@ exports.default = function (FC) {
         } else if (config.type !== prevConfig.type) {
           chartObj.chartType(config.type);
         } else {
-          chartObj.setChartData(config.dataSource, config.dataFormat);
+          if (!(0, _utils.checkIfDataTableExists)(config.dataSource)) chartObj.setChartData(config.dataSource, config.dataFormat);
         }
 
         THIS.setLastOptions(config);
@@ -219,13 +223,17 @@ exports.default = function (FC) {
       },
       dataSource: {
         handler: function handler() {
-          this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+          if (!(0, _utils.checkIfDataTableExists)(this.dataSource)) {
+            this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+          }
         },
         deep: true
       },
       datasource: {
         handler: function handler() {
-          this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+          if (!(0, _utils.checkIfDataTableExists)(this.datasource)) {
+            this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+          }
         },
         deep: true
       }
@@ -241,6 +249,14 @@ exports.default = function (FC) {
     },
     ready: function ready() {
       this.renderChart();
+    },
+    beforeUpdate: function beforeUpdate() {
+      var strPrevClonedDataSource = JSON.stringify(this.prevDataSource);
+      var ds = this.datasource || this.dataSource || this.options.dataSource;
+      var strCurrClonedDataSource = JSON.stringify((0, _utils.cloneDataSource)(ds, 'diff'));
+      if (strPrevClonedDataSource !== strCurrClonedDataSource) {
+        this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
+      }
     }
   };
 };
@@ -512,6 +528,18 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.checkIfDataTableExists = checkIfDataTableExists;
+exports.cloneDataSource = cloneDataSource;
+exports.attachListeners = attachListeners;
+exports.createEvents = createEvents;
+exports.setLastOptions = setLastOptions;
+exports.getLastOptions = getLastOptions;
+exports.getOptions = getOptions;
+exports.renderChart = renderChart;
+exports.updateChart = updateChart;
 var addDep = exports.addDep = function addDep(FC, _FC, modules) {
   if (FC) {
     if (modules.getName && modules.getType || modules.name && modules.type) {
@@ -523,6 +551,135 @@ var addDep = exports.addDep = function addDep(FC, _FC, modules) {
     modules(_FC);
   }
 };
+
+function checkIfDataTableExists(dataSource) {
+  // eslint-disable-next-line no-underscore-dangle
+  if (dataSource && dataSource.data && dataSource.data._dataStore) {
+    return true;
+  }
+  return false;
+}
+
+function cloneDataSource(obj) {
+  var purpose = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'clone';
+
+  var type = typeof obj === 'undefined' ? 'undefined' : _typeof(obj);
+  if (type === 'string' || type === 'number' || type === 'function' || type === 'boolean') {
+    return obj;
+  }
+  if (obj === null || obj === undefined) {
+    return obj;
+  }
+  if (Array.isArray(obj)) {
+    var arr = [];
+    for (var i = 0; i < obj.length; i++) {
+      arr.push(cloneDataSource(obj[i]));
+    }
+    return arr;
+  }
+  if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object') {
+    var clonedObj = {};
+    // eslint-disable-next-line guard-for-in
+    // eslint-disable-next-line no-restricted-syntax
+    for (var prop in obj) {
+      // Edge case handling for DataTable
+      if (prop === 'data') {
+        // eslint-disable-next-line no-underscore-dangle
+        if (obj[prop] && obj[prop]._dataStore && purpose === 'clone') {
+          clonedObj[prop] = obj[prop];
+          // eslint-disable-next-line no-underscore-dangle
+        } else if (obj[prop] && obj[prop]._dataStore && purpose === 'diff') {
+          clonedObj[prop] = '-';
+        } else {
+          clonedObj[prop] = cloneDataSource(obj[prop]);
+        }
+        continue;
+      }
+      clonedObj[prop] = cloneDataSource(obj[prop]);
+    }
+    return clonedObj;
+  }
+  return undefined;
+}
+
+function attachListeners(THIS) {
+  if (THIS.$listeners && _typeof(THIS.$listeners) === 'object') {
+    Object.keys(THIS.$listeners).forEach(function (event) {
+      THIS.chartObj.addEventListener(event, function (e) {
+        THIS.$emit(event, e);
+      });
+    });
+  }
+}
+
+function createEvents(THIS) {
+  var ret = {
+    events: {}
+  };
+  if (THIS.$listeners && _typeof(THIS.$listeners) === 'object') {
+    Object.keys(THIS.$listeners).forEach(function (event) {
+      ret.events[event] = function (e) {
+        THIS.$emit(event, e);
+      };
+    });
+  }
+  return ret;
+}
+
+function setLastOptions(config, THIS) {
+  THIS._oldOptions = Object.assign({}, config);
+}
+
+function getLastOptions(THIS) {
+  return THIS._oldOptions;
+}
+
+function getOptions(This, optionsMap) {
+  var config = {},
+      THIS = This;
+  for (var i in optionsMap) {
+    if (THIS[i] !== undefined && THIS[i] !== null) {
+      config[optionsMap[i]] = THIS[i];
+    }
+  }
+  var options = Object.assign(Object.assign({}, THIS.options), config);
+  return options;
+}
+
+function renderChart(This, FC) {
+  var THIS = This,
+      config = THIS.getOptions(),
+      chartObj = THIS.chartObj;
+
+  config.renderAt = this.containerID;
+  THIS.setLastOptions(config);
+
+  if (chartObj && chartObj.dispose) {
+    chartObj.dispose();
+  }
+  var events = this.createEvents();
+  config.events = Object.assign({}, config.events, events.events);
+
+  THIS.chartObj = chartObj = new FC(config);
+  chartObj.render();
+}
+
+function updateChart(This) {
+  var THIS = This,
+      config = THIS.getOptions(),
+      prevConfig = THIS.getLastOptions(),
+      chartObj = THIS.chartObj;
+
+  if (config.width !== prevConfig.width || config.height !== prevConfig.height) {
+    chartObj && chartObj.resizeTo(config.width, config.height);
+  } else if (config.type !== prevConfig.type) {
+    chartObj.chartType(config.type);
+  } else {
+    if (!checkIfDataTableExists(config.dataSource)) chartObj.setChartData(config.dataSource, config.dataFormat);
+  }
+
+  THIS.setLastOptions(config);
+}
 
 /***/ }),
 /* 4 */

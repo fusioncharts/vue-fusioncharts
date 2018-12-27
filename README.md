@@ -24,6 +24,7 @@ A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Chartin
   - [Working with events](#working-with-events)
 - [Quick Start](#quick-start)
 - [Going Beyond Charts](#going-beyond-charts)
+- [Usage and Integration of FusionTime](#usage-and-integration-of-fusionTime)
 - [For Contributors](#for-contributors)
 - [Licensing](#licensing)
 
@@ -241,6 +242,87 @@ links to help you get started:
 - [Use Chart API events & methods in Vue](https://www.fusioncharts.com/dev/getting-started/vue/configure-your-chart-using-vuejs)
 - [Chart gallery](https://www.fusioncharts.com/explore/chart-gallery)
 - [FusionCharts API](https://www.fusioncharts.com/dev/api/fusioncharts)
+
+## Usage and integration of FusionTime
+
+From `fusioncharts@3.13.3-sr.1` and `vue-usioncharts@3.0.0`, You can visualize timeseries data easily with angular.
+
+Learn more about FusionTime [here](https://www.fusioncharts.com/fusiontime).
+
+### Sample code for FusionTime
+
+```js
+import Vue from 'vue';
+import VueFusionCharts from 'vue-fusioncharts';
+import FusionCharts from 'fusioncharts';
+import TimeSeries from 'fusioncharts/fusioncharts.timeseries';
+
+// register VueFusionCharts
+Vue.use(VueFusionCharts, FusionCharts, TimeSeries);
+
+const jsonify = res => res.json();
+const dataFetch = fetch(
+  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json'
+).then(jsonify);
+const schemaFetch = fetch(
+  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json'
+).then(jsonify);
+
+const chart = new Vue({
+  el: '#app',
+  data: {
+    width: '500',
+    height: '300',
+    type: 'timeseries',
+    dataFormat: 'json',
+    dataSource: {
+      caption: { text: 'Online Sales of a SuperStore in the US' },
+      data: null,
+      yAxis: [
+        {
+          plot: [
+            {
+              value: 'Sales ($)'
+            }
+          ]
+        }
+      ]
+    }
+  },
+  mounted: function() {
+    Promise.all([dataFetch, schemaFetch]).then(res => {
+      const data = res[0];
+      const schema = res[1];
+      const fusionTable = new FusionCharts.DataStore().createDataTable(
+        data,
+        schema
+      );
+      this.dataSource.data = fusionTable;
+    });
+  }
+});
+```
+
+Here's HTML template for the above example:
+
+```html
+<div id="app">
+  <fusioncharts
+    :width="width"
+    :height="height"
+    :type="type"
+    :dataFormat="dataFormat"
+    :dataSource="dataSource"
+  >
+    FusionCharts will render here...
+  </fusioncharts>
+</div>
+```
+
+Useful links for FusionTime
+
+- [How FusionTime works](https://www.fusioncharts.com/dev/fusiontime/getting-started/how-fusion-time-works)
+- [Create your first chart](https://www.fusioncharts.com/dev/fusiontime/getting-started/create-your-first-chart-in-fusiontime)
 
 ## Going beyond Charts
 

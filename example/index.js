@@ -25,7 +25,7 @@ Vue.component('fusioncharts', vFC);
 // bootstrap the demo
 var chart = new Vue({
   el: '#chart1',
-  // components: { fusioncharts: vFC },
+  components: { fusioncharts: vFC },
   data: {
     chartType: 'Pie2D',
     pieDataSource: {

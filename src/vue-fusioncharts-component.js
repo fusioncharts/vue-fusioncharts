@@ -99,8 +99,8 @@ export default (FC, ...options) => {
         } else if (config.type !== prevConfig.type) {
           chartObj.chartType(config.type);
         } else {
-          if (!checkIfDataTableExists(config.dataSource))
-            chartObj.setChartData(config.dataSource, config.dataFormat);
+          // if (!checkIfDataTableExists(config.dataSource))
+          chartObj.setChartData(config.dataSource, config.dataFormat);
         }
 
         THIS.setLastOptions(config);
@@ -124,23 +124,19 @@ export default (FC, ...options) => {
       },
       dataSource: {
         handler: function() {
-          if (!checkIfDataTableExists(this.dataSource)) {
-            this.chartObj.setChartData(
-              this.datasource || this.dataSource,
-              this.dataFormat || this.dataformat
-            );
-          }
+          this.chartObj.setChartData(
+            this.datasource || this.dataSource,
+            this.dataFormat || this.dataformat
+          );
         },
         deep: true
       },
       datasource: {
         handler: function() {
-          if (!checkIfDataTableExists(this.datasource)) {
-            this.chartObj.setChartData(
-              this.datasource || this.dataSource,
-              this.dataFormat || this.dataformat
-            );
-          }
+          this.chartObj.setChartData(
+            this.datasource || this.dataSource,
+            this.dataFormat || this.dataformat
+          );
         },
         deep: true
       }

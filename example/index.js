@@ -99,8 +99,7 @@ var chart = new Vue({
           }
         ]
       }
-    },
-    displayChart: false
+    }
   },
   methods: {
     changeFirstChartAttr: function() {
@@ -130,7 +129,6 @@ var chart = new Vue({
         schema
       );
       this.dataSource.data = fusionTable;
-      this.displayChart = true;
     });
   }
 });

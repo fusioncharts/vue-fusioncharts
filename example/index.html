@@ -27,17 +27,15 @@
       >
         FusionCharts will render here...
       </fusioncharts>
-      <div v-show="displayChart">
-        <fusioncharts
-          :width="width"
-          :height="height"
-          :type="type"
-          :dataFormat="dataFormat"
-          :dataSource="dataSource"
-        >
-          FusionCharts will render here...
-        </fusioncharts>
-      </div>
+      <fusioncharts
+        :width="width"
+        :height="height"
+        :type="type"
+        :dataFormat="dataFormat"
+        :dataSource="dataSource"
+      >
+        FusionCharts will render here...
+      </fusioncharts>
       <button @click="changeFirstChartAttr">Change 1st Chart Attributes</button>
       <button @click="changeSecondChartAttr">
         Change 2nd Chart Attributes

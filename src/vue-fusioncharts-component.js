@@ -124,7 +124,6 @@ export default (FC, ...options) => {
       },
       dataSource: {
         handler: function() {
-          console.log('Called dataSource');
           if (!checkIfDataTableExists(this.dataSource)) {
             this.chartObj.setChartData(
               this.datasource || this.dataSource,

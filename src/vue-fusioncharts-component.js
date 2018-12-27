@@ -154,7 +154,6 @@ export default (FC, ...options) => {
       this.renderChart();
     },
     beforeUpdate: function() {
-      console.log('Hi');
       const strPrevClonedDataSource = JSON.stringify(this.prevDataSource);
       const ds = this.datasource || this.dataSource || this.options.dataSource;
       const strCurrClonedDataSource = JSON.stringify(

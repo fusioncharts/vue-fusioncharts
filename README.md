@@ -245,7 +245,7 @@ links to help you get started:
 
 ## Usage and integration of FusionTime
 
-From `fusioncharts@3.13.3-sr.1` and `vue-usioncharts@3.0.0`, You can visualize timeseries data easily with angular.
+From `fusioncharts@3.13.3-sr.1` and `vue-fusioncharts@3.0.0`, You can visualize timeseries data easily with angular.
 
 Learn more about FusionTime [here](https://www.fusioncharts.com/fusiontime).
 

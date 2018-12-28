@@ -143,6 +143,24 @@ export default (FC, ...options) => {
           }
         },
         deep: true
+      },
+      'datasource.data': {
+        handler: function() {
+          this.chartObj.setChartData(
+            this.datasource || this.dataSource,
+            this.dataFormat || this.dataformat
+          );
+        },
+        deep: false
+      },
+      'dataSource.data': {
+        handler: function() {
+          this.chartObj.setChartData(
+            this.datasource || this.dataSource,
+            this.dataFormat || this.dataformat
+          );
+        },
+        deep: false
       }
     },
     deactivated: function() {

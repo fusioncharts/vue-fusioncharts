@@ -631,6 +631,22 @@ exports.default = function (FC) {
           }
         },
         deep: true
+      },
+      'datasource.data': {
+        handler: function handler(newVal, prevVal) {
+          if (newVal !== prevVal) {
+            this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+          }
+        },
+        deep: false
+      },
+      'dataSource.data': {
+        handler: function handler(newVal, prevVal) {
+          if (newVal !== prevVal) {
+            this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
+          }
+        },
+        deep: false
       }
     },
     deactivated: function deactivated() {
@@ -650,6 +666,7 @@ exports.default = function (FC) {
       var ds = this.datasource || this.dataSource || this.options.dataSource;
       var strCurrClonedDataSource = JSON.stringify((0, _utils.cloneDataSource)(ds, 'diff'));
       if (strPrevClonedDataSource !== strCurrClonedDataSource) {
+        this.prevDataSource = (0, _utils.cloneDataSource)(ds, 'diff');
         this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
       }
     }

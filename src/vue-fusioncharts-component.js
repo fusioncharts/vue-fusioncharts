@@ -145,20 +145,24 @@ export default (FC, ...options) => {
         deep: true
       },
       'datasource.data': {
-        handler: function() {
-          this.chartObj.setChartData(
-            this.datasource || this.dataSource,
-            this.dataFormat || this.dataformat
-          );
+        handler: function(newVal, prevVal) {
+          if (newVal !== prevVal) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
         },
         deep: false
       },
       'dataSource.data': {
-        handler: function() {
-          this.chartObj.setChartData(
-            this.datasource || this.dataSource,
-            this.dataFormat || this.dataformat
-          );
+        handler: function(newVal, prevVal) {
+          if (newVal !== prevVal) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
         },
         deep: false
       }
@@ -182,6 +186,7 @@ export default (FC, ...options) => {
         cloneDataSource(ds, 'diff')
       );
       if (strPrevClonedDataSource !== strCurrClonedDataSource) {
+        this.prevDataSource = cloneDataSource(ds, 'diff');
         this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
       }
     }

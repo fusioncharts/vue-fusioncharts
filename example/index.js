@@ -27,6 +27,7 @@ var chart = new Vue({
   el: '#chart1',
   components: { fusioncharts: vFC },
   data: {
+    counter: 0,
     chartType: 'Pie2D',
     pieDataSource: {
       chart: {
@@ -104,7 +105,7 @@ var chart = new Vue({
   methods: {
     changeFirstChartAttr: function() {
       // let dataSource = Object.assign({}, this.pieDataSource);
-      this.chartDs.chart.caption = 'Changed to something else';
+      // this.chartDs.chart.caption = 'Changed to something else';
       this.chartDs.data[2].value = this.getRandomNumber();
       this.chartDs.data[1].value = this.getRandomNumber();
       // this.pieDataSource = dataSource;
@@ -116,7 +117,7 @@ var chart = new Vue({
     },
     getRandomNumber: function() {
       var max = 5,
-        min = 1;
+        min = 2;
       return Math.round((max - min) * Math.random() + min);
     }
   },

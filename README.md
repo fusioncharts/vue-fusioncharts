@@ -343,14 +343,4 @@ $ npm install
 
 ## Licensing
 
-The FusionCharts Vue component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy). start
-
-```
-
-### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
-
-> ### Using Legacy Webpack Templates
->
-> If you are using legacy webpack templates using (ex: `vue init webpack-simple myProject`), you need to use the new UglifyJS webpack plugin as the default plugin doesn't support ES5+ syntaxes.
-> Refer here on what to change in the webpack.config.js: https://github.com/vuejs-templates/webpack-simple/issues/166#issuecomment-354394253
-```
+The FusionCharts Vue component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy).

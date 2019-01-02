@@ -1,7 +1,8 @@
 import _FC from 'fusioncharts';
 const { optionsMap, props } = require('./config.js');
+import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
 
-const GetComponent = function(FC, ...options) {
+export default (FC, ...options) => {
   options &&
     options.forEach &&
     options.forEach(modules => {
@@ -75,6 +76,12 @@ const GetComponent = function(FC, ...options) {
         const events = this.createEvents();
         config.events = Object.assign({}, config.events, events.events);
 
+        let ds = config.dataSource || config.datasource;
+
+        if (checkIfDataTableExists(ds))
+          this.prevDataSource = cloneDataSource(ds, 'diff');
+        else this.prevDataSource = cloneDataSource(ds, 'clone');
+
         THIS.chartObj = chartObj = new FC(config);
         chartObj.render();
       },
@@ -92,7 +99,8 @@ const GetComponent = function(FC, ...options) {
         } else if (config.type !== prevConfig.type) {
           chartObj.chartType(config.type);
         } else {
-          chartObj.setChartData(config.dataSource, config.dataFormat);
+          if (!checkIfDataTableExists(config.dataSource))
+            chartObj.setChartData(config.dataSource, config.dataFormat);
         }
 
         THIS.setLastOptions(config);
@@ -116,21 +124,47 @@ const GetComponent = function(FC, ...options) {
       },
       dataSource: {
         handler: function() {
-          this.chartObj.setChartData(
-            this.datasource || this.dataSource,
-            this.dataFormat || this.dataformat
-          );
+          if (!checkIfDataTableExists(this.dataSource)) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
         },
         deep: true
       },
       datasource: {
         handler: function() {
-          this.chartObj.setChartData(
-            this.datasource || this.dataSource,
-            this.dataFormat || this.dataformat
-          );
+          if (!checkIfDataTableExists(this.datasource)) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
         },
         deep: true
+      },
+      'datasource.data': {
+        handler: function(newVal, prevVal) {
+          if (newVal !== prevVal) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
+        },
+        deep: false
+      },
+      'dataSource.data': {
+        handler: function(newVal, prevVal) {
+          if (newVal !== prevVal) {
+            this.chartObj.setChartData(
+              this.datasource || this.dataSource,
+              this.dataFormat || this.dataformat
+            );
+          }
+        },
+        deep: false
       }
     },
     deactivated: function() {
@@ -144,23 +178,17 @@ const GetComponent = function(FC, ...options) {
     },
     ready: function() {
       this.renderChart();
+    },
+    beforeUpdate: function() {
+      const strPrevClonedDataSource = JSON.stringify(this.prevDataSource);
+      const ds = this.datasource || this.dataSource || this.options.dataSource;
+      const strCurrClonedDataSource = JSON.stringify(
+        cloneDataSource(ds, 'diff')
+      );
+      if (strPrevClonedDataSource !== strCurrClonedDataSource) {
+        this.prevDataSource = cloneDataSource(ds, 'diff');
+        this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
+      }
     }
   };
 };
-
-const addDep = (FC, _FC, modules) => {
-  if (FC) {
-    if (
-      (modules.getName && modules.getType) ||
-      (modules.name && modules.type)
-    ) {
-      FC.addDep(modules);
-    } else {
-      modules(FC);
-    }
-  } else {
-    modules(_FC);
-  }
-};
-
-export default GetComponent;

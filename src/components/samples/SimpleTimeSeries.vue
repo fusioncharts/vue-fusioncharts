@@ -30,712 +30,367 @@ export default {
     return {
       sourceData: `// A shortened version of the data is given here.
 // Please check the link below to see the complete data:
-// https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/master/assets/datasources/fusiontime/online-sales-single-series-area-data-plot/data.json
+// https://s3.eu-central-1.amazonaws.com/fusion.store/ft/data/line-chart-with-time-axis-data.json
 [
   [
-      "United States",
-      "1/4/2011",
-      16.448
+    "01-Feb-11",
+    8866
   ],
   [
-      "United States",
-      "1/5/2011",
-      272.736
+    "02-Feb-11",
+    2174
   ],
   [
-      "United States",
-      "1/5/2011",
-      11.784
+    "03-Feb-11",
+    2084
   ],
   [
-      "United States",
-      "1/5/2011",
-      3.54
+    "04-Feb-11",
+    1503
   ],
   [
-      "United States",
-      "1/6/2011",
-      19.536
+    "05-Feb-11",
+    4928
   ],
   [
-      "United States",
-      "1/7/2011",
-      2573.82
+    "06-Feb-11",
+    4667
   ],
   [
-      "United States",
-      "1/7/2011",
-      609.98
+    "07-Feb-11",
+    1064
   ],
   [
-      "United States",
-      "1/7/2011",
-      391.98
+    "08-Feb-11",
+    851
   ],
   [
-      "United States",
-      "1/7/2011",
-      755.96
+    "09-Feb-11",
+    7326
   ],
   [
-      "United States",
-      "1/7/2011",
-      19.44
+    "10-Feb-11",
+    8399
   ],
   [
-      "United States",
-      "1/7/2011",
-      12.78
+    "11-Feb-11",
+    4084
   ],
   [
-      "United States",
-      "1/7/2011",
-      31.12
+    "12-Feb-11",
+    4012
   ],
   [
-      "United States",
-      "1/7/2011",
-      6.54
+    "13-Feb-11",
+    1673
   ],
   [
-      "United States",
-      "1/7/2011",
-      5.48
+    "14-Feb-11",
+    6018
   ],
   [
-      "United States",
-      "1/8/2011",
-      76.728
+    "15-Feb-11",
+    9011
   ],
   [
-      "United States",
-      "1/8/2011",
-      10.43
+    "16-Feb-11",
+    5817
   ],
   [
-      "United States",
-      "1/10/2011",
-      31.2
+    "17-Feb-11",
+    5813
   ],
   [
-      "United States",
-      "1/10/2011",
-      9.344
+    "18-Feb-11",
+    566
   ],
   [
-      "United States",
-      "1/11/2011",
-      51.94
+    "19-Feb-11",
+    9065
   ],
   [
-      "United States",
-      "1/11/2011",
-      2.89
+    "20-Feb-11",
+    6734
   ],
   [
-      "United States",
-      "1/12/2011",
-      9.94
+    "21-Feb-11",
+    6937
   ],
   [
-      "United States",
-      "1/14/2011",
-      1325.85
+    "22-Feb-11",
+    3038
   ],
   [
-      "United States",
-      "1/14/2011",
-      572.58
+    "23-Feb-11",
+    4445
   ],
   [
-      "United States",
-      "1/14/2011",
-      646.74
+    "24-Feb-11",
+    8782
   ],
   [
-      "United States",
-      "1/14/2011",
-      545.94
+    "25-Feb-11",
+    9489
   ],
   [
-      "United States",
-      "1/14/2011",
-      333.999
+    "26-Feb-11",
+    9624
   ],
   [
-      "United States",
-      "1/14/2011",
-      50.94
+    "27-Feb-11",
+    9033
   ],
   [
-      "United States",
-      "1/14/2011",
-      19.9
+    "28-Feb-11",
+    6932
   ],
   [
-      "United States",
-      "1/14/2011",
-      11.36
+    "01-Mar-11",
+    625
   ],
   [
-      "United States",
-      "1/14/2011",
-      37.408
+    "02-Mar-11",
+    904
   ],
   [
-      "United States",
-      "1/14/2011",
-      5.64
+    "03-Mar-11",
+    7572
   ],
   [
-      "United States",
-      "1/14/2011",
-      3.438
+    "04-Mar-11",
+    2124
   ],
   [
-      "United States",
-      "1/15/2011",
-      61.96
+    "05-Mar-11",
+    8157
   ],
   [
-      "United States",
-      "1/16/2011",
-      149.95
+    "06-Mar-11",
+    8666
   ],
   [
-      "United States",
-      "1/17/2011",
-      127.104
+    "07-Mar-11",
+    3186
   ],
   [
-      "United States",
-      "1/17/2011",
-      124.2
+    "08-Mar-11",
+    9247
   ],
   [
-      "United States",
-      "1/17/2011",
-      30.072
+    "09-Mar-11",
+    8393
   ],
   [
-      "United States",
-      "1/17/2011",
-      18.588
+    "10-Mar-11",
+    9191
   ],
   [
-      "United States",
-      "1/19/2011",
-      64.864
+    "11-Mar-11",
+    1278
   ],
   [
-      "United States",
-      "1/20/2011",
-      181.47
+    "12-Mar-11",
+    7252
   ],
   [
-      "United States",
-      "1/20/2011",
-      56.064
+    "13-Mar-11",
+    6516
   ],
   [
-      "United States",
-      "1/20/2011",
-      108.72
+    "14-Mar-11",
+    8176
   ],
   [
-      "United States",
-      "1/20/2011",
-      32.34
+    "15-Mar-11",
+    5759
   ],
   [
-      "United States",
-      "1/21/2011",
-      1067.94
+    "16-Mar-11",
+    7601
   ],
   [
-      "United States",
-      "1/21/2011",
-      699.93
+    "17-Mar-11",
+    3616
   ],
   [
-      "United States",
-      "1/21/2011",
-      272.94
+    "18-Mar-11",
+    9612
   ],
   [
-      "United States",
-      "1/21/2011",
-      247.716
+    "19-Mar-11",
+    2631
   ],
   [
-      "United States",
-      "1/21/2011",
-      66.58
+    "20-Mar-11",
+    4939
   ],
   [
-      "United States",
-      "1/21/2011",
-      43.92
+    "21-Mar-11",
+    3578
   ],
   [
-      "United States",
-      "1/21/2011",
-      67.194
+    "22-Mar-11",
+    3742
   ],
   [
-      "United States",
-      "1/21/2011",
-      23.34
+    "23-Mar-11",
+    5100
   ],
   [
-      "United States",
-      "1/21/2011",
-      38.6
+    "24-Mar-11",
+    6925
   ],
   [
-      "United States",
-      "1/21/2011",
-      29.7
+    "25-Mar-11",
+    5239
   ],
   [
-      "United States",
-      "1/21/2011",
-      22.96
+    "26-Mar-11",
+    1461
   ],
   [
-      "United States",
-      "1/21/2011",
-      19.05
+    "27-Mar-11",
+    2317
   ],
   [
-      "United States",
-      "1/21/2011",
-      13.98
+    "28-Mar-11",
+    8238
   ],
   [
-      "United States",
-      "1/21/2011",
-      19.36
+    "29-Mar-11",
+    3617
   ],
   [
-      "United States",
-      "1/21/2011",
-      14.73
+    "30-Mar-11",
+    8680
   ],
   [
-      "United States",
-      "1/21/2011",
-      19.3
+    "31-Mar-11",
+    8487
   ],
   [
-      "United States",
-      "1/21/2011",
-      6.63
+    "01-Apr-11",
+    1768
   ],
   [
-      "United States",
-      "1/22/2011",
-      25.248
+    "02-Apr-11",
+    1227
   ],
   [
-      "United States",
-      "1/24/2011",
-      40.08
+    "03-Apr-11",
+    4137
   ],
   [
-      "United States",
-      "1/24/2011",
-      5.94
+    "04-Apr-11",
+    9055
   ],
   [
-      "United States",
-      "1/27/2011",
-      141.96
+    "05-Apr-11",
+    4984
   ],
   [
-      "United States",
-      "1/27/2011",
-      489.92
+    "06-Apr-11",
+    1577
   ],
   [
-      "United States",
-      "1/27/2011",
-      187.98
+    "07-Apr-11",
+    6624
   ],
   [
-      "United States",
-      "1/27/2011",
-      155.35
+    "08-Apr-11",
+    5802
   ],
   [
-      "United States",
-      "1/27/2011",
-      62.82
+    "09-Apr-11",
+    5190
   ],
   [
-      "United States",
-      "1/27/2011",
-      19.44
+    "10-Apr-11",
+    3092
   ],
   [
-      "United States",
-      "1/27/2011",
-      10.68
+    "11-Apr-11",
+    7304
   ],
   [
-      "United States",
-      "1/27/2011",
-      16.68
+    "12-Apr-11",
+    3445
   ],
   [
-      "United States",
-      "1/27/2011",
-      12.42
+    "13-Apr-11",
+    1480
   ],
   [
-      "United States",
-      "1/28/2011",
-      333
+    "14-Apr-11",
+    3705
   ],
   [
-      "United States",
-      "1/28/2011",
-      57.23
+    "15-Apr-11",
+    7795
   ],
   [
-      "United States",
-      "1/28/2011",
-      36.44
+    "16-Apr-11",
+    7405
   ],
   [
-      "United States",
-      "1/29/2011",
-      3.928
+    "17-Apr-11",
+    3901
   ],
   [
-      "United States",
-      "1/31/2011",
-      229.94
+    "18-Apr-11",
+    4428
   ],
   [
-      "United States",
-      "1/31/2011",
-      10.56
+    "19-Apr-11",
+    8874
   ],
   [
-      "United States",
-      "2/1/2011",
-      290.666
+    "20-Apr-11",
+    3072
   ],
   [
-      "United States",
-      "2/2/2011",
-      468.9
+    "21-Apr-11",
+    6340
   ],
   [
-      "United States",
-      "2/3/2011",
-      180.96
+    "22-Apr-11",
+    2275
   ],
   [
-      "United States",
-      "2/3/2011",
-      18.336
+    "23-Apr-11",
+    8934
   ],
   [
-      "United States",
-      "2/3/2011",
-      12.35
+    "24-Apr-11",
+    7595
   ],
   [
-      "United States",
-      "2/4/2011",
-      83.84
+    "25-Apr-11",
+    3869
   ],
   [
-      "United States",
-      "2/4/2011",
-      13.272
+    "26-Apr-11",
+    7395
   ],
   [
-      "United States",
-      "2/5/2011",
-      17.248
+    "27-Apr-11",
+    7812
   ],
   [
-      "United States",
-      "2/5/2011",
-      34.24
+    "28-Apr-11",
+    9642
   ],
   [
-      "United States",
-      "2/5/2011",
-      82.896
+    "29-Apr-11",
+    6925
   ],
   [
-      "United States",
-      "2/7/2011",
-      144.95
+    "30-Apr-11",
+    8537
   ],
   [
-      "United States",
-      "2/7/2011",
-      161.61
-  ],
-  [
-      "United States",
-      "2/7/2011",
-      15
-  ],
-  [
-      "United States",
-      "2/7/2011",
-      8.952
-  ],
-  [
-      "United States",
-      "2/8/2011",
-      64.96
-  ],
-  [
-      "United States",
-      "2/8/2011",
-      115.36
-  ],
-  [
-      "United States",
-      "2/9/2011",
-      14.56
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      1256.22
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      234.45
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      332.94
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      60.89
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      64.96
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      51.9
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      17.46
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      14.94
-  ],
-  [
-      "United States",
-      "2/12/2011",
-      9.64
-  ],
-  [
-      "United States",
-      "2/13/2011",
-      129.568
-  ],
-  [
-      "United States",
-      "2/15/2011",
-      238.62
-  ],
-  [
-      "United States",
-      "2/15/2011",
-      239.97
-  ],
-  [
-      "United States",
-      "2/15/2011",
-      81.96
-  ],
-  [
-      "United States",
-      "2/15/2011",
-      16.176
-  ],
-  [
-      "United States",
-      "2/16/2011",
-      21.36
-  ],
-  [
-      "United States",
-      "2/17/2011",
-      7.96
-  ],
-  [
-      "United States",
-      "2/17/2011",
-      1.08
-  ],
-  [
-      "United States",
-      "2/18/2011",
-      54.208
-  ],
-  [
-      "United States",
-      "2/19/2011",
-      25.16
-  ],
-  [
-      "United States",
-      "2/19/2011",
-      12.624
-  ],
-  [
-      "United States",
-      "2/21/2011",
-      62.31
-  ],
-  [
-      "United States",
-      "2/21/2011",
-      12.96
-  ],
-  [
-      "United States",
-      "2/21/2011",
-      20.32
-  ],
-  [
-      "United States",
-      "2/22/2011",
-      8.85
-  ],
-  [
-      "United States",
-      "2/23/2011",
-      19.44
-  ],
-  [
-      "United States",
-      "2/24/2011",
-      6.936
-  ],
-  [
-      "United States",
-      "12/29/2014",
-      2.48
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      1207.84
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      300.98
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      302.376
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      209.7
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      101.12
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      68.46
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      258.75
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      393.568
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      34.58
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      19.6
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      6.03
-  ],
-  [
-      "United States",
-      "12/30/2014",
-      12.53
-  ],
-  [
-      "United States",
-      "12/31/2014",
-      323.136
-  ],
-  [
-      "United States",
-      "12/31/2014",
-      90.93
-  ],
-  [
-      "United States",
-      "12/31/2014",
-      209.3
-  ],
-  [
-      "United States",
-      "12/31/2014",
-      52.776
-  ],
-  [
-      "United States",
-      "12/31/2014",
-      20.72
-  ],
-  [
-      "United States",
-      "12/31/2014",
-      13.904
-  ],
-  [
-      "United States",
-      "12/31/2014",
-      3.024
+    "01-May-11",
+    2985
   ]
 ]`,
       sourceSchema: `[

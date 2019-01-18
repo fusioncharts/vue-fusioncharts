@@ -441,15 +441,23 @@ var app = new Vue({
       type: "timeseries",
       dataFormat: "json",
       dataSource: {
-        caption: { text: "Online Sales of a SuperStore in the US" },
         data: null,
+        caption: {
+          text: "Sales Analysis"
+        },
+        subcaption: {
+          text: "Grocery"
+        },
         yAxis: [
           {
-            plot: [
-              {
-                value: "Sales ($)"
-              }
-            ]
+            plot: {
+              value: "Grocery Sales Value",
+              type: "line"
+            },
+            format: {
+              prefix: "$"
+            },
+            title: "Sale Value"
           }
         ]
       }
@@ -471,15 +479,23 @@ var app = new Vue({
       type: "timeseries",
       dataFormat: "json",
       dataSource: {
-        caption: { text: "Online Sales of a SuperStore in the US" },
         data: null,
+        caption: {
+          text: "Sales Analysis"
+        },
+        subcaption: {
+          text: "Grocery"
+        },
         yAxis: [
           {
-            plot: [
-              {
-                value: "Sales ($)"
-              }
-            ]
+            plot: {
+              value: "Grocery Sales Value",
+              type: "line"
+            },
+            format: {
+              prefix: "$"
+            },
+            title: "Sale Value"
           }
         ]
       }

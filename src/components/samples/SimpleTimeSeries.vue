@@ -395,16 +395,12 @@ export default {
 ]`,
       sourceSchema: `[
   {
-    "name": "Country",
-    "type": "string"
+      "name": "Time",
+      "type": "date",
+      "format": "%d-%b-%y"
   },
   {
-    "name": "Time",
-    "type": "date",
-    "format": "%-m/%-d/%Y"
-  },
-  {
-    "name": "Sales",
+    "name": "Grocery Sales Value",
     "type": "number"
   }
 ]`,

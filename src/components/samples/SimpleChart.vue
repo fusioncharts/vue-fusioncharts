@@ -1,23 +1,18 @@
 <template>
-    <sample-wrapper :panels="panels" :activePanel="selectedPanel">
-        <fusioncharts
-        :options="options"
-        :dataSource="dataSource"
-        :style="{ 'text-align': 'center' }"
-        ></fusioncharts>
-    </sample-wrapper>
+  <sample-wrapper :panels="panels" :activePanel="selectedPanel">
+    <fusioncharts :options="options" :dataSource="dataSource" :style="{ 'text-align': 'center' }"></fusioncharts>
+  </sample-wrapper>
 </template>
 
 <script>
-import mixin from './common/SamplesMixin'
+import mixin from "./common/SamplesMixin";
 export default {
-    mixins:[mixin],
-    name: 'SimpleChart',
-    props:['showMessage'],
-    data(){
-        return {
-        sourceData:
-`{
+  mixins: [mixin],
+  name: "SimpleChart",
+  props: ["showMessage"],
+  data() {
+    return {
+      sourceData: `{
     "chart": {
         "caption": "Countries With Most Oil Reserves [2017-18]",
         "subCaption": "In MMbbl = One Million barrels",
@@ -52,8 +47,7 @@ export default {
         "value": "30"
     }]
 }`,
-    sourceHTML:
-`<div id="app">
+      sourceHTML: `<div id="app">
     <fusioncharts
     :type="type"
     :width="width"
@@ -62,8 +56,7 @@ export default {
     :dataSource="dataSource"
     ></fusioncharts>
 </div>`,
-sourceJS:
-`import Vue from 'vue';
+      sourceJS: `import Vue from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
@@ -87,19 +80,19 @@ var app = new Vue({
         dataSource: dataSource
     }
 });`,
-        options: {
-            width: '100%',
-            height: '400',
-            type: "column2d",
-            dataFormat: "json",
-            creditLabel: 'false',
-            }
-        }
-    },
-    computed: {
-        dataSource: function(){
-            return JSON.parse(this.sourceData)
-        }
+      options: {
+        width: "100%",
+        height: "400",
+        type: "column2d",
+        dataFormat: "json",
+        creditLabel: "false"
+      }
+    };
+  },
+  computed: {
+    dataSource: function() {
+      return JSON.parse(this.sourceData);
     }
-}
+  }
+};
 </script>

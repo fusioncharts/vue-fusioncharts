@@ -1,68 +1,77 @@
 
 <template>
   <div class="col-md-9 col-12">
-      <component :is='componentName' :showMessage='showMessage'></component>
+    <component :is="componentName" :showMessage="showMessage"></component>
   </div>
 </template>
 
 <script>
-
-import SimpleChart from './samples/SimpleChart'
+import SimpleChart from "./samples/SimpleChart";
 import Pie3dChart from "./samples/Pie3dChart";
-import ColumnAreaLineCombiChart from './samples/ColumnAreaLineCombiChart'
-import FetchDataFromJsonUrl from './samples/FetchDataFromJsonUrl'
-import FetchDataFromXmlUrl from './samples/FetchDataFromXmlUrl'
-import UpdateChartData from './samples/UpdateChartData'
-import UpdateChartAttribute from './samples/UpdateChartAttribute'
-import TriggerEventFromChart from './samples/TriggerEventFromChart'
-import PercentageCalculation from './samples/PercentageCalculation'
-import ClientSideExport from './samples/ClientSideExport'
-import DrillDownChart from './samples/DrillDownChart'
-import RenderAWidget from './samples/RenderAWidget'
-import RenderAMap from './samples/RenderAMap'
-import UsingATheme from './samples/UsingATheme'
+import ColumnAreaLineCombiChart from "./samples/ColumnAreaLineCombiChart";
+import FetchDataFromJsonUrl from "./samples/FetchDataFromJsonUrl";
+import FetchDataFromXmlUrl from "./samples/FetchDataFromXmlUrl";
+import UpdateChartData from "./samples/UpdateChartData";
+import UpdateChartAttribute from "./samples/UpdateChartAttribute";
+import TriggerEventFromChart from "./samples/TriggerEventFromChart";
+import PercentageCalculation from "./samples/PercentageCalculation";
+import ClientSideExport from "./samples/ClientSideExport";
+import DrillDownChart from "./samples/DrillDownChart";
+import RenderAWidget from "./samples/RenderAWidget";
+import RenderAMap from "./samples/RenderAMap";
+import UsingATheme from "./samples/UsingATheme";
 // import RenderAlert from './samples/RenderAlert'
-import SpecialEvents from './samples/SpecialEvents'
-import DynamicallyAdd from './samples/DynamicallyAdd'
-import UpdateChartAttributeApi from './samples/UpdateChartAttributeApi'
-import SpecialChartApi from './samples/SpecialChartApi'
-import DynamicSizeChange from './samples/DynamicSizeChnage'
-import UpdateChartType from './samples/UpdateChartType'
-import Annotation from './samples/Annotation'
-import LifeCycleEvents from './samples/LifeCycleEvents'
+import SpecialEvents from "./samples/SpecialEvents";
+import DynamicallyAdd from "./samples/DynamicallyAdd";
+import UpdateChartAttributeApi from "./samples/UpdateChartAttributeApi";
+import SpecialChartApi from "./samples/SpecialChartApi";
+import DynamicSizeChange from "./samples/DynamicSizeChnage";
+import UpdateChartType from "./samples/UpdateChartType";
+import Annotation from "./samples/Annotation";
+import LifeCycleEvents from "./samples/LifeCycleEvents";
+import SimpleTimeSeries from "./samples/SimpleTimeSeries";
+import MultiTimeAxis from "./samples/MultiTimeAxis";
+import ColumnLineTimeAxis from "./samples/ColumnLineTimeAxis";
+import PlottingTwoVar from "./samples/PlottingTwoVar";
+import ColumnTimeAxis from "./samples/ColumnTimeAxis";
+import AreaTimeAxis from "./samples/AreaTimeAxis";
+import InteractiveCandleStick from "./samples/InteractiveCandleStick";
+import AnnotatingSingleData from "./samples/AnnotatingSingleData";
+import SingleEventOverlay from "./samples/SingleEventOverlay";
+import DateEventOverlay from "./samples/DateEventOverlay";
+import AddingReferenceLine from "./samples/AddingReferenceLine";
 
-import * as utils from './../utils/utils'
-import appConfig from './../config/app.config'
-import extend from 'extend'
+import * as utils from "./../utils/utils";
+import appConfig from "./../config/app.config";
+import extend from "extend";
 export default {
-  name: 'SampleTabs',
-  props:['sampleName'],
-  data(){
+  name: "SampleTabs",
+  props: ["sampleName"],
+  data() {
     return {
       showMessage: false,
-      message: 'Please wait, sample is loading...',
-    }
+      message: "Please wait, sample is loading..."
+    };
   },
   computed: {
-    componentName: function(){
+    componentName: function() {
       return this.sampleName;
     }
   },
-  watch: {
-  },
+  watch: {},
   methods: {
     getChartFrame: function() {
-      const frame =  window.frames[0];
+      const frame = window.frames[0];
       return {
         innerWidth: window.frames[0].innerWidth,
         innerHeight: window.frames[0].innerHeight
-      }
+      };
     }
   },
-  created: function(){
+  created: function() {
     //non reactive props
-    this.sampleDataLoadingError = false
-    this.sampleDataLoadingErrorMessage = ""
+    this.sampleDataLoadingError = false;
+    this.sampleDataLoadingErrorMessage = "";
   },
   components: {
     SimpleChart,
@@ -87,11 +96,21 @@ export default {
     DynamicSizeChange,
     UpdateChartType,
     Annotation,
-    LifeCycleEvents
+    LifeCycleEvents,
+    SimpleTimeSeries,
+    MultiTimeAxis,
+    ColumnLineTimeAxis,
+    PlottingTwoVar,
+    ColumnTimeAxis,
+    AreaTimeAxis,
+    InteractiveCandleStick,
+    AnnotatingSingleData,
+    SingleEventOverlay,
+    DateEventOverlay,
+    AddingReferenceLine
   }
-}
+};
 </script>
 
 <style>
-
 </style>

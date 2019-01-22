@@ -454,3 +454,8 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+.code {
+  color: #dd5ec7;
+  word-break: break-word;
+}

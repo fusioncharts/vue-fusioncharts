@@ -24,7 +24,7 @@ A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Chartin
   - [Working with events](#working-with-events)
 - [Quick Start](#quick-start)
 - [Going Beyond Charts](#going-beyond-charts)
-- [Usage and Integration of FusionTime](#usage-and-integration-of-fusionTime)
+- [Usage and Integration of FusionTime](#usage-and-integration-of-fusiontime)
 - [For Contributors](#for-contributors)
 - [Licensing](#licensing)
 

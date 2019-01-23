@@ -24,7 +24,7 @@ A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Chartin
   - [Working with events](#working-with-events)
 - [Quick Start](#quick-start)
 - [Going Beyond Charts](#going-beyond-charts)
-- [Usage and Integration of FusionTime](#usage-and-integration-of-fusionTime)
+- [Usage and Integration of FusionTime](#usage-and-integration-of-fusiontime)
 - [For Contributors](#for-contributors)
 - [Licensing](#licensing)
 
@@ -79,7 +79,7 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 Now, register it as plugin in Vue object
 
 ```js
-Vue.use(VueFusionCharts, FusionCharts, Pie2D);
+Vue.use(VueFusionCharts, FusionCharts, Charts);
 ```
 
 This way is recommended when you want component (`vue-fusioncharts` ) available from everywhere in your app.
@@ -245,7 +245,7 @@ links to help you get started:
 
 ## Usage and integration of FusionTime
 
-From `fusioncharts@3.13.3-sr.1` and `vue-fusioncharts@3.0.0`, You can visualize timeseries data easily with angular.
+From `fusioncharts@3.13.3-sr.1` and `vue-fusioncharts@3.0.0`, You can visualize timeseries data easily with vue.
 
 Learn more about FusionTime [here](https://www.fusioncharts.com/fusiontime).
 
@@ -343,14 +343,4 @@ $ npm install
 
 ## Licensing
 
-The FusionCharts Vue component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy). start
-
-```
-
-### [Demos and Documentation](https://fusioncharts.github.io/vue-fusioncharts/)
-
-> ### Using Legacy Webpack Templates
->
-> If you are using legacy webpack templates using (ex: `vue init webpack-simple myProject`), you need to use the new UglifyJS webpack plugin as the default plugin doesn't support ES5+ syntaxes.
-> Refer here on what to change in the webpack.config.js: https://github.com/vuejs-templates/webpack-simple/issues/166#issuecomment-354394253
-```
+The FusionCharts Vue component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy).

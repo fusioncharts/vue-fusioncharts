@@ -79,7 +79,7 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 Now, register it as plugin in Vue object
 
 ```js
-Vue.use(VueFusionCharts, FusionCharts, Pie2D);
+Vue.use(VueFusionCharts, FusionCharts, Charts);
 ```
 
 This way is recommended when you want component (`vue-fusioncharts` ) available from everywhere in your app.

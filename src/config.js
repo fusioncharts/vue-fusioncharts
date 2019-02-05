@@ -103,7 +103,11 @@ const optionsMap = {
   loadmessageimagehalign: 'loadMessageImageHAlign',
   loadmessageimagevalign: 'loadMessageImageVAlign',
   loadmessageimagealpha: 'loadMessageImageAlpha',
-  loadmessageimagescale: 'loadMessageImageScale'
+  loadmessageimagescale: 'loadMessageImageScale',
+  tsData: 'tsData',
+  tsSchema: 'tsSchema',
+  tsdata: 'tsData',
+  tsschema: 'tsSchema'
 };
 
 const props = {
@@ -114,6 +118,10 @@ const props = {
   height: '',
   dataFormat: String,
   dataSource: '',
+  tsData: '',
+  tsSchema: '',
+  tsdata: '',
+  tsschema: '',
   events: Object,
   link: Object,
   showDataLoadingMessage: Boolean,

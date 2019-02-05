@@ -638,7 +638,11 @@ exports.default = function (FC) {
             // SPECIAL CASE: When DataSource has series attribute, vue internally goes into Infinite recursion
             // specifically on _traverse method. This code is written to tackle that issue. In future a much more
             // concrete solution is required.
+<<<<<<< HEAD
             if (this.datasource && this.datasource.series) {
+=======
+            if (this.datasource.series) {
+>>>>>>> 91d8f13be56fa70262f5998a2ecb6fe95d6d98dc
               var _FC_ = _fusioncharts2.default || window.FusionCharts;
               var data = JSON.parse(JSON.stringify(newVal._data));
               var schema = JSON.parse(JSON.stringify(newVal._schema));
@@ -656,11 +660,18 @@ exports.default = function (FC) {
       'dataSource.data': {
         handler: function handler(newVal, prevVal) {
           if (newVal !== prevVal) {
+<<<<<<< HEAD
             if (this.dataSource && this.dataSource.series) {
               var _FC_ = _fusioncharts2.default || window.FusionCharts;
               var data = JSON.parse(JSON.stringify(newVal._data));
               var schema = JSON.parse(JSON.stringify(newVal._schema));
               var dataTable = new _FC_.DataStore().createDataTable(data, schema);
+=======
+            if (this.datasource.series) {
+              var data = JSON.parse(JSON.stringify(newVal._data));
+              var schema = JSON.parse(JSON.stringify(newVal._schema));
+              var dataTable = new _fusioncharts2.default.DataStore().createDataTable(data, schema);
+>>>>>>> 91d8f13be56fa70262f5998a2ecb6fe95d6d98dc
               var newDs = Object.assign({}, this.datasource || this.dataSource);
               newDs.data = dataTable;
               this.chartObj.setChartData(newDs, this.dataFormat || this.dataformat);

@@ -1,7 +1,6 @@
 import _FC from 'fusioncharts';
 const { optionsMap, props } = require('./config.js');
 import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
-import _ from 'underscore';
 
 export default (FC, ...options) => {
   options &&
@@ -105,13 +104,6 @@ export default (FC, ...options) => {
         }
 
         THIS.setLastOptions(config);
-      },
-      copyObj: function(originalObj, copyObj) {
-        for (let d in originalObj) {
-          if (typeof originalObj[d] === 'object') {
-            this.copyObj(originalObj);
-          } else copyObj[d] = originalObj[d];
-        }
       }
     },
     watch: {
@@ -159,9 +151,10 @@ export default (FC, ...options) => {
             // specifically on _traverse method. This code is written to tackle that issue. In future a much more
             // concrete solution is required.
             if (this.datasource.series) {
+              const _FC_ = _FC || window.FusionCharts;
               const data = JSON.parse(JSON.stringify(newVal._data));
               const schema = JSON.parse(JSON.stringify(newVal._schema));
-              const dataTable = new _FC.DataStore().createDataTable(
+              const dataTable = new _FC_.DataStore().createDataTable(
                 data,
                 schema
               );

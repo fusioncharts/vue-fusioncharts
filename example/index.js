@@ -8,11 +8,11 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 import TimeSeries from 'fusioncharts/fusioncharts.timeseries';
 
 const jsonify = res => res.json();
-const dataFetch = fetch(
-  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json'
+var dataFetch = fetch(
+  'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/data/plotting-multiple-series-on-time-axis-data.json'
 ).then(jsonify);
-const schemaFetch = fetch(
-  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json'
+var schemaFetch = fetch(
+  'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/schema/plotting-multiple-series-on-time-axis-schema.json'
 ).then(jsonify);
 
 // Use VueFusionCharts plugins by calling the Vue.use() global method:
@@ -42,20 +42,26 @@ var chart = new Vue({
         chart.displayValue = props.value;
       }
     },
-    width: '500',
-    height: '300',
+    width: '600',
+    height: '400',
     type: 'timeseries',
     dataFormat: 'json',
     dataSource: {
-      caption: { text: 'Online Sales of a SuperStore in the US' },
       data: null,
+      caption: {
+        text: 'Sales Analysis'
+      },
+      subcaption: {
+        text: 'Grocery & Footwear'
+      },
+      series: 'Type',
       yAxis: [
         {
-          plot: [
-            {
-              value: 'Sales ($)'
-            }
-          ]
+          plot: 'Sales Value',
+          title: 'Sale Value',
+          format: {
+            prefix: '$'
+          }
         }
       ]
     },
@@ -70,8 +76,8 @@ var chart = new Vue({
       data: [{ value: 1.9 }, { value: 2.3 }, { value: 2.1 }]
     },
     options: {
-      width: '500',
-      height: '300',
+      width: '600',
+      height: '400',
       type: 'Pie2D',
       dataFormat: 'json',
       dataSource: {
@@ -83,8 +89,8 @@ var chart = new Vue({
       }
     },
     timeseriesOptions: {
-      width: '500',
-      height: '300',
+      width: '600',
+      height: '400',
       type: 'timeseries',
       dataFormat: 'json',
       dataSource: {
@@ -105,9 +111,9 @@ var chart = new Vue({
   methods: {
     changeFirstChartAttr: function() {
       // let dataSource = Object.assign({}, this.pieDataSource);
-      // this.chartDs.chart.caption = 'Changed to something else';
-      this.chartDs.data[2].value = this.getRandomNumber();
-      this.chartDs.data[1].value = this.getRandomNumber();
+      this.chartDs.chart.caption = 'Changed to something else';
+      // this.chartDs.data[2].value = this.getRandomNumber();
+      // this.chartDs.data[1].value = this.getRandomNumber();
       // this.pieDataSource = dataSource;
     },
     changeSecondChartAttr: function() {
@@ -122,6 +128,17 @@ var chart = new Vue({
     }
   },
   mounted: function() {
+    // Promise.all([dataFetch, schemaFetch]).then(res => {
+    //   const data = res[0];
+    //   const schema = res[1];
+    //   const fusionTable = new FusionCharts.DataStore().createDataTable(
+    //     data,
+    //     schema
+    //   );
+    //   this.dataSource.data = fusionTable;
+    // });
+  },
+  beforeMount: function() {
     Promise.all([dataFetch, schemaFetch]).then(res => {
       const data = res[0];
       const schema = res[1];

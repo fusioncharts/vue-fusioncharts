@@ -240,6 +240,19 @@ exports.default = function (FC) {
       'datasource.data': {
         handler: function handler(newVal, prevVal) {
           if (newVal !== prevVal) {
+            // SPECIAL CASE: When DataSource has series attribute, vue internally goes into Infinite recursion
+            // specifically on _traverse method. This code is written to tackle that issue. In future a much more
+            // concrete solution is required.
+            if (this.datasource && this.datasource.series) {
+              var _FC_ = _fusioncharts2.default || window.FusionCharts;
+              var data = JSON.parse(JSON.stringify(newVal._data));
+              var schema = JSON.parse(JSON.stringify(newVal._schema));
+              var dataTable = new _FC_.DataStore().createDataTable(data, schema);
+              var newDs = Object.assign({}, this.datasource || this.dataSource);
+              newDs.data = dataTable;
+              this.chartObj.setChartData(newDs, this.dataFormat || this.dataformat);
+              return null;
+            }
             this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
           }
         },
@@ -248,6 +261,16 @@ exports.default = function (FC) {
       'dataSource.data': {
         handler: function handler(newVal, prevVal) {
           if (newVal !== prevVal) {
+            if (this.dataSource && this.dataSource.series) {
+              var _FC_ = _fusioncharts2.default || window.FusionCharts;
+              var data = JSON.parse(JSON.stringify(newVal._data));
+              var schema = JSON.parse(JSON.stringify(newVal._schema));
+              var dataTable = new _FC_.DataStore().createDataTable(data, schema);
+              var newDs = Object.assign({}, this.datasource || this.dataSource);
+              newDs.data = dataTable;
+              this.chartObj.setChartData(newDs, this.dataFormat || this.dataformat);
+              return null;
+            }
             this.chartObj.setChartData(this.datasource || this.dataSource, this.dataFormat || this.dataformat);
           }
         },
@@ -272,6 +295,9 @@ exports.default = function (FC) {
       var strCurrClonedDataSource = JSON.stringify((0, _utils.cloneDataSource)(ds, 'diff'));
       if (strPrevClonedDataSource !== strCurrClonedDataSource) {
         this.prevDataSource = (0, _utils.cloneDataSource)(ds, 'diff');
+        // if (ds.series) {
+        //   return null;
+        // }
         this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
       }
     }

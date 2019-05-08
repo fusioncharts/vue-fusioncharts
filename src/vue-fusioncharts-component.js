@@ -147,30 +147,12 @@ export default (FC, ...options) => {
       'datasource.data': {
         handler: function(newVal, prevVal) {
           if (newVal !== prevVal) {
-            // SPECIAL CASE: When DataSource has series attribute, vue internally goes into Infinite recursion
-            // specifically on _traverse method. This code is written to tackle that issue. In future a much more
-            // concrete solution is required.
-            if (this.datasource && this.datasource.series) {
-              const _FC_ = _FC || window.FusionCharts;
-              const data = JSON.parse(JSON.stringify(newVal._data));
-              const schema = JSON.parse(JSON.stringify(newVal._schema));
-              const dataTable = new _FC_.DataStore().createDataTable(
-                data,
-                schema
-              );
-              const newDs = Object.assign(
-                {},
-                this.datasource || this.dataSource
-              );
-              newDs.data = dataTable;
-              this.chartObj.setChartData(
-                newDs,
-                this.dataFormat || this.dataformat
-              );
-              return null;
+            let data = {};
+            for (let d in this.datasource) {
+              data[d] = this.datasource[d];
             }
             this.chartObj.setChartData(
-              this.datasource || this.dataSource,
+              data,
               this.dataFormat || this.dataformat
             );
           }
@@ -180,24 +162,12 @@ export default (FC, ...options) => {
       'dataSource.data': {
         handler: function(newVal, prevVal) {
           if (newVal !== prevVal) {
-            if (this.dataSource && this.dataSource.series) {
-              const _FC_ = _FC || window.FusionCharts;
-              const data = JSON.parse(JSON.stringify(newVal._data));
-              const schema = JSON.parse(JSON.stringify(newVal._schema));
-              const dataTable = new _FC_.DataStore().createDataTable(
-                data,
-                schema
-              );
-              let newDs = Object.assign({}, this.datasource || this.dataSource);
-              newDs.data = dataTable;
-              this.chartObj.setChartData(
-                newDs,
-                this.dataFormat || this.dataformat
-              );
-              return null;
+            let data = {};
+            for (let d in this.dataSource) {
+              data[d] = this.dataSource[d];
             }
             this.chartObj.setChartData(
-              this.datasource || this.dataSource,
+              data,
               this.dataFormat || this.dataformat
             );
           }

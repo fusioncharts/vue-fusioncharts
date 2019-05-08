@@ -8,10 +8,10 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 import TimeSeries from 'fusioncharts/fusioncharts.timeseries';
 
 const jsonify = res => res.json();
-var dataFetch = fetch(
+const dataFetch = fetch(
   'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/data/plotting-multiple-series-on-time-axis-data.json'
 ).then(jsonify);
-var schemaFetch = fetch(
+const schemaFetch = fetch(
   'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/schema/plotting-multiple-series-on-time-axis-schema.json'
 ).then(jsonify);
 
@@ -27,6 +27,8 @@ var chart = new Vue({
   el: '#chart1',
   components: { fusioncharts: vFC },
   data: {
+    component: true,
+    show: false,
     counter: 0,
     chartType: 'Pie2D',
     pieDataSource: {
@@ -54,7 +56,7 @@ var chart = new Vue({
       subcaption: {
         text: 'Grocery & Footwear'
       },
-      series: 'Type',
+      series: 'ABC',
       yAxis: [
         {
           plot: 'Sales Value',
@@ -65,7 +67,6 @@ var chart = new Vue({
         }
       ]
     },
-    pieType: 'Pie2D',
     chartDs: {
       chart: {
         caption: 'Vue FusionCharts Sample',
@@ -141,7 +142,21 @@ var chart = new Vue({
   beforeMount: function() {
     Promise.all([dataFetch, schemaFetch]).then(res => {
       const data = res[0];
-      const schema = res[1];
+      const schema = [
+        {
+          name: 'Time',
+          type: 'date',
+          format: '%d-%b-%y'
+        },
+        {
+          name: 'ABC',
+          type: 'string'
+        },
+        {
+          name: 'Sales Value',
+          type: 'number'
+        }
+      ];
       const fusionTable = new FusionCharts.DataStore().createDataTable(
         data,
         schema

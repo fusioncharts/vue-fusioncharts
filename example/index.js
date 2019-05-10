@@ -56,7 +56,7 @@ var chart = new Vue({
       subcaption: {
         text: 'Grocery & Footwear'
       },
-      series: 'ABC',
+      series: 'Type',
       yAxis: [
         {
           plot: 'Sales Value',
@@ -126,37 +126,17 @@ var chart = new Vue({
       var max = 5,
         min = 2;
       return Math.round((max - min) * Math.random() + min);
+    },
+    changeChartAttr: function() {
+      let dataSource = Object.assign({}, this.dataSource);
+      dataSource.caption.text = 'Changed to something else';
+      this.dataSource = dataSource;
     }
   },
   mounted: function() {
-    // Promise.all([dataFetch, schemaFetch]).then(res => {
-    //   const data = res[0];
-    //   const schema = res[1];
-    //   const fusionTable = new FusionCharts.DataStore().createDataTable(
-    //     data,
-    //     schema
-    //   );
-    //   this.dataSource.data = fusionTable;
-    // });
-  },
-  beforeMount: function() {
     Promise.all([dataFetch, schemaFetch]).then(res => {
       const data = res[0];
-      const schema = [
-        {
-          name: 'Time',
-          type: 'date',
-          format: '%d-%b-%y'
-        },
-        {
-          name: 'ABC',
-          type: 'string'
-        },
-        {
-          name: 'Sales Value',
-          type: 'number'
-        }
-      ];
+      const schema = res[1];
       const fusionTable = new FusionCharts.DataStore().createDataTable(
         data,
         schema

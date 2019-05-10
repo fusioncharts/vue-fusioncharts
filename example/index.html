@@ -19,25 +19,15 @@
   <body>
     <div id="chart1">
       <fusioncharts
-          :width="width"
-          :height="height"
-          :type="type"
-          :dataFormat="dataFormat"
-          :dataSource="dataSource"
-        >
-          FusionCharts will render here...
-        </fusioncharts>
-      </div>
-      <!-- <button type="button" @click="component = !component">
-        Swap component
-      </button>
-      <button v-show="component" type="button" @click="show = !show">
-        Toggle chart show
-      </button>
-      <button @click="changeFirstChartAttr">Change 1st Chart Attributes</button>
-      <button @click="changeSecondChartAttr">
-        Change 2nd Chart Attributes
-      </button> -->
+        :width="width"
+        :height="height"
+        :type="type"
+        :dataFormat="dataFormat"
+        :dataSource="dataSource"
+      >
+        FusionCharts will render here...
+      </fusioncharts>
+      <button @click="changeChartAttr">Update Chart</button>
     </div>
     <script type="text/javascript" src="bundle.js"></script>
   </body>

@@ -1,5 +1,6 @@
 import _FC from 'fusioncharts';
 const { optionsMap, props } = require('./config.js');
+const _ = require('lodash');
 import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
 
 export default (FC, ...options) => {
@@ -147,12 +148,12 @@ export default (FC, ...options) => {
       'datasource.data': {
         handler: function(newVal, prevVal) {
           if (newVal !== prevVal) {
-            let data = {};
-            for (let d in this.datasource) {
-              data[d] = this.datasource[d];
-            }
+            let clonedDataSource;
+            if (this.datasource.series) {
+              clonedDataSource = _.cloneDeep(this.datasource);
+            } else clonedDataSource = this.datasource;
             this.chartObj.setChartData(
-              data,
+              clonedDataSource,
               this.dataFormat || this.dataformat
             );
           }
@@ -162,12 +163,12 @@ export default (FC, ...options) => {
       'dataSource.data': {
         handler: function(newVal, prevVal) {
           if (newVal !== prevVal) {
-            let data = {};
-            for (let d in this.dataSource) {
-              data[d] = this.dataSource[d];
-            }
+            let clonedDataSource;
+            if (this.dataSource.series) {
+              clonedDataSource = _.cloneDeep(this.dataSource);
+            } else clonedDataSource = this.dataSource;
             this.chartObj.setChartData(
-              data,
+              clonedDataSource,
               this.dataFormat || this.dataformat
             );
           }
@@ -189,15 +190,15 @@ export default (FC, ...options) => {
     },
     beforeUpdate: function() {
       const strPrevClonedDataSource = JSON.stringify(this.prevDataSource);
-      const ds = this.datasource || this.dataSource || this.options.dataSource;
+      let ds = this.datasource || this.dataSource || this.options.dataSource;
       const strCurrClonedDataSource = JSON.stringify(
         cloneDataSource(ds, 'diff')
       );
       if (strPrevClonedDataSource !== strCurrClonedDataSource) {
         this.prevDataSource = cloneDataSource(ds, 'diff');
-        // if (ds.series) {
-        //   return null;
-        // }
+        if (ds.series) {
+          ds = _.cloneDeep(ds);
+        }
         this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
       }
     }

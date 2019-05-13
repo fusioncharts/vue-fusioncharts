@@ -21,25 +21,13 @@
       <fusioncharts
         :width="width"
         :height="height"
-        :type="pieType"
-        :dataFormat="dataFormat"
-        :dataSource="chartDs"
-      >
-        FusionCharts will render here...
-      </fusioncharts>
-      <fusioncharts
-        :width="width"
-        :height="height"
         :type="type"
         :dataFormat="dataFormat"
         :dataSource="dataSource"
       >
         FusionCharts will render here...
       </fusioncharts>
-      <button @click="changeFirstChartAttr">Change 1st Chart Attributes</button>
-      <button @click="changeSecondChartAttr">
-        Change 2nd Chart Attributes
-      </button>
+      <button @click="changeChartAttr">Update Chart</button>
     </div>
     <script type="text/javascript" src="bundle.js"></script>
   </body>

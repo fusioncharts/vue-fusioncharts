@@ -1,5 +1,6 @@
 import _FC from 'fusioncharts';
 const { optionsMap, props } = require('./config.js');
+const _ = require('lodash');
 import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
 
 export default (FC, ...options) => {
@@ -147,30 +148,12 @@ export default (FC, ...options) => {
       'datasource.data': {
         handler: function(newVal, prevVal) {
           if (newVal !== prevVal) {
-            // SPECIAL CASE: When DataSource has series attribute, vue internally goes into Infinite recursion
-            // specifically on _traverse method. This code is written to tackle that issue. In future a much more
-            // concrete solution is required.
-            if (this.datasource && this.datasource.series) {
-              const _FC_ = _FC || window.FusionCharts;
-              const data = JSON.parse(JSON.stringify(newVal._data));
-              const schema = JSON.parse(JSON.stringify(newVal._schema));
-              const dataTable = new _FC_.DataStore().createDataTable(
-                data,
-                schema
-              );
-              const newDs = Object.assign(
-                {},
-                this.datasource || this.dataSource
-              );
-              newDs.data = dataTable;
-              this.chartObj.setChartData(
-                newDs,
-                this.dataFormat || this.dataformat
-              );
-              return null;
-            }
+            let clonedDataSource;
+            if (this.datasource.series) {
+              clonedDataSource = _.cloneDeep(this.datasource);
+            } else clonedDataSource = this.datasource;
             this.chartObj.setChartData(
-              this.datasource || this.dataSource,
+              clonedDataSource,
               this.dataFormat || this.dataformat
             );
           }
@@ -180,24 +163,12 @@ export default (FC, ...options) => {
       'dataSource.data': {
         handler: function(newVal, prevVal) {
           if (newVal !== prevVal) {
-            if (this.dataSource && this.dataSource.series) {
-              const _FC_ = _FC || window.FusionCharts;
-              const data = JSON.parse(JSON.stringify(newVal._data));
-              const schema = JSON.parse(JSON.stringify(newVal._schema));
-              const dataTable = new _FC_.DataStore().createDataTable(
-                data,
-                schema
-              );
-              let newDs = Object.assign({}, this.datasource || this.dataSource);
-              newDs.data = dataTable;
-              this.chartObj.setChartData(
-                newDs,
-                this.dataFormat || this.dataformat
-              );
-              return null;
-            }
+            let clonedDataSource;
+            if (this.dataSource.series) {
+              clonedDataSource = _.cloneDeep(this.dataSource);
+            } else clonedDataSource = this.dataSource;
             this.chartObj.setChartData(
-              this.datasource || this.dataSource,
+              clonedDataSource,
               this.dataFormat || this.dataformat
             );
           }
@@ -219,15 +190,15 @@ export default (FC, ...options) => {
     },
     beforeUpdate: function() {
       const strPrevClonedDataSource = JSON.stringify(this.prevDataSource);
-      const ds = this.datasource || this.dataSource || this.options.dataSource;
+      let ds = this.datasource || this.dataSource || this.options.dataSource;
       const strCurrClonedDataSource = JSON.stringify(
         cloneDataSource(ds, 'diff')
       );
       if (strPrevClonedDataSource !== strCurrClonedDataSource) {
         this.prevDataSource = cloneDataSource(ds, 'diff');
-        // if (ds.series) {
-        //   return null;
-        // }
+        if (ds.series) {
+          ds = _.cloneDeep(ds);
+        }
         this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
       }
     }

@@ -8,10 +8,10 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 import TimeSeries from 'fusioncharts/fusioncharts.timeseries';
 
 const jsonify = res => res.json();
-var dataFetch = fetch(
+const dataFetch = fetch(
   'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/data/plotting-multiple-series-on-time-axis-data.json'
 ).then(jsonify);
-var schemaFetch = fetch(
+const schemaFetch = fetch(
   'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/schema/plotting-multiple-series-on-time-axis-schema.json'
 ).then(jsonify);
 
@@ -27,6 +27,8 @@ var chart = new Vue({
   el: '#chart1',
   components: { fusioncharts: vFC },
   data: {
+    component: true,
+    show: false,
     counter: 0,
     chartType: 'Pie2D',
     pieDataSource: {
@@ -65,7 +67,6 @@ var chart = new Vue({
         }
       ]
     },
-    pieType: 'Pie2D',
     chartDs: {
       chart: {
         caption: 'Vue FusionCharts Sample',
@@ -125,20 +126,14 @@ var chart = new Vue({
       var max = 5,
         min = 2;
       return Math.round((max - min) * Math.random() + min);
+    },
+    changeChartAttr: function() {
+      let dataSource = Object.assign({}, this.dataSource);
+      dataSource.caption.text = 'Changed to something else';
+      this.dataSource = dataSource;
     }
   },
   mounted: function() {
-    // Promise.all([dataFetch, schemaFetch]).then(res => {
-    //   const data = res[0];
-    //   const schema = res[1];
-    //   const fusionTable = new FusionCharts.DataStore().createDataTable(
-    //     data,
-    //     schema
-    //   );
-    //   this.dataSource.data = fusionTable;
-    // });
-  },
-  beforeMount: function() {
     Promise.all([dataFetch, schemaFetch]).then(res => {
       const data = res[0];
       const schema = res[1];

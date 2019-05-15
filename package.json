@@ -1,6 +1,6 @@
 {
   "name": "vue-fusioncharts",
-  "version": "2.0.3",
+  "version": "3.0.3",
   "description": "FusionCharts component for Vue.js",
   "main": "dist/vue-fusioncharts.js",
   "author": "FusionCharts",
@@ -21,6 +21,16 @@
       "additions": 44526,
       "deletions": 144,
       "hireable": null
+    },
+    {
+      "name": "Rohan Dey",
+      "email": "rohanoid5@gmail.com",
+      "url": "https://github.com/rohanoid5"
+    },
+    {
+      "name": "Ashok Mandal",
+      "email": "askipop@gmail.com",
+      "url": "https://github.com/ashok1994"
     }
   ],
   "keywords": [
@@ -60,6 +70,7 @@
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
     "eslint-loader": "^2.0.0",
+    "lodash": "^4.17.11",
     "mocha": "^5.2.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
@@ -68,5 +79,8 @@
     "webpack-dev-server": "^2.4.5",
     "yards": "^0.1.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "fusioncharts": "^3.13.4",
+    "underscore": "^1.9.1"
+  }
 }

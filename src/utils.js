@@ -6,7 +6,7 @@ export function makeNonreactive(obj) {
   obj.__ob__ = new Observer({});
 }
 
-export const addDep = (FC, _FC, modules) => {
+export const addDep = (FC, modules) => {
   if (FC) {
     if (
       (modules.getName && modules.getType) ||
@@ -16,8 +16,6 @@ export const addDep = (FC, _FC, modules) => {
     } else {
       modules(FC);
     }
-  } else {
-    modules(_FC);
   }
 };
 

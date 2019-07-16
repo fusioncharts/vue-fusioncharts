@@ -1,4 +1,3 @@
-import _FC from 'fusioncharts';
 const { optionsMap, props } = require('./config.js');
 const _ = require('lodash');
 import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
@@ -7,7 +6,7 @@ export default (FC, ...options) => {
   options &&
     options.forEach &&
     options.forEach(modules => {
-      addDep(FC, _FC, modules);
+      addDep(FC, modules);
     });
   return {
     name: 'fusioncharts',

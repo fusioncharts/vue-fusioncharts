@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("fusioncharts"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["fusioncharts"], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
-		exports["VueFusionCharts"] = factory(require("fusioncharts"));
+		exports["VueFusionCharts"] = factory();
 	else
-		root["VueFusionCharts"] = factory(root["FusionCharts"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_11__) {
+		root["VueFusionCharts"] = factory();
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -306,13 +306,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _fusioncharts = __webpack_require__(11);
-
-var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
-
 var _utils = __webpack_require__(5);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _require = __webpack_require__(3),
     optionsMap = _require.optionsMap,
@@ -326,7 +320,7 @@ exports.default = function (FC) {
   }
 
   options && options.forEach && options.forEach(function (modules) {
-    (0, _utils.addDep)(FC, _fusioncharts2.default, modules);
+    (0, _utils.addDep)(FC, modules);
   });
   return {
     name: 'fusioncharts',
@@ -802,15 +796,13 @@ function makeNonreactive(obj) {
   obj.__ob__ = new Observer({});
 }
 
-var addDep = exports.addDep = function addDep(FC, _FC, modules) {
+var addDep = exports.addDep = function addDep(FC, modules) {
   if (FC) {
     if (modules.getName && modules.getType || modules.name && modules.type) {
       FC.addDep(modules);
     } else {
       modules(FC);
     }
-  } else {
-    modules(_FC);
   }
 };
 
@@ -26389,12 +26381,6 @@ module.exports = function(module) {
 	return module;
 };
 
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_11__;
 
 /***/ })
 /******/ ]);

@@ -18,8 +18,6 @@ const schemaFetch = fetch(
 // Use VueFusionCharts plugins by calling the Vue.use() global method:
 // Vue.use(VueFusionCharts, FusionCharts, Charts);
 
-FusionCharts.options.SVGDefinitionURL = 'absolute';
-
 //Use this to add vue-fusioncharts a component
 let vFC = VueFCComponent(FusionCharts, Charts, TimeSeries);
 Vue.component('fusioncharts', vFC);

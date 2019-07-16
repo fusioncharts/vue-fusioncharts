@@ -1,6 +1,6 @@
 {
   "name": "vue-fusioncharts",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "FusionCharts component for Vue.js",
   "main": "dist/vue-fusioncharts.js",
   "author": "FusionCharts",
@@ -80,7 +80,6 @@
     "yards": "^0.1.4"
   },
   "dependencies": {
-    "fusioncharts": "^3.13.4",
     "underscore": "^1.9.1"
   }
 }

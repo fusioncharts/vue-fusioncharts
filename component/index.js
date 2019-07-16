@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("fusioncharts"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["fusioncharts"], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
-		exports["VueFusionChartsComponent"] = factory(require("fusioncharts"));
+		exports["VueFusionChartsComponent"] = factory();
 	else
-		root["VueFusionChartsComponent"] = factory(root["FusionCharts"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
+		root["VueFusionChartsComponent"] = factory();
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -544,7 +544,7 @@ exports.getOptions = getOptions;
 exports.renderChart = renderChart;
 exports.updateChart = updateChart;
 
-var _vue = __webpack_require__(9);
+var _vue = __webpack_require__(8);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -556,15 +556,13 @@ function makeNonreactive(obj) {
   obj.__ob__ = new Observer({});
 }
 
-var addDep = exports.addDep = function addDep(FC, _FC, modules) {
+var addDep = exports.addDep = function addDep(FC, modules) {
   if (FC) {
     if (modules.getName && modules.getType || modules.name && modules.type) {
       FC.addDep(modules);
     } else {
       modules(FC);
     }
-  } else {
-    modules(_FC);
   }
 };
 
@@ -17810,16 +17808,10 @@ function updateChart(This) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(9)(module)))
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17831,13 +17823,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _fusioncharts = __webpack_require__(5);
-
-var _fusioncharts2 = _interopRequireDefault(_fusioncharts);
-
 var _utils = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _require = __webpack_require__(2),
     optionsMap = _require.optionsMap,
@@ -17851,7 +17837,7 @@ exports.default = function (FC) {
   }
 
   options && options.forEach && options.forEach(function (modules) {
-    (0, _utils.addDep)(FC, _fusioncharts2.default, modules);
+    (0, _utils.addDep)(FC, modules);
   });
   return {
     name: 'fusioncharts',
@@ -18036,7 +18022,7 @@ exports.default = function (FC) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -18229,7 +18215,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(1)))
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -18285,7 +18271,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(7);
+__webpack_require__(6);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -18299,7 +18285,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26337,10 +26323,10 @@ if (inBrowser) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0), __webpack_require__(8).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0), __webpack_require__(7).setImmediate))
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {

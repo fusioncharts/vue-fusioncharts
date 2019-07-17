@@ -973,20 +973,30 @@ var app = new Vue({
       type: "timeseries",
       dataFormat: "json",
       dataSource: {
-        data: null,
         caption: {
-          text: 'Apple Inc. Stock Price'
+          text: "Apple Inc. Stock Price"
         },
-        yAxis: {
-          plot: {
-            open: 'Open',
-            high: 'High',
-            low: 'Low',
-            close: 'Close',
-            type: 'candlestick'
-          },
-          title: 'Value'
-        }
+        data: null,
+        subcaption: {
+          text: "Stock prices from January 1980 - November 2011"
+        },
+        yaxis: [
+          {
+            plot: {
+              value: {
+                open: "Open",
+                high: "High",
+                low: "Low",
+                close: "Close"
+              },
+              type: "candlestick"
+            },
+            format: {
+              prefix: "$"
+            },
+            title: "Stock Value"
+          }
+        ]
       }
     },
     mounted: function() {
@@ -1006,20 +1016,30 @@ var app = new Vue({
       type: "timeseries",
       dataFormat: "json",
       dataSource: {
-        data: null,
         caption: {
           text: "Apple Inc. Stock Price"
         },
-        yAxis: {
-          plot: {
-            open: "Open",
-            high: "High",
-            low: "Low",
-            close: "Close",
-            type: "candlestick"
-          },
-          title: "Value"
-        }
+        data: null,
+        subcaption: {
+          text: "Stock prices from January 1980 - November 2011"
+        },
+        yaxis: [
+          {
+            plot: {
+              value: {
+                open: "Open",
+                high: "High",
+                low: "Low",
+                close: "Close"
+              },
+              type: "candlestick"
+            },
+            format: {
+              prefix: "$"
+            },
+            title: "Stock Value"
+          }
+        ]
       }
     };
   },

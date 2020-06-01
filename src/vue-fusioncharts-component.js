@@ -1,5 +1,5 @@
 const { optionsMap, props } = require('./config.js');
-const _ = require('lodash');
+const cloneDeep = require('lodash/cloneDeep');
 import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
 
 export default (FC, ...options) => {
@@ -149,7 +149,7 @@ export default (FC, ...options) => {
           if (newVal !== prevVal) {
             let clonedDataSource;
             if (this.datasource.series) {
-              clonedDataSource = _.cloneDeep(this.datasource);
+              clonedDataSource = cloneDeep(this.datasource);
             } else clonedDataSource = this.datasource;
             this.chartObj.setChartData(
               clonedDataSource,
@@ -164,7 +164,7 @@ export default (FC, ...options) => {
           if (newVal !== prevVal) {
             let clonedDataSource;
             if (this.dataSource.series) {
-              clonedDataSource = _.cloneDeep(this.dataSource);
+              clonedDataSource = cloneDeep(this.dataSource);
             } else clonedDataSource = this.dataSource;
             this.chartObj.setChartData(
               clonedDataSource,
@@ -196,7 +196,7 @@ export default (FC, ...options) => {
       if (strPrevClonedDataSource !== strCurrClonedDataSource) {
         this.prevDataSource = cloneDataSource(ds, 'diff');
         if (ds.series) {
-          ds = _.cloneDeep(ds);
+          ds = cloneDeep(ds);
         }
         this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
       }

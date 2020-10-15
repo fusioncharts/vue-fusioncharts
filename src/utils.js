@@ -1,11 +1,3 @@
-import Vue from 'vue';
-
-const Observer = new Vue().$data.__ob__.constructor;
-
-export function makeNonreactive(obj) {
-  obj.__ob__ = new Observer({});
-}
-
 export const addDep = (FC, modules) => {
   if (FC) {
     if (

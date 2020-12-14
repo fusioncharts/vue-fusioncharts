@@ -1,7 +1,7 @@
 {
   "name": "vue-fusioncharts",
-  "version": "3.0.4",
-  "description": "FusionCharts component for Vue.js",
+  "version": "3.1.0",
+  "description": "A simple and lightweight VueJS component for FusionCharts JavaScript Charting Library",
   "main": "dist/vue-fusioncharts.js",
   "author": "FusionCharts",
   "homepage": "http://www.fusioncharts.com",
@@ -12,27 +12,6 @@
   "bugs": {
     "url": "https://github.com/fusioncharts/vue-fusioncharts/issues"
   },
-  "contributors": [
-    {
-      "name": "Rohit Kumar",
-      "email": "rohit.kr001@gmail.com",
-      "url": "https://github.com/rohitkr",
-      "contributions": 18,
-      "additions": 44526,
-      "deletions": 144,
-      "hireable": null
-    },
-    {
-      "name": "Rohan Dey",
-      "email": "rohanoid5@gmail.com",
-      "url": "https://github.com/rohanoid5"
-    },
-    {
-      "name": "Ashok Mandal",
-      "email": "askipop@gmail.com",
-      "url": "https://github.com/ashok1994"
-    }
-  ],
   "keywords": [
     "Vue",
     "Vue.js",

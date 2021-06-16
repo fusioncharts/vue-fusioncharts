@@ -10,11 +10,12 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     alias: {
-      vue: 'vue/dist/vue.js'
+      'vue': 'vue/dist/vue.esm-bundler.js',
     }
   },
   devServer: {
     contentBase: './example'
     // open: true
-  }
+  },
+  mode: 'development',
 };

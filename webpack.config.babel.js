@@ -1,7 +1,5 @@
-import webpack from 'webpack';
-// import lodash from 'lodash';
 
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const TerserPlugin = require('terser-webpack-plugin');
 const libraryNamePlugin = 'VueFusionCharts';
 const libraryNameComponent = 'VueFusionChartsComponent';
 
@@ -39,12 +37,15 @@ const vueFCPluginConfig = {
       root: 'FusionCharts'
     }
   },
-  plugins: [
-    new UglifyJsPlugin({
-      include: 'vue-fusioncharts.min.js',
-      minimize: true
-    })
-  ]
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        include: 'vue-fusioncharts.min.js',
+      }),
+    ],
+  }
 };
 
 const vueFCComponentConfig = {
@@ -81,12 +82,15 @@ const vueFCComponentConfig = {
       root: 'FusionCharts'
     }
   },
-  plugins: [
-    new UglifyJsPlugin({
-      include: 'index.min.js',
-      minimize: true
-    })
-  ]
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        include: 'index.min.js',
+      }),
+    ],
+  }
 };
 
 module.exports = [vueFCPluginConfig, vueFCComponentConfig];

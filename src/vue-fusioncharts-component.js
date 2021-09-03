@@ -1,55 +1,50 @@
-const { optionsMap, props } = require('./config.js');
-const _ = require('lodash');
+import { optionsMap, props } from './config.js';
+import cloneDeep from 'lodash/cloneDeep';
+import uniqueId from 'lodash/uniqueId';
 import { addDep, checkIfDataTableExists, cloneDataSource } from './utils';
+import { h } from 'vue';
 
 export default (FC, ...options) => {
   options &&
     options.forEach &&
-    options.forEach(modules => {
+    options.forEach((modules) => {
       addDep(FC, modules);
     });
   return {
     name: 'fusioncharts',
-    template: '<div></div>',
-    render: function(h) {
-      this.containerID = 'fc-' + this._uid;
+    render: function () {
+      this.containerID = 'fc-' + uniqueId();
       return h('div', {
-        attrs: {
-          id: this.containerID
-        }
+        id: this.containerID,
       });
     },
     props,
     methods: {
-      attachListeners: function() {
-        if (this.$listeners && typeof this.$listeners === 'object') {
-          Object.keys(this.$listeners).forEach(event => {
-            this.chartObj.addEventListener(event, e => {
-              this.$emit(event, e);
-            });
-          });
-        }
-      },
-      createEvents: function() {
+      createEvents: function () {
+        const myattrs = this.$attrs;
         const ret = {
-          events: {}
+          events: {},
         };
-        if (this.$listeners && typeof this.$listeners === 'object') {
-          Object.keys(this.$listeners).forEach(event => {
-            ret.events[event] = e => {
-              this.$emit(event, e);
-            };
+
+        if (myattrs && typeof myattrs === 'object') {
+          Object.keys(myattrs).forEach((event) => {
+            if (event.startsWith('on') && typeof myattrs[event] === 'function') {
+              const myEvent = event.replace('on', '');
+              ret.events[myEvent] = e => {
+                this.$emit(myEvent, e);
+              };
+            }
           });
         }
         return ret;
       },
-      setLastOptions: function(config) {
+      setLastOptions: function (config) {
         this._oldOptions = Object.assign({}, config);
       },
-      getLastOptions: function() {
+      getLastOptions: function () {
         return this._oldOptions;
       },
-      getOptions: function() {
+      getOptions: function () {
         let config = {},
           THIS = this;
         for (let i in optionsMap) {
@@ -62,7 +57,7 @@ export default (FC, ...options) => {
 
         return options;
       },
-      renderChart: function() {
+      renderChart: function () {
         let THIS = this,
           config = THIS.getOptions(),
           chartObj = THIS.chartObj;
@@ -85,7 +80,7 @@ export default (FC, ...options) => {
         THIS.chartObj = chartObj = new FC(config);
         chartObj.render();
       },
-      updateChart: function() {
+      updateChart: function () {
         let THIS = this,
           config = THIS.getOptions(),
           prevConfig = THIS.getLastOptions(),
@@ -104,26 +99,26 @@ export default (FC, ...options) => {
         }
 
         THIS.setLastOptions(config);
-      }
+      },
     },
     watch: {
-      type: function() {
+      type: function () {
         this.chartObj.chartType(this.type);
       },
-      width: function() {
+      width: function () {
         this.chartObj.resizeTo(this.width, this.height);
       },
-      height: function() {
+      height: function () {
         this.chartObj.resizeTo(this.width, this.height);
       },
       options: {
-        handler: function() {
+        handler: function () {
           this.updateChart();
         },
-        deep: true
+        deep: true,
       },
       dataSource: {
-        handler: function() {
+        handler: function () {
           if (!checkIfDataTableExists(this.dataSource)) {
             this.chartObj.setChartData(
               this.datasource || this.dataSource,
@@ -131,10 +126,10 @@ export default (FC, ...options) => {
             );
           }
         },
-        deep: true
+        deep: true,
       },
       datasource: {
-        handler: function() {
+        handler: function () {
           if (!checkIfDataTableExists(this.datasource)) {
             this.chartObj.setChartData(
               this.datasource || this.dataSource,
@@ -142,14 +137,14 @@ export default (FC, ...options) => {
             );
           }
         },
-        deep: true
+        deep: true,
       },
       'datasource.data': {
-        handler: function(newVal, prevVal) {
+        handler: function (newVal, prevVal) {
           if (newVal !== prevVal) {
             let clonedDataSource;
             if (this.datasource.series) {
-              clonedDataSource = _.cloneDeep(this.datasource);
+              clonedDataSource = cloneDeep(this.datasource);
             } else clonedDataSource = this.datasource;
             this.chartObj.setChartData(
               clonedDataSource,
@@ -157,14 +152,14 @@ export default (FC, ...options) => {
             );
           }
         },
-        deep: false
+        deep: false,
       },
       'dataSource.data': {
-        handler: function(newVal, prevVal) {
+        handler: function (newVal, prevVal) {
           if (newVal !== prevVal) {
             let clonedDataSource;
             if (this.dataSource.series) {
-              clonedDataSource = _.cloneDeep(this.dataSource);
+              clonedDataSource = cloneDeep(this.dataSource);
             } else clonedDataSource = this.dataSource;
             this.chartObj.setChartData(
               clonedDataSource,
@@ -172,22 +167,22 @@ export default (FC, ...options) => {
             );
           }
         },
-        deep: false
-      }
+        deep: false,
+      },
     },
-    deactivated: function() {
+    deactivated: function () {
       this.chartObj && this.chartObj.dispose();
     },
-    beforeDestroy: function() {
+    beforeUnmount: function () {
       this.chartObj && this.chartObj.dispose();
     },
-    mounted: function() {
+    mounted: function () {
       this.renderChart();
     },
-    ready: function() {
+    ready: function () {
       this.renderChart();
     },
-    beforeUpdate: function() {
+    beforeUpdate: function () {
       const strPrevClonedDataSource = JSON.stringify(this.prevDataSource);
       let ds = this.datasource || this.dataSource || this.options.dataSource;
       const strCurrClonedDataSource = JSON.stringify(
@@ -196,10 +191,10 @@ export default (FC, ...options) => {
       if (strPrevClonedDataSource !== strCurrClonedDataSource) {
         this.prevDataSource = cloneDataSource(ds, 'diff');
         if (ds.series) {
-          ds = _.cloneDeep(ds);
+          ds = cloneDeep(ds);
         }
         this.chartObj.setChartData(ds, this.dataFormat || this.dataformat);
       }
-    }
+    },
   };
 };

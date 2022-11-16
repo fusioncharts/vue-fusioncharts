@@ -54,7 +54,7 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "vue": "^2.3.3",
-    "webpack": "^2.5.1",
+    "webpack": "^5.75.0",
     "webpack-dev-server": "^2.4.5",
     "yards": "^0.1.4"
   },

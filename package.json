@@ -1,6 +1,6 @@
 {
   "name": "vue-fusioncharts",
-  "version": "3.1.0",
+  "version": "3.3.0",
   "description": "A simple and lightweight VueJS component for FusionCharts JavaScript Charting Library",
   "main": "dist/vue-fusioncharts.js",
   "author": "FusionCharts",
@@ -34,8 +34,8 @@
     "build": "webpack --config webpack.config.babel.js",
     "rollup": "rollup src/index.js -f umd -n VueFusionCharts -g fusioncharts:FusionCharts -o dist/vue-fusioncharts.js",
     "watch": "webpack --config webpack.config.babel.js -w",
-    "dev": "webpack-dev-server --config example/webpack.config.js",
-    "start": "webpack-dev-server --config example/webpack.config.js"
+    "dev": "webpack serve --config example/webpack.config.js",
+    "start": "webpack serve --config example/webpack.config.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -49,16 +49,20 @@
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
     "eslint-loader": "^2.0.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mocha": "^5.2.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "vue": "^2.3.3",
-    "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5",
+    "terser-webpack-plugin": "^5.1.3",
+    "vue": "^3.4.27",
+    "webpack": "^5.39.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
     "yards": "^0.1.4"
   },
   "dependencies": {
-    "underscore": "^1.9.1"
+    "mixin-deep": "^1.3.2",
+    "underscore": "^1.13.6",
+    "websocket-extensions": "^0.1.4"
   }
 }

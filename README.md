@@ -1,6 +1,6 @@
 # vue-fusioncharts
 
-A simple and lightweight `VueJS` component for `FusionCharts` JavaScript Charting Library. The `Vue-FusionCharts` wrapper lets you easily include FusionCharts in your `VueJS` projects.
+A simple and lightweight `VueJS`(Vue3) component for `FusionCharts` JavaScript Charting Library. The `Vue-FusionCharts` wrapper lets you easily include FusionCharts in your `VueJS` projects.
 
 ## [Demo](https://fusioncharts.github.io/vue-fusioncharts/)
 
@@ -65,10 +65,10 @@ Download [`vue-fusioncharts.js`](https://github.com/fusioncharts/vue-fusionchart
 There are two ways of adding `vue-fusioncharts` component in your project
 
 **Registering globally as a plugin**
-Import `vue`, `vue-fusioncharts` and FusionCharts in main app file.
+Import `{ createApp }`, `vue-fusioncharts` and `FusionCharts` in main app file.
 
 ```js
-import Vue from `vue`;
+import { createApp } from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 
 // import FusionCharts modules and resolve dependency
@@ -76,19 +76,21 @@ import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
 ```
 
-Now, register it as plugin in Vue object
+After a Vue app has been initialized with createApp(), you can add a plugin to your application by calling the use() method.
 
 ```js
-Vue.use(VueFusionCharts, FusionCharts, Charts);
+const app = createApp(App);
+
+app.use(VueFusionCharts, FusionCharts, Charts);
 ```
 
 This way is recommended when you want component (`vue-fusioncharts` ) available from everywhere in your app.
 
 **Registering locally in your component**
-Import the chart component from `vue-fusioncharts/component` package in your component file and use `Vue.component` to register it locally.
+Import the chart component from `vue-fusioncharts/component` package in your component file and use `app.component` to register it locally.
 
 ```js
-import Vue from `vue`;
+import { createApp } from 'vue';
 import VueFusionChartsComponent from 'vue-fusioncharts/component';
 
 // import FusionCharts modules and resolve dependency
@@ -97,14 +99,16 @@ import Charts from 'fusioncharts/fusioncharts.charts';
 
 const vueFusionCharts = VueFusionChartsComponent(FusionCharts, Charts);
 
-Vue.component('fusioncharts', vueFusionCharts);
+const app = createApp(App);
+
+app.component('fusioncharts', vueFusionCharts);
 ```
 
 This way is recommended when you want component (`vue-fusioncharts` ) only in specific components of your app.
 
 Click [here](https://jsfiddle.net/rohitcoolblog/5Lt720a9/) to view the live example.
 
-Where `eventName` can be any fusioncharts event. You can find the list of events at [fusioncharts devcenter](https://www.fusioncharts.com/dev/api/fusioncharts/fusioncharts-events)
+
 
 ## Working with APIs
 
@@ -126,21 +130,26 @@ To call APIs we will need the chart object. To get the chart object from the com
 Now, we can access the chart object from `this.$refs.fc.chartObj`
 
 ```js
-var app = new Vue({
-  el: '#chart',
-  data: {
-    type: 'Pie2D',
-    width: '500',
-    height: '300',
-    dataFormat: 'json',
-    dataSource: myDataSource
+var App = {
+  data() {
+    return {
+      type: 'Pie2D',
+      width: '500',
+      height: '300',
+      dataFormat: 'json',
+      dataSource: myDataSource
+    }
   },
   methods: {
     onDataPlotRollover: function(e) {
       this.$refs.fc.chartObj.slicePlotItem(0);
     }
   }
-});
+};
+const app = createApp(App);
+
+app.mount('#chart');
+
 ```
 
 This example will slice a Pie2d section when you rollover the chart.
@@ -160,19 +169,18 @@ To attach event listeners to FusionCharts, you can use the `v-on` or `@` operato
 >
 </fusioncharts>
 ```
+Where `eventName` can be any fusioncharts event. You can find the list of events at [fusioncharts devcenter](https://www.fusioncharts.com/dev/api/fusioncharts/fusioncharts-events)
 
 ## Quick Start
 
 Here is a basic sample that shows how to create a chart using `vue-fusioncharts`:
 
 ```js
-import Vue from 'vue';
+import { createApp } from 'vue';
 import VueFusionCharts from 'vue-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Charts from 'fusioncharts/fusioncharts.charts';
 
-// register VueFusionCharts component
-Vue.use(VueFusionCharts, FusionCharts, Charts);
 
 const myDataSource = {
   chart: {
@@ -208,16 +216,24 @@ const myDataSource = {
   ]
 };
 
-const chart = new Vue({
-  el: '#app',
-  data: {
-    type: 'column2d',
-    width: '500',
-    height: '300',
-    dataFormat: 'json',
-    dataSource: myDataSource
+const App = {
+  data() {
+    return {
+      type: 'column2d',
+      width: '500',
+      height: '300',
+      dataFormat: 'json',
+      dataSource: myDataSource
+    }
   }
-});
+};
+
+const app = createApp(App);
+
+// register VueFusionCharts component
+app.use(VueFusionCharts, FusionCharts, Charts);
+
+app.mount('#app');
 ```
 
 Here's HTML template for the above example:
@@ -252,45 +268,44 @@ Learn more about FusionTime [here](https://www.fusioncharts.com/fusiontime).
 ### Sample code for FusionTime
 
 ```js
-import Vue from 'vue';
-import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts';
-import TimeSeries from 'fusioncharts/fusioncharts.timeseries';
+import { createApp } from "vue";
 
-// register VueFusionCharts
-Vue.use(VueFusionCharts, FusionCharts, TimeSeries);
+import VueFusionCharts from "vue-fusioncharts";
+import FusionCharts from "fusioncharts";
+import TimeSeries from "fusioncharts/fusioncharts.timeseries";
 
-const jsonify = res => res.json();
+const jsonify = (res) => res.json();
 const dataFetch = fetch(
-  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json'
+  "https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json"
 ).then(jsonify);
 const schemaFetch = fetch(
-  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json'
+  "https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json"
 ).then(jsonify);
 
-const chart = new Vue({
-  el: '#app',
-  data: {
-    width: '500',
-    height: '300',
-    type: 'timeseries',
-    dataFormat: 'json',
-    dataSource: {
-      caption: { text: 'Online Sales of a SuperStore in the US' },
-      data: null,
-      yAxis: [
-        {
-          plot: [
-            {
-              value: 'Sales ($)'
-            }
-          ]
-        }
-      ]
-    }
+const App = {
+  data() {
+    return {
+      width: "500",
+      height: "300",
+      type: "timeseries",
+      dataFormat: "json",
+      dataSource: {
+        caption: { text: "Online Sales of a SuperStore in the US" },
+        data: null,
+        yAxis: [
+          {
+            plot: [
+              {
+                value: "Sales ($)",
+              },
+            ],
+          },
+        ],
+      },
+    };
   },
-  mounted: function() {
-    Promise.all([dataFetch, schemaFetch]).then(res => {
+  mounted: function () {
+    Promise.all([dataFetch, schemaFetch]).then((res) => {
       const data = res[0];
       const schema = res[1];
       const fusionTable = new FusionCharts.DataStore().createDataTable(
@@ -299,8 +314,15 @@ const chart = new Vue({
       );
       this.dataSource.data = fusionTable;
     });
-  }
-});
+  },
+};
+
+const app = createApp(App);
+
+// register VueFusionCharts
+app.use(VueFusionCharts, FusionCharts, TimeSeries);
+
+app.mount("#app");
 ```
 
 Here's HTML template for the above example:
@@ -337,6 +359,7 @@ Useful links for FusionTime
 $ git clone https://github.com/fusioncharts/vue-fusioncharts.git
 $ cd vue-fusioncharts
 $ npm install
+$ npm install fusioncharts --save
 ```
 
 - Run `npm start` to start the dev server and point your browser at [http://localhost:8080/](http://localhost:8080/).

@@ -45,7 +45,8 @@ const vueFCPluginConfig = {
         include: 'vue-fusioncharts.min.js',
       }),
     ],
-  }
+  },
+  mode: 'production'
 };
 
 const vueFCComponentConfig = {
@@ -90,7 +91,8 @@ const vueFCComponentConfig = {
         include: 'index.min.js',
       }),
     ],
-  }
+  },
+  mode: 'production'
 };
 
 module.exports = [vueFCPluginConfig, vueFCComponentConfig];

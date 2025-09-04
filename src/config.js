@@ -1,4 +1,4 @@
-const optionsMap = {
+export const optionsMap = {
   type: 'type',
   id: 'id',
   width: 'width',
@@ -103,10 +103,10 @@ const optionsMap = {
   loadmessageimagehalign: 'loadMessageImageHAlign',
   loadmessageimagevalign: 'loadMessageImageVAlign',
   loadmessageimagealpha: 'loadMessageImageAlpha',
-  loadmessageimagescale: 'loadMessageImageScale'
+  loadmessageimagescale: 'loadMessageImageScale',
 };
 
-const props = {
+export const props = {
   options: Object,
   type: String,
   id: String,
@@ -212,7 +212,5 @@ const props = {
   loadmessageimagehalign: String,
   loadmessageimagevalign: String,
   loadmessageimagealpha: Number,
-  loadmessageimagescale: Number
+  loadmessageimagescale: Number,
 };
-
-module.exports = { optionsMap, props };
